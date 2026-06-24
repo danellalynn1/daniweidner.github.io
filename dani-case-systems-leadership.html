@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dani Weidner — Systems Leadership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #000000;
+    --ink-soft: rgba(0,0,0,0.55);
+    --ink-faint: rgba(0,0,0,0.18);
+    --rule: rgba(0,0,0,0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.3;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* === NAV === */
+  nav {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 1.5rem 2rem 0;
+    gap: 1.2rem;
+    align-items: end;
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+  }
+  nav .nav-cell { display: flex; flex-direction: column; gap: 0.6rem; }
+  nav .nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 0.55rem;
+  }
+  nav .nav-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); display: inline-block; }
+  nav .nav-rule { height: 1px; background: var(--ink); }
+
+  /* === CASE HEADER === */
+  .case-header {
+    padding: 4rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    align-items: start;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-header-left {
+    padding-right: 3rem;
+    border-right: 1px solid var(--ink);
+  }
+  .case-header-right {
+    padding-left: 3rem;
+  }
+  .case-header-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-top: 2rem;
+  }
+
+  .case-eyebrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+  }
+  .eyebrow-nav { display: flex; gap: 2rem; }
+  .case-eyebrow .back:hover { text-decoration: underline; }
+  .case-eyebrow .next:hover { text-decoration: underline; }
+
+  .case-statement {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .case-statement .hs-line {
+    text-align: justify;
+    -moz-text-align-last: justify;
+    text-align-last: justify;
+    word-spacing: -0.04em;
+    width: 100%;
+  }
+  .case-statement .b {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  /* Intro paragraph + meta row */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    padding: 5rem 2rem 4rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-intro .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .case-intro .lead {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.3rem, 2.2vw, 2rem);
+    line-height: 1.3;
+    font-weight: 400;
+  }
+
+  /* Meta strip: role / scope / context */
+  .case-meta-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-meta-strip .cell .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+  .case-meta-strip .cell .v {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* === FLOW SECTIONS === */
+  .flows { padding: 0 2rem; }
+  .flow {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 4rem;
+  }
+  .flow:last-child { border-bottom: none; }
+
+  .flow-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .flow-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .flow-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2rem, 3.5vw, 3.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .flow-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* Spot illustration under the thread label — newspaper line-art */
+  .flow-illo {
+    margin-top: 2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-illo svg {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-illo .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  .flow-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .flow-block .block-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .flow-block p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .flow-block p + p { margin-top: 1rem; }
+
+  /* Outcome stat row inside a flow */
+  .flow-outcomes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    border-top: 1px solid var(--ink-faint);
+    padding-top: 1.8rem;
+  }
+  .flow-outcomes .stat .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .flow-outcomes .stat .d {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Pull quote inside a flow */
+  .flow-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    line-height: 1.35;
+    padding: 1.5rem 0 0.5rem 1.5rem;
+    border-left: 2px solid var(--ink);
+  }
+  .flow-quote .attr {
+    display: block;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+  }
+
+  /* === NEXT / CTA ROW === */
+  .case-cta {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--ink);
+    cursor: pointer;
+  }
+  .case-cta .label {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+  }
+  .case-cta .arrow { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; }
+
+  /* === FOOTER === */
+  footer { padding: 6rem 0 0; overflow: hidden; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0 2rem 3rem;
+    border-bottom: 1px solid var(--ink);
+    gap: 2rem;
+  }
+  .footer-grid h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .footer-grid .col {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+  .footer-grid .col.right { text-align: right; }
+  .footer-grid .col a { display: block; }
+  .footer-grid .col a:hover { text-decoration: underline; }
+
+  .marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--ink);
+    padding: 1.5rem 0;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marqueeScroll 30s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track .item {
+    display: inline-block;
+    margin-right: 2rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 10vw, 10rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .marquee-track .item.serif-thin { font-weight: 400; }
+  .marquee-track .sep {
+    display: inline-block;
+    margin: 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1rem, 1.8vw, 1.8rem);
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1100px) {
+    nav { grid-template-columns: repeat(3, 1fr); }
+    .case-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .case-meta-strip { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .flow { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
+    .case-header, .case-intro, .case-meta-strip, .flows, .case-cta, .footer-grid { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .case-meta-strip { grid-template-columns: 1fr; }
+    .flow-outcomes { grid-template-columns: 1fr; gap: 1.2rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Hero illustration */
+  .case-hero-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 80vh;
+    background-color: #0a0a0a;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-cell">
+    <div class="nav-label">HOME</div>
+    <div class="nav-rule"></div>
+  </a>
+  <div class="nav-cell">
+    <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
+    <div class="nav-rule"></div>
+  </div>
+  <a href="dani-about-v2.html" class="nav-cell">
+    <div class="nav-label">ABOUT</div>
+    <div class="nav-rule"></div>
+  </a>
+  <a href="index.html#contact" class="nav-cell">
+    <div class="nav-label">CONTACT</div>
+    <div class="nav-rule"></div>
+  </a>
+</nav>
+
+<!-- HEADER -->
+<header class="case-header">
+  <div class="case-header-left">
+  <div class="case-eyebrow">
+    <span>A &mdash; 2 / CASE STUDY</span>
+    <div class="eyebrow-nav">
+      <a class="back" href="index.html#cases">&larr; ALL CASE STUDIES</a>
+      <a class="next" href="dani-case-ai-agent.html">NEXT: A &mdash; 3 / DESIGNING AI EXPERIENCES &rarr;</a>
+    </div>
+  </div>
+
+  <div class="case-statement">
+    <div class="hs-line">AUTHORING THE</div>
+    <div class="hs-line"><span class="b">CONVENTIONS</span> A</div>
+    <div class="hs-line">PLATFORM</div>
+    <div class="hs-line b-line"><span class="b">RUNS ON</span></div>
+  </div>
+    <p class="case-header-body">Lead design work is upstream of components. It's the calls that decide which patterns earn a place in the system, the cross-team arbitration when two teams want the same surface to behave differently, and the design-to-engineering contract that lets work ship without ambiguity. This page collects four threads of systems work where I set the convention rather than followed it, each one now shaping how adjacent teams build.</p>
+  </div>
+  <div class="case-header-right">
+    <div class="case-hero-image" style="background-color: #0a0a0a; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgODAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCI+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhcnJvdyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+CiAgICAgIDxwYXRoIGQ9Ik0yIDEgTDggNSBMMiA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvbWFya2VyPgogICAgPG1hcmtlciBpZD0iYXJyb3dEaW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPgogICAgICA8cGF0aCBkPSJNMiAxIEw4IDUgTDIgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGM4YzhjIiBzdHJva2Utd2lkdGg9IjEuNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICA8L21hcmtlcj4KICA8L2RlZnM+CgogIDwhLS0gYmFja2dyb3VuZDogbmV1dHJhbCBuZWFyLWJsYWNrIC0tPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI2MDAiIGhlaWdodD0iODAwIiBmaWxsPSIjMGEwYTBhIi8+CgogIDwhLS0gc3VidGxlIG5ldXRyYWwgZ3JpZCAtLT4KICA8ZyBzdHJva2U9IiMxYzFjMWMiIHN0cm9rZS13aWR0aD0iMSI+CiAgICA8bGluZSB4MT0iMCIgeTE9IjIwMCIgeDI9IjYwMCIgeTI9IjIwMCIvPgogICAgPGxpbmUgeDE9IjAiIHkxPSI0MDAiIHgyPSI2MDAiIHkyPSI0MDAiLz4KICAgIDxsaW5lIHgxPSIwIiB5MT0iNjAwIiB4Mj0iNjAwIiB5Mj0iNjAwIi8+CiAgPC9nPgoKICA8IS0tID09PT09PT09PT09PSBDT05ORUNUT1JTID09PT09PT09PT09PSAtLT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42Ij4KICAgIDwhLS0gY29udmVudGlvbiAtPiBkZWNpc2lvbiAtLT4KICAgIDxwYXRoIGQ9Ik0zMDAgOTYgTDMwMCAxNDAiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgICA8IS0tIGRlY2lzaW9uIFlFUyAtPiBzb3VyY2Ugb2YgdHJ1dGggLS0+CiAgICA8cGF0aCBkPSJNMzAwIDI0NCBMMzAwIDMwMCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICAgIDwhLS0gc291cmNlIG9mIHRydXRoIGZhbnMgb3V0IHRvIHRocmVlIHRlYW1zIC0tPgogICAgPHBhdGggZD0iTTMwMCAzNzIgTDMwMCA0MTAgTDEzMCA0MTAgTDEzMCA0NzAiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgICA8cGF0aCBkPSJNMzAwIDM3MiBMMzAwIDQ3MCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICAgIDxwYXRoIGQ9Ik0zMDAgMzcyIEwzMDAgNDEwIEw0NzAgNDEwIEw0NzAgNDcwIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogIDwvZz4KCiAgPCEtLSBkZWNpc2lvbiBOTyBicmFuY2ggLT4gYmVuZCBleGlzdGluZyAoZGltbWVkKSAtLT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiM4YzhjOGMiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtZGFzaGFycmF5PSI1IDUiPgogICAgPHBhdGggZD0iTTM4OCAxOTIgTDQ4OCAxOTIgTDQ4OCAyNTAiIG1hcmtlci1lbmQ9InVybCgjYXJyb3dEaW0pIi8+CiAgPC9nPgoKICA8IS0tID09PT09PT09PT09PSBOT0RFUyA9PT09PT09PT09PT0gLS0+CiAgPCEtLSBDT05WRU5USU9OIChhdXRob3JlZCkgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSIyMDgiIHk9IjQ4IiB3aWR0aD0iMTg0IiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iNzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjUwMCIgbGV0dGVyLXNwYWNpbmc9IjAuMyI+Q29udmVudGlvbjwvdGV4dD4KICA8L2c+CgogIDwhLS0gREVDSVNJT046IEVBUk5TIEEgUExBQ0U/IC0tPgogIDxnPgogICAgPHBhdGggZD0iTTMwMCAxNDAgTDM4OCAxOTIgTDMwMCAyNDQgTDIxMiAxOTIgWiIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHRleHQgeD0iMzAwIiB5PSIxOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCIgZm9udC1zdHlsZT0iaXRhbGljIj5FYXJucyBhPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSIyMDgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCIgZm9udC1zdHlsZT0iaXRhbGljIj5wbGFjZT88L3RleHQ+CiAgPC9nPgogIDx0ZXh0IHg9IjMxMiIgeT0iMjc4IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGxldHRlci1zcGFjaW5nPSIxLjUiPllFUzwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjE4NiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5OTzwvdGV4dD4KCiAgPCEtLSBCRU5EIEVYSVNUSU5HIChkaW1tZWQgYWx0ZXJuYXRpdmUpIC0tPgogIDxnPgogICAgPHJlY3QgeD0iNDIwIiB5PSIyNTAiIHdpZHRoPSIxMzYiIGhlaWdodD0iNTYiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiM4YzhjOGMiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSI0ODgiIHk9IjI3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNTAwIj5CZW5kPC90ZXh0PgogICAgPHRleHQgeD0iNDg4IiB5PSIyOTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOSIgbGV0dGVyLXNwYWNpbmc9IjAuOCI+RVhJU1RJTkcgUEFUVEVSTjwvdGV4dD4KICA8L2c+CgogIDwhLS0gU09VUkNFIE9GIFRSVVRIICh0aGUgc3RhbmRhcmQpIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMTgwIiB5PSIzMDAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNzIiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjMzMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNTAwIj5Tb3VyY2Ugb2YgVHJ1dGg8L3RleHQ+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjM1NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhjOGM4YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgbGV0dGVyLXNwYWNpbmc9IjEiPlBMQVRGT1JNIFNUQU5EQVJEPC90ZXh0PgogIDwvZz4KCiAgPCEtLSBURUFNIE5PREVTIChhZGphY2VudCB0ZWFtcyBidWlsZGluZyBhZ2FpbnN0IHRoZSBjb252ZW50aW9uKSAtLT4KICA8Zz4KICAgIDxyZWN0IHg9IjYwIiB5PSI0NzAiIHdpZHRoPSIxNDAiIGhlaWdodD0iNjQiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSIxMzAiIHk9IjQ5OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNTAwIj5UZWFtIEE8L3RleHQ+CiAgICA8dGV4dCB4PSIxMzAiIHk9IjUxNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhjOGM4YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSI5IiBsZXR0ZXItc3BhY2luZz0iMC44Ij5CVUlMRFMgVE8gU1BFQzwvdGV4dD4KICA8L2c+CiAgPGc+CiAgICA8cmVjdCB4PSIyMzAiIHk9IjQ3MCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI2NCIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iNDk4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI1MDAiPlRlYW0gQjwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iNTE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGxldHRlci1zcGFjaW5nPSIwLjgiPkJVSUxEUyBUTyBTUEVDPC90ZXh0PgogIDwvZz4KICA8Zz4KICAgIDxyZWN0IHg9IjQwMCIgeT0iNDcwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjY0IiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHRleHQgeD0iNDcwIiB5PSI0OTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9IjUwMCI+VGVhbSBDPC90ZXh0PgogICAgPHRleHQgeD0iNDcwIiB5PSI1MTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOSIgbGV0dGVyLXNwYWNpbmc9IjAuOCI+QlVJTERTIFRPIFNQRUM8L3RleHQ+CiAgPC9nPgoKICA8IS0tIGNvbnZlcmdlbmNlIGxhYmVsIHVuZGVyIHRoZSB0ZWFtcyAtLT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiM4YzhjOGMiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtZGFzaGFycmF5PSI0IDQiPgogICAgPHBhdGggZD0iTTEzMCA1MzQgTDEzMCA1ODAgTDQ3MCA1ODAgTDQ3MCA1MzQiLz4KICAgIDxwYXRoIGQ9Ik0zMDAgNTM0IEwzMDAgNTgwIi8+CiAgPC9nPgogIDx0ZXh0IHg9IjMwMCIgeT0iNjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5PTkUgU0hBUkVEIENPTlZFTlRJT048L3RleHQ+CgogIDwhLS0gY29ybmVyIGxhYmVscyAtLT4KICA8dGV4dCB4PSIzNiIgeT0iNjAiIGZpbGw9IiM1YzVjNWMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNZU1RFTSBNQVA8L3RleHQ+CiAgPHRleHQgeD0iNTY0IiB5PSI2MCIgdGV4dC1hbmNob3I9ImVuZCIgZmlsbD0iIzVjNWM1YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+QSDigJQgMjwvdGV4dD4KPC9zdmc+Cg=='); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+  </div>
+</header>
+
+
+<!-- META STRIP -->
+<section class="case-meta-strip">
+  <div class="cell">
+    <div class="k">Role</div>
+    <div class="v">Lead Product Designer</div>
+  </div>
+  <div class="cell">
+    <div class="k">Discipline</div>
+    <div class="v">Pattern authoring, cross-team arbitration, design ops</div>
+  </div>
+  <div class="cell">
+    <div class="k">Context</div>
+    <div class="v">Enterprise B2B SaaS platform</div>
+  </div>
+  <div class="cell">
+    <div class="k">Threads in this study</div>
+    <div class="v">04</div>
+  </div>
+</section>
+
+<!-- FLOWS -->
+<div class="flows">
+
+  <!-- THREAD 01 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 01 / 04</div>
+      <div class="flow-name">Layout convention</div>
+      <div class="flow-tags">
+        <span>Split-screen standard</span>
+        <span>Cross-flow consistency</span>
+        <span>Responsive system</span>
+        <span>Platform-wide</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Several divergent layouts converging into one standard split-screen workbench">
+          <defs>
+            <marker id="sl-ar1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- divergent layouts -->
+          <g fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="20" y="18" width="46" height="32"/>
+            <line x1="43" y1="18" x2="43" y2="50"/>
+            <rect x="127" y="18" width="46" height="32"/>
+            <rect x="140" y="26" width="20" height="16"/>
+            <rect x="234" y="18" width="46" height="32"/>
+            <line x1="257" y1="18" x2="257" y2="50"/>
+            <line x1="234" y1="34" x2="280" y2="34"/>
+          </g>
+          <text x="150" y="11" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">DIVERGENT</text>
+
+          <!-- converge -->
+          <g fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M43 50 L43 74 L150 74"/>
+            <path d="M150 50 L150 74"/>
+            <path d="M257 50 L257 74 L150 74"/>
+            <path d="M150 74 L150 96" marker-end="url(#sl-ar1)"/>
+          </g>
+
+          <!-- standard split-screen workbench -->
+          <rect x="66" y="100" width="168" height="62" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="156" y1="100" x2="156" y2="162" stroke="currentColor" stroke-width="1.4"/>
+          <g stroke="currentColor" stroke-width="1.4" opacity="0.4">
+            <line x1="78" y1="118" x2="146" y2="118"/>
+            <line x1="78" y1="130" x2="138" y2="130"/>
+            <line x1="78" y1="142" x2="146" y2="142"/>
+            <line x1="78" y1="154" x2="128" y2="154"/>
+          </g>
+          <rect x="166" y="108" width="58" height="10" fill="currentColor"/>
+          <rect x="172" y="128" width="46" height="26" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+          <text x="150" y="180" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">STANDARD WORKBENCH</text>
+        </svg>
+        <div class="illo-cap">Fig. &mdash; Many layouts, one workbench</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Every creation flow on the platform had drifted into its own layout. Some used a split-screen workbench with a live preview, others used centered single-column cards, others floating card grids. New surfaces had nothing to build against, so each team reinvented the structure and the product felt like several products stitched together.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I established the split-screen workbench as the standard layout for creation flows: a scrollable form on one side, a sticky live preview on the other, with defined responsive breakpoints so it wasn't locked to a rigid ratio. I specified the shared conventions that made it a system rather than a screen, a variant switcher pinned to the top of the preview and present across every tab, a summary tab replacing the old separate review page, and inline error indicators on any tab with validation issues. Then I brought the outlier flows into line so the convention held across the whole platform rather than living in one team's corner.</p>
+      </div>
+      <div class="flow-quote">
+        Consistency isn't a constraint on the work. It's what lets a new surface feel familiar on day one.
+        <span class="attr">Design principle, layout standardization</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">2&times;</div><div class="d">Adjacent teams now building against the layout convention I authored</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Standard workbench pattern replacing several divergent layouts</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Outlier flows left: every creation surface aligned to the convention</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 02 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 02 / 04</div>
+      <div class="flow-name">Navigation rubric</div>
+      <div class="flow-tags">
+        <span>Stepper vs tab</span>
+        <span>Decision framework</span>
+        <span>Reusable rule</span>
+        <span>Cross-team</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decision rubric: choose a stepper for linear flows or tabs for parallel flows">
+          <defs>
+            <marker id="sl-ar" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- decision node -->
+          <path d="M150 11 L176 31 L150 51 L124 31 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="150" y="37" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="15" fill="currentColor">?</text>
+
+          <!-- branch connectors -->
+          <g fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M150 51 L150 64 L74 64 L74 82" marker-end="url(#sl-ar)"/>
+            <path d="M150 51 L150 64 L228 64 L228 82" marker-end="url(#sl-ar)"/>
+          </g>
+
+          <!-- branch labels -->
+          <text x="108" y="59" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">LINEAR</text>
+          <text x="192" y="59" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">PARALLEL</text>
+
+          <!-- STEPPER glyph (left) -->
+          <line x1="74" y1="98" x2="74" y2="150" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="74" cy="98" r="6" fill="currentColor"/>
+          <circle cx="74" cy="124" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="74" cy="150" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="88" y1="98" x2="108" y2="98" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <line x1="88" y1="124" x2="104" y2="124" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <line x1="88" y1="150" x2="100" y2="150" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <text x="74" y="174" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">STEPPER</text>
+
+          <!-- TABS glyph (right) -->
+          <rect x="198" y="92" width="20" height="13" fill="currentColor"/>
+          <rect x="220" y="92" width="20" height="13" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="242" y="92" width="20" height="13" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="198" y="105" width="64" height="45" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="208" y1="120" x2="252" y2="120" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <line x1="208" y1="132" x2="244" y2="132" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <text x="230" y="174" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">TABS</text>
+        </svg>
+        <div class="illo-cap">Fig. &mdash; One rule, picked per flow</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Teams kept relitigating the same question on every flow: stepper or tabs? Without a shared rule, the choice was made case by case, inconsistently, and a flow that supported saving partway through would still force users down a rigid linear path because that's what the last flow happened to use.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I authored the decision rubric the team now builds to: steppers are reserved for strictly linear flows where steps must be completed in order; tabs are the pattern for non-linear, save-as-draft flows where users can move between sections freely. I grounded it in usage data, one flow forced every user through a multi-step stepper even though sixty percent created just a single item, so the linear pattern was actively working against them. I applied the rubric to the flows that needed it most, replacing steppers that fought save-as-draft behavior, and it carried forward as the default reasoning for adjacent teams.</p>
+      </div>
+      <div class="flow-quote">
+        The pattern should follow the user's freedom to move, not the other way around.
+        <span class="attr">Navigation decision rubric</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">1</div><div class="d">Reusable rubric replacing case-by-case navigation debates</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Patterns clearly scoped: stepper for linear, tabs for non-linear</div></div>
+        <div class="stat"><div class="n">2&times;</div><div class="d">Adjacent teams adopting the rubric as their default reasoning</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 03 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 03 / 04</div>
+      <div class="flow-name">Cross-team arbitration</div>
+      <div class="flow-tags">
+        <span>Facilitated session</span>
+        <span>Assumptions mapping</span>
+        <span>Decision tracing</span>
+        <span>Unblocking</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A buried chat thread turned into a structured decision record with named owners">
+          <defs>
+            <marker id="sl-ar3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- buried thread -->
+          <g stroke="currentColor" stroke-width="1.4" opacity="0.45">
+            <line x1="22" y1="40" x2="72" y2="40"/>
+            <line x1="30" y1="52" x2="66" y2="52"/>
+            <line x1="22" y1="64" x2="78" y2="64"/>
+            <line x1="32" y1="76" x2="68" y2="76"/>
+            <line x1="22" y1="88" x2="72" y2="88"/>
+          </g>
+          <path d="M40 54 C 58 48 60 72 46 74 C 34 76 36 56 54 60 C 70 63 60 86 44 82" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="50" y="108" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">CHAT THREAD</text>
+
+          <!-- arrow across -->
+          <path d="M92 64 L118 64" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#sl-ar3)"/>
+
+          <!-- decision record -->
+          <path d="M210 22 L226 38 L210 54 L194 38 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="210" y="44" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="15" fill="currentColor">?</text>
+          <g fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M210 54 L210 66 L160 66 L160 80" marker-end="url(#sl-ar3)"/>
+            <path d="M210 54 L210 80" marker-end="url(#sl-ar3)"/>
+            <path d="M210 54 L210 66 L260 66 L260 80" marker-end="url(#sl-ar3)"/>
+          </g>
+          <g fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="140" y="82" width="40" height="22"/>
+            <rect x="190" y="82" width="40" height="22"/>
+            <rect x="240" y="82" width="40" height="22"/>
+          </g>
+          <g stroke="currentColor" stroke-width="1.4" opacity="0.4">
+            <line x1="160" y1="104" x2="160" y2="115"/>
+            <line x1="210" y1="104" x2="210" y2="115"/>
+            <line x1="260" y1="104" x2="260" y2="115"/>
+          </g>
+          <g fill="currentColor">
+            <circle cx="160" cy="118" r="3"/>
+            <circle cx="210" cy="118" r="3"/>
+            <circle cx="260" cy="118" r="3"/>
+          </g>
+          <text x="210" y="138" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">DECISION RECORD</text>
+        </svg>
+        <div class="illo-cap">Fig. &mdash; Thread untangled into a record</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>A core flow was blocked on an unresolved architecture question: were two related concepts in the system actually the same thing, and how should orphaned items, creation scope, and naming behave depending on the answer? The disagreement was buried in a long chat thread, and nobody could ship until it was settled.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I planned and facilitated a working session to resolve it with the whole cross-functional team. I ran an assumptions-mapping exercise first to surface where people silently disagreed, then a decision-tree exercise to trace the consequences of each path without forcing a premature vote. I moved the open unknowns directly into the decision tree as the transition between activities, then documented the agreements, the live disagreements, and the next steps with named owners.</p>
+      </div>
+      <div class="flow-quote">
+        Get the decision out of the thread and into a record everyone can build against.
+        <span class="attr">Working session, design principle</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">1</div><div class="d">Blocking architecture question resolved in a single facilitated session</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Structured activities: assumptions mapping, then decision tracing</div></div>
+        <div class="stat"><div class="n">100%</div><div class="d">Outcomes documented with agreements, disagreements, and owners</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 04 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 04 / 04</div>
+      <div class="flow-name">Source-of-truth standard</div>
+      <div class="flow-tags">
+        <span>Design-eng contract</span>
+        <span>Ticket quality</span>
+        <span>Reduced ambiguity</span>
+        <span>Design ops</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One design file as the source of truth with every engineering ticket anchored to it">
+          <defs>
+            <marker id="sl-ar4" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- design file: source of truth -->
+          <text x="152" y="11" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">SOURCE OF TRUTH</text>
+          <path d="M122 16 L168 16 L182 30 L182 64 L122 64 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M168 16 L168 30 L182 30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <g stroke="currentColor" stroke-width="1.4" opacity="0.4">
+            <line x1="132" y1="40" x2="172" y2="40"/>
+            <line x1="132" y1="50" x2="172" y2="50"/>
+            <line x1="132" y1="58" x2="160" y2="58"/>
+          </g>
+
+          <!-- anchors to tickets -->
+          <g fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M152 64 L152 80 L70 80 L70 90" marker-end="url(#sl-ar4)"/>
+            <path d="M152 64 L152 90" marker-end="url(#sl-ar4)"/>
+            <path d="M152 64 L152 80 L234 80 L234 90" marker-end="url(#sl-ar4)"/>
+          </g>
+
+          <!-- tickets -->
+          <g fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="38" y="92" width="64" height="44"/>
+            <rect x="120" y="92" width="64" height="44"/>
+            <rect x="202" y="92" width="64" height="44"/>
+          </g>
+          <g fill="currentColor">
+            <rect x="46" y="100" width="8" height="8"/>
+            <rect x="128" y="100" width="8" height="8"/>
+            <rect x="210" y="100" width="8" height="8"/>
+          </g>
+          <g stroke="currentColor" stroke-width="1.4" opacity="0.4">
+            <line x1="60" y1="105" x2="94" y2="105"/>
+            <line x1="46" y1="118" x2="94" y2="118"/>
+            <line x1="46" y1="127" x2="84" y2="127"/>
+            <line x1="142" y1="105" x2="176" y2="105"/>
+            <line x1="128" y1="118" x2="176" y2="118"/>
+            <line x1="128" y1="127" x2="166" y2="127"/>
+            <line x1="224" y1="105" x2="258" y2="105"/>
+            <line x1="210" y1="118" x2="258" y2="118"/>
+            <line x1="210" y1="127" x2="248" y2="127"/>
+          </g>
+          <text x="152" y="158" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">ANCHORED TICKETS</text>
+        </svg>
+        <div class="illo-cap">Fig. &mdash; One file, every ticket anchored</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Design decisions lived in scattered chat threads and verbal agreements, so engineering tickets carried ambiguity and rework. The same questions resurfaced at handoff because there was no single authoritative reference for what a surface was supposed to be.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I drove the standard that the design file is the source of truth, with tickets anchored to it and the reasoning behind each decision documented alongside the work. I set the bar for what a good ticket looks like, with specific affected-area paths, explicit expected behavior, and a design reference, so engineering could build without coming back to ask. The contract reduced ambiguity at handoff and gave the team a reusable definition of done.</p>
+      </div>
+      <div class="flow-quote">
+        The best specs are the ones engineering can ship without having to ask me a single question.
+        <span class="attr">Design-to-engineering contract</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">1</div><div class="d">Authoritative source of truth replacing scattered decisions</div></div>
+        <div class="stat"><div class="n">2&times;</div><div class="d">Teams operating against the handoff standard I established</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Ambiguous handoffs: every ticket anchored to a documented reference</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><h3>DANI WEIDNER</h3></div>
+    <div class="col">
+      <a href="index.html">HOME</a>
+      <a href="index.html#cases">CASE STUDIES</a>
+    </div>
+    <div class="col">
+      <a href="dani-about-v2.html">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
+    </div>
+    <div class="col right">
+      <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
+      <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="dani-cv.html">CV</a>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

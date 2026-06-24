@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dani Weidner — Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #000000;
+    --ink-soft: rgba(0,0,0,0.55);
+    --ink-faint: rgba(0,0,0,0.18);
+    --rule: rgba(0,0,0,0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.3;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* === NAV === */
+  nav {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 1.5rem 2rem 0;
+    gap: 1.2rem;
+    align-items: end;
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+  }
+  nav .nav-cell { display: flex; flex-direction: column; gap: 0.6rem; }
+  nav .nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 0.55rem;
+  }
+  nav .nav-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); display: inline-block; }
+  nav .nav-rule { height: 1px; background: var(--ink); }
+
+  /* === CASE HEADER === */
+  .case-header {
+    padding: 4rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    align-items: start;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-header-left {
+    padding-right: 3rem;
+    border-right: 1px solid var(--ink);
+  }
+  .case-header-right {
+    padding-left: 3rem;
+  }
+  .case-header-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-top: 2rem;
+  }
+
+  .case-eyebrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+  }
+  .eyebrow-nav { display: flex; gap: 2rem; }
+  .case-eyebrow .back:hover { text-decoration: underline; }
+  .case-eyebrow .next:hover { text-decoration: underline; }
+
+  .case-statement {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .case-statement .hs-line {
+    text-align: justify;
+    -moz-text-align-last: justify;
+    text-align-last: justify;
+    word-spacing: -0.04em;
+    width: 100%;
+  }
+  .case-statement .b {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  /* Intro paragraph + meta row */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    padding: 5rem 2rem 4rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-intro .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .case-intro .lead {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.3rem, 2.2vw, 2rem);
+    line-height: 1.3;
+    font-weight: 400;
+  }
+
+  /* Meta strip: role / scope / context */
+  .case-meta-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-meta-strip .cell .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+  .case-meta-strip .cell .v {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* === FLOW SECTIONS === */
+  .flows { padding: 0 2rem; }
+  .flow {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 4rem;
+  }
+  .flow:last-child { border-bottom: none; }
+
+  .flow-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .flow-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .flow-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2rem, 3.5vw, 3.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .flow-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* Spot illustration under the thread label — newspaper line-art */
+  .flow-illo {
+    margin-top: 2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-illo svg {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-illo .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  .flow-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .flow-block .block-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .flow-block p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .flow-block p + p { margin-top: 1rem; }
+
+  /* Outcome stat row inside a flow */
+  .flow-outcomes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    border-top: 1px solid var(--ink-faint);
+    padding-top: 1.8rem;
+  }
+  .flow-outcomes .stat .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .flow-outcomes .stat .d {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Pull quote inside a flow */
+  .flow-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    line-height: 1.35;
+    padding: 1.5rem 0 0.5rem 1.5rem;
+    border-left: 2px solid var(--ink);
+  }
+  .flow-quote .attr {
+    display: block;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+  }
+
+  /* === NEXT / CTA ROW === */
+  .case-cta {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--ink);
+    cursor: pointer;
+  }
+  .case-cta .label {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+  }
+  .case-cta .arrow { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; }
+
+  /* === FOOTER === */
+  footer { padding: 6rem 0 0; overflow: hidden; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0 2rem 3rem;
+    border-bottom: 1px solid var(--ink);
+    gap: 2rem;
+  }
+  .footer-grid h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .footer-grid .col {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+  .footer-grid .col.right { text-align: right; }
+  .footer-grid .col a { display: block; }
+  .footer-grid .col a:hover { text-decoration: underline; }
+
+  .marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--ink);
+    padding: 1.5rem 0;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marqueeScroll 30s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track .item {
+    display: inline-block;
+    margin-right: 2rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 10vw, 10rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .marquee-track .item.serif-thin { font-weight: 400; }
+  .marquee-track .sep {
+    display: inline-block;
+    margin: 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1rem, 1.8vw, 1.8rem);
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1100px) {
+    nav { grid-template-columns: repeat(3, 1fr); }
+    .case-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .case-meta-strip { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .flow { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
+    .case-header, .case-intro, .case-meta-strip, .flows, .case-cta, .footer-grid { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .case-meta-strip { grid-template-columns: 1fr; }
+    .flow-outcomes { grid-template-columns: 1fr; gap: 1.2rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Hero illustration */
+  .case-hero-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 80vh;
+    background-color: #0a0a0a;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-cell">
+    <div class="nav-label">HOME</div>
+    <div class="nav-rule"></div>
+  </a>
+  <div class="nav-cell">
+    <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
+    <div class="nav-rule"></div>
+  </div>
+  <a href="dani-about-v2.html" class="nav-cell">
+    <div class="nav-label">ABOUT</div>
+    <div class="nav-rule"></div>
+  </a>
+  <a href="index.html#contact" class="nav-cell">
+    <div class="nav-label">CONTACT</div>
+    <div class="nav-rule"></div>
+  </a>
+</nav>
+
+<!-- HEADER -->
+<header class="case-header">
+  <div class="case-header-left">
+  <div class="case-eyebrow">
+    <span>A &mdash; 4 / CASE STUDY</span>
+    <div class="eyebrow-nav">
+      <a class="back" href="index.html#cases">&larr; ALL CASE STUDIES</a>
+      <a class="next" href="dani-case-validation.html">NEXT: A &mdash; 5 / VALIDATION &rarr;</a>
+    </div>
+  </div>
+
+  <div class="case-statement">
+    <div class="hs-line">FINDING WHAT</div>
+    <div class="hs-line"><span class="b">USERS NEED</span> BEFORE</div>
+    <div class="hs-line">A LINE IS</div>
+    <div class="hs-line b-line"><span class="b">DRAWN</span></div>
+  </div>
+    <p class="case-header-body">I run the full research lifecycle myself: writing the brief, designing the study, recruiting and screening participants, moderating sessions, and synthesizing raw transcripts into deliverables a team can act on. This page collects four threads of research that shaped real product direction, from foundational discovery to multi-group usability testing to the operations that let several studies run at once.</p>
+  </div>
+  <div class="case-header-right">
+    <div class="case-hero-image" style="background-color: #0a0a0a; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgODAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCI+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhcnJvdyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+CiAgICAgIDxwYXRoIGQ9Ik0yIDEgTDggNSBMMiA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvbWFya2VyPgogIDwvZGVmcz4KCiAgPCEtLSBiYWNrZ3JvdW5kOiBuZXV0cmFsIG5lYXItYmxhY2sgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwMCIgaGVpZ2h0PSI4MDAiIGZpbGw9IiMwYTBhMGEiLz4KCiAgPCEtLSBzdWJ0bGUgbmV1dHJhbCBncmlkIC0tPgogIDxnIHN0cm9rZT0iIzFjMWMxYyIgc3Ryb2tlLXdpZHRoPSIxIj4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMjQwIiB4Mj0iNjAwIiB5Mj0iMjQwIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjQ0MCIgeDI9IjYwMCIgeTI9IjQ0MCIvPgogICAgPGxpbmUgeDE9IjAiIHkxPSI2NDAiIHgyPSI2MDAiIHkyPSI2NDAiLz4KICA8L2c+CgogIDwhLS0gPT09PT09PT09PT09IENPTk5FQ1RPUlMgPT09PT09PT09PT09IC0tPgogIDwhLS0gdGhyZWUgaW5wdXRzIGNvbnZlcmdlIGludG8gc3ludGhlc2lzIC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiPgogICAgPHBhdGggZD0iTTEzMCAxNjggTDEzMCAyNDYgTDI5MiAyNDYgTDI5MiAyOTgiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgICA8cGF0aCBkPSJNMzAwIDE2OCBMMzAwIDI5OCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICAgIDxwYXRoIGQ9Ik00NzAgMTY4IEw0NzAgMjQ2IEwzMDggMjQ2IEwzMDggMjk4IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogIDwvZz4KCiAgPCEtLSBzeW50aGVzaXMgZmFucyBvdXQgdG8gdGhyZWUgdGhlbWVzIC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiPgogICAgPHBhdGggZD0iTTMwMCAzODIgTDMwMCA0MzggTDEzMCA0MzggTDEzMCA0ODIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgICA8cGF0aCBkPSJNMzAwIDM4MiBMMzAwIDQ4MiIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICAgIDxwYXRoIGQ9Ik0zMDAgMzgyIEwzMDAgNDM4IEw0NzAgNDM4IEw0NzAgNDgyIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogIDwvZz4KCiAgPCEtLSB0aHJlZSB0aGVtZXMgY29udmVyZ2UgaW50byBkaXJlY3Rpb24gLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNiI+CiAgICA8cGF0aCBkPSJNMTMwIDU2MiBMMTMwIDYyNiBMMjkyIDYyNiBMMjkyIDY2NiIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICAgIDxwYXRoIGQ9Ik0zMDAgNTYyIEwzMDAgNjY2IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogICAgPHBhdGggZD0iTTQ3MCA1NjIgTDQ3MCA2MjYgTDMwOCA2MjYgTDMwOCA2NjYiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgPC9nPgoKICA8IS0tID09PT09PT09PT09PSBOT0RFUyA9PT09PT09PT09PT0gLS0+CiAgPCEtLSBJTlBVVCBHUk9VUCAxOiBJTlRFUk5BTCAtLT4KICA8Zz4KICAgIDxyZWN0IHg9IjU2IiB5PSIxMDQiIHdpZHRoPSIxNDgiIGhlaWdodD0iNjQiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSIxMzAiIHk9IjEzMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNTAwIj5JbnRlcm5hbDwvdGV4dD4KICAgIDx0ZXh0IHg9IjEzMCIgeT0iMTUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGxldHRlci1zcGFjaW5nPSIwLjgiPk1PREVSQVRFRDwvdGV4dD4KICA8L2c+CiAgPCEtLSBJTlBVVCBHUk9VUCAyOiBDVVNUT01FUlMgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSIyMjYiIHk9IjEwNCIgd2lkdGg9IjE0OCIgaGVpZ2h0PSI2NCIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iMTMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI1MDAiPkN1c3RvbWVyczwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iMTUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGxldHRlci1zcGFjaW5nPSIwLjgiPlVOTU9ERVJBVEVEPC90ZXh0PgogIDwvZz4KICA8IS0tIElOUFVUIEdST1VQIDM6IEVYVEVSTkFMIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMzk2IiB5PSIxMDQiIHdpZHRoPSIxNDgiIGhlaWdodD0iNjQiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSI0NzAiIHk9IjEzMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNTAwIj5FeHRlcm5hbDwvdGV4dD4KICAgIDx0ZXh0IHg9IjQ3MCIgeT0iMTUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGxldHRlci1zcGFjaW5nPSIwLjgiPlVOTU9ERVJBVEVEPC90ZXh0PgogIDwvZz4KCiAgPCEtLSBTWU5USEVTSVMgKGNvbnZlcmdlbmNlIG5vZGUpIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMTgwIiB5PSIyOTgiIHdpZHRoPSIyNDAiIGhlaWdodD0iODQiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjMzNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNTAwIiBmb250LXN0eWxlPSJpdGFsaWMiPlN5bnRoZXNpczwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iMzU3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBsZXR0ZXItc3BhY2luZz0iMSI+Q1JPU1MtR1JPVVAgQUZGSU5JVFk8L3RleHQ+CiAgPC9nPgoKICA8IS0tIFRIRU1FIE5PREVTIChlbWVyZ2VudCBmaW5kaW5ncykgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSI1NiIgeT0iNDgyIiB3aWR0aD0iMTQ4IiBoZWlnaHQ9IjgwIiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHRleHQgeD0iMTMwIiB5PSI1MTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCI+RXJyb3I8L3RleHQ+CiAgICA8dGV4dCB4PSIxMzAiIHk9IjUzNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNTAwIj5SZWNvdmVyeTwvdGV4dD4KICAgIDx0ZXh0IHg9IjEzMCIgeT0iNTUzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjgiIGxldHRlci1zcGFjaW5nPSIwLjYiPlRIRU1FIDAxPC90ZXh0PgogIDwvZz4KICA8Zz4KICAgIDxyZWN0IHg9IjIyNiIgeT0iNDgyIiB3aWR0aD0iMTQ4IiBoZWlnaHQ9IjgwIiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHRleHQgeD0iMzAwIiB5PSI1MTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCI+TWVudGFsPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSI1MzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCI+TW9kZWxzPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSI1NTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCIgbGV0dGVyLXNwYWNpbmc9IjAuNiI+VEhFTUUgMDI8L3RleHQ+CiAgPC9nPgogIDxnPgogICAgPHJlY3QgeD0iMzk2IiB5PSI0ODIiIHdpZHRoPSIxNDgiIGhlaWdodD0iODAiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSI0NzAiIHk9IjUxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNTAwIj5Xb3JrLTwvdGV4dD4KICAgIDx0ZXh0IHg9IjQ3MCIgeT0iNTM0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI1MDAiPmFyb3VuZHM8L3RleHQ+CiAgICA8dGV4dCB4PSI0NzAiIHk9IjU1MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhjOGM4YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSI4IiBsZXR0ZXItc3BhY2luZz0iMC42Ij5USEVNRSAwMzwvdGV4dD4KICA8L2c+CgogIDwhLS0gRElSRUNUSU9OIChvdXRwdXQpIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMjAwIiB5PSI2NjYiIHdpZHRoPSIyMDAiIGhlaWdodD0iNTYiIHJ4PSIyOCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNiIvPgogICAgPHRleHQgeD0iMzAwIiB5PSI3MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwYTBhMGEiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjUwMCI+RGlyZWN0aW9uPC90ZXh0PgogIDwvZz4KCiAgPCEtLSBjb3JuZXIgbGFiZWxzIC0tPgogIDx0ZXh0IHg9IjM2IiB5PSI2MCIgZmlsbD0iIzVjNWM1YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+U1lOVEhFU0lTIE1BUDwvdGV4dD4KICA8dGV4dCB4PSI1NjQiIHk9IjYwIiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjNWM1YzVjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjExIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5BIOKAlCA0PC90ZXh0Pgo8L3N2Zz4K'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+  </div>
+</header>
+
+
+<!-- META STRIP -->
+<section class="case-meta-strip">
+  <div class="cell">
+    <div class="k">Role</div>
+    <div class="v">Lead Product Designer, research DRI</div>
+  </div>
+  <div class="cell">
+    <div class="k">Discipline</div>
+    <div class="v">Discovery, usability testing, synthesis, research ops</div>
+  </div>
+  <div class="cell">
+    <div class="k">Context</div>
+    <div class="v">Enterprise B2B SaaS platform</div>
+  </div>
+  <div class="cell">
+    <div class="k">Threads in this study</div>
+    <div class="v">04</div>
+  </div>
+</section>
+
+<!-- FLOWS -->
+<div class="flows">
+
+  <!-- THREAD 01 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 01 / 04</div>
+      <div class="flow-name">Multi-group usability study</div>
+      <div class="flow-tags">
+        <span>Moderated + unmoderated</span>
+        <span>Three user groups</span>
+        <span>Cross-group synthesis</span>
+        <span>Full lifecycle</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three user groups converging into one synthesis">
+          <defs><marker id="il-cr-0" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <rect x="14" y="26" width="78" height="40" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="111" y="26" width="78" height="40" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="208" y="26" width="78" height="40" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="53" y="50" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="0.5" fill="currentColor">INTERNAL</text>
+          <text x="150" y="50" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="0.5" fill="currentColor">CUSTOMERS</text>
+          <text x="247" y="50" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="0.5" fill="currentColor">MARKETERS</text>
+          <line x1="53" y1="66" x2="53" y2="84" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="247" y1="66" x2="247" y2="84" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="53" y1="84" x2="247" y2="84" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="150" y1="66" x2="150" y2="84" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M150 84 L150 108" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-0)"/>
+          <rect x="95" y="110" width="110" height="44" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="150" y="137" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5" fill="currentColor">SYNTHESIS</text>
+        </svg>
+        <div class="illo-cap">Fig. — Three groups, one signal</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>A new bulk creation feature was in prototype, but nobody knew whether it worked for the people who'd use it daily. The team needed evidence before committing engineering, and a single user group wouldn't tell the whole story: internal experts, paying customers, and external marketers all bring different context.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I designed and ran usability testing across three groups: internal team members moderated, current customers unmoderated, and external growth marketers unmoderated. I wrote the screeners, recruited participants, moderated the think-aloud sessions, and set up the unmoderated tests. Then I synthesized all of it into a single cross-group view that separated what was universal from what was specific to one group, with severity scored by familiarity with the product. The findings reshaped the plan directly: a complex in-platform editing approach was cut once the research showed it was both hard to use and rarely needed, so the team shipped the simpler, higher-value path first.</p>
+      </div>
+      <div class="flow-quote">
+        Findings were consistent across groups, with severity varying by familiarity. The concept lands. Confusion was concentrated in specific moments, not the overall flow.
+        <span class="attr">Cross-group research synthesis</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">User groups tested with method matched to each: moderated and unmoderated</div></div>
+        <div class="stat"><div class="n">2.9/5</div><div class="d">Average confidence without training, the metric that reframed the work</div></div>
+        <div class="stat"><div class="n">5/7</div><div class="d">Named error recovery as the top blocker, prioritized before re-test</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 02 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 02 / 04</div>
+      <div class="flow-name">Discovery interviews</div>
+      <div class="flow-tags">
+        <span>Generative research</span>
+        <span>Theme synthesis</span>
+        <span>Mental models</span>
+        <span>Workaround signals</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Discovery interviews clustered into recurring themes">
+          <defs><marker id="il-cr-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <circle cx="40" cy="44" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="40" cy="64" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="40" cy="84" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="40" cy="104" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="40" cy="124" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <text x="34" y="150" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="0.5" fill="currentColor" opacity="0.55">INTERVIEWS</text>
+          <path d="M58 84 L96 84" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-1)"/>
+          <rect x="120" y="44" width="150" height="28" fill="none" stroke="currentColor" stroke-width="1.4" rx="6"/>
+          <circle cx="140" cy="58" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="160" cy="58" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="180" cy="58" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="120" y="84" width="150" height="28" fill="none" stroke="currentColor" stroke-width="1.4" rx="6"/>
+          <circle cx="140" cy="98" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="160" cy="98" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="120" y="124" width="150" height="28" fill="none" stroke="currentColor" stroke-width="1.4" rx="6"/>
+          <circle cx="140" cy="138" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="160" cy="138" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="220" y="170" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">THEMES</text>
+        </svg>
+        <div class="illo-cap">Fig. — Interviews grouped by theme</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Before designing a solution, the team needed to understand how enterprise customers actually worked at scale, where the current tooling fell short, and what they'd built to compensate. This was foundational discovery: no prototype to test, just open questions about real workflows.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I ran feedback and discovery sessions with enterprise customers across retail, grocery, hospitality, media, and sports, then synthesized them into cross-interview documents organized by theme. The strongest signal recurred across verticals: customers had independently built elaborate parallel spreadsheet and workaround systems outside the product because the in-platform experience didn't match their real workflow, and the same themes surfaced again and again, naming and discoverability at scale, export and audit gaps, and a hard dependency on code for non-technical users. I turned each into structured deliverables with quotes, implications, and next steps the team could design against.</p>
+      </div>
+      <div class="flow-quote">
+        Customers had independently built elaborate workaround systems outside the product. When users build their own tools around yours, that's the strongest signal there is.
+        <span class="attr">Discovery synthesis, cross-interview themes</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">5+</div><div class="d">Industries covered: retail, grocery, hospitality, media, and sports</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Dominant signal: parallel workaround systems built outside the product</div></div>
+        <div class="stat"><div class="n">100%</div><div class="d">Themes carried implications and next steps, not just observations</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 03 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 03 / 04</div>
+      <div class="flow-name">Research operations</div>
+      <div class="flow-tags">
+        <span>Advisory community</span>
+        <span>Multi-region program</span>
+        <span>Standing recruitment pool</span>
+        <span>Concurrent studies</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One recruitment pool feeding parallel studies">
+          <defs><marker id="il-cr-2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <text x="150" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">RECRUITMENT POOL</text>
+          <rect x="40" y="24" width="220" height="38" fill="none" stroke="currentColor" stroke-width="1.4" rx="8"/>
+          <circle cx="64" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="86" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="108" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="130" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="152" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="174" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="196" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="218" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="240" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <path d="M57 62 L57 104" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-2)"/>
+          <path d="M150 62 L150 104" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-2)"/>
+          <path d="M243 62 L243 104" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-2)"/>
+          <rect x="20" y="104" width="74" height="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="57" y="124" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">STUDY</text>
+          <rect x="29" y="134" width="56" height="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="29" y="134" width="39" height="8" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+          <rect x="113" y="104" width="74" height="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="150" y="124" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">STUDY</text>
+          <rect x="122" y="134" width="56" height="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="122" y="134" width="22" height="8" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+          <rect x="206" y="104" width="74" height="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="243" y="124" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">STUDY</text>
+          <rect x="215" y="134" width="56" height="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="215" y="134" width="30" height="8" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+        </svg>
+        <div class="illo-cap">Fig. — One pool, parallel studies</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Running one study at a time wasn't enough to keep up with the roadmap, and ad hoc recruitment was slow and inconsistent. The team needed a repeatable way to source the right participants and run several studies in parallel without the findings bleeding together, and it needed to work across regions, not just one market.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I founded and architected a customer advisory community to serve as a standing recruitment pool. I designed the whole program: a hand-selected founding cohort of enterprise customers across travel, food, fintech, retail, and tech, a year-long cadence of an in-person kickoff, monthly virtual sessions, quarterly events and newsletters, and a dedicated channel where members began answering each other's product questions in the first week. I ran the events myself and built the scoring model to expand it across three global regions covering Europe, North America, and Asia-Pacific. With that pool in place I ran concurrent studies across multiple product areas, holding the line that screener quality shapes who shows up and that parallel studies need clear synthesis boundaries so insights stay attributable.</p>
+      </div>
+      <div class="flow-quote">
+        Parallel studies need clear synthesis boundaries. Screener quality directly shapes who shows up.
+        <span class="attr">Research operations principle</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">Global regions the program scaled across: Europe, North America, Asia-Pacific</div></div>
+        <div class="stat"><div class="n">100%</div><div class="d">Member retention in the founding cohort, voluntary attrition aside</div></div>
+        <div class="stat"><div class="n">8</div><div class="d">Distinct roadmap influences traced back to the founding cohort's input</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 04 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 04 / 04</div>
+      <div class="flow-name">Study design</div>
+      <div class="flow-tags">
+        <span>Method selection</span>
+        <span>Falsifiable hypotheses</span>
+        <span>Discussion guides</span>
+        <span>Actionable framing</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Choosing a research method to match the question">
+          <defs><marker id="il-cr-3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <path d="M150 11 L176 31 L150 51 L124 31 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="150" y="37" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="15" letter-spacing="1.5" fill="currentColor" font-style="italic">?</text>
+          <path d="M150 51 L150 64 L74 64 L74 82" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-3)"/>
+          <path d="M150 51 L150 64 L228 64 L228 82" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-3)"/>
+          <text x="112" y="59" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">DEPTH</text>
+          <text x="189" y="59" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">VOLUME</text>
+          <rect x="50" y="92" width="48" height="32" fill="none" stroke="currentColor" stroke-width="1.4" rx="8"/>
+          <circle cx="62" cy="108" r="2" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="74" cy="108" r="2" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="86" cy="108" r="2" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M66 124 L62 132 L78 124" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="74" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor">MODERATED</text>
+          <rect x="202" y="92" width="52" height="10" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="202" y="106" width="52" height="10" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="202" y="120" width="52" height="10" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="228" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor">UNMODERATED</text>
+        </svg>
+        <div class="illo-cap">Fig. — Method matched to question</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Research only earns its keep when the study is designed to answer the actual question. Choosing the wrong method, or framing a study so loosely that any result confirms the plan, wastes participants and produces findings nobody can act on.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I matched method to question deliberately: moderated think-aloud sessions when the goal was to understand reasoning and probe on hesitation, unmoderated prototype tests when the goal was independent task completion at volume. I wrote study goals with falsifiable hypotheses and explicit success metrics, scoped what was out of scope so reviewers didn't expect findings the study wasn't built to produce, and authored the discussion guides and session arcs that kept sessions consistent.</p>
+      </div>
+      <div class="flow-quote">
+        A hypothesis sets a falsifiable stake in the ground before you run it. Define what's out of scope so reviewers don't expect findings the study can't produce.
+        <span class="attr">Study design principle</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">2</div><div class="d">Methods matched to intent: moderated for reasoning, unmoderated for volume</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Falsifiable hypothesis set per study before any session ran</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Scope surprises: each study stated what it would and wouldn't answer</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><h3>DANI WEIDNER</h3></div>
+    <div class="col">
+      <a href="index.html">HOME</a>
+      <a href="index.html#cases">CASE STUDIES</a>
+    </div>
+    <div class="col">
+      <a href="dani-about-v2.html">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
+    </div>
+    <div class="col right">
+      <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
+      <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="dani-cv.html">CV</a>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

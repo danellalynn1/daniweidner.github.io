@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dani Weidner — Designing AI Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #000000;
+    --ink-soft: rgba(0,0,0,0.55);
+    --ink-faint: rgba(0,0,0,0.18);
+    --rule: rgba(0,0,0,0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.3;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* === NAV === */
+  nav {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 1.5rem 2rem 0;
+    gap: 1.2rem;
+    align-items: end;
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+  }
+  nav .nav-cell { display: flex; flex-direction: column; gap: 0.6rem; }
+  nav .nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 0.55rem;
+  }
+  nav .nav-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); display: inline-block; }
+  nav .nav-rule { height: 1px; background: var(--ink); }
+
+  /* === CASE HEADER === */
+  .case-header {
+    padding: 4rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    align-items: start;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-header-left {
+    padding-right: 3rem;
+    border-right: 1px solid var(--ink);
+  }
+  .case-header-right {
+    padding-left: 3rem;
+  }
+  .case-header-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-top: 2rem;
+  }
+
+  .case-eyebrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+  }
+  .eyebrow-nav { display: flex; gap: 2rem; }
+  .case-eyebrow .back:hover { text-decoration: underline; }
+  .case-eyebrow .next:hover { text-decoration: underline; }
+
+  .case-statement {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .case-statement .hs-line {
+    text-align: justify;
+    -moz-text-align-last: justify;
+    text-align-last: justify;
+    word-spacing: -0.04em;
+    width: 100%;
+  }
+  .case-statement .b {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  /* Intro paragraph + meta row */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    padding: 5rem 2rem 4rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-intro .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .case-intro .lead {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.3rem, 2.2vw, 2rem);
+    line-height: 1.3;
+    font-weight: 400;
+  }
+
+  /* Meta strip */
+  .case-meta-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-meta-strip .cell .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+  .case-meta-strip .cell .v {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* === FLOW SECTIONS === */
+  .flows { padding: 0 2rem; }
+  .flow {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 4rem;
+  }
+  .flow:last-child { border-bottom: none; }
+
+  .flow-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .flow-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .flow-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2rem, 3.5vw, 3.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .flow-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* Spot illustration under the thread label — newspaper line-art */
+  .flow-illo {
+    margin-top: 2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-illo svg {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-illo .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  .flow-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .flow-block .block-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .flow-block p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .flow-block p + p { margin-top: 1rem; }
+
+  /* Outcome stat row */
+  .flow-outcomes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    border-top: 1px solid var(--ink-faint);
+    padding-top: 1.8rem;
+  }
+  .flow-outcomes .stat .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .flow-outcomes .stat .d {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Pull quote */
+  .flow-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    line-height: 1.35;
+    padding: 1.5rem 0 0.5rem 1.5rem;
+    border-left: 2px solid var(--ink);
+  }
+  .flow-quote .attr {
+    display: block;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+  }
+
+  /* === FOOTER === */
+  footer { padding: 6rem 0 0; overflow: hidden; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0 2rem 3rem;
+    border-bottom: 1px solid var(--ink);
+    gap: 2rem;
+  }
+  .footer-grid h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .footer-grid .col {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+  .footer-grid .col.right { text-align: right; }
+  .footer-grid .col a { display: block; }
+  .footer-grid .col a:hover { text-decoration: underline; }
+
+  .marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--ink);
+    padding: 1.5rem 0;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marqueeScroll 30s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track .item {
+    display: inline-block;
+    margin-right: 2rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 10vw, 10rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .marquee-track .item.serif-thin { font-weight: 400; }
+  .marquee-track .sep {
+    display: inline-block;
+    margin: 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1rem, 1.8vw, 1.8rem);
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+
+  /* Hero illustration */
+  .case-hero-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 80vh;
+    border-radius: 2px;
+    overflow: hidden;
+    display: block;
+  }
+  .case-hero-image svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1100px) {
+    nav { grid-template-columns: repeat(3, 1fr); }
+    .case-header { grid-template-columns: 1fr; }
+    .case-header-left { border-right: none; padding-right: 0; border-bottom: 1px solid var(--ink); padding-bottom: 2rem; margin-bottom: 2rem; }
+    .case-header-right { padding-left: 0; }
+    .case-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .case-meta-strip { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .flow { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
+    .case-header, .case-intro, .case-meta-strip, .flows, .footer-grid { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .case-meta-strip { grid-template-columns: 1fr; }
+    .flow-outcomes { grid-template-columns: 1fr; gap: 1.2rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-cell">
+    <div class="nav-label">HOME</div>
+    <div class="nav-rule"></div>
+  </a>
+  <div class="nav-cell">
+    <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
+    <div class="nav-rule"></div>
+  </div>
+  <a href="dani-about-v2.html" class="nav-cell">
+    <div class="nav-label">ABOUT</div>
+    <div class="nav-rule"></div>
+  </a>
+  <a href="index.html#contact" class="nav-cell">
+    <div class="nav-label">CONTACT</div>
+    <div class="nav-rule"></div>
+  </a>
+</nav>
+
+<!-- HEADER -->
+<header class="case-header">
+  <div class="case-header-left">
+    <div class="case-eyebrow">
+      <span>A &mdash; 3 / CASE STUDY</span>
+      <div class="eyebrow-nav">
+        <a class="back" href="index.html#cases">&larr; ALL CASE STUDIES</a>
+      </div>
+    </div>
+
+    <div class="case-statement">
+      <div class="hs-line">DESIGNING</div>
+      <div class="hs-line">FOR <span class="b">WHAT</span> THE</div>
+      <div class="hs-line"><span class="b">MODEL</span> DOES</div>
+      <div class="hs-line b-line">NOT <span class="b">KNOW</span></div>
+    </div>
+    <p class="case-header-body">AI changes the rules of product design. Outputs are probabilistic, not deterministic. The system can be wrong, and the user needs a way to know that without losing trust in the product entirely. This case study covers the design work behind a persistent in-product AI agent — a companion that follows enterprise users through their journey — and the decisions required to surface model outputs honestly, handle uncertainty, and collaborate with ML engineers on what the product can and cannot promise.</p>
+  </div>
+  <div class="case-header-right">
+    <div class="case-hero-image">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" style="background:#0a0a0a;">
+        <!-- Outer rings -->
+        <circle cx="300" cy="380" r="110" fill="none" stroke="#1f1f1f" stroke-width="1"/>
+        <circle cx="300" cy="380" r="70" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+        <!-- Center node -->
+        <circle cx="300" cy="380" r="26" fill="#ffffff"/>
+        <text x="300" y="384" text-anchor="middle" fill="#0a0a0a" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="8" letter-spacing="1.5" font-weight="500">AGENT</text>
+        <!-- Primary orbiting nodes -->
+        <circle cx="300" cy="270" r="8" fill="#ffffff"/>
+        <circle cx="402" cy="438" r="8" fill="#ffffff"/>
+        <circle cx="198" cy="438" r="8" fill="#ffffff"/>
+        <!-- Connector lines -->
+        <line x1="300" y1="354" x2="300" y2="278" stroke="#ffffff" stroke-width="1.2"/>
+        <line x1="322" y1="398" x2="394" y2="430" stroke="#ffffff" stroke-width="1.2"/>
+        <line x1="278" y1="398" x2="206" y2="430" stroke="#ffffff" stroke-width="1.2"/>
+        <!-- Outer nodes (faint) -->
+        <circle cx="300" cy="180" r="5" fill="none" stroke="#4c4c4c" stroke-width="1"/>
+        <circle cx="480" cy="480" r="5" fill="none" stroke="#4c4c4c" stroke-width="1"/>
+        <circle cx="120" cy="480" r="5" fill="none" stroke="#4c4c4c" stroke-width="1"/>
+        <!-- Dashed outer lines -->
+        <line x1="300" y1="278" x2="300" y2="185" stroke="#4c4c4c" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="402" y1="446" x2="475" y2="475" stroke="#4c4c4c" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="198" y1="446" x2="125" y2="475" stroke="#4c4c4c" stroke-width="1" stroke-dasharray="3 3"/>
+        <!-- Node labels -->
+        <text x="300" y="254" text-anchor="middle" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" letter-spacing="1.2">USER CONTEXT</text>
+        <text x="418" y="432" text-anchor="start" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" letter-spacing="1.2">ACTIONS</text>
+        <text x="182" y="432" text-anchor="end" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" letter-spacing="1.2">INSIGHTS</text>
+        <!-- Corner labels -->
+        <text x="36" y="60" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">AI AGENT</text>
+        <text x="564" y="60" text-anchor="end" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">A &#8212; 3</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- META STRIP -->
+<section class="case-meta-strip">
+  <div class="cell">
+    <div class="k">Role</div>
+    <div class="v">Lead Product Designer</div>
+  </div>
+  <div class="cell">
+    <div class="k">Discipline</div>
+    <div class="v">AI product design, ML collaboration, trust &amp; uncertainty, agentic UX</div>
+  </div>
+  <div class="cell">
+    <div class="k">Context</div>
+    <div class="v">Enterprise B2B SaaS platform</div>
+  </div>
+  <div class="cell">
+    <div class="k">Threads in this study</div>
+    <div class="v">03</div>
+  </div>
+</section>
+
+<!-- FLOWS -->
+<div class="flows">
+
+  <!-- THREAD 01 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 01 / 03</div>
+      <div class="flow-name">Surfacing model outputs</div>
+      <div class="flow-tags">
+        <span>AI output design</span>
+        <span>Confidence &amp; uncertainty</span>
+        <span>Trust calibration</span>
+        <span>Progressive disclosure</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Confidence-tiered disclosure of model outputs">
+          <defs><marker id="il-caa-0" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <text x="150" y="12" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">MODEL OUTPUT</text>
+          <text x="24" y="52" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">HIGH</text>
+          <rect x="66" y="42" width="58" height="18" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <text x="24" y="104" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">MED</text>
+          <rect x="66" y="94" width="58" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="134" y1="103" x2="196" y2="103" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="134" y1="99" x2="134" y2="107" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="196" y1="99" x2="196" y2="107" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="165" cy="103" r="2.5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <text x="24" y="156" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">LOW</text>
+          <rect x="66" y="146" width="58" height="18" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+          <line x1="134" y1="155" x2="256" y2="155" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="134" y1="151" x2="134" y2="159" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="256" y1="151" x2="256" y2="159" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="195" cy="155" r="2.5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <div class="illo-cap">Fig. — Confidence sets the disclosure</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Enterprise users needed to act on data the model produced, but the model's outputs carried inherent uncertainty that a traditional dashboard would hide. Presenting a number without its confidence range would create false precision; presenting the full distribution would overwhelm. Getting this wrong in either direction had a cost — overconfidence erodes trust when the model is wrong, and excessive hedging makes the output useless.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I worked with the ML team to understand what the model actually knew vs. what it was estimating, and used that distinction to design a tiered disclosure system. High-confidence outputs surfaced cleanly. Lower-confidence outputs included a visible signal — not a statistical footnote, but a design-level indicator built into the component — with a path to understand why. I mapped the thresholds with ML engineers so the UI's confidence language matched what the model's confidence scores actually meant, not a rough approximation.</p>
+        <p>The goal was calibrated trust: users should believe the model when it's right, and have enough signal to push back when it isn't.</p>
+      </div>
+      <div class="flow-quote">
+        Hiding uncertainty doesn't make a product feel smarter. It makes it feel wrong when it's wrong and untrustworthy when users find out.
+        <span class="attr">Design principle, AI output surfaces</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">Confidence tiers designed into the component system, not bolted on as tooltips</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Statistical jargon in user-facing copy — all uncertainty framed in workflow terms</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Shared confidence threshold map between design and ML — same language on both sides</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 02 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 02 / 03</div>
+      <div class="flow-name">Designing the agent</div>
+      <div class="flow-tags">
+        <span>Persistent AI companion</span>
+        <span>Agentic UX</span>
+        <span>Journey-aware context</span>
+        <span>Interruptibility</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An aware agent that follows the user across the whole journey">
+          <defs><marker id="il-caa-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <circle cx="150" cy="42" r="9" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <text x="150" y="28" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">AGENT</text>
+          <line x1="40" y1="118" x2="262" y2="118" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="40" cy="118" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="114" cy="118" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="188" cy="118" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="262" cy="118" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M146 50 C 110 70 70 95 44 112" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#il-caa-1)"/>
+          <path d="M150 51 C 140 75 122 98 116 112" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#il-caa-1)"/>
+          <path d="M150 51 C 162 78 182 98 188 112" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#il-caa-1)"/>
+          <path d="M154 50 C 200 68 240 92 260 112" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#il-caa-1)"/>
+          <text x="151" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">USER JOURNEY</text>
+        </svg>
+        <div class="illo-cap">Fig. — One agent across the journey</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>A one-off AI widget is easy. An agent that follows a user through their entire session — aware of where they came from, what they're trying to do, and what they've already tried — is a fundamentally different design problem. Most enterprise AI surfaces are stateless: you ask a question, you get an answer, context resets. This agent needed to hold context across the journey and use it to be genuinely more useful than asking again from scratch.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I mapped the user's journey through the platform and identified the moments where an aware agent would reduce meaningful friction: transitions between tools, moments of failure or confusion, and decision points where users typically left to look something up elsewhere. I designed the agent's presence to be ambient by default and interruptible on demand — it shouldn't compete for attention, but it should be immediately accessible when needed.</p>
+        <p>The key design question was what the agent should know vs. what it should ask. I worked through that with product and ML: what context the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive rather than helpful. The agent's personality and communication patterns were constrained by those constraints — designed to be confident where it had signal, and honest where it didn't.</p>
+      </div>
+      <div class="flow-quote">
+        An agent that knows where you are but doesn't know what you're trying to do is still just a search box with extra steps.
+        <span class="attr">Design constraint, agentic context model</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">5+</div><div class="d">Journey touchpoints where agent presence was explicitly designed, not assumed</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Modes: ambient (low footprint) and engaged (full context surface)</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Assumed context passed to user without confirmation at high-stakes moments</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 03 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 03 / 03</div>
+      <div class="flow-name">Working with ML constraints</div>
+      <div class="flow-tags">
+        <span>ML collaboration</span>
+        <span>Design within model limits</span>
+        <span>Explainability</span>
+        <span>Graceful degradation</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A graded vocabulary for what the model can explain">
+          <defs><marker id="il-caa-2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <rect x="40" y="54" width="86" height="64" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="83" y="82" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="15" letter-spacing="1.5" fill="currentColor" font-style="italic">?</text>
+          <text x="83" y="104" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor">MODEL</text>
+          <path d="M126 86 L168 86" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-caa-2)"/>
+          <text x="150" y="78" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">OUTPUT</text>
+          <text x="232" y="46" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">EXPLAINABILITY</text>
+          <rect x="190" y="104" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="214" y="86" width="16" height="34" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+          <rect x="238" y="66" width="16" height="54" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="150" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">GRADED EXPLANATION</text>
+        </svg>
+        <div class="illo-cap">Fig. — Graded by what is explainable</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Enterprise product designers working on AI surfaces face a constraint that doesn't exist in most product work: the system's behavior is not fully predictable, and the reasons for its decisions are not always surfaceable. Users want to know why. The model doesn't always have a clean answer. The product has to hold that gap without making either the model or the user look bad.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I ran working sessions with ML engineers to understand exactly what the model could and couldn't explain about its own outputs. From that, I built a design vocabulary for explainability: what level of explanation was available for each output type, how to communicate that to users honestly, and how to handle the cases where no explanation could be offered.</p>
+        <p>I also designed for graceful degradation — the states where the model was unavailable, underconfident, or operating outside its training distribution. These weren't edge cases to be minimized in the UI; they were first-class design problems with their own states, copy, and recovery paths. A model failure that a user doesn't notice is a trust problem. A model failure that's handled well is a product moment.</p>
+      </div>
+      <div class="flow-quote">
+        If the model can't explain it, the product still has to say something. "I don't know" is a valid answer — but it has to be designed.
+        <span class="attr">Design principle, explainability systems</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">4</div><div class="d">Explainability tiers mapped from ML capability to design language</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Degraded states designed as first-class experiences: unavailable, low-signal, out-of-distribution</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Shared ML-design working model for what the product can and cannot promise</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><h3>DANI WEIDNER</h3></div>
+    <div class="col">
+      <a href="index.html">HOME</a>
+      <a href="index.html#cases">CASE STUDIES</a>
+    </div>
+    <div class="col">
+      <a href="dani-about-v2.html">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
+    </div>
+    <div class="col right">
+      <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
+      <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="dani-cv.html">CV</a>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
