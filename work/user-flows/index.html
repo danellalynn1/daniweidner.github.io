@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dani Weidner — User Flows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #000000;
+    --ink-soft: rgba(0,0,0,0.55);
+    --ink-faint: rgba(0,0,0,0.18);
+    --rule: rgba(0,0,0,0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.3;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* === NAV === */
+  nav {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 1.5rem 2rem 0;
+    gap: 1.2rem;
+    align-items: end;
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+  }
+  nav .nav-cell { display: flex; flex-direction: column; gap: 0.6rem; }
+  nav .nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 0.55rem;
+  }
+  nav .nav-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); display: inline-block; }
+  nav .nav-rule { height: 1px; background: var(--ink); }
+
+  /* === CASE HEADER === */
+  .case-header {
+    padding: 4rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    align-items: start;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-header-left {
+    padding-right: 3rem;
+    border-right: 1px solid var(--ink);
+  }
+  .case-header-right {
+    padding-left: 3rem;
+  }
+  .case-header-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-top: 2rem;
+  }
+
+  .case-eyebrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+  }
+  .eyebrow-nav { display: flex; gap: 2rem; }
+  .case-eyebrow .back:hover { text-decoration: underline; }
+  .case-eyebrow .next:hover { text-decoration: underline; }
+
+  .case-statement {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .case-statement .hs-line {
+    text-align: justify;
+    -moz-text-align-last: justify;
+    text-align-last: justify;
+    word-spacing: -0.04em;
+    width: 100%;
+  }
+  .case-statement .b {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  /* Intro paragraph + meta row */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    padding: 5rem 2rem 4rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-intro .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .case-intro .lead {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.3rem, 2.2vw, 2rem);
+    line-height: 1.3;
+    font-weight: 400;
+  }
+
+  /* Meta strip: role / scope / context */
+  .case-meta-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-meta-strip .cell .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+  .case-meta-strip .cell .v {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* === FLOW SECTIONS === */
+  .flows { padding: 0 2rem; }
+  .flow {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 4rem;
+  }
+  .flow:last-child { border-bottom: none; }
+
+  .flow-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .flow-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .flow-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2rem, 3.5vw, 3.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .flow-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* Spot illustration under the thread label — newspaper line-art */
+  .flow-illo {
+    margin-top: 2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-illo svg {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-illo .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  .flow-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .flow-block .block-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .flow-block p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .flow-block p + p { margin-top: 1rem; }
+
+  /* Outcome stat row inside a flow */
+  .flow-outcomes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    border-top: 1px solid var(--ink-faint);
+    padding-top: 1.8rem;
+  }
+  .flow-outcomes .stat .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .flow-outcomes .stat .d {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Pull quote inside a flow */
+  .flow-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    line-height: 1.35;
+    padding: 1.5rem 0 0.5rem 1.5rem;
+    border-left: 2px solid var(--ink);
+  }
+  .flow-quote .attr {
+    display: block;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+  }
+
+  /* === NEXT / CTA ROW === */
+  .case-cta {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--ink);
+    cursor: pointer;
+  }
+  .case-cta .label {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+  }
+  .case-cta .arrow { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; }
+
+  /* === FOOTER === */
+  footer { padding: 6rem 0 0; overflow: hidden; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0 2rem 3rem;
+    border-bottom: 1px solid var(--ink);
+    gap: 2rem;
+  }
+  .footer-grid h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .footer-grid .col {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+  .footer-grid .col.right { text-align: right; }
+  .footer-grid .col a { display: block; }
+  .footer-grid .col a:hover { text-decoration: underline; }
+
+  .marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--ink);
+    padding: 1.5rem 0;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marqueeScroll 30s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track .item {
+    display: inline-block;
+    margin-right: 2rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 10vw, 10rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .marquee-track .item.serif-thin { font-weight: 400; }
+  .marquee-track .sep {
+    display: inline-block;
+    margin: 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1rem, 1.8vw, 1.8rem);
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1100px) {
+    nav { grid-template-columns: repeat(3, 1fr); }
+    .case-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .case-meta-strip { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .flow { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
+    .case-header, .case-intro, .case-meta-strip, .flows, .case-cta, .footer-grid { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .case-meta-strip { grid-template-columns: 1fr; }
+    .flow-outcomes { grid-template-columns: 1fr; gap: 1.2rem; }
+    .case-header { grid-template-columns: 1fr; padding-top: 2.5rem; }
+    .case-header-left { padding-right: 0; border-right: none; }
+    .case-header-right { padding-left: 0; margin-top: 2rem; }
+    .case-eyebrow { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+    .eyebrow-nav { flex-direction: column; gap: 0.5rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Hero illustration */
+  .case-hero-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 80vh;
+    background-color: #0a0a0a;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-cell">
+    <div class="nav-label">HOME</div>
+    <div class="nav-rule"></div>
+  </a>
+  <div class="nav-cell">
+    <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
+    <div class="nav-rule"></div>
+  </div>
+  <a href="/about" class="nav-cell">
+    <div class="nav-label">ABOUT</div>
+    <div class="nav-rule"></div>
+  </a>
+  <a href="/#contact" class="nav-cell">
+    <div class="nav-label">CONTACT</div>
+    <div class="nav-rule"></div>
+  </a>
+</nav>
+
+<!-- HEADER -->
+<header class="case-header">
+  <div class="case-header-left">
+  <div class="case-eyebrow">
+    <span>A &mdash; 6 / CASE STUDY</span>
+    <div class="eyebrow-nav">
+      <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
+      <a class="next" href="/work/beyond-screen">NEXT: A &mdash; 7 / STRATEGY PAST THE SCREEN &rarr;</a>
+    </div>
+  </div>
+
+  <div class="case-statement">
+    <div class="hs-line">DESIGNING THE PATHS</div>
+    <div class="hs-line"><span class="b">USERS ACTUALLY</span> TAKE</div>
+    <div class="hs-line">FROM INTENT TO</div>
+    <div class="hs-line b-line"><span class="b">OUTCOME</span></div>
+  </div>
+    <p class="case-header-body">Across roles I've designed the paths users take to get from intent to outcome: onboarding, configuration, creation, error recovery, edit and undo, multi-step setup. This page collects four recent flow projects in enterprise B2B SaaS, each one a complex creation or migration experience rebuilt around how people actually work, grounded in research I ran myself.</p>
+  </div>
+  <div class="case-header-right">
+    <div class="case-hero-image" style="background-color: #0a0a0a; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgODAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCI+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhcnJvdyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+CiAgICAgIDxwYXRoIGQ9Ik0yIDEgTDggNSBMMiA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvbWFya2VyPgogICAgPG1hcmtlciBpZD0iYXJyb3dEaW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPgogICAgICA8cGF0aCBkPSJNMiAxIEw4IDUgTDIgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGM4YzhjIiBzdHJva2Utd2lkdGg9IjEuNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICA8L21hcmtlcj4KICA8L2RlZnM+CgogIDwhLS0gYmFja2dyb3VuZDogbmV1dHJhbCBuZWFyLWJsYWNrICh2MiBpbnZlcnRlZCwgbm8gd2FybSB0aW50KSAtLT4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iIzBhMGEwYSIvPgoKICA8IS0tIHN1YnRsZSBuZXV0cmFsIGdyaWQgLS0+CiAgPGcgc3Ryb2tlPSIjMWMxYzFjIiBzdHJva2Utd2lkdGg9IjEiPgogICAgPGxpbmUgeDE9IjAiIHkxPSIyMDAiIHgyPSI2MDAiIHkyPSIyMDAiLz4KICAgIDxsaW5lIHgxPSIwIiB5MT0iNDAwIiB4Mj0iNjAwIiB5Mj0iNDAwIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjYwMCIgeDI9IjYwMCIgeTI9IjYwMCIvPgogIDwvZz4KCiAgPCEtLSA9PT09PT09PT09PT0gQ09OTkVDVE9SUyA9PT09PT09PT09PT0gLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNiI+CiAgICA8cGF0aCBkPSJNMzAwIDkyIEwzMDAgMTMyIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogICAgPHBhdGggZD0iTTMwMCAxOTYgTDMwMCAyMzYiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgICA8cGF0aCBkPSJNMzAwIDMwMCBMMzAwIDMzNiIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICAgIDxwYXRoIGQ9Ik0zMDAgNDMyIEwzMDAgNTAwIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogICAgPHBhdGggZD0iTTMwMCA1NjQgTDMwMCA2MDQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgPC9nPgoKICA8IS0tIGRlY2lzaW9uIE5PIGJyYW5jaCArIGVycm9yIHJlY292ZXJ5IGxvb3AgKGRpbW1lZCBuZXV0cmFsIGdyYXkpIC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhjOGM4YyIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1kYXNoYXJyYXk9IjUgNSI+CiAgICA8cGF0aCBkPSJNMzg4IDM4NCBMNDcwIDM4NCBMNDcwIDQ3MCIgbWFya2VyLWVuZD0idXJsKCNhcnJvd0RpbSkiLz4KICAgIDxwYXRoIGQ9Ik00NzAgNTA2IEw0NzAgNTQwIEwxNTAgNTQwIEwxNTAgMjY4IEwyMzYgMjY4IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93RGltKSIvPgogIDwvZz4KCiAgPCEtLSA9PT09PT09PT09PT0gTk9ERVMgPT09PT09PT09PT09IC0tPgogIDwhLS0gU1RBUlQgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSIyMzIiIHk9IjQ0IiB3aWR0aD0iMTM2IiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iNzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjUwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+U1RBUlQ8L3RleHQ+CiAgPC9nPgoKICA8IS0tIFNFTEVDVCBGSUVMRFMgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSIyMDAiIHk9IjEzMiIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI2NCIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iMTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI1MDAiPlNlbGVjdCBGaWVsZHM8L3RleHQ+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjE4MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhjOGM4YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgbGV0dGVyLXNwYWNpbmc9IjEiPkNPTkZJR1VSQVRJT048L3RleHQ+CiAgPC9nPgoKICA8IS0tIEJBVENIIElOUFVUIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMjAwIiB5PSIyMzYiIHdpZHRoPSIyMDAiIGhlaWdodD0iNjQiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjI2NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNTAwIj5CYXRjaCBJbnB1dDwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iMjg1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBsZXR0ZXItc3BhY2luZz0iMSI+TVVMVEktU1RFUCBTRVRVUDwvdGV4dD4KICA8L2c+CgogIDwhLS0gREVDSVNJT046IFZBTElEPyAtLT4KICA8Zz4KICAgIDxwYXRoIGQ9Ik0zMDAgMzM2IEwzODggMzg0IEwzMDAgNDMyIEwyMTIgMzg0IFoiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iMzkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI1MDAiIGZvbnQtc3R5bGU9Iml0YWxpYyI+VmFsaWQ/PC90ZXh0PgogIDwvZz4KICA8dGV4dCB4PSIzMTIiIHk9IjQ3MCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5ZRVM8L3RleHQ+CiAgPHRleHQgeD0iNDAyIiB5PSIzNzgiIHRleHQtYW5jaG9yPSJzdGFydCIgZmlsbD0iIzhjOGM4YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+Tk88L3RleHQ+CgogIDwhLS0gRVJST1IgU1RBVEUgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSI0MDIiIHk9IjQ3MCIgd2lkdGg9IjEzNiIgaGVpZ2h0PSI2NCIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iIzhjOGM4YyIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDx0ZXh0IHg9IjQ3MCIgeT0iNDk4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI1MDAiPkVycm9yIFN0YXRlPC90ZXh0PgogICAgPHRleHQgeD0iNDcwIiB5PSI1MTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOSIgbGV0dGVyLXNwYWNpbmc9IjAuOCI+RklYIEdVSURBTkNFPC90ZXh0PgogIDwvZz4KCiAgPCEtLSBMSVZFIFBSRVZJRVcgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSIyMDAiIHk9IjUwMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI2NCIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iNTI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI1MDAiPkxpdmUgUHJldmlldzwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iNTQ5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBsZXR0ZXItc3BhY2luZz0iMSI+UkVWSUVXIEJFRk9SRSBDT01NSVQ8L3RleHQ+CiAgPC9nPgoKICA8IS0tIENSRUFURSBCQVRDSCAtLT4KICA8Zz4KICAgIDxyZWN0IHg9IjIwMCIgeT0iNjA0IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjY0IiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHRleHQgeD0iMzAwIiB5PSI2MzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjUwMCI+Q3JlYXRlIEJhdGNoPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSI2NTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGxldHRlci1zcGFjaW5nPSIxIj5DT01NSVQ8L3RleHQ+CiAgPC9nPgoKICA8IS0tIGNyZWF0ZSAtPiBkb25lIC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiPgogICAgPHBhdGggZD0iTTMwMCA2NjggTDMwMCA3MDgiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgPC9nPgoKICA8IS0tIERPTkUgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSIyMzIiIHk9IjcwOCIgd2lkdGg9IjEzNiIgaGVpZ2h0PSI0OCIgcng9IjI0IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjczOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBhMGEwYSIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIj5Eb25lPC90ZXh0PgogIDwvZz4KCiAgPCEtLSBjb3JuZXIgbGFiZWxzIC0tPgogIDx0ZXh0IHg9IjM2IiB5PSI2MCIgZmlsbD0iIzVjNWM1YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+VVNFUiBGTE9XPC90ZXh0PgogIDx0ZXh0IHg9IjU2NCIgeT0iNjAiIHRleHQtYW5jaG9yPSJlbmQiIGZpbGw9IiM1YzVjNWMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEiIGxldHRlci1zcGFjaW5nPSIxLjUiPkEg4oCUIDY8L3RleHQ+Cjwvc3ZnPgo='); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+  </div>
+</header>
+
+
+<!-- META STRIP -->
+<section class="case-meta-strip">
+  <div class="cell">
+    <div class="k">Role</div>
+    <div class="v">Lead Product Designer</div>
+  </div>
+  <div class="cell">
+    <div class="k">Discipline</div>
+    <div class="v">Flow design, UX research, prototyping, spec</div>
+  </div>
+  <div class="cell">
+    <div class="k">Context</div>
+    <div class="v">Enterprise B2B SaaS platform</div>
+  </div>
+  <div class="cell">
+    <div class="k">Flows in this study</div>
+    <div class="v">04</div>
+  </div>
+</section>
+
+<!-- FLOWS -->
+<div class="flows">
+
+  <!-- FLOW 01 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">FLOW 01 / 04</div>
+      <div class="flow-name">Bulk link creation</div>
+      <div class="flow-tags">
+        <span>CSV WIZARD</span>
+        <span>MULTI-STEP SETUP</span>
+        <span>ERROR RECOVERY</span>
+        <span>RESEARCH-LED</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One creation action producing many links">
+          <defs><marker id="il-cuf-0" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <rect x="24" y="60" width="72" height="58" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="36" y1="78" x2="84" y2="78" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <line x1="36" y1="90" x2="84" y2="90" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <line x1="36" y1="102" x2="70" y2="102" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <text x="60" y="118" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" letter-spacing="1.5" fill="currentColor">+</text>
+          <path d="M100 89 L150 89" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cuf-0)"/>
+          <rect x="156" y="44" width="118" height="14" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"/>
+          <line x1="164" y1="51" x2="230" y2="51" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <rect x="156" y="64" width="118" height="14" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"/>
+          <line x1="164" y1="71" x2="230" y2="71" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <rect x="156" y="84" width="118" height="14" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"/>
+          <line x1="164" y1="91" x2="230" y2="91" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <rect x="156" y="104" width="118" height="14" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"/>
+          <line x1="164" y1="111" x2="230" y2="111" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <rect x="156" y="124" width="118" height="14" fill="none" stroke="currentColor" stroke-width="1.4" rx="3"/>
+          <line x1="164" y1="131" x2="230" y2="131" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <text x="60" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">ONE FORM</text>
+          <text x="215" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">MANY LINKS</text>
+        </svg>
+        <div class="illo-cap">Fig. — One action, many links</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Enterprise customers needed to create links at scale, but the only path was a single-item form repeated by hand or a homegrown spreadsheet workaround. Demand ranged widely: some teams needed thousands of links at once, others worked in small, tightly-named batches of a handful. The team had a CSV-based bulk creation wizard in prototype, but no evidence it actually worked for the people who would use it daily.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I ran my own usability research across three groups: internal team members moderated, current customers unmoderated, and external growth marketers unmoderated. I synthesized the findings into a cross-group view and turned them into a phased design: a download-template, fill, upload, validate, create flow scaled for tens of thousands of records in a single file. Validation moved up front so the system returns valid, invalid, and blank counts before anything is created, surfaced through a two-tab preview that splits clean records from errors and lets someone download just the failed rows, fix them, and re-upload. I sequenced it into three milestones so the highest-value path shipped first.</p>
+      </div>
+      <div class="flow-quote">
+        Error states are universally the biggest blocker. Users hit errors they couldn't resolve. The flow works, but it doesn't teach.
+        <span class="attr">Research synthesis, cross-group findings</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">Milestones sequenced so the core upload-and-validate path shipped first</div></div>
+        <div class="stat"><div class="n">14</div><div class="d">Participants total across media, entertainment, and financial services</div></div>
+        <div class="stat"><div class="n">5/7</div><div class="d">Named error recovery as the top blocker, which set the design priority</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW 02 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">FLOW 02 / 04</div>
+      <div class="flow-name">Bulk link editing</div>
+      <div class="flow-tags">
+        <span>STEPPED WIZARD</span>
+        <span>EDIT &amp; UNDO</span>
+        <span>PARTIAL SUCCESS</span>
+        <span>SAFETY</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Editing across a multi-row selection">
+          <defs><marker id="il-cuf-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <rect x="30" y="30" width="150" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="38" y="34" width="10" height="10" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="54" y1="39" x2="170" y2="39" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <rect x="30" y="52" width="150" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="38" y="56" width="10" height="10" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="54" y1="61" x2="170" y2="61" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <rect x="30" y="74" width="150" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="38" y="78" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="54" y1="83" x2="170" y2="83" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <rect x="30" y="96" width="150" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="38" y="100" width="10" height="10" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="54" y1="105" x2="170" y2="105" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <rect x="30" y="118" width="150" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="38" y="122" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="54" y1="127" x2="170" y2="127" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <path d="M184 39 L192 39 L192 127 L184 127" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M192 83 L212 83" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cuf-1)"/>
+          <rect x="212" y="63" width="62" height="40" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="243" y="87" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">EDIT</text>
+          <text x="105" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">SELECTED ROWS</text>
+        </svg>
+        <div class="illo-cap">Fig. — Edit across a selection</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Links go stale. App paths change, tags get set wrong at creation, onboarding mistakes compound. Customers had no way to edit links in bulk, so they pinged an admin to fix each one by hand. The challenge was a flow that edits across three tiers of fields, analytics tags, routing and behavior, and social metadata, without letting someone accidentally change the wrong set of links.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I mapped the flow from the PRD, then ran a design critique that surfaced the gaps: no back navigation, undefined cancel behavior, no enforcement of the selection limit, and an unresolved partial-success state. I moved the design to a stepped wizard with a persistent left rail showing exactly which links were selected, so the affected set is always visible before any change is applied. Customer interviews reinforced the core safety requirement directly.</p>
+      </div>
+      <div class="flow-quote">
+        Before the last screen, make it perfectly clear which links you're editing. Show me the list.
+        <span class="attr">Enterprise customer, media &amp; entertainment</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">Tiers of editable fields unified into one coherent flow</div></div>
+        <div class="stat"><div class="n">5</div><div class="d">Flow gaps surfaced and resolved through structured critique</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Silent edits: the affected link set is always shown before apply</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW 03 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">FLOW 03 / 04</div>
+      <div class="flow-name">A/B test variants</div>
+      <div class="flow-tags">
+        <span>CREATION FLOW</span>
+        <span>EDGE CASES</span>
+        <span>TRAFFIC LOGIC</span>
+        <span>ENG-READY SPEC</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A/B traffic allocation that sums to one hundred">
+          <defs><marker id="il-cuf-2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <rect x="30" y="68" width="240" height="42" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="30" y="68" width="120" height="42" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+          <line x1="150" y1="68" x2="150" y2="110" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="222" y1="68" x2="222" y2="110" stroke="currentColor" stroke-width="1.4"/>
+          <text x="90" y="93" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor">A 50%</text>
+          <text x="186" y="93" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor">B 30%</text>
+          <text x="246" y="93" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="0.5" fill="currentColor">C 20%</text>
+          <text x="150" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">TRAFFIC = 100%</text>
+        </svg>
+        <div class="illo-cap">Fig. — Traffic that sums to 100</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>The campaign builder needed an A/B testing section so marketers could test creative variants against each other. Experimentation flows are deceptively complex: traffic has to sum correctly, the control case has to be unambiguous, and the interface has to behave sensibly whether someone has one variant or twenty.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I pinpointed every flow and edge case before handoff: the entry states for one versus multiple variants, traffic allocation that doesn't sum to 100 percent, the can't-delete-the-last-variant rule, maximum variant count, holdout group behavior, and what control actually means. I mapped them into a single diagram and wrote the flow up so engineering could build it without having to come back with questions.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">Scope</span>
+        <p>Variant management from one to twenty variants, per-variant traffic control, and adjustable holdout groups, validated live with enterprise customers before refinement.</p>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">1&ndash;20</div><div class="d">Variants the flow supports, with the interface adapting at each count</div></div>
+        <div class="stat"><div class="n">6+</div><div class="d">Edge cases resolved in spec before engineering handoff</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Enterprise customers validated the flow live before refinement</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW 04 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">FLOW 04 / 04</div>
+      <div class="flow-name">Configuration migration</div>
+      <div class="flow-tags">
+        <span>PLATFORM MIGRATION</span>
+        <span>CONFIG + RUNTIME</span>
+        <span>ZERO BREAKING CHANGES</span>
+        <span>SYSTEMS</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Configuration migrated from a legacy to a new home">
+          <defs><marker id="il-cuf-3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <text x="72" y="40" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">LEGACY</text>
+          <rect x="20" y="46" width="104" height="96" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <rect x="40" y="78" width="64" height="44" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="50" y1="92" x2="96" y2="92" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <circle cx="70" cy="92" r="3" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="50" y1="108" x2="96" y2="108" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <circle cx="84" cy="108" r="3" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M128 94 L172 94" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#il-cuf-3)"/>
+          <text x="228" y="40" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">NEW</text>
+          <rect x="176" y="46" width="104" height="96" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <rect x="196" y="78" width="64" height="44" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+          <line x1="206" y1="92" x2="252" y2="92" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <circle cx="226" cy="92" r="3" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="206" y1="108" x2="252" y2="108" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+          <circle cx="240" cy="108" r="3" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <text x="150" y="166" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">CONFIG MIGRATION</text>
+        </svg>
+        <div class="illo-cap">Fig. — Moved without disruption</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>A legacy feature set was being migrated into a redesigned platform experience. Two configuration surfaces had to move without disrupting the customers depending on them. The job was to make the new location feel like an upgrade while preserving existing behavior exactly.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I mapped both features as paired configuration and runtime flows, with the configuration path covering where settings live in the new navigation and the runtime path covering what the end user actually experiences when a link fires. I designed the create, edit, and apply paths to converge at a shared runtime, and built the migration in so existing configurations carried over automatically, with no customer action required and behavior preserved.</p>
+      </div>
+      <div class="flow-quote">
+        The new thing should feel like an upgrade to use, not a tax to adopt.
+        <span class="attr">Design principle, migration work</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">2</div><div class="d">Features migrated as paired configuration and runtime flows</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Entry paths, create, edit, and apply, converging at a shared runtime</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Breaking changes: configurations auto-migrate, behavior preserved</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><h3>DANI WEIDNER</h3></div>
+    <div class="col">
+      <a href="/">HOME</a>
+      <a href="/#cases">CASE STUDIES</a>
+    </div>
+    <div class="col">
+      <a href="/about">ABOUT</a>
+      <a href="/#contact">CONTACT</a>
+    </div>
+    <div class="col right">
+      <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
+      <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="/cv">CV</a>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

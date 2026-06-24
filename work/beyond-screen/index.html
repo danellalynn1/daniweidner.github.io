@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dani Weidner — Strategy Past the Screen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #000000;
+    --ink-soft: rgba(0,0,0,0.55);
+    --ink-faint: rgba(0,0,0,0.18);
+    --rule: rgba(0,0,0,0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.3;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* === NAV === */
+  nav {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 1.5rem 2rem 0;
+    gap: 1.2rem;
+    align-items: end;
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+  }
+  nav .nav-cell { display: flex; flex-direction: column; gap: 0.6rem; }
+  nav .nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 0.55rem;
+  }
+  nav .nav-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); display: inline-block; }
+  nav .nav-rule { height: 1px; background: var(--ink); }
+
+  /* === CASE HEADER === */
+  .case-header {
+    padding: 4rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    align-items: start;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-header-left {
+    padding-right: 3rem;
+    border-right: 1px solid var(--ink);
+  }
+  .case-header-right {
+    padding-left: 3rem;
+  }
+  .case-header-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-top: 2rem;
+  }
+
+  .case-eyebrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+  }
+  .eyebrow-nav { display: flex; gap: 2rem; }
+  .case-eyebrow .back:hover { text-decoration: underline; }
+  .case-eyebrow .next:hover { text-decoration: underline; }
+
+  .case-statement {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .case-statement .hs-line {
+    text-align: justify;
+    -moz-text-align-last: justify;
+    text-align-last: justify;
+    word-spacing: -0.04em;
+    width: 100%;
+  }
+  .case-statement .b {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  /* Intro paragraph + meta row */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    padding: 5rem 2rem 4rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-intro .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .case-intro .lead {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.3rem, 2.2vw, 2rem);
+    line-height: 1.3;
+    font-weight: 400;
+  }
+
+  /* Meta strip: role / scope / context */
+  .case-meta-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-meta-strip .cell .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+  .case-meta-strip .cell .v {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* === FLOW SECTIONS === */
+  .flows { padding: 0 2rem; }
+  .flow {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 4rem;
+  }
+  .flow:last-child { border-bottom: none; }
+
+  .flow-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .flow-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .flow-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2rem, 3.5vw, 3.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .flow-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* Spot illustration under the thread label — newspaper line-art */
+  .flow-illo {
+    margin-top: 2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-illo svg {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-illo .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  .flow-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .flow-block .block-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .flow-block p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .flow-block p + p { margin-top: 1rem; }
+
+  /* Outcome stat row inside a flow */
+  .flow-outcomes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    border-top: 1px solid var(--ink-faint);
+    padding-top: 1.8rem;
+  }
+  .flow-outcomes .stat .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .flow-outcomes .stat .d {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Pull quote inside a flow */
+  .flow-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    line-height: 1.35;
+    padding: 1.5rem 0 0.5rem 1.5rem;
+    border-left: 2px solid var(--ink);
+  }
+  .flow-quote .attr {
+    display: block;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+  }
+
+  /* === NEXT / CTA ROW === */
+  .case-cta {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--ink);
+    cursor: pointer;
+  }
+  .case-cta .label {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+  }
+  .case-cta .arrow { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; }
+
+  /* === FOOTER === */
+  footer { padding: 6rem 0 0; overflow: hidden; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0 2rem 3rem;
+    border-bottom: 1px solid var(--ink);
+    gap: 2rem;
+  }
+  .footer-grid h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .footer-grid .col {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+  .footer-grid .col.right { text-align: right; }
+  .footer-grid .col a { display: block; }
+  .footer-grid .col a:hover { text-decoration: underline; }
+
+  .marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--ink);
+    padding: 1.5rem 0;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marqueeScroll 30s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track .item {
+    display: inline-block;
+    margin-right: 2rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 10vw, 10rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .marquee-track .item.serif-thin { font-weight: 400; }
+  .marquee-track .sep {
+    display: inline-block;
+    margin: 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1rem, 1.8vw, 1.8rem);
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1100px) {
+    nav { grid-template-columns: repeat(3, 1fr); }
+    .case-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .case-meta-strip { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .flow { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
+    .case-header, .case-intro, .case-meta-strip, .flows, .case-cta, .footer-grid { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .case-meta-strip { grid-template-columns: 1fr; }
+    .flow-outcomes { grid-template-columns: 1fr; gap: 1.2rem; }
+    .case-header { grid-template-columns: 1fr; padding-top: 2.5rem; }
+    .case-header-left { padding-right: 0; border-right: none; }
+    .case-header-right { padding-left: 0; margin-top: 2rem; }
+    .case-eyebrow { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+    .eyebrow-nav { flex-direction: column; gap: 0.5rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Hero illustration */
+  .case-hero-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 80vh;
+    background-color: #0a0a0a;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-cell">
+    <div class="nav-label">HOME</div>
+    <div class="nav-rule"></div>
+  </a>
+  <div class="nav-cell">
+    <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
+    <div class="nav-rule"></div>
+  </div>
+  <a href="/about" class="nav-cell">
+    <div class="nav-label">ABOUT</div>
+    <div class="nav-rule"></div>
+  </a>
+  <a href="/#contact" class="nav-cell">
+    <div class="nav-label">CONTACT</div>
+    <div class="nav-rule"></div>
+  </a>
+</nav>
+
+<!-- HEADER -->
+<header class="case-header">
+  <div class="case-header-left">
+  <div class="case-eyebrow">
+    <span>A &mdash; 7 / CASE STUDY</span>
+    <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
+  </div>
+
+  <div class="case-statement">
+    <div class="hs-line">BUILDING THE</div>
+    <div class="hs-line"><span class="b">PROGRAMS</span> THAT</div>
+    <div class="hs-line">FEED THE</div>
+    <div class="hs-line b-line"><span class="b">PRODUCT</span></div>
+  </div>
+    <p class="case-header-body">Some of the highest-leverage design work doesn't live in a Figma file. It's the customer program that keeps a steady signal flowing into the roadmap, the framework that decides who to invest in next, and the relationships that turn at-risk accounts into advocates. This page is about a program I founded and ran end to end, and the strategic muscle around it.</p>
+  </div>
+  <div class="case-header-right">
+    <div class="case-hero-image" style="background-color: #0a0a0a; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgODAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCI+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhcnJvdyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+CiAgICAgIDxwYXRoIGQ9Ik0yIDEgTDggNSBMMiA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvbWFya2VyPgogICAgPG1hcmtlciBpZD0iYXJyb3dEaW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPgogICAgICA8cGF0aCBkPSJNMiAxIEw4IDUgTDIgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGM4YzhjIiBzdHJva2Utd2lkdGg9IjEuNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICA8L21hcmtlcj4KICA8L2RlZnM+CgogIDwhLS0gYmFja2dyb3VuZCAtLT4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iIzBhMGEwYSIvPgoKICA8IS0tIHN1YnRsZSBncmlkIC0tPgogIDxnIHN0cm9rZT0iIzFjMWMxYyIgc3Ryb2tlLXdpZHRoPSIxIj4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMjQwIiB4Mj0iNjAwIiB5Mj0iMjQwIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjQ0MCIgeDI9IjYwMCIgeTI9IjQ0MCIvPgogICAgPGxpbmUgeDE9IjAiIHkxPSI2NDAiIHgyPSI2MDAiIHkyPSI2NDAiLz4KICA8L2c+CgogIDwhLS0gPT09PT09PT09PT09IFNQT0tFUyBmcm9tIGh1YiB0byByZWdpb25hbCBjb2hvcnRzID09PT09PT09PT09PSAtLT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42Ij4KICAgIDxwYXRoIGQ9Ik0yMzIgMzAwIEwxNTAgMzgwIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogICAgPHBhdGggZD0iTTMwMCAzMzIgTDMwMCAzOTYiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgICA8cGF0aCBkPSJNMzY4IDMwMCBMNDUwIDM4MCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICA8L2c+CgogIDwhLS0gZmVlZGJhY2sgbG9vcCBmcm9tIGNvaG9ydHMgYmFjayB0byByb2FkbWFwIChkaW1tZWQpIC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhjOGM4YyIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1kYXNoYXJyYXk9IjUgNSI+CiAgICA8cGF0aCBkPSJNMTUwIDQ1NiBMMTUwIDU0MCBMMjkyIDU0MCBMMjkyIDU4MCIgbWFya2VyLWVuZD0idXJsKCNhcnJvd0RpbSkiLz4KICAgIDxwYXRoIGQ9Ik0zMDAgNDcyIEwzMDAgNTgwIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93RGltKSIvPgogICAgPHBhdGggZD0iTTQ1MCA0NTYgTDQ1MCA1NDAgTDMwOCA1NDAgTDMwOCA1ODAiIG1hcmtlci1lbmQ9InVybCgjYXJyb3dEaW0pIi8+CiAgPC9nPgoKICA8IS0tID09PT09PT09PT09PSBOT0RFUyA9PT09PT09PT09PT0gLS0+CiAgPCEtLSBIVUI6IFBST0dSQU0gLS0+CiAgPGc+CiAgICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIyNDAiIHI9IjY4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS44Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjIzNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNTAwIiBmb250LXN0eWxlPSJpdGFsaWMiPkFkdmlzb3J5PC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSIyNTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjUwMCIgZm9udC1zdHlsZT0iaXRhbGljIj5Qcm9ncmFtPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSIyNzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCIgbGV0dGVyLXNwYWNpbmc9IjAuOCI+Rk9VTkRFRCArIFJVTjwvdGV4dD4KICA8L2c+CgogIDwhLS0gUkVHSU9OOiBFTUVBIC0tPgogIDxnPgogICAgPHJlY3QgeD0iNzQiIHk9IjM4MCIgd2lkdGg9IjE1MiIgaGVpZ2h0PSI3NiIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDx0ZXh0IHg9IjE1MCIgeT0iNDE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI1MDAiPkV1cm9wZTwvdGV4dD4KICAgIDx0ZXh0IHg9IjE1MCIgeT0iNDM0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjgiIGxldHRlci1zcGFjaW5nPSIwLjYiPkZPVU5ESU5HIENPSE9SVDwvdGV4dD4KICA8L2c+CiAgPCEtLSBSRUdJT046IE5BIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMjI0IiB5PSIzOTYiIHdpZHRoPSIxNTIiIGhlaWdodD0iNzYiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjQzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNTAwIj5OLiBBbWVyaWNhPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSI0NTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCIgbGV0dGVyLXNwYWNpbmc9IjAuNiI+U0NPUkVEICsgU0VRVUVOQ0VEPC90ZXh0PgogIDwvZz4KICA8IS0tIFJFR0lPTjogQVBBQyAtLT4KICA8Zz4KICAgIDxyZWN0IHg9IjM3NCIgeT0iMzgwIiB3aWR0aD0iMTUyIiBoZWlnaHQ9Ijc2IiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHRleHQgeD0iNDUwIiB5PSI0MTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9IjUwMCI+QXNpYS1QYWNpZmljPC90ZXh0PgogICAgPHRleHQgeD0iNDUwIiB5PSI0MzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCIgbGV0dGVyLXNwYWNpbmc9IjAuNiI+RVhQQU5TSU9OPC90ZXh0PgogIDwvZz4KCiAgPCEtLSBmZWVkYmFjayBsYWJlbCAtLT4KICA8dGV4dCB4PSIzMDAiIHk9IjUyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhjOGM4YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSI5IiBsZXR0ZXItc3BhY2luZz0iMSI+SU5QVVQgRkVFRFMgQkFDSzwvdGV4dD4KCiAgPCEtLSBPVVRDT01FOiBST0FETUFQIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMTgwIiB5PSI1ODAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNzIiIHJ4PSI4IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjYxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBhMGEwYSIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIj5Sb2FkbWFwIEluZmx1ZW5jZTwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iNjM0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWM1YzVjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGxldHRlci1zcGFjaW5nPSIxIj5SRVRFTlRJT04gKyBBRFZPQ0FDWTwvdGV4dD4KICA8L2c+CgogIDwhLS0gY29ybmVyIGxhYmVscyAtLT4KICA8dGV4dCB4PSIzNiIgeT0iNjAiIGZpbGw9IiM1YzVjNWMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEiIGxldHRlci1zcGFjaW5nPSIxLjUiPkNPTU1VTklUWSBNQVA8L3RleHQ+CiAgPHRleHQgeD0iNTY0IiB5PSI2MCIgdGV4dC1hbmNob3I9ImVuZCIgZmlsbD0iIzVjNWM1YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+QSDigJQgNzwvdGV4dD4KPC9zdmc+Cg=='); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+  </div>
+</header>
+
+
+<!-- META STRIP -->
+<section class="case-meta-strip">
+  <div class="cell">
+    <div class="k">Role</div>
+    <div class="v">Lead Product Designer, program founder</div>
+  </div>
+  <div class="cell">
+    <div class="k">Discipline</div>
+    <div class="v">Program design, customer advocacy, events, prioritization</div>
+  </div>
+  <div class="cell">
+    <div class="k">Context</div>
+    <div class="v">Enterprise B2B SaaS platform</div>
+  </div>
+  <div class="cell">
+    <div class="k">Threads in this study</div>
+    <div class="v">04</div>
+  </div>
+</section>
+
+<!-- FLOWS -->
+<div class="flows">
+
+  <!-- THREAD 01 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 01 / 04</div>
+      <div class="flow-name">Founding the program</div>
+      <div class="flow-tags">
+        <span>Program design</span>
+        <span>Year-long cadence</span>
+        <span>Founding cohort</span>
+        <span>End to end</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-selected founding cohort around a central program">
+          <defs><marker id="il-cbs-0" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <circle cx="150" cy="90" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="168" y1="90" x2="208" y2="90" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <line x1="163" y1="77" x2="191" y2="49" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <line x1="150" y1="72" x2="150" y2="32" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <line x1="137" y1="77" x2="109" y2="49" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <line x1="132" y1="90" x2="92" y2="90" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <line x1="137" y1="103" x2="109" y2="131" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <line x1="150" y1="108" x2="150" y2="148" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <line x1="163" y1="103" x2="191" y2="131" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <circle cx="208" cy="90" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="191" cy="49" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="150" cy="32" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="109" cy="49" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="92" cy="90" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="109" cy="131" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="150" cy="148" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="191" cy="131" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="150" y="93" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">CORE</text>
+          <text x="150" y="176" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">ADVISORY COMMUNITY</text>
+        </svg>
+        <div class="illo-cap">Fig. — A hand-selected cohort</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>The team needed a steady, trusted line to power users, somewhere to recruit research participants, pressure-test direction, and build loyalty with the accounts that mattered most. There was no such structure. Customer feedback was ad hoc, and the most valuable customers had no real relationship with the people building the product.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I founded a customer advisory community and designed the entire program: the member criteria weighted toward power users and high churn-risk accounts, a hand-selected founding cohort of enterprise customers across travel, food, fintech, retail, and tech, and a year-long cadence, an in-person kickoff, monthly virtual sessions, quarterly events and newsletters, semi-annual surprise community events, and a dedicated channel. I ran all of it, the kickoff, the events, the newsletters, the relationships, down to sourcing branded swag and solving vendor logistics when a contractor underdelivered.</p>
+      </div>
+      <div class="flow-quote">
+        Frame it as a community and a thought-leadership circle, not a churn play. The trust is the whole point.
+        <span class="attr">Program positioning principle</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">1</div><div class="d">Program founded and architected end to end, from criteria to cadence</div></div>
+        <div class="stat"><div class="n">5+</div><div class="d">Industries in the founding cohort: travel, food, fintech, retail, tech</div></div>
+        <div class="stat"><div class="n">7</div><div class="d">Touchpoint types a year, from kickoff to surprise events to a live channel</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 02 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 02 / 04</div>
+      <div class="flow-name">Multi-region expansion</div>
+      <div class="flow-tags">
+        <span>Scoring framework</span>
+        <span>Three regions</span>
+        <span>Prioritization</span>
+        <span>Org navigation</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Expansion sequenced across three regions by score">
+          <defs><marker id="il-cbs-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <rect x="18" y="46" width="74" height="70" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="30" y="62" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor" opacity="0.55">1</text>
+          <text x="61" y="62" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1" fill="currentColor">EU</text>
+          <rect x="30" y="78" width="40" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+          <rect x="30" y="90" width="30" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
+          <rect x="30" y="102" width="20" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <rect x="113" y="46" width="74" height="70" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="125" y="62" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor" opacity="0.55">2</text>
+          <text x="156" y="62" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1" fill="currentColor">NA</text>
+          <rect x="125" y="78" width="40" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+          <rect x="125" y="90" width="30" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
+          <rect x="125" y="102" width="20" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <rect x="208" y="46" width="74" height="70" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="220" y="62" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor" opacity="0.55">3</text>
+          <text x="251" y="62" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1" fill="currentColor">APAC</text>
+          <rect x="220" y="78" width="40" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+          <rect x="220" y="90" width="30" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
+          <rect x="220" y="102" width="20" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <path d="M92 80 L113 80" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cbs-1)"/>
+          <path d="M187 80 L208 80" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cbs-1)"/>
+          <text x="150" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">PRIORITIZED ROLLOUT</text>
+        </svg>
+        <div class="illo-cap">Fig. — Sequenced by score</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>The founding cohort proved the model in one region. Scaling it across the globe meant deciding where to invest next without spreading too thin, and doing it through other teams who were wary of anything that looked like a sales push into their accounts.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I built a scoring model to prioritize expansion cities by churn risk, account size, renewal timing, and growth potential, then used it to sequence a rollout across three global regions covering Europe, North America, and Asia-Pacific. I drafted the nomination and outreach process for partner teams, created region-specific plans, and carefully positioned the program internally as a customer community rather than a retention tactic, so the teams who owned those relationships came along rather than pushing back.</p>
+      </div>
+      <div class="flow-quote">
+        Decide where to go next on evidence, not enthusiasm. The scoring model is what keeps the program honest.
+        <span class="attr">Expansion framework principle</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">Global regions sequenced: Europe, North America, Asia-Pacific</div></div>
+        <div class="stat"><div class="n">4</div><div class="d">Weighted factors in the city-scoring model driving expansion order</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Repeatable nomination and outreach process for partner teams</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 03 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 03 / 04</div>
+      <div class="flow-name">Program to roadmap</div>
+      <div class="flow-tags">
+        <span>Standing signal</span>
+        <span>Roadmap influence</span>
+        <span>Peer support</span>
+        <span>Research pool</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Community input wired into the product roadmap">
+          <defs><marker id="il-cbs-2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <circle cx="50" cy="82" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="50" y1="82" x2="50" y2="62" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <circle cx="50" cy="62" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="50" y1="82" x2="68" y2="80" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <circle cx="68" cy="80" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="50" y1="82" x2="62" y2="100" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <circle cx="62" cy="100" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="50" y1="82" x2="38" y2="100" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <circle cx="38" cy="100" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="50" y1="82" x2="32" y2="80" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
+          <circle cx="32" cy="80" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="50" y="128" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">COMMUNITY</text>
+          <path d="M86 82 L120 82" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cbs-2)"/>
+          <line x1="128" y1="90" x2="280" y2="90" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="140" cy="90" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="182" cy="90" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="224" cy="90" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="266" cy="90" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="182" y1="84" x2="182" y2="74" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="266" y1="84" x2="266" y2="74" stroke="currentColor" stroke-width="1.4"/>
+          <text x="204" y="128" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">ROADMAP</text>
+        </svg>
+        <div class="illo-cap">Fig. — Input that moves the roadmap</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>A community is only worth the effort if it changes the product. The risk with any advisory program is that it becomes a nice-to-have, members feel heard but nothing they say actually moves the roadmap, and the trust quietly erodes.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I wired the program directly into the product process, using it as a standing recruitment pool for studies and a fast channel to pressure-test direction. The founding cohort's input traced to multiple concrete roadmap influences, from dynamic landing pages to an attribution tool to bulk creation enhancements. The dedicated channel became self-sustaining inside the first week, with members answering each other's product questions, which deepened engagement without adding support load.</p>
+      </div>
+      <div class="flow-quote">
+        Members aren't heard for the sake of being heard. Their input has to show up in what ships, or the program is theater.
+        <span class="attr">Program-to-product principle</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">8</div><div class="d">Distinct roadmap influences traced to the founding cohort's input</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Standing recruitment pool feeding concurrent studies on demand</div></div>
+        <div class="stat"><div class="n">7</div><div class="d">Days for the member channel to become self-sustaining peer support</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREAD 04 -->
+  <section class="flow">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 04 / 04</div>
+      <div class="flow-name">At-risk to advocate</div>
+      <div class="flow-tags">
+        <span>Retention</span>
+        <span>Advocacy</span>
+        <span>Relationship design</span>
+        <span>Proof of concept</span>
+      </div>
+      <div class="flow-illo">
+        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="At-risk accounts turned into advocates">
+          <defs><marker id="il-cbs-3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+          <rect x="24" y="66" width="92" height="52" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="70" y="84" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">AT RISK</text>
+          <path d="M34 100 L60 106 L90 112" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M124 92 L180 92" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#il-cbs-3)"/>
+          <rect x="184" y="66" width="92" height="52" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="230" y="84" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">ADVOCATE</text>
+          <path d="M194 112 L220 104 L260 96" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cbs-3)"/>
+          <text x="150" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">RETENTION HELD</text>
+        </svg>
+        <div class="illo-cap">Fig. — At-risk to advocate</div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>The accounts most worth investing in were often the ones most at risk, large customers weighing competitors, mid-contract, with no strong reason to stay loyal. The program's real test was whether sustained, genuine engagement could move someone from evaluating alternatives to actively defending the product internally.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I treated the founding cohort as the proof of concept and invested in the relationships directly. The result was retention that held across the full cohort, with the only departure caused by a layoff rather than a choice to leave. The clearest signal came from a member who, mid-evaluation of a direct competitor, actively fought internally to keep their company on the platform, the exact at-risk-to-advocate arc the program was built to create.</p>
+      </div>
+      <div class="flow-quote">
+        A member fighting internally to keep their company on the platform, while a competitor's pitch is on the table, is the whole thesis proven.
+        <span class="attr">Advocacy outcome, founding cohort</span>
+      </div>
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">100%</div><div class="d">Founding-cohort retention, the only loss caused by a layoff</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">At-risk account that became an internal advocate against a competitor</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Proof of concept leadership now cites as a flagship retention story</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><h3>DANI WEIDNER</h3></div>
+    <div class="col">
+      <a href="/">HOME</a>
+      <a href="/#cases">CASE STUDIES</a>
+    </div>
+    <div class="col">
+      <a href="/about">ABOUT</a>
+      <a href="/#contact">CONTACT</a>
+    </div>
+    <div class="col right">
+      <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
+      <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="/cv">CV</a>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+      <span class="item serif-thin">DANI WEIDNER</span>
+      <span class="sep">D&mdash;W</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
