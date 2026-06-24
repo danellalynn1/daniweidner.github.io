@@ -405,7 +405,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-cell">
+  <a href="dani-website-v2.html" class="nav-cell">
     <div class="nav-label">HOME</div>
     <div class="nav-rule"></div>
   </a>
@@ -413,11 +413,11 @@
     <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
     <div class="nav-rule"></div>
   </div>
-  <a href="/about" class="nav-cell">
+  <a href="dani-about-v2.html" class="nav-cell">
     <div class="nav-label">ABOUT</div>
     <div class="nav-rule"></div>
   </a>
-  <a href="/#contact" class="nav-cell">
+  <a href="dani-website-v2.html#contact" class="nav-cell">
     <div class="nav-label">CONTACT</div>
     <div class="nav-rule"></div>
   </a>
@@ -429,7 +429,7 @@
     <div class="case-eyebrow">
       <span>A &mdash; 3 / CASE STUDY</span>
       <div class="eyebrow-nav">
-        <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
+        <a class="back" href="dani-website-v2.html#cases">&larr; ALL CASE STUDIES</a>
       </div>
     </div>
 
@@ -439,7 +439,7 @@
       <div class="hs-line"><span class="b">MODEL</span> DOES</div>
       <div class="hs-line b-line">NOT <span class="b">KNOW</span></div>
     </div>
-    <p class="case-header-body">AI changes the rules of product design. Outputs are probabilistic, not deterministic. The system can be wrong, and the user needs a way to know that without losing trust in the product entirely. This case study covers the design work behind a persistent in-product AI agent — a companion that follows enterprise users through their journey — and the decisions required to surface model outputs honestly, handle uncertainty, and collaborate with ML engineers on what the product can and cannot promise.</p>
+    <p class="case-header-body">AI changes the rules of product design. The model's outputs come with uncertainty baked in. It can be wrong, and the user needs a way to see that without losing trust in the product. This case study covers a persistent in-product AI agent — a companion that follows enterprise users through their journey — and the decisions behind surfacing model outputs honestly, handling uncertainty, and working with ML engineers on what the product can and cannot promise.</p>
   </div>
   <div class="case-header-right">
     <div class="case-hero-image">
@@ -537,19 +537,19 @@
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>Enterprise users needed to act on data the model produced, but the model's outputs carried inherent uncertainty that a traditional dashboard would hide. Presenting a number without its confidence range would create false precision; presenting the full distribution would overwhelm. Getting this wrong in either direction had a cost — overconfidence erodes trust when the model is wrong, and excessive hedging makes the output useless.</p>
+        <p>Enterprise users needed to act on data the model produced, but its outputs carried uncertainty a traditional dashboard would hide. A bare number creates false precision; the full distribution overwhelms. Both failures cost something: overconfidence erodes trust when the model is wrong, and constant hedging makes the output useless.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I worked with the ML team to understand what the model actually knew vs. what it was estimating, and used that distinction to design a tiered disclosure system. High-confidence outputs surfaced cleanly. Lower-confidence outputs included a visible signal — not a statistical footnote, but a design-level indicator built into the component — with a path to understand why. I mapped the thresholds with ML engineers so the UI's confidence language matched what the model's confidence scores actually meant, not a rough approximation.</p>
-        <p>The goal was calibrated trust: users should believe the model when it's right, and have enough signal to push back when it isn't.</p>
+        <p>I worked with the ML team to separate what the model actually knew from what it was estimating, and used that to design a tiered disclosure system. High-confidence outputs surfaced cleanly. Lower-confidence ones carried a visible signal built into the component, with a path to understand why. I mapped the thresholds with ML engineers so the UI's confidence language matched what the model's scores actually meant.</p>
+        <p>The goal was calibrated trust: users believe the model when it's right and have enough signal to push back when it's wrong.</p>
       </div>
       <div class="flow-quote">
-        Hiding uncertainty doesn't make a product feel smarter. It makes it feel wrong when it's wrong and untrustworthy when users find out.
+        Hide the uncertainty and the product feels broken the first time the model is wrong and users realize they were never told.
         <span class="attr">Design principle, AI output surfaces</span>
       </div>
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">3</div><div class="d">Confidence tiers designed into the component system, not bolted on as tooltips</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Confidence tiers built into the component system itself</div></div>
         <div class="stat"><div class="n">0</div><div class="d">Statistical jargon in user-facing copy — all uncertainty framed in workflow terms</div></div>
         <div class="stat"><div class="n">1</div><div class="d">Shared confidence threshold map between design and ML — same language on both sides</div></div>
       </div>
@@ -589,19 +589,19 @@
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>A one-off AI widget is easy. An agent that follows a user through their entire session — aware of where they came from, what they're trying to do, and what they've already tried — is a fundamentally different design problem. Most enterprise AI surfaces are stateless: you ask a question, you get an answer, context resets. This agent needed to hold context across the journey and use it to be genuinely more useful than asking again from scratch.</p>
+        <p>A one-off AI widget is easy. An agent that follows a user through their entire session — aware of where they came from, what they're trying to do, what they've already tried — is a different problem entirely. Most enterprise AI surfaces are stateless: ask a question, get an answer, context resets. This agent had to hold context across the journey and use it to beat asking from scratch.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I mapped the user's journey through the platform and identified the moments where an aware agent would reduce meaningful friction: transitions between tools, moments of failure or confusion, and decision points where users typically left to look something up elsewhere. I designed the agent's presence to be ambient by default and interruptible on demand — it shouldn't compete for attention, but it should be immediately accessible when needed.</p>
-        <p>The key design question was what the agent should know vs. what it should ask. I worked through that with product and ML: what context the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive rather than helpful. The agent's personality and communication patterns were constrained by those constraints — designed to be confident where it had signal, and honest where it didn't.</p>
+        <p>I mapped the journey through the platform and found the moments where an aware agent would cut real friction: transitions between tools, points of failure or confusion, and decisions where users typically left to look something up elsewhere. I made the agent ambient by default and interruptible on demand — quiet until you need it, then immediately there.</p>
+        <p>The key question was what the agent should know versus what it should ask. I worked that through with product and ML: what context the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive. The agent's personality followed from those limits — confident where it had signal, honest where it didn't.</p>
       </div>
       <div class="flow-quote">
         An agent that knows where you are but doesn't know what you're trying to do is still just a search box with extra steps.
         <span class="attr">Design constraint, agentic context model</span>
       </div>
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">5+</div><div class="d">Journey touchpoints where agent presence was explicitly designed, not assumed</div></div>
+        <div class="stat"><div class="n">5+</div><div class="d">Journey touchpoints where agent presence was deliberately designed</div></div>
         <div class="stat"><div class="n">2</div><div class="d">Modes: ambient (low footprint) and engaged (full context surface)</div></div>
         <div class="stat"><div class="n">0</div><div class="d">Assumed context passed to user without confirmation at high-stakes moments</div></div>
       </div>
@@ -639,12 +639,12 @@
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>Enterprise product designers working on AI surfaces face a constraint that doesn't exist in most product work: the system's behavior is not fully predictable, and the reasons for its decisions are not always surfaceable. Users want to know why. The model doesn't always have a clean answer. The product has to hold that gap without making either the model or the user look bad.</p>
+        <p>Designing AI surfaces brings a constraint most product work never sees: the system's behavior isn't fully predictable, and the reasons for its decisions can't always be surfaced. Users want to know why. The model doesn't always have a clean answer. The product has to hold that gap without making the model or the user look bad.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I ran working sessions with ML engineers to understand exactly what the model could and couldn't explain about its own outputs. From that, I built a design vocabulary for explainability: what level of explanation was available for each output type, how to communicate that to users honestly, and how to handle the cases where no explanation could be offered.</p>
-        <p>I also designed for graceful degradation — the states where the model was unavailable, underconfident, or operating outside its training distribution. These weren't edge cases to be minimized in the UI; they were first-class design problems with their own states, copy, and recovery paths. A model failure that a user doesn't notice is a trust problem. A model failure that's handled well is a product moment.</p>
+        <p>I ran working sessions with ML engineers to pin down exactly what the model could and couldn't explain about its own outputs. From that I built a design vocabulary for explainability: what level of explanation each output type allowed, how to communicate it honestly, and how to handle the cases where no explanation could be offered.</p>
+        <p>I also designed for graceful degradation: the states where the model was unavailable, underconfident, or operating outside its training distribution. Each got its own states, copy, and recovery paths. A silent model failure is a trust problem; a well-handled one is a product moment.</p>
       </div>
       <div class="flow-quote">
         If the model can't explain it, the product still has to say something. "I don't know" is a valid answer — but it has to be designed.
@@ -652,7 +652,7 @@
       </div>
       <div class="flow-outcomes">
         <div class="stat"><div class="n">4</div><div class="d">Explainability tiers mapped from ML capability to design language</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Degraded states designed as first-class experiences: unavailable, low-signal, out-of-distribution</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Degraded states given full designs of their own: unavailable, low-signal, out-of-distribution</div></div>
         <div class="stat"><div class="n">1</div><div class="d">Shared ML-design working model for what the product can and cannot promise</div></div>
       </div>
     </div>
@@ -666,17 +666,17 @@
   <div class="footer-grid">
     <div><h3>DANI WEIDNER</h3></div>
     <div class="col">
-      <a href="/">HOME</a>
-      <a href="/#cases">CASE STUDIES</a>
+      <a href="dani-website-v2.html">HOME</a>
+      <a href="dani-website-v2.html#cases">CASE STUDIES</a>
     </div>
     <div class="col">
-      <a href="/about">ABOUT</a>
-      <a href="/#contact">CONTACT</a>
+      <a href="dani-about-v2.html">ABOUT</a>
+      <a href="dani-website-v2.html#contact">CONTACT</a>
     </div>
     <div class="col right">
       <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
       <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
-      <a href="/cv">CV</a>
+      <a href="dani-cv.html">CV</a>
     </div>
   </div>
 
