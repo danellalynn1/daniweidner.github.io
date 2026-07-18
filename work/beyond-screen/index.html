@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dani Weidner — Strategy Past the Screen</title>
+<title>Dani Weidner: Strategy Past the Screen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -196,9 +196,9 @@
   }
   .flow-tags {
     display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+    margin-top: 0.9rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.04em;
@@ -206,8 +206,13 @@
     color: var(--ink-soft);
     line-height: 1.6;
   }
+  .flow-tags span:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.65rem;
+    opacity: 0.35;
+  }
 
-  /* Spot illustration under the thread label — newspaper line-art */
+  /* Spot illustration under the thread label: newspaper line-art */
   .flow-illo {
     margin-top: 2rem;
     padding-top: 1.6rem;
@@ -227,6 +232,79 @@
     text-transform: uppercase;
     color: var(--ink-soft);
     margin-top: 0.9rem;
+  }
+
+  /* Wide flow-board figure inside the article column */
+  .flow-figure {
+    grid-column: 1 / -1;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-figure svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-figure .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  .flow-left .flow-outcomes {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 0.6rem;
+    padding-top: 1.4rem;
+  }
+  .flow-left .flow-outcomes .stat {
+    display: grid;
+    grid-template-columns: minmax(3.4rem, auto) 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+  }
+  .flow-left .flow-outcomes .stat .n {
+    font-size: 1.45rem;
+    margin-bottom: 0;
+  }
+  .flow-left .flow-outcomes .stat .d {
+    font-size: 0.66rem;
+  }
+
+  .flow--board {
+    padding-bottom: 2rem;
+  }
+
+  /* Placeholder slot for a forthcoming full-width illustration */
+  .fig-slot {
+    background: #0a0a0a;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fig-slot span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #5c5c5c;
+    border: 1px dashed #3a3a3a;
+    padding: 0.9rem 1.4rem;
+  }
+
+  /* Meta strip inside the hero's left column */
+  .case-header-left .case-meta-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem 2rem;
+    padding: 2rem 0 0;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--ink-faint);
+    border-bottom: none;
   }
 
   .flow-right {
@@ -316,7 +394,7 @@
   .case-cta .arrow { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; }
 
   /* === FOOTER === */
-  footer { padding: 6rem 0 0; overflow: hidden; }
+  footer { padding: 4rem 0 0; overflow: hidden; border-top: 1px solid var(--ink); margin-top: 2rem; }
   .footer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -420,7 +498,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="dani-website-v2.html" class="nav-cell">
+  <a href="/" class="nav-cell">
     <div class="nav-label">HOME</div>
     <div class="nav-rule"></div>
   </a>
@@ -428,11 +506,11 @@
     <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
     <div class="nav-rule"></div>
   </div>
-  <a href="dani-about-v2.html" class="nav-cell">
+  <a href="/about/" class="nav-cell">
     <div class="nav-label">ABOUT</div>
     <div class="nav-rule"></div>
   </a>
-  <a href="dani-website-v2.html#contact" class="nav-cell">
+  <a href="/#contact" class="nav-cell">
     <div class="nav-label">CONTACT</div>
     <div class="nav-rule"></div>
   </a>
@@ -442,8 +520,8 @@
 <header class="case-header">
   <div class="case-header-left">
   <div class="case-eyebrow">
-    <span>A &mdash; 7 / CASE STUDY</span>
-    <a class="back" href="dani-website-v2.html#cases">&larr; ALL CASE STUDIES</a>
+    <span>A-7 / CASE STUDY</span>
+    <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
   </div>
 
   <div class="case-statement">
@@ -452,304 +530,401 @@
     <div class="hs-line">FEED THE</div>
     <div class="hs-line b-line"><span class="b">PRODUCT</span></div>
   </div>
-    <p class="case-header-body">Some of the highest-leverage design work never touches a Figma file. It's the customer program that keeps a steady signal flowing into the roadmap, the framework that decides who to invest in next, the relationships that turn at-risk accounts into advocates. This page is about a program I founded and ran end to end, and the strategy around it.</p>
+    <p class="case-header-body">Some of the highest-leverage design work never touches a Figma file: the customer program feeding steady signal into the roadmap, the framework deciding who to invest in next, the relationships turning at-risk accounts into advocates. This is the program I founded and ran end to end, and the strategy behind it.</p>
+
+    <section class="case-meta-strip">
+    <div class="cell">
+      <div class="k">Role</div>
+      <div class="v">Lead Product Designer, program founder</div>
+    </div>
+    <div class="cell">
+      <div class="k">Discipline</div>
+      <div class="v">Program design, customer advocacy, events, prioritization</div>
+    </div>
+    <div class="cell">
+      <div class="k">Context</div>
+      <div class="v">Enterprise B2B SaaS platform</div>
+    </div>
+    <div class="cell">
+      <div class="k">Threads in this study</div>
+      <div class="v">04</div>
+    </div>
+  </section>
   </div>
   <div class="case-header-right">
     <div class="case-hero-image" style="background-color: #0a0a0a; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgODAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCI+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhcnJvdyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+CiAgICAgIDxwYXRoIGQ9Ik0yIDEgTDggNSBMMiA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvbWFya2VyPgogICAgPG1hcmtlciBpZD0iYXJyb3dEaW0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjYiIG1hcmtlckhlaWdodD0iNiIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPgogICAgICA8cGF0aCBkPSJNMiAxIEw4IDUgTDIgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGM4YzhjIiBzdHJva2Utd2lkdGg9IjEuNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICA8L21hcmtlcj4KICA8L2RlZnM+CgogIDwhLS0gYmFja2dyb3VuZCAtLT4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iIzBhMGEwYSIvPgoKICA8IS0tIHN1YnRsZSBncmlkIC0tPgogIDxnIHN0cm9rZT0iIzFjMWMxYyIgc3Ryb2tlLXdpZHRoPSIxIj4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMjQwIiB4Mj0iNjAwIiB5Mj0iMjQwIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjQ0MCIgeDI9IjYwMCIgeTI9IjQ0MCIvPgogICAgPGxpbmUgeDE9IjAiIHkxPSI2NDAiIHgyPSI2MDAiIHkyPSI2NDAiLz4KICA8L2c+CgogIDwhLS0gPT09PT09PT09PT09IFNQT0tFUyBmcm9tIGh1YiB0byByZWdpb25hbCBjb2hvcnRzID09PT09PT09PT09PSAtLT4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42Ij4KICAgIDxwYXRoIGQ9Ik0yMzIgMzAwIEwxNTAgMzgwIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogICAgPHBhdGggZD0iTTMwMCAzMzIgTDMwMCAzOTYiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgICA8cGF0aCBkPSJNMzY4IDMwMCBMNDUwIDM4MCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICA8L2c+CgogIDwhLS0gZmVlZGJhY2sgbG9vcCBmcm9tIGNvaG9ydHMgYmFjayB0byByb2FkbWFwIChkaW1tZWQpIC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhjOGM4YyIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1kYXNoYXJyYXk9IjUgNSI+CiAgICA8cGF0aCBkPSJNMTUwIDQ1NiBMMTUwIDU0MCBMMjkyIDU0MCBMMjkyIDU4MCIgbWFya2VyLWVuZD0idXJsKCNhcnJvd0RpbSkiLz4KICAgIDxwYXRoIGQ9Ik0zMDAgNDcyIEwzMDAgNTgwIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93RGltKSIvPgogICAgPHBhdGggZD0iTTQ1MCA0NTYgTDQ1MCA1NDAgTDMwOCA1NDAgTDMwOCA1ODAiIG1hcmtlci1lbmQ9InVybCgjYXJyb3dEaW0pIi8+CiAgPC9nPgoKICA8IS0tID09PT09PT09PT09PSBOT0RFUyA9PT09PT09PT09PT0gLS0+CiAgPCEtLSBIVUI6IFBST0dSQU0gLS0+CiAgPGc+CiAgICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIyNDAiIHI9IjY4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS44Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjIzNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNTAwIiBmb250LXN0eWxlPSJpdGFsaWMiPkFkdmlzb3J5PC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSIyNTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjUwMCIgZm9udC1zdHlsZT0iaXRhbGljIj5Qcm9ncmFtPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSIyNzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCIgbGV0dGVyLXNwYWNpbmc9IjAuOCI+Rk9VTkRFRCArIFJVTjwvdGV4dD4KICA8L2c+CgogIDwhLS0gUkVHSU9OOiBFTUVBIC0tPgogIDxnPgogICAgPHJlY3QgeD0iNzQiIHk9IjM4MCIgd2lkdGg9IjE1MiIgaGVpZ2h0PSI3NiIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDx0ZXh0IHg9IjE1MCIgeT0iNDE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI1MDAiPkV1cm9wZTwvdGV4dD4KICAgIDx0ZXh0IHg9IjE1MCIgeT0iNDM0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjgiIGxldHRlci1zcGFjaW5nPSIwLjYiPkZPVU5ESU5HIENPSE9SVDwvdGV4dD4KICA8L2c+CiAgPCEtLSBSRUdJT046IE5BIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMjI0IiB5PSIzOTYiIHdpZHRoPSIxNTIiIGhlaWdodD0iNzYiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjQzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNTAwIj5OLiBBbWVyaWNhPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSI0NTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCIgbGV0dGVyLXNwYWNpbmc9IjAuNiI+U0NPUkVEICsgU0VRVUVOQ0VEPC90ZXh0PgogIDwvZz4KICA8IS0tIFJFR0lPTjogQVBBQyAtLT4KICA8Zz4KICAgIDxyZWN0IHg9IjM3NCIgeT0iMzgwIiB3aWR0aD0iMTUyIiBoZWlnaHQ9Ijc2IiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHRleHQgeD0iNDUwIiB5PSI0MTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9IjUwMCI+QXNpYS1QYWNpZmljPC90ZXh0PgogICAgPHRleHQgeD0iNDUwIiB5PSI0MzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCIgbGV0dGVyLXNwYWNpbmc9IjAuNiI+RVhQQU5TSU9OPC90ZXh0PgogIDwvZz4KCiAgPCEtLSBmZWVkYmFjayBsYWJlbCAtLT4KICA8dGV4dCB4PSIzMDAiIHk9IjUyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhjOGM4YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSI5IiBsZXR0ZXItc3BhY2luZz0iMSI+SU5QVVQgRkVFRFMgQkFDSzwvdGV4dD4KCiAgPCEtLSBPVVRDT01FOiBST0FETUFQIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMTgwIiB5PSI1ODAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNzIiIHJ4PSI4IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjYxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBhMGEwYSIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIj5Sb2FkbWFwIEluZmx1ZW5jZTwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iNjM0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNWM1YzVjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGxldHRlci1zcGFjaW5nPSIxIj5SRVRFTlRJT04gKyBBRFZPQ0FDWTwvdGV4dD4KICA8L2c+CgogIDwhLS0gY29ybmVyIGxhYmVscyAtLT4KICA8dGV4dCB4PSIzNiIgeT0iNjAiIGZpbGw9IiM1YzVjNWMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEiIGxldHRlci1zcGFjaW5nPSIxLjUiPkNPTU1VTklUWSBNQVA8L3RleHQ+CiAgPHRleHQgeD0iNTY0IiB5PSI2MCIgdGV4dC1hbmNob3I9ImVuZCIgZmlsbD0iIzVjNWM1YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+QSDigJQgNzwvdGV4dD4KPC9zdmc+Cg=='); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
   </div>
 </header>
 
-
-<!-- META STRIP -->
-<section class="case-meta-strip">
-  <div class="cell">
-    <div class="k">Role</div>
-    <div class="v">Lead Product Designer, program founder</div>
-  </div>
-  <div class="cell">
-    <div class="k">Discipline</div>
-    <div class="v">Program design, customer advocacy, events, prioritization</div>
-  </div>
-  <div class="cell">
-    <div class="k">Context</div>
-    <div class="v">Enterprise B2B SaaS platform</div>
-  </div>
-  <div class="cell">
-    <div class="k">Threads in this study</div>
-    <div class="v">04</div>
-  </div>
-</section>
-
 <!-- FLOWS -->
 <div class="flows">
 
   <!-- THREAD 01 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 01 / 04</div>
       <div class="flow-name">Founding the program</div>
-      <div class="flow-tags">
-        <span>Program design</span>
-        <span>Year-long cadence</span>
-        <span>Founding cohort</span>
-        <span>End to end</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-selected founding cohort around a central program">
-          <defs><marker id="il-cbs-0" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <circle cx="150" cy="90" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="168" y1="90" x2="208" y2="90" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <line x1="163" y1="77" x2="191" y2="49" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <line x1="150" y1="72" x2="150" y2="32" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <line x1="137" y1="77" x2="109" y2="49" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <line x1="132" y1="90" x2="92" y2="90" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <line x1="137" y1="103" x2="109" y2="131" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <line x1="150" y1="108" x2="150" y2="148" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <line x1="163" y1="103" x2="191" y2="131" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <circle cx="208" cy="90" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="191" cy="49" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="150" cy="32" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="109" cy="49" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="92" cy="90" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="109" cy="131" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="150" cy="148" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="191" cy="131" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="150" y="93" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">CORE</text>
-          <text x="150" y="176" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">ADVISORY COMMUNITY</text>
-        </svg>
-        <div class="illo-cap">Fig. — A hand-selected cohort</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">1</div><div class="d">Program founded and architected end to end</div></div>
+        <div class="stat"><div class="n">5+</div><div class="d">Founding-cohort industries: travel, food, fintech, retail, tech</div></div>
+        <div class="stat"><div class="n">7</div><div class="d">Touchpoint types a year, kickoff to live channel</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>The team needed a steady, trusted line to power users, somewhere to recruit research participants, pressure-test direction, and build loyalty with the accounts that mattered most. No such structure existed. Feedback was ad hoc, and the most valuable customers had no real relationship with the people building the product.</p>
+        <p>The team needed a trusted line to power users: a place to recruit research participants, pressure-test direction, and build loyalty with the accounts that mattered most. None existed; feedback was ad hoc, and the most valuable customers had no relationship with the people building the product.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I founded a customer advisory community and designed the whole program: member criteria weighted toward power users and high churn-risk accounts, a hand-selected founding cohort of enterprise customers across travel, food, fintech, retail, and tech, and a year-long cadence, an in-person kickoff, monthly virtual sessions, quarterly events and newsletters, semi-annual surprise events, and a dedicated channel. I ran all of it, down to sourcing branded swag and untangling vendor logistics when a contractor underdelivered.</p>
+        <p>I founded a customer advisory community and designed the whole program: member criteria weighted toward power users and high churn-risk accounts, a hand-selected founding cohort spanning travel, food, fintech, retail, and tech, and a year-long cadence of an in-person kickoff, monthly virtual sessions, quarterly events and newsletters, semi-annual surprise events, and a dedicated channel. I ran all of it, down to sourcing branded swag and untangling vendor logistics when a contractor underdelivered.</p>
       </div>
       <div class="flow-quote">
         Frame it as a community and a thought-leadership circle. The trust is the whole point.
         <span class="attr">Program positioning principle</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">1</div><div class="d">Program founded and architected end to end, from criteria to cadence</div></div>
-        <div class="stat"><div class="n">5+</div><div class="d">Industries in the founding cohort: travel, food, fintech, retail, tech</div></div>
-        <div class="stat"><div class="n">7</div><div class="d">Touchpoint types a year, from kickoff to surprise events to a live channel</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A hand-selected founding cohort spanning five verticals around a central advisory program, with a year-long cadence from day one">
+        <!-- FIG. A hand-selected cohort -->
+        <defs><marker id="il-bey1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-bey1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <circle cx="689.74" cy="19.5" r="2.8" fill="#8c8c8c" stroke="none"/>
+        <text x="697.74" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">CANDIDATE</text>
+        <circle cx="772.32" cy="19.5" r="2.8" fill="#74a58c" stroke="none"/>
+        <text x="780.32" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">MEMBER</text>
+        <rect x="833" y="15" width="12" height="9" stroke="#b07fa6" stroke-width="1.2"/>
+        <text x="849.0400000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">VERTICAL</text>
+        <rect x="24" y="44" width="280" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">HAND-SELECTED</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">WEIGHTED TO POWER USERS AND CHURN-RISK ACCOUNTS</text>
+        <circle cx="64" cy="104" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="104" cy="104" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="144" cy="104" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="184" cy="104" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="224" cy="104" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="64" cy="136" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="104" cy="136" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="144" cy="136" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="184" cy="136" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="224" cy="136" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="64" cy="168" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="104" cy="168" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="144" cy="168" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="184" cy="168" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="224" cy="168" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="64" cy="200" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="104" cy="200" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="144" cy="200" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="184" cy="200" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <circle cx="224" cy="200" r="2.5" fill="#8c8c8c" stroke="none"/>
+        <text x="164" y="220" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">EVERY CANDIDATE ACCOUNT</text>
+        <line x1="164" y1="230" x2="164" y2="248" marker-end="url(#il-bey1)"/>
+        <path d="M164 253 L177 266 L164 279 L151 266 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="164" y="293" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">MEMBER CRITERIA</text>
+        <line x1="164" y1="280" x2="164" y2="300" marker-end="url(#il-bey1)"/>
+        <circle cx="96" cy="316" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="130" cy="316" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="164" cy="316" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="198" cy="316" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="232" cy="316" r="2.5" fill="#74a58c" stroke="none"/>
+        <text x="164" y="340" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">THE FOUNDING COHORT</text>
+        <line x1="304" y1="203" x2="332" y2="203" marker-end="url(#il-bey1)"/>
+        <rect x="340" y="44" width="556" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="352" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE FOUNDING COHORT</text>
+        <text x="352" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">FIVE VERTICALS, ONE STANDING PROGRAM</text>
+        <rect x="506" y="130" width="224" height="74" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="618.0" y="164.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ADVISORY PROGRAM</text>
+        <text x="618.0" y="178.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">A TRUSTED LINE TO POWER USERS</text>
+        <rect x="388" y="88" width="106" height="30" rx="3" fill="#141414" stroke="#b07fa6"/>
+        <text x="441" y="107" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">TRAVEL</text>
+        <rect x="742" y="88" width="106" height="30" rx="3" fill="#141414" stroke="#b07fa6"/>
+        <text x="795" y="107" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">FOOD</text>
+        <rect x="388" y="214" width="106" height="30" rx="3" fill="#141414" stroke="#b07fa6"/>
+        <text x="441" y="233" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">FINTECH</text>
+        <rect x="742" y="214" width="106" height="30" rx="3" fill="#141414" stroke="#b07fa6"/>
+        <text x="795" y="233" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">RETAIL</text>
+        <rect x="565" y="88" width="106" height="30" rx="3" fill="#141414" stroke="#b07fa6"/>
+        <text x="618" y="107" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">TECH</text>
+        <path d="M494 118 L540 134" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <path d="M742 118 L700 134" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <path d="M494 214 L540 200" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <path d="M742 214 L700 200" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <path d="M618 118 L618 126" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <line x1="380" y1="300" x2="856" y2="300" stroke="#3a3a3a" stroke-width="1"/>
+        <circle cx="420" cy="300" r="3" fill="#74a58c" stroke="none"/>
+        <text x="420" y="320" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">IN-PERSON KICKOFF</text>
+        <circle cx="566" cy="300" r="3" fill="#74a58c" stroke="none"/>
+        <text x="566" y="320" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">MONTHLY SESSIONS</text>
+        <circle cx="712" cy="300" r="3" fill="#74a58c" stroke="none"/>
+        <text x="712" y="320" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">QUARTERLY EVENTS</text>
+        <circle cx="836" cy="300" r="3" fill="#74a58c" stroke="none"/>
+        <text x="836" y="320" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">NEWSLETTERS</text>
+        <text x="618" y="276" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">A YEAR-LONG CADENCE, PLANNED FROM DAY ONE</text>
+        </svg>
+      <div class="illo-cap">Fig. A hand-selected cohort across five verticals, with a year-long cadence from day one</div>
     </div>
   </section>
 
   <!-- THREAD 02 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 02 / 04</div>
       <div class="flow-name">Multi-region expansion</div>
-      <div class="flow-tags">
-        <span>Scoring framework</span>
-        <span>Three regions</span>
-        <span>Prioritization</span>
-        <span>Org navigation</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Expansion sequenced across three regions by score">
-          <defs><marker id="il-cbs-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <rect x="18" y="46" width="74" height="70" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="30" y="62" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor" opacity="0.55">1</text>
-          <text x="61" y="62" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1" fill="currentColor">EU</text>
-          <rect x="30" y="78" width="40" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
-          <rect x="30" y="90" width="30" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
-          <rect x="30" y="102" width="20" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <rect x="113" y="46" width="74" height="70" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="125" y="62" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor" opacity="0.55">2</text>
-          <text x="156" y="62" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1" fill="currentColor">NA</text>
-          <rect x="125" y="78" width="40" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
-          <rect x="125" y="90" width="30" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
-          <rect x="125" y="102" width="20" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <rect x="208" y="46" width="74" height="70" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="220" y="62" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor" opacity="0.55">3</text>
-          <text x="251" y="62" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1" fill="currentColor">APAC</text>
-          <rect x="220" y="78" width="40" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
-          <rect x="220" y="90" width="30" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
-          <rect x="220" y="102" width="20" height="6" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <path d="M92 80 L113 80" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cbs-1)"/>
-          <path d="M187 80 L208 80" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cbs-1)"/>
-          <text x="150" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">PRIORITIZED ROLLOUT</text>
-        </svg>
-        <div class="illo-cap">Fig. — Sequenced by score</div>
-      </div>
-    </div>
-    <div class="flow-right">
-      <div class="flow-block">
-        <span class="block-label">The problem</span>
-        <p>The founding cohort proved the model in one region. Scaling it globally meant deciding where to invest next without spreading too thin, and doing it through other teams wary of anything that looked like a sales push into their accounts.</p>
-      </div>
-      <div class="flow-block">
-        <span class="block-label">What I did</span>
-        <p>I built a scoring model to rank expansion cities by churn risk, account size, renewal timing, and growth potential, then used it to sequence a rollout across Europe, North America, and Asia-Pacific. I drafted the nomination and outreach process for partner teams, wrote region-specific plans, and positioned the program internally as a customer community, so the teams who owned those relationships came along instead of pushing back.</p>
-      </div>
-      <div class="flow-quote">
-        The scoring model decides where we go next, and it's what keeps the program honest under pressure.
-        <span class="attr">Expansion framework principle</span>
-      </div>
+
       <div class="flow-outcomes">
         <div class="stat"><div class="n">3</div><div class="d">Global regions sequenced: Europe, North America, Asia-Pacific</div></div>
         <div class="stat"><div class="n">4</div><div class="d">Weighted factors in the city-scoring model driving expansion order</div></div>
         <div class="stat"><div class="n">1</div><div class="d">Repeatable nomination and outreach process for partner teams</div></div>
       </div>
     </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>The founding cohort proved the model in one region. Scaling globally meant choosing where to invest next without spreading thin, through partner teams wary of anything resembling a sales push into their accounts.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I built a scoring model ranking expansion cities by churn risk, account size, renewal timing, and growth potential, then sequenced the rollout across Europe, North America, and Asia-Pacific. I drafted the nomination and outreach process for partner teams, wrote region-specific plans, and positioned the program internally as a customer community, so the teams who owned those relationships came along instead of pushing back.</p>
+      </div>
+      <div class="flow-quote">
+        The scoring model decides where we go next. It keeps the program honest under pressure.
+        <span class="attr">Expansion framework principle</span>
+      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Expansion sequenced across Europe, North America, and Asia-Pacific by a scoring model, through partner-team nomination at every step">
+        <!-- FIG. Sequenced by score -->
+        <defs><marker id="il-bey2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-bey2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <rect x="566" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="582.06" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">LIVE</text>
+        <rect x="623" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="638.54" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">NEXT</text>
+        <rect x="679" y="15" width="12" height="9" stroke="#b07fa6" stroke-width="1.2"/>
+        <text x="695.02" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">COMING SOON</text>
+        <path d="M780.8399999999999 14 L786.8399999999999 19.5 L780.8399999999999 25 L774.8399999999999 19.5 Z" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="791.8399999999999" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">PARTNER NOMINATION</text>
+        <rect x="24" y="44" width="872" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SEQUENCED BY SCORE</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">CHURN RISK, ACCOUNT SIZE, RENEWAL TIMING, GROWTH POTENTIAL</text>
+        <rect x="60" y="110" width="184" height="96" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="152" y="140" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">EUROPE</text>
+        <text x="152" y="156" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">THE FOUNDING REGION</text>
+        <line x1="84" y1="182" x2="220" y2="182" stroke="#2a2a2a" stroke-width="7"/>
+        <line x1="84" y1="182" x2="206" y2="182" stroke="#74a58c" stroke-width="7"/>
+        <rect x="368" y="110" width="184" height="96" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="460" y="140" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">NORTH AMERICA</text>
+        <text x="460" y="156" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">SECOND BY SCORE</text>
+        <line x1="392" y1="182" x2="528" y2="182" stroke="#2a2a2a" stroke-width="7"/>
+        <line x1="392" y1="182" x2="482" y2="182" stroke="#7ea7c9" stroke-width="7"/>
+        <rect x="676" y="110" width="184" height="96" rx="3" fill="#141414" stroke="#b07fa6"/>
+        <text x="768" y="140" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ASIA-PACIFIC</text>
+        <text x="768" y="156" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">THIRD BY SCORE</text>
+        <line x1="700" y1="182" x2="836" y2="182" stroke="#2a2a2a" stroke-width="7"/>
+        <line x1="700" y1="182" x2="768" y2="182" stroke="#b07fa6" stroke-width="7"/>
+        <text x="84" y="226" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">SCORE</text>
+        <line x1="244" y1="158" x2="267" y2="158" marker-end="url(#il-bey2)"/>
+        <path d="M287 145 L300 158 L287 171 L274 158 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="300" y1="158" x2="325" y2="158" marker-end="url(#il-bey2)"/>
+        <text x="287" y="190" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#8c8c8c" stroke="none">NOMINATED BY</text>
+        <text x="287" y="199" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#8c8c8c" stroke="none">PARTNER TEAMS</text>
+        <line x1="552" y1="158" x2="575" y2="158" marker-end="url(#il-bey2)"/>
+        <path d="M595 145 L608 158 L595 171 L582 158 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="608" y1="158" x2="633" y2="158" marker-end="url(#il-bey2)"/>
+        <text x="595" y="190" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#8c8c8c" stroke="none">NOMINATED BY</text>
+        <text x="595" y="199" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#8c8c8c" stroke="none">PARTNER TEAMS</text>
+        <rect x="60" y="262" width="800" height="62" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="460.0" y="290.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">POSITIONED AS A CUSTOMER COMMUNITY, NOT A SALES PUSH</text>
+        <text x="460.0" y="304.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">REGION-SPECIFIC PLANS EARNED WARY PARTNER TEAMS OVER</text>
+        </svg>
+      <div class="illo-cap">Fig. Expansion sequenced across three regions by score, through partner-team nomination</div>
+    </div>
   </section>
 
   <!-- THREAD 03 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 03 / 04</div>
       <div class="flow-name">Program to roadmap</div>
-      <div class="flow-tags">
-        <span>Standing signal</span>
-        <span>Roadmap influence</span>
-        <span>Peer support</span>
-        <span>Research pool</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Community input wired into the product roadmap">
-          <defs><marker id="il-cbs-2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <circle cx="50" cy="82" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="50" y1="82" x2="50" y2="62" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <circle cx="50" cy="62" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="50" y1="82" x2="68" y2="80" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <circle cx="68" cy="80" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="50" y1="82" x2="62" y2="100" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <circle cx="62" cy="100" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="50" y1="82" x2="38" y2="100" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <circle cx="38" cy="100" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="50" y1="82" x2="32" y2="80" stroke="currentColor" stroke-width="1.4" opacity="0.3"/>
-          <circle cx="32" cy="80" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="50" y="128" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">COMMUNITY</text>
-          <path d="M86 82 L120 82" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cbs-2)"/>
-          <line x1="128" y1="90" x2="280" y2="90" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="140" cy="90" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="182" cy="90" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="224" cy="90" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="266" cy="90" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="182" y1="84" x2="182" y2="74" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="266" y1="84" x2="266" y2="74" stroke="currentColor" stroke-width="1.4"/>
-          <text x="204" y="128" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">ROADMAP</text>
-        </svg>
-        <div class="illo-cap">Fig. — Input that moves the roadmap</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">8</div><div class="d">Distinct roadmap influences traced to the founding cohort's input</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Standing recruitment pool feeding concurrent studies on demand</div></div>
+        <div class="stat"><div class="n">7</div><div class="d">Days until the channel became self-sustaining peer support</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>A community is only worth the effort if it changes the product. Every advisory program risks becoming a nice-to-have, where members feel heard but nothing they say moves the roadmap, and the trust quietly erodes.</p>
+        <p>A community only earns its keep if it changes the product. Every advisory program risks becoming a nice-to-have where members feel heard, nothing moves the roadmap, and trust quietly erodes.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I wired the program directly into the product process, using it as a standing recruitment pool for studies and a fast channel to pressure-test direction. The cohort's input traced to concrete roadmap influences, from dynamic landing pages to an attribution tool to bulk creation enhancements. Within the first week the channel became self-sustaining, with members answering each other's product questions, which deepened engagement without adding support load.</p>
+        <p>I wired the program into the product process as a standing recruitment pool for studies and a fast channel to pressure-test direction. The cohort's input traced to concrete roadmap influences, from dynamic landing pages to an attribution tool to bulk creation enhancements. Within the first week the channel became self-sustaining, members answering each other's product questions, deepening engagement without adding support load.</p>
       </div>
       <div class="flow-quote">
         Member input has to show up in what ships. Otherwise the whole program is just theater.
         <span class="attr">Program-to-product principle</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">8</div><div class="d">Distinct roadmap influences traced to the founding cohort's input</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">Standing recruitment pool feeding concurrent studies on demand</div></div>
-        <div class="stat"><div class="n">7</div><div class="d">Days for the member channel to become self-sustaining peer support</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Community input wired into the product process and traced to concrete roadmap influences">
+        <!-- FIG. Input that moves the roadmap -->
+        <defs><marker id="il-bey3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-bey3-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <rect x="681" y="15" width="12" height="9" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="697.02" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">MEMBER INPUT</text>
+        <rect x="782" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="798.46" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SHIPPED INFLUENCE</text>
+        <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE CHANNEL</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SELF-SUSTAINING WITHIN THE FIRST WEEK</text>
+        <rect x="48" y="96" width="170" height="32" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414"/>
+        <line x1="64" y1="110" x2="174" y2="110" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="64" y1="118" x2="144" y2="118" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="100" y="140" width="180" height="32" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414"/>
+        <line x1="116" y1="154" x2="236" y2="154" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="116" y1="162" x2="206" y2="162" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="56" y="184" width="160" height="32" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414"/>
+        <line x1="72" y1="198" x2="172" y2="198" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="72" y1="206" x2="142" y2="206" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="108" y="228" width="168" height="32" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414"/>
+        <line x1="124" y1="242" x2="232" y2="242" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="124" y1="250" x2="202" y2="250" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M218 128 L238 128 L238 140" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <path d="M216 172 L236 172 L236 184" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <text x="174" y="288" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">MEMBERS ANSWERING</text>
+        <text x="174" y="298" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">EACH OTHER IN WEEK ONE</text>
+        <text x="174" y="330" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">A STANDING POOL FOR STUDIES, A FAST</text>
+        <text x="174" y="340" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">CHANNEL TO PRESSURE-TEST DIRECTION</text>
+        <line x1="324" y1="203" x2="344" y2="203" marker-end="url(#il-bey3)"/>
+        <path d="M360 190 L373 203 L360 216 L347 203 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="360" y="230" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">SYNTHESIZE</text>
+        <line x1="373" y1="203" x2="392" y2="203" marker-end="url(#il-bey3)"/>
+        <rect x="400" y="44" width="496" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="412" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">TRACED TO THE ROADMAP</text>
+        <text x="412" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">INPUT TO SHIPPED INFLUENCE, NOT A NICE-TO-HAVE</text>
+        <rect x="424" y="104" width="60" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414"/>
+        <line x1="436" y1="117" x2="472" y2="117" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="436" y1="125" x2="460" y2="125" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M484 119 L516 119" fill="none" stroke="#74a58c" marker-end="url(#il-bey3-g)"/>
+        <rect x="520" y="96" width="352" height="46" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="696.0" y="122.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">DYNAMIC LANDING PAGES</text>
+        <rect x="424" y="184" width="60" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414"/>
+        <line x1="436" y1="197" x2="472" y2="197" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="436" y1="205" x2="460" y2="205" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M484 199 L516 199" fill="none" stroke="#74a58c" marker-end="url(#il-bey3-g)"/>
+        <rect x="520" y="176" width="352" height="46" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="696.0" y="202.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">AN ATTRIBUTION TOOL</text>
+        <rect x="424" y="264" width="60" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414"/>
+        <line x1="436" y1="277" x2="472" y2="277" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="436" y1="285" x2="460" y2="285" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M484 279 L516 279" fill="none" stroke="#74a58c" marker-end="url(#il-bey3-g)"/>
+        <rect x="520" y="256" width="352" height="46" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="696.0" y="282.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">BULK CREATION ENHANCEMENTS</text>
+        <text x="648" y="340" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">EVERY INFLUENCE TRACES BACK TO A MEMBER</text>
+        </svg>
+      <div class="illo-cap">Fig. Community input traced to shipped roadmap influence</div>
     </div>
   </section>
 
   <!-- THREAD 04 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 04 / 04</div>
       <div class="flow-name">At-risk to advocate</div>
-      <div class="flow-tags">
-        <span>Retention</span>
-        <span>Advocacy</span>
-        <span>Relationship design</span>
-        <span>Proof of concept</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="At-risk accounts turned into advocates">
-          <defs><marker id="il-cbs-3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <rect x="24" y="66" width="92" height="52" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="70" y="84" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">AT RISK</text>
-          <path d="M34 100 L60 106 L90 112" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M124 92 L180 92" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#il-cbs-3)"/>
-          <rect x="184" y="66" width="92" height="52" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="230" y="84" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">ADVOCATE</text>
-          <path d="M194 112 L220 104 L260 96" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cbs-3)"/>
-          <text x="150" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">RETENTION HELD</text>
-        </svg>
-        <div class="illo-cap">Fig. — At-risk to advocate</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">100%</div><div class="d">Founding-cohort retention, the only loss caused by a layoff</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">At-risk account turned internal advocate against a competitor</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Proof of concept leadership cites as flagship retention story</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>The accounts most worth investing in were often the ones most at risk: large customers weighing competitors, mid-contract, with no strong reason to stay. The real test was whether sustained, genuine engagement could move someone from evaluating alternatives to actively defending the product internally.</p>
+        <p>The accounts most worth investing in were often the most at risk: large customers weighing competitors mid-contract, with no strong reason to stay. The real test was whether sustained, genuine engagement could turn someone evaluating alternatives into an internal defender of the product.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I treated the founding cohort as the proof of concept and invested in the relationships directly. Retention held across the full cohort; the one departure came from a layoff, not a decision to leave. The clearest signal came from a member who, mid-evaluation of a direct competitor, fought internally to keep their company on the platform, the exact at-risk-to-advocate arc the program was built to create.</p>
+        <p>I treated the founding cohort as the proof of concept and invested directly in the relationships. Retention held across the full cohort; the one departure came from a layoff, not a decision to leave. The clearest signal: a member mid-evaluation of a direct competitor fought internally to keep their company on the platform, the exact at-risk-to-advocate arc the program was built to create.</p>
       </div>
       <div class="flow-quote">
-        A member fighting internally to keep their company on the platform, while a competitor's pitch is on the table, is the whole thesis proven.
+        A member fighting to keep their company on the platform, with a competitor's pitch on the table, is the whole thesis proven.
         <span class="attr">Advocacy outcome, founding cohort</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">100%</div><div class="d">Founding-cohort retention, the only loss caused by a layoff</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">At-risk account that became an internal advocate against a competitor</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">Proof of concept leadership now cites as a flagship retention story</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A large at-risk account, mid-contract and evaluating a competitor, turned into an internal advocate through sustained engagement in the program">
+        <!-- FIG. At-risk to advocate -->
+        <defs><marker id="il-bey4" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-bey4-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <rect x="672" y="15" width="12" height="9" stroke="#cf6a5c" stroke-width="1.2"/>
+        <text x="687.5" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">AT RISK</text>
+        <rect x="745" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="760.84" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">ADVOCATE</text>
+        <circle cx="828.8000000000001" cy="19.5" r="2.8" fill="#74a58c" stroke="none"/>
+        <text x="836.8000000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">TOUCHPOINT</text>
+        <rect x="24" y="44" width="280" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">AT RISK</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THE ACCOUNTS MOST WORTH INVESTING IN</text>
+        <rect x="48" y="108" width="232" height="96" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="164" y="140" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">A LARGE ACCOUNT</text>
+        <text x="164" y="158" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">MID-CONTRACT</text>
+        <text x="164" y="170" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">EVALUATING A DIRECT COMPETITOR</text>
+        <circle cx="72" cy="128" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <text x="164" y="250" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">NO STRONG REASON TO STAY</text>
+        <line x1="304" y1="203" x2="332" y2="203" marker-end="url(#il-bey4)"/>
+        <rect x="340" y="44" width="556" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="352" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SUSTAINED, GENUINE ENGAGEMENT</text>
+        <text x="352" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THE FOUNDING COHORT AS PROOF OF CONCEPT</text>
+        <line x1="380" y1="140" x2="856" y2="140" stroke="#3a3a3a" stroke-width="1"/>
+        <circle cx="420" cy="140" r="3" fill="#74a58c" stroke="none"/>
+        <text x="420" y="120" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">KICKOFF</text>
+        <circle cx="540" cy="140" r="3" fill="#74a58c" stroke="none"/>
+        <text x="540" y="120" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">MONTHLY SESSIONS</text>
+        <circle cx="660" cy="140" r="3" fill="#74a58c" stroke="none"/>
+        <text x="660" y="120" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">EVENTS</text>
+        <circle cx="780" cy="140" r="3" fill="#74a58c" stroke="none"/>
+        <text x="780" y="120" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">A DIRECT LINE</text>
+        <path d="M380 140 L856 140" fill="none" stroke="#74a58c" marker-end="url(#il-bey4-g)"/>
+        <rect x="560" y="180" width="312" height="76" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="716.0" y="215.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE INTERNAL ADVOCATE</text>
+        <text x="716.0" y="229.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">FOUGHT TO KEEP THEIR COMPANY ON THE PLATFORM</text>
+        <text x="564" y="296" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#c0c0c0" stroke="none">RETENTION HELD ACROSS THE FULL COHORT</text>
+        <text x="564" y="310" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">THE ONE DEPARTURE WAS A LAYOFF, NOT A DECISION TO LEAVE</text>
+        </svg>
+      <div class="illo-cap">Fig. An at-risk account turned internal advocate through sustained engagement</div>
     </div>
   </section>
 
 </div>
-
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div><h3>DANI WEIDNER</h3></div>
     <div class="col">
-      <a href="dani-website-v2.html">HOME</a>
-      <a href="dani-website-v2.html#cases">CASE STUDIES</a>
+      <a href="/">HOME</a>
+      <a href="/#cases">CASE STUDIES</a>
     </div>
     <div class="col">
-      <a href="dani-about-v2.html">ABOUT</a>
-      <a href="dani-website-v2.html#contact">CONTACT</a>
+      <a href="/about/">ABOUT</a>
+      <a href="/#contact">CONTACT</a>
     </div>
     <div class="col right">
       <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
       <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
-      <a href="dani-cv.html">CV</a>
+      <a href="/cv/">CV</a>
     </div>
   </div>
 
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-    </div>
-  </div>
 </footer>
 
 </body>
