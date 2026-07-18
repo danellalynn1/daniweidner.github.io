@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dani Weidner — Designing AI Experiences</title>
+<title>Dani Weidner: Designing AI Experiences</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -196,9 +196,9 @@
   }
   .flow-tags {
     display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+    margin-top: 0.9rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.04em;
@@ -206,8 +206,13 @@
     color: var(--ink-soft);
     line-height: 1.6;
   }
+  .flow-tags span:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.65rem;
+    opacity: 0.35;
+  }
 
-  /* Spot illustration under the thread label — newspaper line-art */
+  /* Spot illustration under the thread label: newspaper line-art */
   .flow-illo {
     margin-top: 2rem;
     padding-top: 1.6rem;
@@ -227,6 +232,79 @@
     text-transform: uppercase;
     color: var(--ink-soft);
     margin-top: 0.9rem;
+  }
+
+  /* Wide flow-board figure inside the article column */
+  .flow-figure {
+    grid-column: 1 / -1;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-figure svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-figure .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  .flow-left .flow-outcomes {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 0.6rem;
+    padding-top: 1.4rem;
+  }
+  .flow-left .flow-outcomes .stat {
+    display: grid;
+    grid-template-columns: minmax(3.4rem, auto) 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+  }
+  .flow-left .flow-outcomes .stat .n {
+    font-size: 1.45rem;
+    margin-bottom: 0;
+  }
+  .flow-left .flow-outcomes .stat .d {
+    font-size: 0.66rem;
+  }
+
+  .flow--board {
+    padding-bottom: 2rem;
+  }
+
+  /* Placeholder slot for a forthcoming full-width illustration */
+  .fig-slot {
+    background: #0a0a0a;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fig-slot span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #5c5c5c;
+    border: 1px dashed #3a3a3a;
+    padding: 0.9rem 1.4rem;
+  }
+
+  /* Meta strip inside the hero's left column */
+  .case-header-left .case-meta-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem 2rem;
+    padding: 2rem 0 0;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--ink-faint);
+    border-bottom: none;
   }
 
   .flow-right {
@@ -298,7 +376,7 @@
   }
 
   /* === FOOTER === */
-  footer { padding: 6rem 0 0; overflow: hidden; }
+  footer { padding: 4rem 0 0; overflow: hidden; border-top: 1px solid var(--ink); margin-top: 2rem; }
   .footer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -405,7 +483,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="dani-website-v2.html" class="nav-cell">
+  <a href="/" class="nav-cell">
     <div class="nav-label">HOME</div>
     <div class="nav-rule"></div>
   </a>
@@ -413,11 +491,11 @@
     <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
     <div class="nav-rule"></div>
   </div>
-  <a href="dani-about-v2.html" class="nav-cell">
+  <a href="/about/" class="nav-cell">
     <div class="nav-label">ABOUT</div>
     <div class="nav-rule"></div>
   </a>
-  <a href="dani-website-v2.html#contact" class="nav-cell">
+  <a href="/#contact" class="nav-cell">
     <div class="nav-label">CONTACT</div>
     <div class="nav-rule"></div>
   </a>
@@ -427,9 +505,9 @@
 <header class="case-header">
   <div class="case-header-left">
     <div class="case-eyebrow">
-      <span>A &mdash; 3 / CASE STUDY</span>
+      <span>A-3 / CASE STUDY</span>
       <div class="eyebrow-nav">
-        <a class="back" href="dani-website-v2.html#cases">&larr; ALL CASE STUDIES</a>
+        <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
       </div>
     </div>
 
@@ -439,7 +517,26 @@
       <div class="hs-line"><span class="b">MODEL</span> DOES</div>
       <div class="hs-line b-line">NOT <span class="b">KNOW</span></div>
     </div>
-    <p class="case-header-body">AI changes the rules of product design. The model's outputs come with uncertainty baked in. It can be wrong, and the user needs a way to see that without losing trust in the product. This case study covers a persistent in-product AI agent — a companion that follows enterprise users through their journey — and the decisions behind surfacing model outputs honestly, handling uncertainty, and working with ML engineers on what the product can and cannot promise.</p>
+    <p class="case-header-body">AI outputs carry uncertainty baked in: the model can be wrong, and users need to see that without losing trust in the product. This case study covers an in-progress, persistent AI agent that follows enterprise users through their journey, and the decisions behind surfacing model outputs honestly, handling uncertainty, and working with ML engineers on what the product can and cannot promise.</p>
+
+    <section class="case-meta-strip">
+    <div class="cell">
+      <div class="k">Role</div>
+      <div class="v">Lead Product Designer</div>
+    </div>
+    <div class="cell">
+      <div class="k">Discipline</div>
+      <div class="v">AI product design, ML collaboration, trust &amp; uncertainty, agentic UX</div>
+    </div>
+    <div class="cell">
+      <div class="k">Context</div>
+      <div class="v">Enterprise B2B SaaS platform</div>
+    </div>
+    <div class="cell">
+      <div class="k">Threads in this study</div>
+      <div class="v">03</div>
+    </div>
+  </section>
   </div>
   <div class="case-header-right">
     <div class="case-hero-image">
@@ -472,234 +569,253 @@
         <text x="182" y="432" text-anchor="end" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" letter-spacing="1.2">INSIGHTS</text>
         <!-- Corner labels -->
         <text x="36" y="60" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">AI AGENT</text>
-        <text x="564" y="60" text-anchor="end" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">A &#8212; 3</text>
+        <text x="564" y="60" text-anchor="end" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">A-3</text>
       </svg>
     </div>
   </div>
 </header>
 
-<!-- META STRIP -->
-<section class="case-meta-strip">
-  <div class="cell">
-    <div class="k">Role</div>
-    <div class="v">Lead Product Designer</div>
-  </div>
-  <div class="cell">
-    <div class="k">Discipline</div>
-    <div class="v">AI product design, ML collaboration, trust &amp; uncertainty, agentic UX</div>
-  </div>
-  <div class="cell">
-    <div class="k">Context</div>
-    <div class="v">Enterprise B2B SaaS platform</div>
-  </div>
-  <div class="cell">
-    <div class="k">Threads in this study</div>
-    <div class="v">03</div>
-  </div>
-</section>
-
 <!-- FLOWS -->
 <div class="flows">
 
   <!-- THREAD 01 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 01 / 03</div>
       <div class="flow-name">Surfacing model outputs</div>
-      <div class="flow-tags">
-        <span>AI output design</span>
-        <span>Confidence &amp; uncertainty</span>
-        <span>Trust calibration</span>
-        <span>Progressive disclosure</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Confidence-tiered disclosure of model outputs">
-          <defs><marker id="il-caa-0" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <text x="150" y="12" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">MODEL OUTPUT</text>
-          <text x="24" y="52" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">HIGH</text>
-          <rect x="66" y="42" width="58" height="18" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <text x="24" y="104" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">MED</text>
-          <rect x="66" y="94" width="58" height="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="134" y1="103" x2="196" y2="103" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="134" y1="99" x2="134" y2="107" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="196" y1="99" x2="196" y2="107" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="165" cy="103" r="2.5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <text x="24" y="156" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">LOW</text>
-          <rect x="66" y="146" width="58" height="18" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
-          <line x1="134" y1="155" x2="256" y2="155" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="134" y1="151" x2="134" y2="159" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="256" y1="151" x2="256" y2="159" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="195" cy="155" r="2.5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-        </svg>
-        <div class="illo-cap">Fig. — Confidence sets the disclosure</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">Confidence tiers built into the component system</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Statistical jargon; uncertainty framed in workflow terms</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Confidence threshold map shared by design and ML</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>Enterprise users needed to act on data the model produced, but its outputs carried uncertainty a traditional dashboard would hide. A bare number creates false precision; the full distribution overwhelms. Both failures cost something: overconfidence erodes trust when the model is wrong, and constant hedging makes the output useless.</p>
+        <p>Enterprise users had to act on model outputs carrying uncertainty a traditional dashboard would hide. A bare number creates false precision that erodes trust when the model is wrong; the full distribution overwhelms, and constant hedging makes the output useless.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I worked with the ML team to separate what the model actually knew from what it was estimating, and used that to design a tiered disclosure system. High-confidence outputs surfaced cleanly. Lower-confidence ones carried a visible signal built into the component, with a path to understand why. I mapped the thresholds with ML engineers so the UI's confidence language matched what the model's scores actually meant.</p>
-        <p>The goal was calibrated trust: users believe the model when it's right and have enough signal to push back when it's wrong.</p>
+        <p>With the ML team, I separated what the model knew from what it estimated and designed a tiered disclosure system: high-confidence outputs surface cleanly, lower-confidence ones carry a visible signal built into the component, with a path to understand why. I mapped the thresholds with ML engineers so the UI's confidence language matched what the model's scores actually meant.</p>
+        <p>The goal was calibrated trust: users believe the model when it's right and can push back when it's wrong.</p>
       </div>
       <div class="flow-quote">
         Hide the uncertainty and the product feels broken the first time the model is wrong and users realize they were never told.
         <span class="attr">Design principle, AI output surfaces</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">3</div><div class="d">Confidence tiers built into the component system itself</div></div>
-        <div class="stat"><div class="n">0</div><div class="d">Statistical jargon in user-facing copy — all uncertainty framed in workflow terms</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">Shared confidence threshold map between design and ML — same language on both sides</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A tiered disclosure system: high-confidence model outputs surface cleanly, lower confidence carries a visible signal with a path to understand why">
+        <!-- FIG. Confidence sets the disclosure -->
+        <defs><marker id="il-ai1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <rect x="574" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="589.96" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SURFACES CLEANLY</text>
+        <rect x="698" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="713.88" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">VISIBLE SIGNAL</text>
+        <rect x="811" y="15" width="12" height="9" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="826.56" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">EXPLAIN PATH</text>
+        <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT THE MODEL KNOWS</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THRESHOLDS MAPPED WITH ML ENGINEERS</text>
+        <line x1="80" y1="100" x2="80" y2="330" stroke="#3a3a3a" stroke-width="10"/>
+        <line x1="80" y1="100" x2="80" y2="176" stroke="#74a58c" stroke-width="10"/>
+        <line x1="80" y1="176" x2="80" y2="252" stroke="#7ea7c9" stroke-width="10"/>
+        <line x1="80" y1="252" x2="80" y2="330" stroke="#d99f43" stroke-width="10"/>
+        <text x="104" y="140" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">HIGH CONFIDENCE</text>
+        <text x="104" y="216" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">MEDIUM</text>
+        <text x="104" y="292" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">LOW</text>
+        <text x="104" y="154" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">KNOWN, NOT ESTIMATED</text>
+        <text x="104" y="230" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">ESTIMATED</text>
+        <text x="104" y="306" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">UNCERTAIN</text>
+        <rect x="356" y="44" width="540" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="368" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT THE USER SEES</text>
+        <text x="368" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">NO FALSE PRECISION, NO CONSTANT HEDGING</text>
+        <rect x="444" y="96" width="428" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="658.0" y="124.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SURFACES CLEANLY</text>
+        <text x="658.0" y="138.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">A NUMBER THE USER CAN ACT ON</text>
+        <line x1="324" y1="140" x2="440" y2="127" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
+        <rect x="444" y="184" width="428" height="62" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="658.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">VISIBLE SIGNAL, BUILT IN</text>
+        <text x="658.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">THE COMPONENT SHOWS ITS UNCERTAINTY</text>
+        <line x1="324" y1="216" x2="440" y2="215" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
+        <rect x="444" y="272" width="428" height="62" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="658.0" y="300.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">A PATH TO UNDERSTAND WHY</text>
+        <text x="658.0" y="314.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">DISCLOSURE ON DEMAND, NEVER OVERSTATED</text>
+        <line x1="324" y1="292" x2="440" y2="303" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
+        </svg>
+      <div class="illo-cap">Fig. Confidence sets the disclosure: clean when known, signaled when estimated, explained on demand</div>
     </div>
   </section>
 
   <!-- THREAD 02 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 02 / 03</div>
       <div class="flow-name">Designing the agent</div>
-      <div class="flow-tags">
-        <span>Persistent AI companion</span>
-        <span>Agentic UX</span>
-        <span>Journey-aware context</span>
-        <span>Interruptibility</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An aware agent that follows the user across the whole journey">
-          <defs><marker id="il-caa-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <circle cx="150" cy="42" r="9" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <text x="150" y="28" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">AGENT</text>
-          <line x1="40" y1="118" x2="262" y2="118" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="40" cy="118" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="114" cy="118" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="188" cy="118" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="262" cy="118" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M146 50 C 110 70 70 95 44 112" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#il-caa-1)"/>
-          <path d="M150 51 C 140 75 122 98 116 112" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#il-caa-1)"/>
-          <path d="M150 51 C 162 78 182 98 188 112" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#il-caa-1)"/>
-          <path d="M154 50 C 200 68 240 92 260 112" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#il-caa-1)"/>
-          <text x="151" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">USER JOURNEY</text>
-        </svg>
-        <div class="illo-cap">Fig. — One agent across the journey</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">5+</div><div class="d">Journey touchpoints with deliberately designed agent presence</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Modes: ambient (low footprint), engaged (full context surface)</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Unconfirmed assumptions surfaced at high-stakes moments</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>A one-off AI widget is easy. An agent that follows a user through their entire session — aware of where they came from, what they're trying to do, what they've already tried — is a different problem entirely. Most enterprise AI surfaces are stateless: ask a question, get an answer, context resets. This agent had to hold context across the journey and use it to beat asking from scratch.</p>
+        <p>A one-off AI widget is easy; an agent that follows a user through a whole session, aware of where they came from, what they're trying to do, and what they've already tried, is a different problem entirely. Most enterprise AI surfaces are stateless, so this agent had to hold context across the journey and use it to beat asking from scratch.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I mapped the journey through the platform and found the moments where an aware agent would cut real friction: transitions between tools, points of failure or confusion, and decisions where users typically left to look something up elsewhere. I made the agent ambient by default and interruptible on demand — quiet until you need it, then immediately there.</p>
-        <p>The key question was what the agent should know versus what it should ask. I worked that through with product and ML: what context the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive. The agent's personality followed from those limits — confident where it had signal, honest where it didn't.</p>
+        <p>I mapped the journey through the platform and found where an aware agent would cut real friction: transitions between tools, points of failure or confusion, and decisions that sent users elsewhere to look something up. I made the agent ambient by default and interruptible on demand, quiet until needed, then immediately there.</p>
+        <p>With product and ML, I worked through what the agent should know versus ask, what context the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive; the agent's personality followed those limits, confident where it had signal, honest where it didn't.</p>
       </div>
       <div class="flow-quote">
         An agent that knows where you are but doesn't know what you're trying to do is still just a search box with extra steps.
         <span class="attr">Design constraint, agentic context model</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">5+</div><div class="d">Journey touchpoints where agent presence was deliberately designed</div></div>
-        <div class="stat"><div class="n">2</div><div class="d">Modes: ambient (low footprint) and engaged (full context surface)</div></div>
-        <div class="stat"><div class="n">0</div><div class="d">Assumed context passed to user without confirmation at high-stakes moments</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="One agent following the user across the whole journey, ambient by default and interruptible on demand, carrying context forward at every step">
+        <!-- FIG. One agent across the journey -->
+        <defs><marker id="il-ai2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <circle cx="721.74" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="729.74" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">FRICTION POINT</text>
+        <rect x="827" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="843.4200000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">THE AGENT</text>
+        <rect x="24" y="44" width="872" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE AGENT ACROSS THE JOURNEY</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">AMBIENT BY DEFAULT, INTERRUPTIBLE ON DEMAND, QUIET UNTIL NEEDED</text>
+        <line x1="80" y1="140" x2="840" y2="140" stroke="#3a3a3a" stroke-width="1"/>
+        <rect x="107.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="120" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">TOOL A</text>
+        <rect x="287.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="300" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">TRANSITION</text>
+        <circle cx="300" cy="158" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <rect x="467.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="480" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">TOOL B</text>
+        <rect x="647.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="660" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">POINT OF CONFUSION</text>
+        <circle cx="660" cy="158" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <rect x="803.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="816" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">DECISION</text>
+        <text x="300" y="176" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">WHERE FRICTION LIVED</text>
+        <text x="660" y="176" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">WHERE USERS WENT ELSEWHERE</text>
+        <rect x="80" y="220" width="760" height="66" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="460" y="246" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE AGENT</text>
+        <text x="460" y="262" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">AWARE OF WHERE YOU CAME FROM, WHAT YOU ARE DOING, WHAT YOU HAVE TRIED</text>
+        <path d="M120 146 L120 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
+        <path d="M300 146 L300 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
+        <path d="M480 146 L480 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
+        <path d="M660 146 L660 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
+        <path d="M816 146 L816 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
+        <path d="M120 300 L816 300" fill="none" stroke="#74a58c" marker-end="url(#il-ai2-g)"/>
+        <text x="468" y="316" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#74a58c" stroke="none">CONTEXT CARRIED FORWARD, NEVER ASKED FROM SCRATCH</text>
+        </svg>
+      <div class="illo-cap">Fig. One agent across the journey, carrying context forward at every step</div>
     </div>
   </section>
 
   <!-- THREAD 03 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 03 / 03</div>
       <div class="flow-name">Working with ML constraints</div>
-      <div class="flow-tags">
-        <span>ML collaboration</span>
-        <span>Design within model limits</span>
-        <span>Explainability</span>
-        <span>Graceful degradation</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A graded vocabulary for what the model can explain">
-          <defs><marker id="il-caa-2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <rect x="40" y="54" width="86" height="64" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          <text x="83" y="82" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="15" letter-spacing="1.5" fill="currentColor" font-style="italic">?</text>
-          <text x="83" y="104" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor">MODEL</text>
-          <path d="M126 86 L168 86" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-caa-2)"/>
-          <text x="150" y="78" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">OUTPUT</text>
-          <text x="232" y="46" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">EXPLAINABILITY</text>
-          <rect x="190" y="104" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="214" y="86" width="16" height="34" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
-          <rect x="238" y="66" width="16" height="54" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="150" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">GRADED EXPLANATION</text>
-        </svg>
-        <div class="illo-cap">Fig. — Graded by what is explainable</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">4</div><div class="d">Explainability tiers mapped from ML capability to design language</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Fully designed degraded states: unavailable, low-signal, out-of-distribution</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Shared ML-design map of product promises and limits</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>Designing AI surfaces brings a constraint most product work never sees: the system's behavior isn't fully predictable, and the reasons for its decisions can't always be surfaced. Users want to know why. The model doesn't always have a clean answer. The product has to hold that gap without making the model or the user look bad.</p>
+        <p>AI surfaces bring a constraint most product work never sees: the system's behavior isn't fully predictable, and the reasons for its decisions can't always be surfaced. Users want to know why, the model doesn't always have a clean answer, and the product has to hold that gap without making either look bad.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I ran working sessions with ML engineers to pin down exactly what the model could and couldn't explain about its own outputs. From that I built a design vocabulary for explainability: what level of explanation each output type allowed, how to communicate it honestly, and how to handle the cases where no explanation could be offered.</p>
-        <p>I also designed for graceful degradation: the states where the model was unavailable, underconfident, or operating outside its training distribution. Each got its own states, copy, and recovery paths. A silent model failure is a trust problem; a well-handled one is a product moment.</p>
+        <p>I ran working sessions with ML engineers to pin down exactly what the model could and couldn't explain about its own outputs, then built a design vocabulary for explainability: what level of explanation each output type allowed, how to communicate it honestly, and how to handle cases where no explanation could be offered.</p>
+        <p>I also designed graceful degradation for the unavailable, underconfident, and out-of-distribution states, each with its own states, copy, and recovery paths. A silent model failure is a trust problem; a well-handled one is a product moment.</p>
       </div>
       <div class="flow-quote">
-        If the model can't explain it, the product still has to say something. "I don't know" is a valid answer — but it has to be designed.
+        If the model can't explain it, the product still has to say something. "I don't know" is a valid answer, but it has to be designed.
         <span class="attr">Design principle, explainability systems</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">4</div><div class="d">Explainability tiers mapped from ML capability to design language</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Degraded states given full designs of their own: unavailable, low-signal, out-of-distribution</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">Shared ML-design working model for what the product can and cannot promise</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A graded design vocabulary for explainability: full explanations where the model has them, honest partial ones where it does not, and a plain statement when none exists">
+        <!-- FIG. Graded by what is explainable -->
+        <defs><marker id="il-ai3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai3-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <rect x="726" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="741.7" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">FULL</text>
+        <rect x="782" y="15" width="12" height="9" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="798.1800000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">PARTIAL</text>
+        <rect x="856" y="15" width="12" height="9" stroke="#4a4a4a" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="871.5200000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">NONE</text>
+        <rect x="24" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT THE MODEL CAN EXPLAIN</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">PINNED DOWN IN WORKING SESSIONS WITH ML ENGINEERS</text>
+        <rect x="48" y="96" width="372" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="234.0" y="124.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CAN EXPLAIN FULLY</text>
+        <text x="234.0" y="138.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">A CLEAN REASON EXISTS</text>
+        <rect x="48" y="184" width="372" height="62" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="234.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CAN EXPLAIN PARTLY</text>
+        <text x="234.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">SIGNALS, NOT A COMPLETE ANSWER</text>
+        <rect x="48" y="272" width="372" height="62" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="234.0" y="300.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CANNOT EXPLAIN</text>
+        <text x="234.0" y="314.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">THE REASON IS NOT SURFACEABLE</text>
+        <circle cx="404" cy="303" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="444" y1="203" x2="468" y2="203" marker-end="url(#il-ai3)"/>
+        <rect x="476" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="488" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE DESIGN VOCABULARY</text>
+        <text x="488" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THE LANGUAGE NEVER CLAIMS MORE THAN THE MODEL KNOWS</text>
+        <rect x="500" y="96" width="372" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="516" y="120" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">THE FULL WHY, SHOWN</text>
+        <line x1="516" y1="136" x2="696" y2="136" stroke="#74a58c" stroke-width="4"/>
+        <line x1="516" y1="144" x2="656" y2="144" stroke="#3a3a3a" stroke-width="4"/>
+        <rect x="500" y="184" width="372" height="62" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="516" y="208" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">AN HONEST PARTIAL ANSWER</text>
+        <line x1="516" y1="224" x2="628" y2="224" stroke="#d99f43" stroke-width="4"/>
+        <line x1="516" y1="232" x2="596" y2="232" stroke="#3a3a3a" stroke-width="4"/>
+        <rect x="500" y="272" width="372" height="62" rx="3" fill="#141414" stroke="#8c8c8c"/>
+        <text x="516" y="296" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">SAID PLAINLY: NO EXPLANATION HERE</text>
+        <text x="516" y="316" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">USERS TRUST THE GAP MORE THAN A GUESS</text>
+        <line x1="420" y1="127" x2="496" y2="127" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
+        <line x1="420" y1="215" x2="496" y2="215" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
+        <line x1="420" y1="303" x2="496" y2="303" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
+        </svg>
+      <div class="illo-cap">Fig. A graded vocabulary: the language never claims more than the model knows</div>
     </div>
   </section>
 
 </div>
-
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div><h3>DANI WEIDNER</h3></div>
     <div class="col">
-      <a href="dani-website-v2.html">HOME</a>
-      <a href="dani-website-v2.html#cases">CASE STUDIES</a>
+      <a href="/">HOME</a>
+      <a href="/#cases">CASE STUDIES</a>
     </div>
     <div class="col">
-      <a href="dani-about-v2.html">ABOUT</a>
-      <a href="dani-website-v2.html#contact">CONTACT</a>
+      <a href="/about/">ABOUT</a>
+      <a href="/#contact">CONTACT</a>
     </div>
     <div class="col right">
       <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
       <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
-      <a href="dani-cv.html">CV</a>
+      <a href="/cv/">CV</a>
     </div>
   </div>
 
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-    </div>
-  </div>
 </footer>
 
 </body>
