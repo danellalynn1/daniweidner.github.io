@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dani Weidner — Research</title>
+<title>Dani Weidner / Research</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -196,9 +196,9 @@
   }
   .flow-tags {
     display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+    margin-top: 0.9rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.04em;
@@ -206,8 +206,13 @@
     color: var(--ink-soft);
     line-height: 1.6;
   }
+  .flow-tags span:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.65rem;
+    opacity: 0.35;
+  }
 
-  /* Spot illustration under the thread label — newspaper line-art */
+  /* Spot illustration under the thread label: newspaper line-art */
   .flow-illo {
     margin-top: 2rem;
     padding-top: 1.6rem;
@@ -227,6 +232,79 @@
     text-transform: uppercase;
     color: var(--ink-soft);
     margin-top: 0.9rem;
+  }
+
+  /* Wide flow-board figure inside the article column */
+  .flow-figure {
+    grid-column: 1 / -1;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-figure svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-figure .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  .flow-left .flow-outcomes {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 0.6rem;
+    padding-top: 1.4rem;
+  }
+  .flow-left .flow-outcomes .stat {
+    display: grid;
+    grid-template-columns: minmax(3.4rem, auto) 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+  }
+  .flow-left .flow-outcomes .stat .n {
+    font-size: 1.45rem;
+    margin-bottom: 0;
+  }
+  .flow-left .flow-outcomes .stat .d {
+    font-size: 0.66rem;
+  }
+
+  .flow--board {
+    padding-bottom: 2rem;
+  }
+
+  /* Placeholder slot for a forthcoming full-width illustration */
+  .fig-slot {
+    background: #0a0a0a;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fig-slot span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #5c5c5c;
+    border: 1px dashed #3a3a3a;
+    padding: 0.9rem 1.4rem;
+  }
+
+  /* Meta strip inside the hero's left column */
+  .case-header-left .case-meta-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem 2rem;
+    padding: 2rem 0 0;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--ink-faint);
+    border-bottom: none;
   }
 
   .flow-right {
@@ -316,7 +394,7 @@
   .case-cta .arrow { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; }
 
   /* === FOOTER === */
-  footer { padding: 6rem 0 0; overflow: hidden; }
+  footer { padding: 4rem 0 0; overflow: hidden; border-top: 1px solid var(--ink); margin-top: 2rem; }
   .footer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -442,10 +520,10 @@
 <header class="case-header">
   <div class="case-header-left">
   <div class="case-eyebrow">
-    <span>A &mdash; 4 / CASE STUDY</span>
+    <span>A-4 / CASE STUDY</span>
     <div class="eyebrow-nav">
       <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
-      <a class="next" href="/work/validation/">NEXT: A &mdash; 5 / VALIDATION &rarr;</a>
+      <a class="next" href="/work/validation/">NEXT: A-5 / VALIDATION &rarr;</a>
     </div>
   </div>
 
@@ -455,268 +533,397 @@
     <div class="hs-line">A LINE IS</div>
     <div class="hs-line b-line"><span class="b">DRAWN</span></div>
   </div>
-    <p class="case-header-body">I run the full research lifecycle myself: writing the brief, designing the study, recruiting and screening participants, moderating sessions, and turning raw transcripts into deliverables a team can act on. Four threads here shaped real product direction, from foundational discovery to multi-group usability testing to the operations that let several studies run at once.</p>
+    <p class="case-header-body">I run the full research lifecycle myself: brief, study design, recruiting and screening, moderation, and synthesis into deliverables a team can act on. Four threads here shaped real product direction, from foundational discovery to multi-group usability testing to the operations that let several studies run at once.</p>
+
+    <section class="case-meta-strip">
+    <div class="cell">
+      <div class="k">Role</div>
+      <div class="v">Lead Product Designer, research DRI</div>
+    </div>
+    <div class="cell">
+      <div class="k">Discipline</div>
+      <div class="v">Discovery, usability testing, synthesis, research ops</div>
+    </div>
+    <div class="cell">
+      <div class="k">Context</div>
+      <div class="v">Enterprise B2B SaaS platform</div>
+    </div>
+    <div class="cell">
+      <div class="k">Threads in this study</div>
+      <div class="v">04</div>
+    </div>
+  </section>
   </div>
   <div class="case-header-right">
     <div class="case-hero-image" style="background-color: #0a0a0a; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgODAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjgwMCI+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhcnJvdyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNiIgbWFya2VySGVpZ2h0PSI2IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+CiAgICAgIDxwYXRoIGQ9Ik0yIDEgTDggNSBMMiA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvbWFya2VyPgogIDwvZGVmcz4KCiAgPCEtLSBiYWNrZ3JvdW5kOiBuZXV0cmFsIG5lYXItYmxhY2sgLS0+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwMCIgaGVpZ2h0PSI4MDAiIGZpbGw9IiMwYTBhMGEiLz4KCiAgPCEtLSBzdWJ0bGUgbmV1dHJhbCBncmlkIC0tPgogIDxnIHN0cm9rZT0iIzFjMWMxYyIgc3Ryb2tlLXdpZHRoPSIxIj4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMjQwIiB4Mj0iNjAwIiB5Mj0iMjQwIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjQ0MCIgeDI9IjYwMCIgeTI9IjQ0MCIvPgogICAgPGxpbmUgeDE9IjAiIHkxPSI2NDAiIHgyPSI2MDAiIHkyPSI2NDAiLz4KICA8L2c+CgogIDwhLS0gPT09PT09PT09PT09IENPTk5FQ1RPUlMgPT09PT09PT09PT09IC0tPgogIDwhLS0gdGhyZWUgaW5wdXRzIGNvbnZlcmdlIGludG8gc3ludGhlc2lzIC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiPgogICAgPHBhdGggZD0iTTEzMCAxNjggTDEzMCAyNDYgTDI5MiAyNDYgTDI5MiAyOTgiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgICA8cGF0aCBkPSJNMzAwIDE2OCBMMzAwIDI5OCIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICAgIDxwYXRoIGQ9Ik00NzAgMTY4IEw0NzAgMjQ2IEwzMDggMjQ2IEwzMDggMjk4IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogIDwvZz4KCiAgPCEtLSBzeW50aGVzaXMgZmFucyBvdXQgdG8gdGhyZWUgdGhlbWVzIC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjYiPgogICAgPHBhdGggZD0iTTMwMCAzODIgTDMwMCA0MzggTDEzMCA0MzggTDEzMCA0ODIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgICA8cGF0aCBkPSJNMzAwIDM4MiBMMzAwIDQ4MiIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICAgIDxwYXRoIGQ9Ik0zMDAgMzgyIEwzMDAgNDM4IEw0NzAgNDM4IEw0NzAgNDgyIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogIDwvZz4KCiAgPCEtLSB0aHJlZSB0aGVtZXMgY29udmVyZ2UgaW50byBkaXJlY3Rpb24gLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNiI+CiAgICA8cGF0aCBkPSJNMTMwIDU2MiBMMTMwIDYyNiBMMjkyIDYyNiBMMjkyIDY2NiIgbWFya2VyLWVuZD0idXJsKCNhcnJvdykiLz4KICAgIDxwYXRoIGQ9Ik0zMDAgNTYyIEwzMDAgNjY2IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIvPgogICAgPHBhdGggZD0iTTQ3MCA1NjIgTDQ3MCA2MjYgTDMwOCA2MjYgTDMwOCA2NjYiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgPC9nPgoKICA8IS0tID09PT09PT09PT09PSBOT0RFUyA9PT09PT09PT09PT0gLS0+CiAgPCEtLSBJTlBVVCBHUk9VUCAxOiBJTlRFUk5BTCAtLT4KICA8Zz4KICAgIDxyZWN0IHg9IjU2IiB5PSIxMDQiIHdpZHRoPSIxNDgiIGhlaWdodD0iNjQiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSIxMzAiIHk9IjEzMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNTAwIj5JbnRlcm5hbDwvdGV4dD4KICAgIDx0ZXh0IHg9IjEzMCIgeT0iMTUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGxldHRlci1zcGFjaW5nPSIwLjgiPk1PREVSQVRFRDwvdGV4dD4KICA8L2c+CiAgPCEtLSBJTlBVVCBHUk9VUCAyOiBDVVNUT01FUlMgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSIyMjYiIHk9IjEwNCIgd2lkdGg9IjE0OCIgaGVpZ2h0PSI2NCIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iMTMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI1MDAiPkN1c3RvbWVyczwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iMTUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGxldHRlci1zcGFjaW5nPSIwLjgiPlVOTU9ERVJBVEVEPC90ZXh0PgogIDwvZz4KICA8IS0tIElOUFVUIEdST1VQIDM6IEVYVEVSTkFMIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMzk2IiB5PSIxMDQiIHdpZHRoPSIxNDgiIGhlaWdodD0iNjQiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSI0NzAiIHk9IjEzMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNTAwIj5FeHRlcm5hbDwvdGV4dD4KICAgIDx0ZXh0IHg9IjQ3MCIgeT0iMTUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjkiIGxldHRlci1zcGFjaW5nPSIwLjgiPlVOTU9ERVJBVEVEPC90ZXh0PgogIDwvZz4KCiAgPCEtLSBTWU5USEVTSVMgKGNvbnZlcmdlbmNlIG5vZGUpIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMTgwIiB5PSIyOTgiIHdpZHRoPSIyNDAiIGhlaWdodD0iODQiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgICA8dGV4dCB4PSIzMDAiIHk9IjMzNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iNTAwIiBmb250LXN0eWxlPSJpdGFsaWMiPlN5bnRoZXNpczwvdGV4dD4KICAgIDx0ZXh0IHg9IjMwMCIgeT0iMzU3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBsZXR0ZXItc3BhY2luZz0iMSI+Q1JPU1MtR1JPVVAgQUZGSU5JVFk8L3RleHQ+CiAgPC9nPgoKICA8IS0tIFRIRU1FIE5PREVTIChlbWVyZ2VudCBmaW5kaW5ncykgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSI1NiIgeT0iNDgyIiB3aWR0aD0iMTQ4IiBoZWlnaHQ9IjgwIiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHRleHQgeD0iMTMwIiB5PSI1MTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCI+RXJyb3I8L3RleHQ+CiAgICA8dGV4dCB4PSIxMzAiIHk9IjUzNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNTAwIj5SZWNvdmVyeTwvdGV4dD4KICAgIDx0ZXh0IHg9IjEzMCIgeT0iNTUzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGM4YzhjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjgiIGxldHRlci1zcGFjaW5nPSIwLjYiPlRIRU1FIDAxPC90ZXh0PgogIDwvZz4KICA8Zz4KICAgIDxyZWN0IHg9IjIyNiIgeT0iNDgyIiB3aWR0aD0iMTQ4IiBoZWlnaHQ9IjgwIiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHRleHQgeD0iMzAwIiB5PSI1MTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCI+TWVudGFsPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSI1MzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCI+TW9kZWxzPC90ZXh0PgogICAgPHRleHQgeD0iMzAwIiB5PSI1NTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4YzhjOGMiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iOCIgbGV0dGVyLXNwYWNpbmc9IjAuNiI+VEhFTUUgMDI8L3RleHQ+CiAgPC9nPgogIDxnPgogICAgPHJlY3QgeD0iMzk2IiB5PSI0ODIiIHdpZHRoPSIxNDgiIGhlaWdodD0iODAiIHJ4PSI4IiBmaWxsPSIjMTQxNDE0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS40Ii8+CiAgICA8dGV4dCB4PSI0NzAiIHk9IjUxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IidGcmF1bmNlcycsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNTAwIj5Xb3JrLTwvdGV4dD4KICAgIDx0ZXh0IHg9IjQ3MCIgeT0iNTM0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iJ0ZyYXVuY2VzJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI1MDAiPmFyb3VuZHM8L3RleHQ+CiAgICA8dGV4dCB4PSI0NzAiIHk9IjU1MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhjOGM4YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSI4IiBsZXR0ZXItc3BhY2luZz0iMC42Ij5USEVNRSAwMzwvdGV4dD4KICA8L2c+CgogIDwhLS0gRElSRUNUSU9OIChvdXRwdXQpIC0tPgogIDxnPgogICAgPHJlY3QgeD0iMjAwIiB5PSI2NjYiIHdpZHRoPSIyMDAiIGhlaWdodD0iNTYiIHJ4PSIyOCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNiIvPgogICAgPHRleHQgeD0iMzAwIiB5PSI3MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwYTBhMGEiIGZvbnQtZmFtaWx5PSInRnJhdW5jZXMnLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjUwMCI+RGlyZWN0aW9uPC90ZXh0PgogIDwvZz4KCiAgPCEtLSBjb3JuZXIgbGFiZWxzIC0tPgogIDx0ZXh0IHg9IjM2IiB5PSI2MCIgZmlsbD0iIzVjNWM1YyIgZm9udC1mYW1pbHk9IidKZXRCcmFpbnMgTW9ubycsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+U1lOVEhFU0lTIE1BUDwvdGV4dD4KICA8dGV4dCB4PSI1NjQiIHk9IjYwIiB0ZXh0LWFuY2hvcj0iZW5kIiBmaWxsPSIjNWM1YzVjIiBmb250LWZhbWlseT0iJ0pldEJyYWlucyBNb25vJywgbW9ub3NwYWNlIiBmb250LXNpemU9IjExIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5BIOKAlCA0PC90ZXh0Pgo8L3N2Zz4K'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
   </div>
 </header>
 
-
-<!-- META STRIP -->
-<section class="case-meta-strip">
-  <div class="cell">
-    <div class="k">Role</div>
-    <div class="v">Lead Product Designer, research DRI</div>
-  </div>
-  <div class="cell">
-    <div class="k">Discipline</div>
-    <div class="v">Discovery, usability testing, synthesis, research ops</div>
-  </div>
-  <div class="cell">
-    <div class="k">Context</div>
-    <div class="v">Enterprise B2B SaaS platform</div>
-  </div>
-  <div class="cell">
-    <div class="k">Threads in this study</div>
-    <div class="v">04</div>
-  </div>
-</section>
-
 <!-- FLOWS -->
 <div class="flows">
 
   <!-- THREAD 01 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 01 / 04</div>
       <div class="flow-name">Multi-group usability study</div>
-      <div class="flow-tags">
-        <span>Moderated + unmoderated</span>
-        <span>Three user groups</span>
-        <span>Cross-group synthesis</span>
-        <span>Full lifecycle</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three user groups converging into one synthesis">
-          <defs><marker id="il-cr-0" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <rect x="14" y="26" width="78" height="40" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="111" y="26" width="78" height="40" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="208" y="26" width="78" height="40" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="53" y="50" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="0.5" fill="currentColor">INTERNAL</text>
-          <text x="150" y="50" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="0.5" fill="currentColor">CUSTOMERS</text>
-          <text x="247" y="50" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="0.5" fill="currentColor">MARKETERS</text>
-          <line x1="53" y1="66" x2="53" y2="84" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="247" y1="66" x2="247" y2="84" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="53" y1="84" x2="247" y2="84" stroke="currentColor" stroke-width="1.4"/>
-          <line x1="150" y1="66" x2="150" y2="84" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M150 84 L150 108" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-0)"/>
-          <rect x="95" y="110" width="110" height="44" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          <text x="150" y="137" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5" fill="currentColor">SYNTHESIS</text>
-        </svg>
-        <div class="illo-cap">Fig. — Three groups, one signal</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">User groups tested, moderated and unmoderated</div></div>
+        <div class="stat"><div class="n">2.9/5</div><div class="d">Average untrained confidence, the metric that reframed everything</div></div>
+        <div class="stat"><div class="n">5/7</div><div class="d">Named error recovery top blocker, prioritized before re-test</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>A new bulk creation feature was in prototype, but nobody knew whether it worked for the people who'd use it daily. Engineering wanted evidence before committing. One user group wouldn't tell the whole story; internal experts, paying customers, and external marketers each bring different context.</p>
+        <p>A new bulk creation feature was in prototype, and engineering wanted evidence it worked before committing. One user group wouldn't tell the whole story: internal experts, paying customers, and external marketers each bring different context.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I ran usability testing across three groups: internal team members moderated, current customers unmoderated, external growth marketers unmoderated. I wrote the screeners, recruited participants, moderated the think-aloud sessions, and built the unmoderated tests. Then I synthesized everything into one cross-group view, separating what was universal from what was group-specific and scoring severity by product familiarity. The findings reshaped the plan: we cut a complex in-platform editing approach once research showed it was hard to use and rarely needed, and shipped the simpler, higher-value path first.</p>
+        <p>I ran usability testing across three groups, internal team members moderated, current customers and external growth marketers unmoderated, writing the screeners, recruiting participants, moderating the think-aloud sessions, and building the unmoderated tests myself. I synthesized everything into one cross-group view, separating universal findings from group-specific ones and scoring severity by product familiarity. The findings reshaped the plan: we cut a complex in-platform editing approach that proved hard to use and rarely needed, and shipped the simpler, higher-value path first.</p>
       </div>
       <div class="flow-quote">
-        The concept landed across every group. Confusion clustered in a few specific moments, and severity tracked how familiar each group was with the product.
-        <span class="attr">Cross-group research synthesis</span>
+        The concept landed in every group. Confusion clustered in a few moments, and severity tracked product familiarity.
+        <span class="attr">Cross-group synthesis</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">3</div><div class="d">User groups, each tested with a matched method: moderated and unmoderated</div></div>
-        <div class="stat"><div class="n">2.9/5</div><div class="d">Average confidence without training, the metric that reframed the work</div></div>
-        <div class="stat"><div class="n">5/7</div><div class="d">Named error recovery the top blocker, prioritized before re-test</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Three user groups tested with matched methods, synthesized into one cross-group view that reshaped the plan: a complex editing approach cut, the simpler path shipped first">
+        <!-- FIG. Three groups, one signal -->
+        <defs><marker id="il-res1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-res1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <rect x="683" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="698.74" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">MODERATED</text>
+        <rect x="767" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="783.32" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">UNMODERATED</text>
+        <circle cx="868.1400000000001" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="876.1400000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">CUT</text>
+        <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THREE USER GROUPS</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SAME PROTOTYPE, MATCHED METHODS</text>
+        <rect x="48" y="96" width="252" height="52" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="174.0" y="119.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">INTERNAL TEAM</text>
+        <text x="174.0" y="133.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">MODERATED THINK-ALOUD</text>
+        <rect x="48" y="168" width="252" height="52" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="174.0" y="191.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CURRENT CUSTOMERS</text>
+        <text x="174.0" y="205.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">UNMODERATED TASKS</text>
+        <rect x="48" y="240" width="252" height="52" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="174.0" y="263.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">GROWTH MARKETERS</text>
+        <text x="174.0" y="277.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">UNMODERATED TASKS</text>
+        <path d="M300 122 L336 122 L336 203" fill="none"/>
+        <path d="M300 194 L336 194 L336 203" fill="none"/>
+        <path d="M300 266 L336 266 L336 203" fill="none"/>
+        <line x1="336" y1="203" x2="352" y2="203" marker-end="url(#il-res1)"/>
+        <path d="M370 190 L383 203 L370 216 L357 203 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="370" y="230" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">SYNTHESIZE</text>
+        <line x1="383" y1="203" x2="400" y2="203" marker-end="url(#il-res1)"/>
+        <rect x="408" y="44" width="488" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="420" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE CROSS-GROUP VIEW</text>
+        <text x="420" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SEVERITY SCORED BY PRODUCT FAMILIARITY</text>
+        <rect x="432" y="96" width="212" height="46" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="538.0" y="116.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">UNIVERSAL FINDINGS</text>
+        <text x="538.0" y="130.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">TRUE FOR EVERY GROUP</text>
+        <rect x="668" y="96" width="204" height="46" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="770.0" y="116.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">GROUP-SPECIFIC</text>
+        <text x="770.0" y="130.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">TRUE FOR SOME</text>
+        <path d="M538 142 L538 168 L640 168 L640 186" fill="none"/>
+        <path d="M770 142 L770 168 L640 168" fill="none"/>
+        <line x1="640" y1="168" x2="640" y2="186" marker-end="url(#il-res1)"/>
+        <path d="M640 191 L653 204 L640 217 L627 204 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="640" y="236" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">RESHAPE THE PLAN</text>
+        <path d="M653 204 L760 204 L760 250" fill="none" stroke="#74a58c" marker-end="url(#il-res1-g)"/>
+        <rect x="676" y="254" width="196" height="50" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="774.0" y="276.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SIMPLER PATH</text>
+        <text x="774.0" y="290.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">SHIPPED FIRST</text>
+        <path d="M627 204 L520 204 L520 250" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-res1)"/>
+        <rect x="432" y="254" width="176" height="50" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="520.0" y="276.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">IN-PLATFORM EDITING</text>
+        <text x="520.0" y="290.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">CUT: HARD TO USE, RARELY NEEDED</text>
+        <circle cx="520" cy="250" r="2.5" fill="#cf6a5c" stroke="none"/>
+        </svg>
+      <div class="illo-cap">Fig. Three groups, one signal: matched methods, one synthesis, and the plan reshaped</div>
     </div>
   </section>
 
   <!-- THREAD 02 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 02 / 04</div>
       <div class="flow-name">Discovery interviews</div>
-      <div class="flow-tags">
-        <span>Generative research</span>
-        <span>Theme synthesis</span>
-        <span>Mental models</span>
-        <span>Workaround signals</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Discovery interviews clustered into recurring themes">
-          <defs><marker id="il-cr-1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <circle cx="40" cy="44" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="40" cy="64" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="40" cy="84" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="40" cy="104" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="40" cy="124" r="5" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <text x="34" y="150" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="0.5" fill="currentColor" opacity="0.55">INTERVIEWS</text>
-          <path d="M58 84 L96 84" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-1)"/>
-          <rect x="120" y="44" width="150" height="28" fill="none" stroke="currentColor" stroke-width="1.4" rx="6"/>
-          <circle cx="140" cy="58" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="160" cy="58" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="180" cy="58" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="120" y="84" width="150" height="28" fill="none" stroke="currentColor" stroke-width="1.4" rx="6"/>
-          <circle cx="140" cy="98" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="160" cy="98" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="120" y="124" width="150" height="28" fill="none" stroke="currentColor" stroke-width="1.4" rx="6"/>
-          <circle cx="140" cy="138" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="160" cy="138" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="220" y="170" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">THEMES</text>
-        </svg>
-        <div class="illo-cap">Fig. — Interviews grouped by theme</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">5+</div><div class="d">Industries: retail, grocery, hospitality, media, sports</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Dominant signal: workaround systems built outside the product</div></div>
+        <div class="stat"><div class="n">100%</div><div class="d">Of themes shipped with implications and next steps</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>Before designing anything, we needed to understand how enterprise customers actually worked at scale, where the tooling fell short, and what they'd built to compensate. Foundational discovery: no prototype to test, just open questions about real workflows.</p>
+        <p>Before designing anything, we needed to know how enterprise customers worked at scale, where the tooling fell short, and what they'd built to compensate. Foundational discovery: no prototype, just open questions about real workflows.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I ran discovery sessions with enterprise customers across retail, grocery, hospitality, media, and sports, then synthesized them into cross-interview documents by theme. The strongest signal recurred across every vertical: customers had independently built elaborate parallel spreadsheet systems outside the product because the in-platform experience didn't match how they actually worked. The same themes surfaced again and again, naming and discoverability at scale, export and audit gaps, a hard dependency on code for non-technical users. I turned each into a structured deliverable with quotes, implications, and next steps the team could design against.</p>
+        <p>I ran discovery sessions with enterprise customers across retail, grocery, hospitality, media, and sports, then synthesized them into cross-interview theme documents. The strongest signal recurred in every vertical: customers had independently built elaborate parallel spreadsheet systems because the in-platform experience didn't match how they worked. The recurring themes, naming and discoverability at scale, export and audit gaps, a hard code dependency for non-technical users, each became a structured deliverable with quotes, implications, and next steps the team could design against.</p>
       </div>
       <div class="flow-quote">
-        Customers had quietly built their own spreadsheet systems around the product to get their work done. That workaround was the clearest signal in the whole study.
-        <span class="attr">Discovery synthesis, cross-interview themes</span>
+        Customers had quietly built their own spreadsheet systems around the product. That workaround was the clearest signal in the study.
+        <span class="attr">Discovery synthesis</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">5+</div><div class="d">Industries covered: retail, grocery, hospitality, media, and sports</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">Dominant signal: parallel workaround systems built outside the product</div></div>
-        <div class="stat"><div class="n">100%</div><div class="d">Of themes shipped with implications and next steps the team could act on</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Discovery interviews across five verticals clustered into recurring themes, with parallel spreadsheet workarounds as the strongest signal">
+        <!-- FIG. Interviews grouped by theme -->
+        <defs><marker id="il-res2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-res2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <rect x="647" y="15" width="12" height="9" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="663.02" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SESSIONS</text>
+        <rect x="726" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="741.98" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">THEME</text>
+        <rect x="788" y="15" width="12" height="9" stroke="#b07fa6" stroke-width="1.2"/>
+        <text x="804.08" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">STRONGEST SIGNAL</text>
+        <rect x="24" y="44" width="280" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">DISCOVERY SESSIONS</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">ENTERPRISE CUSTOMERS, FIVE VERTICALS</text>
+        <rect x="48" y="96" width="208" height="34" rx="3" fill="#141414" stroke="#8c8c8c"/>
+        <text x="88" y="117" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">RETAIL</text>
+        <line x1="200" y1="110" x2="230" y2="110" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="200" y1="118" x2="220" y2="118" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M256 113 L318 113 L318 203" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <rect x="48" y="146" width="208" height="34" rx="3" fill="#141414" stroke="#8c8c8c"/>
+        <text x="88" y="167" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">GROCERY</text>
+        <line x1="200" y1="160" x2="230" y2="160" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="200" y1="168" x2="220" y2="168" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M256 163 L318 163 L318 203" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <rect x="48" y="196" width="208" height="34" rx="3" fill="#141414" stroke="#8c8c8c"/>
+        <text x="88" y="217" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">HOSPITALITY</text>
+        <line x1="200" y1="210" x2="230" y2="210" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="200" y1="218" x2="220" y2="218" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M256 213 L318 213 L318 203" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <rect x="48" y="246" width="208" height="34" rx="3" fill="#141414" stroke="#8c8c8c"/>
+        <text x="88" y="267" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">MEDIA</text>
+        <line x1="200" y1="260" x2="230" y2="260" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="200" y1="268" x2="220" y2="268" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M256 263 L318 263 L318 203" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <rect x="48" y="296" width="208" height="34" rx="3" fill="#141414" stroke="#8c8c8c"/>
+        <text x="88" y="317" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">SPORTS</text>
+        <line x1="200" y1="310" x2="230" y2="310" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="200" y1="318" x2="220" y2="318" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M256 313 L318 313 L318 203" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <line x1="318" y1="203" x2="336" y2="203" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-res2)"/>
+        <path d="M352 190 L365 203 L352 216 L339 203 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="352" y="230" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">CLUSTER</text>
+        <line x1="365" y1="203" x2="382" y2="203" marker-end="url(#il-res2)"/>
+        <rect x="390" y="44" width="506" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="402" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">RECURRING THEMES</text>
+        <text x="402" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">EACH SHIPPED WITH QUOTES, IMPLICATIONS, NEXT STEPS</text>
+        <rect x="414" y="92" width="458" height="56" rx="3" fill="#141414" stroke="#b07fa6"/>
+        <text x="643.0" y="117.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">PARALLEL SPREADSHEET WORKAROUNDS</text>
+        <text x="643.0" y="131.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">SYSTEMS BUILT OUTSIDE THE PRODUCT TO GET WORK DONE</text>
+        <text x="872" y="84" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#b07fa6" stroke="none">THE STRONGEST SIGNAL</text>
+        <rect x="414" y="168" width="458" height="44" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="643.0" y="193.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">NAMING + DISCOVERABILITY AT SCALE</text>
+        <rect x="414" y="228" width="458" height="44" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="643.0" y="253.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">EXPORT + AUDIT GAPS</text>
+        <rect x="414" y="288" width="458" height="44" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="643.0" y="313.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CODE DEPENDENCY FOR NON-TECHNICAL USERS</text>
+        </svg>
+      <div class="illo-cap">Fig. Interviews across five verticals, clustered into themes the team could act on</div>
     </div>
   </section>
 
   <!-- THREAD 03 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 03 / 04</div>
       <div class="flow-name">Research operations</div>
-      <div class="flow-tags">
-        <span>Advisory community</span>
-        <span>Multi-region program</span>
-        <span>Standing recruitment pool</span>
-        <span>Concurrent studies</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One recruitment pool feeding parallel studies">
-          <defs><marker id="il-cr-2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <text x="150" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">RECRUITMENT POOL</text>
-          <rect x="40" y="24" width="220" height="38" fill="none" stroke="currentColor" stroke-width="1.4" rx="8"/>
-          <circle cx="64" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-          <circle cx="86" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-          <circle cx="108" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-          <circle cx="130" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-          <circle cx="152" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-          <circle cx="174" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-          <circle cx="196" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-          <circle cx="218" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-          <circle cx="240" cy="43" r="4" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-          <path d="M57 62 L57 104" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-2)"/>
-          <path d="M150 62 L150 104" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-2)"/>
-          <path d="M243 62 L243 104" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-2)"/>
-          <rect x="20" y="104" width="74" height="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="57" y="124" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">STUDY</text>
-          <rect x="29" y="134" width="56" height="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="29" y="134" width="39" height="8" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
-          <rect x="113" y="104" width="74" height="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="150" y="124" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">STUDY</text>
-          <rect x="122" y="134" width="56" height="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="122" y="134" width="22" height="8" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
-          <rect x="206" y="104" width="74" height="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="243" y="124" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.5" fill="currentColor">STUDY</text>
-          <rect x="215" y="134" width="56" height="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="215" y="134" width="30" height="8" fill="currentColor" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
-        </svg>
-        <div class="illo-cap">Fig. — One pool, parallel studies</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">Regions scaled: Europe, North America, Asia-Pacific</div></div>
+        <div class="stat"><div class="n">100%</div><div class="d">Founding cohort retention, voluntary attrition aside</div></div>
+        <div class="stat"><div class="n">8</div><div class="d">Roadmap influences traced to the founding cohort</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>One study at a time couldn't keep pace with the roadmap, and ad hoc recruitment was slow and inconsistent. We needed a repeatable way to source the right participants and run several studies in parallel without findings bleeding together, and it had to work across regions.</p>
+        <p>One study at a time couldn't keep pace with the roadmap, and ad hoc recruitment was slow and inconsistent. We needed a repeatable way to source the right participants and run parallel studies across regions without findings bleeding together.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I founded a customer advisory community as a standing recruitment pool and designed the whole program: a hand-selected founding cohort of enterprise customers across travel, food, fintech, retail, and tech; a year-long cadence of an in-person kickoff, monthly virtual sessions, and quarterly events and newsletters; and a dedicated channel where members were answering each other's product questions within the first week. I ran the events and built the scoring model that expanded it across Europe, North America, and Asia-Pacific. With the pool in place I ran concurrent studies across product areas, holding firm that screener quality shapes who shows up and that parallel studies need clear synthesis boundaries to keep insights attributable.</p>
+        <p>I founded a customer advisory community as a standing recruitment pool: a hand-selected founding cohort of enterprise customers across travel, food, fintech, retail, and tech; a year-long cadence of an in-person kickoff, monthly virtual sessions, and quarterly events and newsletters; and a dedicated channel where members answered each other's product questions within the first week. I ran the events and built the scoring model that expanded the program across Europe, North America, and Asia-Pacific. With the pool in place I ran concurrent studies across product areas, enforcing screener quality and clear synthesis boundaries to keep insights attributable.</p>
       </div>
       <div class="flow-quote">
-        A good screener decides who actually shows up, and parallel studies stay useful only when each one's synthesis has clear boundaries.
-        <span class="attr">Research operations principle</span>
+        A good screener decides who shows up; parallel studies stay useful only when each synthesis has clear boundaries.
+        <span class="attr">Research ops principle</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">3</div><div class="d">Global regions the program scaled across: Europe, North America, Asia-Pacific</div></div>
-        <div class="stat"><div class="n">100%</div><div class="d">Member retention in the founding cohort, voluntary attrition aside</div></div>
-        <div class="stat"><div class="n">8</div><div class="d">Distinct roadmap influences traced back to the founding cohort's input</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="One standing recruitment pool feeding three parallel studies, with a screener gate and clear synthesis boundaries between studies">
+        <!-- FIG. One pool, parallel studies -->
+        <defs><marker id="il-res3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-res3-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <circle cx="607.06" cy="19.5" r="2.8" fill="#74a58c" stroke="none"/>
+        <text x="615.06" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">PARTICIPANT</text>
+        <path d="M701.8799999999999 14 L707.8799999999999 19.5 L701.8799999999999 25 L695.8799999999999 19.5 Z" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="712.8799999999999" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SCREENER</text>
+        <rect x="777" y="15" width="12" height="9" stroke="#4a4a4a" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="792.8399999999999" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SYNTHESIS BOUNDARY</text>
+        <rect x="24" y="44" width="280" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">STANDING POOL</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THE ADVISORY COMMUNITY, ALWAYS ON</text>
+        <rect x="48" y="92" width="232" height="130" rx="3" fill="#141414" stroke="#74a58c"/>
+        <circle cx="76" cy="122" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="112" cy="122" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="148" cy="122" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="184" cy="122" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="220" cy="122" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="256" cy="122" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="76" cy="156" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="112" cy="156" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="148" cy="156" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="184" cy="156" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="220" cy="156" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="256" cy="156" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="76" cy="190" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="112" cy="190" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="148" cy="190" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="184" cy="190" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="220" cy="190" r="2.5" fill="#74a58c" stroke="none"/>
+        <circle cx="256" cy="190" r="2.5" fill="#74a58c" stroke="none"/>
+        <text x="164" y="240" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">ENTERPRISE CUSTOMERS, THREE REGIONS</text>
+        <line x1="164" y1="250" x2="164" y2="266" marker-end="url(#il-res3)"/>
+        <path d="M164 271 L177 284 L164 297 L151 284 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="164" y="311" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">SCREENER: DECIDES WHO SHOWS UP</text>
+        <path d="M177 284 L336 284 L336 203" fill="none"/>
+        <line x1="336" y1="203" x2="352" y2="203" marker-end="url(#il-res3)"/>
+        <rect x="360" y="44" width="536" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="372" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">PARALLEL STUDIES</text>
+        <text x="372" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SEPARATE SYNTHESIS KEEPS INSIGHTS ATTRIBUTABLE</text>
+        <text x="452" y="96" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1.5" fill="#c0c0c0" stroke="none">STUDY A</text>
+        <rect x="388" y="110" width="128" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="452.0" y="133.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">RECRUIT</text>
+        <line x1="452" y1="150" x2="452" y2="164" marker-end="url(#il-res3)"/>
+        <rect x="388" y="168" width="128" height="40" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="452.0" y="191.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SESSIONS</text>
+        <line x1="452" y1="208" x2="452" y2="222" marker-end="url(#il-res3)"/>
+        <rect x="388" y="226" width="128" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="452.0" y="249.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SYNTHESIS</text>
+        <line x1="452" y1="266" x2="452" y2="280" marker-end="url(#il-res3)"/>
+        <rect x="439.0" y="284" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="452" y="306" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">FINDINGS</text>
+        <text x="628" y="96" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1.5" fill="#c0c0c0" stroke="none">STUDY B</text>
+        <rect x="564" y="110" width="128" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="628.0" y="133.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">RECRUIT</text>
+        <line x1="628" y1="150" x2="628" y2="164" marker-end="url(#il-res3)"/>
+        <rect x="564" y="168" width="128" height="40" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="628.0" y="191.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SESSIONS</text>
+        <line x1="628" y1="208" x2="628" y2="222" marker-end="url(#il-res3)"/>
+        <rect x="564" y="226" width="128" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="628.0" y="249.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SYNTHESIS</text>
+        <line x1="628" y1="266" x2="628" y2="280" marker-end="url(#il-res3)"/>
+        <rect x="615.0" y="284" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="628" y="306" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">FINDINGS</text>
+        <text x="804" y="96" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1.5" fill="#c0c0c0" stroke="none">STUDY C</text>
+        <rect x="740" y="110" width="128" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="804.0" y="133.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">RECRUIT</text>
+        <line x1="804" y1="150" x2="804" y2="164" marker-end="url(#il-res3)"/>
+        <rect x="740" y="168" width="128" height="40" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="804.0" y="191.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SESSIONS</text>
+        <line x1="804" y1="208" x2="804" y2="222" marker-end="url(#il-res3)"/>
+        <rect x="740" y="226" width="128" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="804.0" y="249.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SYNTHESIS</text>
+        <line x1="804" y1="266" x2="804" y2="280" marker-end="url(#il-res3)"/>
+        <rect x="791.0" y="284" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="804" y="306" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">FINDINGS</text>
+        <line x1="540" y1="96" x2="540" y2="330" stroke="#4a4a4a" stroke-dasharray="3 4" stroke-width="1"/>
+        <line x1="716" y1="96" x2="716" y2="330" stroke="#4a4a4a" stroke-dasharray="3 4" stroke-width="1"/>
+        <text x="628" y="348" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">RUN AT THE SAME TIME, NEVER BLENDED</text>
+        </svg>
+      <div class="illo-cap">Fig. One standing pool feeding parallel studies with clean synthesis boundaries</div>
     </div>
   </section>
 
   <!-- THREAD 04 -->
-  <section class="flow">
+  <section class="flow flow--board">
     <div class="flow-left">
       <div class="flow-num">THREAD 04 / 04</div>
       <div class="flow-name">Study design</div>
-      <div class="flow-tags">
-        <span>Method selection</span>
-        <span>Falsifiable hypotheses</span>
-        <span>Discussion guides</span>
-        <span>Actionable framing</span>
-      </div>
-      <div class="flow-illo">
-        <svg viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Choosing a research method to match the question">
-          <defs><marker id="il-cr-3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-          <path d="M150 11 L176 31 L150 51 L124 31 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="150" y="37" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="15" letter-spacing="1.5" fill="currentColor" font-style="italic">?</text>
-          <path d="M150 51 L150 64 L74 64 L74 82" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-3)"/>
-          <path d="M150 51 L150 64 L228 64 L228 82" fill="none" stroke="currentColor" stroke-width="1.4" marker-end="url(#il-cr-3)"/>
-          <text x="112" y="59" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">DEPTH</text>
-          <text x="189" y="59" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.55">VOLUME</text>
-          <rect x="50" y="92" width="48" height="32" fill="none" stroke="currentColor" stroke-width="1.4" rx="8"/>
-          <circle cx="62" cy="108" r="2" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="74" cy="108" r="2" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <circle cx="86" cy="108" r="2" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M66 124 L62 132 L78 124" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="74" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor">MODERATED</text>
-          <rect x="202" y="92" width="52" height="10" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="202" y="106" width="52" height="10" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <rect x="202" y="120" width="52" height="10" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="228" y="150" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1" fill="currentColor">UNMODERATED</text>
-        </svg>
-        <div class="illo-cap">Fig. — Method matched to question</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">2</div><div class="d">Methods matched: moderated for reasoning, unmoderated for volume</div></div>
+        <div class="stat"><div class="n">1</div><div class="d">Falsifiable hypothesis set per study, before sessions</div></div>
+        <div class="stat"><div class="n">0</div><div class="d">Scope surprises: every study declared its limits upfront</div></div>
       </div>
     </div>
     <div class="flow-right">
       <div class="flow-block">
         <span class="block-label">The problem</span>
-        <p>Research only earns its keep when the study is built to answer the real question. Pick the wrong method, or frame things so loosely that any result confirms the plan, and you waste participants and produce findings nobody can act on.</p>
+        <p>Research pays off only when the study is built to answer the real question. The wrong method, or framing so loose that any result confirms the plan, wastes participants and yields findings nobody can act on.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I matched method to question deliberately: moderated think-aloud sessions to understand reasoning and probe on hesitation, unmoderated prototype tests for independent task completion at volume. I wrote study goals as falsifiable hypotheses with explicit success metrics, drew the scope lines so reviewers knew what the study could and couldn't produce, and authored the discussion guides that kept sessions consistent.</p>
+        <p>I matched method to question: moderated think-aloud sessions to understand reasoning and probe hesitation, unmoderated prototype tests for independent task completion at volume. I wrote study goals as falsifiable hypotheses with explicit success metrics, drew scope lines so reviewers knew what the study could and couldn't produce, and authored discussion guides that kept sessions consistent.</p>
       </div>
       <div class="flow-quote">
-        Write the hypothesis as something the study could actually disprove, then draw the scope lines before anyone runs a session.
+        Write the hypothesis as something the study could disprove, then draw the scope lines before any session runs.
         <span class="attr">Study design principle</span>
       </div>
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">2</div><div class="d">Methods matched to intent: moderated for reasoning, unmoderated for volume</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">Falsifiable hypothesis set per study before any session ran</div></div>
-        <div class="stat"><div class="n">0</div><div class="d">Scope surprises: each study stated what it would and wouldn't answer</div></div>
-      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A research method chosen to match the question, then a study built to be disproved: falsifiable hypothesis, explicit success metric, scope lines">
+        <!-- FIG. Method matched to question -->
+        <defs><marker id="il-res4" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-res4-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <rect x="24" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">MATCH THE METHOD TO THE QUESTION</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THE QUESTION PICKS THE METHOD, NOT HABIT</text>
+        <rect x="221.0" y="104" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="234" y="98" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">RESEARCH QUESTION</text>
+        <line x1="234" y1="114" x2="234" y2="122" marker-end="url(#il-res4)"/>
+        <path d="M234 124 L250 140 L234 156 L218 140 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="234" y="172" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">ASKING WHY, OR HOW OFTEN?</text>
+        <path d="M218 140 L128 140 L128 196" fill="none" marker-end="url(#il-res4)"/>
+        <text x="124" y="190" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">WHY</text>
+        <path d="M250 140 L340 140 L340 196" fill="none" marker-end="url(#il-res4)"/>
+        <text x="344" y="190" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">HOW OFTEN</text>
+        <rect x="48" y="200" width="160" height="56" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="128.0" y="225.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">MODERATED</text>
+        <text x="128.0" y="239.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">REASONING, PROBE HESITATION</text>
+        <rect x="260" y="200" width="160" height="56" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="340.0" y="225.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">UNMODERATED</text>
+        <text x="340.0" y="239.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">TASK COMPLETION AT VOLUME</text>
+        <text x="128" y="272" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">THINK-ALOUD SESSIONS</text>
+        <text x="340" y="272" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">PROTOTYPE TESTS</text>
+        <line x1="444" y1="203" x2="468" y2="203" marker-end="url(#il-res4)"/>
+        <rect x="476" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="488" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">BUILT TO BE DISPROVED</text>
+        <text x="488" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SCOPE SET BEFORE ANY SESSION RUNS</text>
+        <rect x="500" y="96" width="372" height="48" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="686.0" y="117.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">FALSIFIABLE HYPOTHESIS</text>
+        <text x="686.0" y="131.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">SOMETHING THE STUDY COULD PROVE WRONG</text>
+        <line x1="686" y1="144" x2="686" y2="158" marker-end="url(#il-res4)"/>
+        <rect x="500" y="162" width="372" height="48" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="686.0" y="183.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">EXPLICIT SUCCESS METRIC</text>
+        <text x="686.0" y="197.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">DECIDED UP FRONT, NOT AFTER</text>
+        <line x1="686" y1="210" x2="686" y2="224" marker-end="url(#il-res4)"/>
+        <rect x="500" y="228" width="372" height="48" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="686.0" y="249.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SCOPE LINES</text>
+        <text x="686.0" y="263.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">WHAT THE STUDY CAN AND CANNOT ANSWER</text>
+        <line x1="686" y1="276" x2="686" y2="292" marker-end="url(#il-res4)"/>
+        <rect x="673.0" y="296" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="686" y="318" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">RUN THE SESSIONS</text>
+        </svg>
+      <div class="illo-cap">Fig. The method matched to the question, the study built to be disproved</div>
     </div>
   </section>
 
 </div>
-
 
 <!-- FOOTER -->
 <footer>
@@ -737,26 +944,6 @@
     </div>
   </div>
 
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-      <span class="item serif-thin">DANI WEIDNER</span>
-      <span class="sep">D&mdash;W</span>
-    </div>
-  </div>
 </footer>
 
 </body>
