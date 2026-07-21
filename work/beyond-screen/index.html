@@ -421,45 +421,6 @@
   .footer-grid .col a { display: block; }
   .footer-grid .col a:hover { text-decoration: underline; }
 
-  .marquee {
-    overflow: hidden;
-    border-top: 1px solid var(--ink);
-    padding: 1.5rem 0;
-    white-space: nowrap;
-  }
-  .marquee-track {
-    display: inline-block;
-    animation: marqueeScroll 30s linear infinite;
-    will-change: transform;
-  }
-  .marquee-track .item {
-    display: inline-block;
-    margin-right: 2rem;
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-    font-size: clamp(4rem, 10vw, 10rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    vertical-align: middle;
-  }
-  .marquee-track .item.serif-thin { font-weight: 400; }
-  .marquee-track .sep {
-    display: inline-block;
-    margin: 0 2rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(1rem, 1.8vw, 1.8rem);
-    vertical-align: middle;
-    letter-spacing: 0.02em;
-  }
-  @keyframes marqueeScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track { animation: none; }
-  }
-
   /* === RESPONSIVE === */
   @media (max-width: 1100px) {
     nav { grid-template-columns: repeat(3, 1fr); }
