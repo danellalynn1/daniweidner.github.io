@@ -558,7 +558,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>With the ML team, I separated what the model knew from what it estimated and designed a tiered disclosure system: high-confidence outputs surface cleanly, lower-confidence ones carry a visible signal built into the component, with a path to understand why. I mapped the thresholds with ML engineers so the UI's confidence language matched what the model's scores actually meant.</p>
+        <p>I worked with the ML team to separate what the model knew from what it estimated, then designed a tiered disclosure system: high-confidence outputs surface cleanly, lower-confidence ones carry a visible signal built into the component, with a path to understand why. Mapping the thresholds together kept the UI's confidence language true to what the scores actually meant, so users can tell a solid number from an estimate at a glance.</p>
         <p>The goal was calibrated trust: users believe the model when it's right and can push back when it's wrong.</p>
       </div>
       <div class="flow-quote">
@@ -630,8 +630,8 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I mapped the journey through the platform and found where an aware agent would cut real friction: transitions between tools, points of failure or confusion, and decisions that sent users elsewhere to look something up. I made the agent ambient by default and interruptible on demand, quiet until needed, then immediately there.</p>
-        <p>With product and ML, I worked through what the agent should know versus ask, what context the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive; the agent's personality followed those limits, confident where it had signal, honest where it didn't.</p>
+        <p>I mapped the journey through the platform to find where an aware agent would cut real friction: transitions between tools, points of failure or confusion, and decisions that sent users elsewhere to look something up. Ambient by default and interruptible on demand, the agent stays quiet until needed and immediately present when it is, so help shows up at the moment of friction instead of becoming one more thing to manage.</p>
+        <p>Working sessions with product and ML settled what the agent should know versus ask: what the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive. The agent's personality follows those limits, confident where it has signal, honest where it doesn't, which is what makes it worth trusting across a whole session.</p>
       </div>
       <div class="flow-quote">
         An agent that knows where you are but doesn't know what you're trying to do is still just a search box with extra steps.
@@ -701,7 +701,7 @@
       <div class="flow-block">
         <span class="block-label">What I did</span>
         <p>I ran working sessions with ML engineers to pin down exactly what the model could and couldn't explain about its own outputs, then built a design vocabulary for explainability: what level of explanation each output type allowed, how to communicate it honestly, and how to handle cases where no explanation could be offered.</p>
-        <p>I also designed graceful degradation for the unavailable, underconfident, and out-of-distribution states, each with its own states, copy, and recovery paths. A silent model failure is a trust problem; a well-handled one is a product moment.</p>
+        <p>Graceful degradation covered the rest: the unavailable, underconfident, and out-of-distribution states each got their own copy and recovery paths. A silent model failure is a trust problem; a well-handled one is a product moment.</p>
       </div>
       <div class="flow-quote">
         If the model can't explain it, the product still has to say something. "I don't know" is a valid answer, but it has to be designed.

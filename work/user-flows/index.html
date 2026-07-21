@@ -542,7 +542,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I ran usability research across three groups, moderated with internal team members and unmoderated with current customers and external growth marketers, then synthesized the findings into a phased download-template, fill, upload, validate, create flow scaled to tens of thousands of records per file. Validation runs up front, returning valid, invalid, and blank counts before anything is created, and a two-tab preview splits clean records from errors so users can download just the failed rows, fix them, and re-upload. I sequenced the work into three milestones so the highest-value path shipped first.</p>
+        <p>I ran usability research across three groups, moderated with internal team members and unmoderated with current customers and external growth marketers, then synthesized the findings into a phased download-template, fill, upload, validate, create flow scaled to tens of thousands of records per file. Validation runs up front, returning valid, invalid, and blank counts before anything is created, and a two-tab preview splits clean records from errors so users can download just the failed rows, fix them, and re-upload. Sequencing the work into three milestones put the highest-value path in customers' hands first.</p>
       </div>
       <div class="flow-quote">
         Error states are universally the biggest blocker. Users hit errors they couldn't resolve. The flow works, but it doesn't teach.
@@ -703,7 +703,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I mapped the flow from the PRD, then ran a design critique that surfaced the gaps: no back navigation, undefined cancel behavior, an unenforced selection limit, an unresolved partial-success state. I redesigned it as a stepped wizard with a persistent left rail listing the selected links, so the affected set is always visible before any change applies. Customer interviews reinforced that safety requirement directly.</p>
+        <p>I mapped the flow from the PRD, then ran a design critique that surfaced the gaps: no back navigation, undefined cancel behavior, an unenforced selection limit, an unresolved partial-success state. The redesign, a stepped wizard with a persistent left rail listing the selected links, keeps the affected set visible before any change applies, so nothing edits silently. Customer interviews reinforced that safety requirement directly.</p>
       </div>
       <div class="flow-quote">
         Before the last screen, make it perfectly clear which links you're editing. Show me the list.
@@ -807,7 +807,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I pinpointed every flow and edge case before handoff: entry states for one versus multiple variants, traffic that doesn't sum to 100 percent, the can't-delete-the-last-variant rule, maximum variant count, holdout group behavior, and what control actually means. I mapped them into a single diagram and specced the flow so engineering could build it without coming back with questions.</p>
+        <p>I pinpointed every flow and edge case before handoff: entry states for one versus multiple variants, traffic that doesn't sum to 100 percent, the can't-delete-the-last-variant rule, maximum variant count, holdout group behavior, and what control actually means. One diagram mapped them all, and the spec let engineering build without coming back with questions.</p>
       </div>
       <div class="flow-block">
         <span class="block-label">Scope</span>
@@ -895,7 +895,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I mapped both features as paired configuration and runtime flows: where settings live in the new navigation, and what the end user experiences when a link fires. I designed the create, edit, and apply paths to converge at a shared runtime and built in automatic migration, so existing configurations carried over with behavior preserved and no customer action required.</p>
+        <p>I mapped both features as paired configuration and runtime flows: where settings live in the new navigation, and what the end user experiences when a link fires. Create, edit, and apply converge at a shared runtime, and automatic migration carried existing configurations over with behavior preserved and no customer action required, an upgrade that broke nothing for the customers depending on it.</p>
       </div>
       <div class="flow-quote">
         Carry the old behavior over untouched, and let the new home earn the move on its own.

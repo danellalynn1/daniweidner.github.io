@@ -494,7 +494,7 @@
     <div class="hs-line">PLATFORM</div>
     <div class="hs-line b-line"><span class="b">RUNS ON</span></div>
   </div>
-    <p class="case-header-body">Lead design work sits upstream of components: deciding which patterns earn a place, arbitrating when two teams want the same surface to behave differently, and writing the design-to-engineering contract so work ships without ambiguity. These four threads show where I set the convention, each now shaping how adjacent teams build.</p>
+    <p class="case-header-body">Lead design work sits upstream of components: deciding which patterns earn a place, arbitrating when two teams want the same surface to behave differently, and writing the design-to-engineering contract so work ships without ambiguity. These five threads show where I set the convention, each now shaping how adjacent teams build.</p>
 
     <section class="case-meta-strip">
     <div class="cell">
@@ -511,7 +511,7 @@
     </div>
     <div class="cell">
       <div class="k">Threads in this study</div>
-      <div class="v">04</div>
+      <div class="v">05</div>
     </div>
   </section>
   </div>
@@ -526,7 +526,7 @@
   <!-- THREAD 01 -->
   <section class="flow flow--board">
     <div class="flow-left">
-      <div class="flow-num">THREAD 01 / 04</div>
+      <div class="flow-num">THREAD 01 / 05</div>
       <div class="flow-name">Layout convention</div>
 
       <div class="flow-outcomes">
@@ -542,7 +542,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I established the split-screen workbench as the standard: scrollable form on one side, sticky live preview on the other, responsive breakpoints instead of a rigid ratio. I specified the conventions that made it a system: a variant switcher pinned atop the preview on every tab, a summary tab replacing the old review page, and inline error indicators on any tab with validation issues. Then I brought the outlier flows into line so the convention held platform-wide.</p>
+        <p>I established the split-screen workbench as the standard: scrollable form on one side, sticky live preview on the other, responsive breakpoints instead of a rigid ratio. A variant switcher pinned atop the preview, a summary tab replacing the old review page, and inline error indicators on any tab with validation issues turned the layout into a system. Bringing the outlier flows into line made the convention hold platform-wide, so adjacent teams now build against it instead of reinventing it.</p>
       </div>
       <div class="flow-quote">
         A shared layout lets a new surface feel familiar on day one.
@@ -630,7 +630,7 @@
   <!-- THREAD 02 -->
   <section class="flow flow--board">
     <div class="flow-left">
-      <div class="flow-num">THREAD 02 / 04</div>
+      <div class="flow-num">THREAD 02 / 05</div>
       <div class="flow-name">Navigation rubric</div>
 
       <div class="flow-outcomes">
@@ -646,7 +646,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I authored the rubric the team now builds to: steppers for strictly linear flows where steps must be completed in order, tabs for non-linear, save-as-draft flows where users move between sections freely. Usage data grounded it; one flow forced every user through a multi-step stepper even though sixty percent created just a single item. I applied the rubric where steppers fought save-as-draft behavior, and adjacent teams carried it forward as their default reasoning.</p>
+        <p>I authored the rubric the team now builds to: steppers for strictly linear flows where steps must be completed in order, tabs for non-linear, save-as-draft flows where users move between sections freely. Usage data grounded it; one flow forced every user through a multi-step stepper even though sixty percent created just a single item. Applying it where steppers fought save-as-draft behavior fixed the misfits, and adjacent teams carried it forward as their default reasoning, so the debate never has to happen again.</p>
       </div>
       <div class="flow-quote">
         Let the user's freedom to move decide the pattern.
@@ -712,7 +712,7 @@
   <!-- THREAD 03 -->
   <section class="flow flow--board">
     <div class="flow-left">
-      <div class="flow-num">THREAD 03 / 04</div>
+      <div class="flow-num">THREAD 03 / 05</div>
       <div class="flow-name">Cross-team arbitration</div>
 
       <div class="flow-outcomes">
@@ -728,7 +728,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I planned and facilitated a working session with the full cross-functional team. Assumptions mapping surfaced where people silently disagreed; a decision-tree exercise then traced each path's consequences without forcing a premature vote. I carried the open unknowns into the tree and documented the agreements, live disagreements, and next steps with named owners.</p>
+        <p>I planned and facilitated a working session with the full cross-functional team. Assumptions mapping surfaced where people silently disagreed; a decision-tree exercise then traced each path's consequences without forcing a premature vote. Open unknowns went into the tree rather than being papered over, and the agreements, live disagreements, and next steps were documented with named owners, which unblocked the flow and left a record the team could reuse for the next contested call.</p>
       </div>
       <div class="flow-quote">
         Get the decision out of the thread and into a record everyone can build against.
@@ -806,7 +806,7 @@
   <!-- THREAD 04 -->
   <section class="flow flow--board">
     <div class="flow-left">
-      <div class="flow-num">THREAD 04 / 04</div>
+      <div class="flow-num">THREAD 04 / 05</div>
       <div class="flow-name">Source-of-truth standard</div>
 
       <div class="flow-outcomes">
@@ -822,7 +822,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I made the design file the source of truth, with tickets anchored to it and the reasoning behind each decision documented alongside the work. I set the bar for a good ticket: specific affected-area paths, explicit expected behavior, a design reference. Engineering could build without coming back to ask, and the contract gave the team a reusable definition of done.</p>
+        <p>I made the design file the source of truth, with tickets anchored to it and the reasoning behind each decision documented alongside the work. The bar for a good ticket: specific affected-area paths, explicit expected behavior, a design reference. Engineering could build without coming back to ask, and the contract gave the team a reusable definition of done.</p>
       </div>
       <div class="flow-quote">
         The best specs are the ones engineering can ship without asking me a single question.
@@ -882,6 +882,88 @@
         <text x="618" y="356" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">THE BAR FOR A GOOD TICKET: SPECIFIC PATHS, EXPECTED BEHAVIOR, A DESIGN REFERENCE</text>
         </svg>
       <div class="illo-cap">Fig. The design file as source of truth, every ticket anchored to it</div>
+    </div>
+  </section>
+
+  <!-- THREAD 05 -->
+  <section class="flow flow--board">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 05 / 05</div>
+      <div class="flow-name">Lifecycle checkpoints</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">5</div><div class="d">Failure patterns documented in a source-based handoff audit</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Phase gates authored: discover, plan, build, each with entry criteria and owners</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Standing rituals created: a biweekly design &times; eng sync, deep dives on demand</div></div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Design, research, and content kept entering after scope was set. Engineering kicked off with open questions, mid-build cuts had no path upstream, and the same handoff failures repeated. Everyone felt it; nobody had named it.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I audited the handoff against real projects, from meeting transcripts to tickets to shipped work, and named five recurring failure patterns. The audit made the case for lifecycle checkpoints: discover, plan, and build gates with explicit entry criteria and named owners, so engineering starts from documented design and research instead of assumptions. A gate only catches what a team brings to it, so &ldquo;Designin&rsquo; With Dani&rdquo; came next: a biweekly design &times; engineering sync where in-flight work is reviewed while it&rsquo;s still shapeable, with deep dives when a decision needs the full room.</p>
+      </div>
+      <div class="flow-quote">
+        A checkpoint is just the moment the team agrees the work is ready to build. The standing sync is how it gets ready.
+        <span class="attr">Process design principle</span>
+      </div>
+      
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="An audit of five handoff failure patterns turned into three lifecycle gates, with a standing biweekly design and engineering sync keeping work aligned between gates">
+        <!-- FIG. Lifecycle checkpoints -->
+        <defs><marker id="il-sys5" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" fill="#0a0a0a" stroke="none"/>
+        <circle cx="600" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="608" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">FAILURE PATTERN</text>
+        <rect x="722" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="738" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">GATE</text>
+        <rect x="788" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="804" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">STANDING SYNC</text>
+        <rect x="24" y="44" width="330" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE AUDIT</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">FIVE FAILURE PATTERNS, TRACED TO SOURCES</text>
+        <rect x="48" y="98" width="282" height="40" rx="3" fill="#141414" stroke="#cf6a5c"/>
+        <text x="189" y="122" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">DESIGN ENGAGED TO EXECUTE, NOT SHAPE</text>
+        <rect x="48" y="148" width="282" height="40" rx="3" fill="#141414" stroke="#cf6a5c"/>
+        <text x="189" y="172" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">SCOPE CUT MID-BUILD, NO WAY UPSTREAM</text>
+        <rect x="48" y="198" width="282" height="40" rx="3" fill="#141414" stroke="#cf6a5c"/>
+        <text x="189" y="222" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">CONTENT AS A LATE-STAGE ADD-ON</text>
+        <rect x="48" y="248" width="282" height="40" rx="3" fill="#141414" stroke="#cf6a5c"/>
+        <text x="189" y="272" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">KICKOFFS WITH OPEN QUESTIONS</text>
+        <rect x="48" y="298" width="282" height="40" rx="3" fill="#141414" stroke="#cf6a5c"/>
+        <text x="189" y="322" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">PROCESS DEFINED, NOT ENFORCED</text>
+        <line x1="354" y1="203" x2="400" y2="203" marker-end="url(#il-sys5)"/>
+        <text x="377" y="192" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none"></text>
+        <rect x="408" y="44" width="488" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="420" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE CHECKPOINTS</text>
+        <text x="420" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">ENTRY CRITERIA, NAMED OWNERS</text>
+        <rect x="432" y="104" width="128" height="56" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="496" y="129" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">DISCOVER</text>
+        <text x="496" y="143" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">EVIDENCE IN HAND</text>
+        <line x1="560" y1="132" x2="584" y2="132" marker-end="url(#il-sys5)"/>
+        <rect x="588" y="104" width="128" height="56" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="652" y="129" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">PLAN</text>
+        <text x="652" y="143" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">SCOPE SIGNED OFF</text>
+        <line x1="716" y1="132" x2="740" y2="132" marker-end="url(#il-sys5)"/>
+        <rect x="744" y="104" width="128" height="56" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="808" y="129" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">BUILD</text>
+        <text x="808" y="143" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">READY TO SHIP</text>
+        <text x="652" y="186" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">NO KICKOFF WITHOUT DOCUMENTED DESIGN AND RESEARCH</text>
+        <rect x="432" y="212" width="440" height="64" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="652" y="238" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE STANDING SYNC</text>
+        <text x="652" y="254" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">BIWEEKLY DESIGN &#215; ENG &middot; IN-FLIGHT WORK, STILL SHAPEABLE &middot; DEEP DIVES ON DEMAND</text>
+        <path d="M496 212 L496 196 L472 196" fill="none" stroke-dasharray="3 3" stroke="#7ea7c9" stroke-width="1"/>
+        <path d="M652 212 L652 200" fill="none" stroke-dasharray="3 3" stroke="#7ea7c9" stroke-width="1"/>
+        <path d="M808 212 L808 196 L832 196" fill="none" stroke-dasharray="3 3" stroke="#7ea7c9" stroke-width="1"/>
+        <text x="652" y="302" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">ALIGNMENT BETWEEN THE GATES, NOT JUST AT THEM</text>
+        <line x1="652" y1="314" x2="652" y2="328" marker-end="url(#il-sys5)"/>
+        <text x="652" y="348" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE SAME FAILURES STOP REPEATING</text>
+        </svg>
+      <div class="illo-cap">Fig. Five failure patterns audited into three gates, with a standing sync between them</div>
     </div>
   </section>
 
