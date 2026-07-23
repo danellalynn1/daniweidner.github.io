@@ -54,9 +54,21 @@
   nav .nav-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); display: inline-block; }
   nav .nav-rule { height: 1px; background: var(--ink); }
 
-  /* === PAGE HEADER === */
-  .page-header {
-    padding: 5rem 2rem 0;
+  /* === CV HEADER (split, matches case-study heroes) === */
+  .cv-header {
+    padding: 4rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    align-items: start;
+    border-bottom: 1px solid var(--ink);
+  }
+  .cv-header-left {
+    padding-right: 3rem;
+    border-right: 1px solid var(--ink);
+  }
+  .cv-header-right {
+    padding-left: 3rem;
   }
 
   .page-eyebrow {
@@ -67,7 +79,7 @@
     color: var(--ink-soft);
     border-bottom: 1px solid var(--ink);
     padding-bottom: 1rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -76,36 +88,57 @@
 
   .page-statement {
     font-family: 'Fraunces', serif;
-    font-size: clamp(2.6rem, 7vw, 8rem);
-    line-height: 0.95;
+    font-size: clamp(2.4rem, 6vw, 6.5rem);
+    line-height: 0.98;
     letter-spacing: -0.02em;
     text-transform: uppercase;
     font-weight: 400;
     color: var(--ink);
     max-width: 100%;
   }
+  .page-statement .hs-line {
+    text-align: justify;
+    -moz-text-align-last: justify;
+    text-align-last: justify;
+    word-spacing: -0.04em;
+    width: 100%;
+    display: block;
+  }
   .page-statement .b {
     font-family: 'Inter', sans-serif;
     font-weight: 800;
     letter-spacing: -0.03em;
   }
+  .page-statement .dot-prefix {
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    border-radius: 50%;
+    background: var(--ink) url('../1644264687791.jpg') center / cover no-repeat;
+    vertical-align: 0.05em;
+    margin-right: 0.35em;
+    overflow: hidden;
+  }
 
-  /* === MASTHEAD GRID === */
-  .masthead {
-    padding: 3.5rem 2rem 5rem;
+  .cv-header-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-top: 2rem;
+  }
+  .cv-header-body strong { color: var(--ink); font-weight: 400; }
+
+  /* Meta grid inside the header's left column */
+  .header-meta {
     display: grid;
-    grid-template-columns: 1fr 1.8fr;
-    gap: 6rem;
-    border-bottom: 1px solid var(--ink);
-    align-items: start;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem 2rem;
+    padding-top: 2rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--ink-faint);
   }
-
-  .masthead-left {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
   .meta-block { display: flex; flex-direction: column; gap: 0.45rem; }
   .meta-label {
     font-family: 'JetBrains Mono', monospace;
@@ -124,30 +157,58 @@
   .meta-value a { display: block; }
   .meta-value a:hover { text-decoration: underline; }
 
-  .masthead-right { display: flex; flex-direction: column; gap: 2rem; }
-
-  .lead {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.5rem, 2.6vw, 2.2rem);
-    line-height: 1.22;
-    font-weight: 400;
-    letter-spacing: -0.01em;
+  /* Dark line-art hero, same treatment as the case-study heroes */
+  .cv-hero-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 80vh;
+    border-radius: 2px;
+    overflow: hidden;
+    display: block;
+  }
+  .cv-hero-image svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
-  .lead-body {
+  /* === INTRO (label + lead, matches case-intro) === */
+  .cv-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    padding: 5rem 2rem 4rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .cv-intro .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .cv-intro .lead {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.3rem, 2.2vw, 2rem);
+    line-height: 1.3;
+    font-weight: 400;
+  }
+  .cv-intro .lead strong { font-weight: 500; }
+  .cv-intro .lead-body {
     font-family: 'Fraunces', serif;
     font-size: clamp(1rem, 1.3vw, 1.18rem);
     line-height: 1.6;
     color: var(--ink-soft);
+    margin-top: 1.4rem;
   }
-  .lead-body strong { color: var(--ink); font-weight: 400; }
+  .cv-intro .lead-body strong { color: var(--ink); font-weight: 400; }
 
   /* === SECTION HEADS === */
   .section-head {
     padding: 0 2rem;
     border-bottom: 1px solid var(--ink);
     padding-bottom: 0.8rem;
-    padding-top: 5rem;
+    margin-top: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -363,7 +424,10 @@
   /* === RESPONSIVE === */
   @media (max-width: 1100px) {
     nav { grid-template-columns: repeat(3, 1fr); }
-    .masthead { grid-template-columns: 1fr; gap: 3rem; }
+    .cv-header { grid-template-columns: 1fr; }
+    .cv-header-left { border-right: none; padding-right: 0; border-bottom: 1px solid var(--ink); padding-bottom: 2rem; margin-bottom: 2rem; }
+    .cv-header-right { padding-left: 0; }
+    .cv-intro { grid-template-columns: 1fr; gap: 1.5rem; }
     .exp-row { grid-template-columns: 1fr; gap: 1.5rem; }
     .cap-row { grid-template-columns: 1fr; gap: 1rem; }
     .stats-bar { grid-template-columns: 1fr 1fr; }
@@ -372,10 +436,11 @@
   }
   @media (max-width: 600px) {
     nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
-    .page-header, .masthead, .experience-section, .cap-section,
+    .cv-header, .cv-intro, .experience-section, .cap-section,
     .stats-bar, .page-cta, .section-head, .footer-grid {
       padding-left: 1.2rem; padding-right: 1.2rem;
     }
+    .header-meta { grid-template-columns: 1fr; }
     .stats-bar { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .page-eyebrow { flex-direction: column; gap: 0.4rem; }
@@ -383,8 +448,10 @@
 
   /* === PRINT === */
   @media print {
-    nav, .page-cta { display: none; }
+    nav, .page-cta, .cv-header-right { display: none; }
     body { font-size: 11pt; }
+    .cv-header { grid-template-columns: 1fr; border-bottom: 1px solid var(--ink); }
+    .cv-header-left { border-right: none; padding-right: 0; }
     .exp-row, .cap-row { page-break-inside: avoid; }
     .page-statement { font-size: 3rem; }
   }
@@ -413,45 +480,102 @@
 </nav>
 
 <!-- PAGE HEADER -->
-<header class="page-header">
-  <div class="page-eyebrow">
-    <span>CV / DANI WEIDNER</span>
-    <span>STAFF PRODUCT DESIGNER &mdash; B2B ENTERPRISE</span>
-  </div>
-  <div class="page-statement">
-    DESIGN THAT<br/>
-    <span class="b">HOLDS UP</span> UNDER<br/>
-    REAL WEIGHT
-  </div>
-</header>
+<header class="cv-header">
+  <div class="cv-header-left">
+    <div class="page-eyebrow">
+      <span>CV / DANI WEIDNER</span>
+      <span>STAFF PRODUCT DESIGNER &mdash; B2B ENTERPRISE</span>
+    </div>
 
-<!-- MASTHEAD -->
-<section class="masthead">
-  <div class="masthead-left">
-    <div class="meta-block">
-      <div class="meta-label">Currently</div>
-      <div class="meta-value">Lead Product Designer<br/>Branch.io</div>
+    <div class="page-statement">
+      <div class="hs-line"><span class="dot-prefix"></span>DESIGN THAT</div>
+      <div class="hs-line"><span class="b">HOLDS UP</span> UNDER</div>
+      <div class="hs-line">REAL <span class="b">WEIGHT</span></div>
     </div>
-    <div class="meta-block">
-      <div class="meta-label">Based</div>
-      <div class="meta-value">Phoenix, AZ<br/>Remote</div>
-    </div>
-    <div class="meta-block">
-      <div class="meta-label">Focus</div>
-      <div class="meta-value">B2B / Enterprise<br/>Complex Systems<br/>Expert-User Tools</div>
-    </div>
-    <div class="meta-block">
-      <div class="meta-label">Contact</div>
-      <div class="meta-value">
-        <a href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
-        <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://daniweidner.com" target="_blank" rel="noopener">daniweidner.com</a>
+
+    <p class="cv-header-body">Lead product designer with 13+ years shipping complex B2B and consumer products &mdash; SaaS, fintech, hardware-adjacent, and e-commerce &mdash; from zero-to-one discovery through eng-ready delivery.</p>
+
+    <div class="header-meta">
+      <div class="meta-block">
+        <div class="meta-label">Currently</div>
+        <div class="meta-value">Lead Product Designer<br/>Branch.io</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Based</div>
+        <div class="meta-value">Phoenix, AZ<br/>Remote</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Focus</div>
+        <div class="meta-value">B2B / Enterprise<br/>Complex Systems<br/>Expert-User Tools</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Contact</div>
+        <div class="meta-value">
+          <a href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
+          <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://daniweidner.com" target="_blank" rel="noopener">daniweidner.com</a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="masthead-right">
-    <p class="lead">Lead product designer with 13+ years shipping complex B2B and consumer products &mdash; SaaS, fintech, hardware-adjacent, and e-commerce &mdash; from zero-to-one discovery through eng-ready delivery.</p>
-    <p class="lead-body">I operate end-to-end and across teams: <strong>shaping strategy with stakeholders, running enterprise research, stewarding design systems, and partnering closely with engineering</strong> to hit milestones without compromising craft. I came up designing for expert users with no patience for friction &mdash; coaches reviewing film at 2am, ops managers who can't afford a bad day &mdash; and that standard travels with me. I'm at my best on a diverse portfolio of genuinely hard problems, with a team that values transparency, deep work, and doing good work for good reasons.</p>
+
+  <div class="cv-header-right">
+    <div class="cv-hero-image">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" style="background:#0a0a0a;" role="img" aria-label="Line-art structural diagram: blocks labeled scope, complexity, and stakes rest on a beam labeled the design, held up by columns labeled process and craft">
+        <defs>
+          <marker id="cv-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1 L8 5 L2 9" fill="none" stroke="#8c8c8c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+        <!-- Faint rings -->
+        <circle cx="300" cy="400" r="235" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+        <circle cx="300" cy="400" r="170" fill="none" stroke="#1f1f1f" stroke-width="1"/>
+        <!-- Load arrow -->
+        <text x="300" y="142" text-anchor="middle" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="8" letter-spacing="1.5">REAL WEIGHT</text>
+        <line x1="300" y1="156" x2="300" y2="208" stroke="#8c8c8c" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#cv-arrow)"/>
+        <!-- Stacked load blocks -->
+        <rect x="240" y="222" width="120" height="50" rx="2" fill="#141414" stroke="#d99f43" stroke-width="1.4"/>
+        <text x="300" y="250" text-anchor="middle" fill="#c0c0c0" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">STAKES</text>
+        <rect x="210" y="272" width="180" height="54" rx="2" fill="#141414" stroke="#7ea7c9" stroke-width="1.4"/>
+        <text x="300" y="302" text-anchor="middle" fill="#c0c0c0" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">COMPLEXITY</text>
+        <rect x="180" y="326" width="240" height="58" rx="2" fill="#141414" stroke="#74a58c" stroke-width="1.4"/>
+        <text x="300" y="358" text-anchor="middle" fill="#c0c0c0" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">SCOPE</text>
+        <!-- Beam -->
+        <line x1="120" y1="392" x2="480" y2="392" stroke="#ffffff" stroke-width="6"/>
+        <text x="300" y="418" text-anchor="middle" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" letter-spacing="1.5">THE DESIGN</text>
+        <!-- Columns -->
+        <line x1="185" y1="395" x2="185" y2="600" stroke="#ffffff" stroke-width="2"/>
+        <line x1="415" y1="395" x2="415" y2="600" stroke="#ffffff" stroke-width="2"/>
+        <!-- Ground with hatching -->
+        <line x1="100" y1="600" x2="500" y2="600" stroke="#e2e2e2" stroke-width="1.4"/>
+        <line x1="130" y1="614" x2="144" y2="600" stroke="#4c4c4c" stroke-width="1"/>
+        <line x1="170" y1="614" x2="184" y2="600" stroke="#4c4c4c" stroke-width="1"/>
+        <line x1="210" y1="614" x2="224" y2="600" stroke="#4c4c4c" stroke-width="1"/>
+        <line x1="250" y1="614" x2="264" y2="600" stroke="#4c4c4c" stroke-width="1"/>
+        <line x1="290" y1="614" x2="304" y2="600" stroke="#4c4c4c" stroke-width="1"/>
+        <line x1="330" y1="614" x2="344" y2="600" stroke="#4c4c4c" stroke-width="1"/>
+        <line x1="370" y1="614" x2="384" y2="600" stroke="#4c4c4c" stroke-width="1"/>
+        <line x1="410" y1="614" x2="424" y2="600" stroke="#4c4c4c" stroke-width="1"/>
+        <line x1="450" y1="614" x2="464" y2="600" stroke="#4c4c4c" stroke-width="1"/>
+        <!-- Column labels -->
+        <text x="185" y="642" text-anchor="middle" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">PROCESS</text>
+        <text x="415" y="642" text-anchor="middle" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">CRAFT</text>
+        <!-- Corner labels -->
+        <text x="36" y="60" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">CURRICULUM VITAE</text>
+        <text x="564" y="60" text-anchor="end" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">CV</text>
+        <text x="36" y="756" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="9" letter-spacing="2">LOAD-BEARING DESIGN</text>
+        <text x="564" y="756" text-anchor="end" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="9" letter-spacing="2">13+ YRS</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="cv-intro">
+  <div class="label">HOW I OPERATE</div>
+  <div>
+    <p class="lead">I operate end-to-end and across teams: <strong>shaping strategy with stakeholders, running enterprise research, stewarding design systems, and partnering closely with engineering</strong> to hit milestones without compromising craft.</p>
+    <p class="lead-body">I came up designing for expert users with no patience for friction &mdash; coaches reviewing film at 2am, ops managers who can't afford a bad day &mdash; and that standard travels with me. I'm at my best on a diverse portfolio of genuinely hard problems, with a team that values transparency, deep work, and doing good work for good reasons.</p>
   </div>
 </section>
 
