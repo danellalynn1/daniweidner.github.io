@@ -109,17 +109,6 @@
     font-weight: 800;
     letter-spacing: -0.03em;
   }
-  .page-statement .dot-prefix {
-    display: inline-block;
-    width: 0.85em;
-    height: 0.85em;
-    border-radius: 50%;
-    background: var(--ink) url('../1644264687791.jpg') center / cover no-repeat;
-    vertical-align: 0.05em;
-    margin-right: 0.35em;
-    overflow: hidden;
-  }
-
   .cv-header-body {
     font-family: 'Fraunces', serif;
     font-weight: 400;
@@ -180,12 +169,10 @@
     padding: 5rem 2rem 4rem;
     border-bottom: 1px solid var(--ink);
   }
-  .cv-intro .label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
+  .cv-intro .intro-portrait {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
   }
   .cv-intro .lead {
     font-family: 'Fraunces', serif;
@@ -342,34 +329,6 @@
   }
   .cap-body strong { color: var(--ink); font-weight: 400; }
 
-  /* === STATS BAR === */
-  .stats-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-bottom: 1px solid var(--ink);
-  }
-  .stat-cell {
-    padding: 3rem 2rem;
-    border-right: 1px solid var(--ink-faint);
-  }
-  .stat-cell:last-child { border-right: none; }
-  .stat-n {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: clamp(2.4rem, 4vw, 4rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.6rem;
-  }
-  .stat-d {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    line-height: 1.6;
-  }
-
   /* === CTA === */
   .page-cta {
     padding: 4rem 2rem;
@@ -427,21 +386,19 @@
     .cv-header { grid-template-columns: 1fr; }
     .cv-header-left { border-right: none; padding-right: 0; border-bottom: 1px solid var(--ink); padding-bottom: 2rem; margin-bottom: 2rem; }
     .cv-header-right { padding-left: 0; }
-    .cv-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .cv-intro { grid-template-columns: 1fr; gap: 2rem; }
+    .cv-intro .intro-portrait { max-width: 420px; }
     .exp-row { grid-template-columns: 1fr; gap: 1.5rem; }
     .cap-row { grid-template-columns: 1fr; gap: 1rem; }
-    .stats-bar { grid-template-columns: 1fr 1fr; }
-    .stat-cell:nth-child(2) { border-right: none; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
     nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
     .cv-header, .cv-intro, .experience-section, .cap-section,
-    .stats-bar, .page-cta, .section-head, .footer-grid {
+    .page-cta, .section-head, .footer-grid {
       padding-left: 1.2rem; padding-right: 1.2rem;
     }
     .header-meta { grid-template-columns: 1fr; }
-    .stats-bar { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .page-eyebrow { flex-direction: column; gap: 0.4rem; }
   }
@@ -488,7 +445,7 @@
     </div>
 
     <div class="page-statement">
-      <div class="hs-line"><span class="dot-prefix"></span>DESIGN THAT</div>
+      <div class="hs-line">DESIGN THAT</div>
       <div class="hs-line"><span class="b">HOLDS UP</span> UNDER</div>
       <div class="hs-line">REAL <span class="b">WEIGHT</span></div>
     </div>
@@ -572,7 +529,7 @@
 
 <!-- INTRO -->
 <section class="cv-intro">
-  <div class="label">HOW I OPERATE</div>
+  <img class="intro-portrait" src="../dani-portrait.jpg" alt="Dani Weidner"/>
   <div>
     <p class="lead">I operate end-to-end and across teams: <strong>shaping strategy with stakeholders, running enterprise research, stewarding design systems, and partnering closely with engineering</strong> to hit milestones without compromising craft.</p>
     <p class="lead-body">I came up designing for expert users with no patience for friction &mdash; coaches reviewing film at 2am, ops managers who can't afford a bad day &mdash; and that standard travels with me. I'm at my best on a diverse portfolio of genuinely hard problems, with a team that values transparency, deep work, and doing good work for good reasons.</p>
@@ -594,7 +551,7 @@
     </div>
     <div class="exp-right">
       <div class="exp-role">Lead Product Designer</div>
-      <p class="exp-summary">Own end-to-end design for the Engagement team &mdash; the smart-banner SDK, Link Manager, and Bulk Link Creation &mdash; from discovery and research through eng-ready specs.</p>
+      <p class="exp-summary">Own end-to-end design for the Engagement team &mdash; the smart-banner SDK, Link Manager, and Bulk Link Creation.</p>
       <ul class="exp-points">
         <li>Lead <strong>UX research operations</strong>: recruited and ran studies with enterprise customers (SingLife, SiriusXM/Pandora), synthesized findings into structured insight documents, and translated them into product direction.</li>
         <li>Designed complex interaction systems &mdash; <strong>A/B test variant flows, campaign state navigation, dirty-state modals, and bulk-editing workflows</strong> for large link libraries.</li>
@@ -619,7 +576,7 @@
     </div>
     <div class="exp-right">
       <div class="exp-role">Senior Product Designer</div>
-      <p class="exp-summary">Designed for a global sports video and analytics platform used by coaches and athletes across pro, collegiate, and youth &mdash; expert users with high stakes and very low tolerance for friction.</p>
+      <p class="exp-summary">Designed for a global sports video and analytics platform used by coaches and athletes across pro, collegiate, and youth &mdash; expert users with high stakes.</p>
       <ul class="exp-points">
         <li>Led <strong>cross-functional design sprints</strong>, delivering wireframes, prototypes, and high-fidelity screens in close partnership with engineering, product, and data teams.</li>
         <li>Maintained design-system components and helped shape <strong>design-critique culture</strong> across a distributed design org.</li>
@@ -699,26 +656,6 @@
     <p class="cap-body">Figma, Figma Make, FigJam, Claude Code, Notion, Linear, Miro, Jira, Loom.</p>
   </div>
 </section>
-
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat-cell">
-    <div class="stat-n">13+</div>
-    <div class="stat-d">Years Shipping<br/>Product</div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-n">4</div>
-    <div class="stat-d">Industries —<br/>SaaS / Fintech /<br/>Hardware / E-Comm</div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-n">E2E</div>
-    <div class="stat-d">Discovery Through<br/>Eng-Ready Delivery</div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-n">∞</div>
-    <div class="stat-d">Patience For<br/>Hard Problems</div>
-  </div>
-</div>
 
 <!-- CTA -->
 <a href="/#cases" class="page-cta">
