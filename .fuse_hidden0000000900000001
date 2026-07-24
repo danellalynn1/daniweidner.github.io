@@ -129,6 +129,16 @@
     font-weight: 800;
     letter-spacing: -0.03em;
   }
+  .hero-statement .dot-prefix {
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    border-radius: 50%;
+    background: var(--ink) url('1644264687791.jpg') center / cover no-repeat;
+    vertical-align: 0.05em;
+    margin-right: 0.35em;
+    overflow: hidden;
+  }
 
   /* Operating principles grid (replaces the terse stat row) */
   .principles {
@@ -717,7 +727,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-statement">
-    <div class="hs-line">DANI IS A <span class="b">LEAD PRODUCT</span></div>
+    <div class="hs-line"><span class="dot-prefix"></span>DANI IS A <span class="b">LEAD PRODUCT</span></div>
     <div class="hs-line">DESIGNER BUILDING</div>
     <div class="hs-line b-line"><span class="b">ENTERPRISE B2B SAAS</span></div>
     <div class="hs-line">WITH THIRTEEN YEARS OF</div>
