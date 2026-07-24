@@ -463,6 +463,18 @@
   footer .footer-grid h3 { color: #f2f2f2; }
   footer .footer-grid .col a:hover { color: #74a58c; text-decoration: underline; }
   footer .footer-tagline { color: #8c8c8c; }
+
+  /* Hero illustration: reveal on page load */
+  .case-hero-image {
+    animation: heroReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  }
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(18px) scale(0.985); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .case-hero-image { animation: none; }
+  }
 </style>
 </head>
 <body>
