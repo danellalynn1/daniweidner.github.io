@@ -639,79 +639,23 @@
   <span class="sh-meta">Craft / Process / Tools</span>
 </div>
 <section class="cap-section">
-  <div class="cap-illustration">
-    <svg viewBox="0 0 1200 410" role="img" aria-label="What I Bring: three parallel capability areas plus a toolkit. Design (end-to-end product design, UX research and interaction, information architecture, visual design and systems, prototyping and critique). Process (discovery and synthesis, journey mapping, wireframing to hi-fi, eng-ready specs, planning and strategy). Collaboration (cross-functional partnership, engineering, product and stakeholders, client-facing presentation, design to dev handoff, craft intact to ship). Toolkit: Figma, Figma Make, FigJam, Miro, Claude Code, Notion, Linear, Jira, Loom." xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="1200" height="410" rx="4" fill="#0a0a0a"/>
-      <rect x="16" y="16" width="1168" height="378" rx="2" fill="none" stroke="#242424" stroke-width="1"/>
-
-      <!-- card backgrounds + left accent spines -->
-      <rect x="40"  y="64" width="346" height="230" rx="4" fill="#74a58c" opacity="0.05"/>
-      <rect x="40"  y="64" width="3"   height="230" fill="#74a58c"/>
-      <rect x="426" y="64" width="346" height="230" rx="4" fill="#7ea7c9" opacity="0.05"/>
-      <rect x="426" y="64" width="3"   height="230" fill="#7ea7c9"/>
-      <rect x="812" y="64" width="346" height="230" rx="4" fill="#d99f43" opacity="0.05"/>
-      <rect x="812" y="64" width="3"   height="230" fill="#d99f43"/>
-
-      <!-- icons -->
-      <g transform="translate(64,80)" fill="none" stroke="#74a58c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="4" y="4" width="20" height="20" rx="1"/><circle cx="14" cy="14" r="3.2" fill="#74a58c" stroke="none"/>
-      </g>
-      <g transform="translate(450,80)" fill="none" stroke="#7ea7c9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="14" x2="14" y2="14" stroke-dasharray="2 3"/><line x1="14" y1="14" x2="25" y2="14"/><path d="M21 10 L25 14 L21 18"/>
-      </g>
-      <g transform="translate(836,80)" fill="none" stroke="#d99f43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="14" r="8"/><circle cx="21" cy="14" r="8"/>
-      </g>
-
-      <g font-family="'JetBrains Mono','Courier New',monospace">
-        <text x="40" y="44" fill="#6a6a6a" font-size="11" letter-spacing="2">HOW I WORK</text>
-        <text x="1158" y="44" text-anchor="end" fill="#6a6a6a" font-size="11" letter-spacing="2">THREE AREAS + A TOOLKIT</text>
-
-        <!-- DESIGN -->
-        <text x="66" y="142" fill="#74a58c" font-size="16" font-weight="500" letter-spacing="1.5">DESIGN</text>
-        <line x1="66" y1="152" x2="98" y2="152" stroke="#74a58c" stroke-width="2"/>
-        <text x="66" y="180" fill="#b4b4b4" font-size="11" letter-spacing="0.3">End-to-end product design</text>
-        <text x="66" y="200" fill="#b4b4b4" font-size="11" letter-spacing="0.3">UX research &amp; interaction</text>
-        <text x="66" y="220" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Information architecture</text>
-        <text x="66" y="240" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Visual design &amp; systems</text>
-        <text x="66" y="260" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Prototyping &amp; critique</text>
-
-        <!-- PROCESS -->
-        <text x="452" y="142" fill="#7ea7c9" font-size="16" font-weight="500" letter-spacing="1.5">PROCESS</text>
-        <line x1="452" y1="152" x2="484" y2="152" stroke="#7ea7c9" stroke-width="2"/>
-        <text x="452" y="180" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Discovery &amp; synthesis</text>
-        <text x="452" y="200" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Journey mapping</text>
-        <text x="452" y="220" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Wireframing to hi-fi</text>
-        <text x="452" y="240" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Eng-ready specs</text>
-        <text x="452" y="260" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Planning &amp; strategy</text>
-
-        <!-- COLLABORATION -->
-        <text x="838" y="142" fill="#d99f43" font-size="16" font-weight="500" letter-spacing="1.5">COLLABORATION</text>
-        <line x1="838" y1="152" x2="870" y2="152" stroke="#d99f43" stroke-width="2"/>
-        <text x="838" y="180" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Cross-functional partnership</text>
-        <text x="838" y="200" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Eng &#183; product &#183; stakeholders</text>
-        <text x="838" y="220" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Client-facing presentation</text>
-        <text x="838" y="240" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Design / dev handoff</text>
-        <text x="838" y="260" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Craft intact to ship</text>
-      </g>
-
-      <!-- toolkit shelf -->
-      <line x1="40" y1="322" x2="1158" y2="322" stroke="#262626" stroke-width="1"/>
-      <rect x="40" y="332" width="1118" height="48" rx="4" fill="#cf6a5c" opacity="0.06"/>
-      <rect x="40" y="332" width="3" height="48" fill="#cf6a5c"/>
-      <g transform="translate(60,344)" fill="none" stroke="#cf6a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="0" y="0" width="7" height="7"/><rect x="11" y="0" width="7" height="7"/><rect x="0" y="11" width="7" height="7"/><rect x="11" y="11" width="7" height="7"/>
-      </g>
-      <g font-family="'JetBrains Mono','Courier New',monospace">
-        <text x="94" y="361" fill="#cf6a5c" font-size="13" font-weight="500" letter-spacing="2">TOOLKIT</text>
-        <text x="210" y="361" fill="#c4c4c4" font-size="11" letter-spacing="0.3">Figma &#183; Figma Make &#183; FigJam &#183; Miro &#183; Claude Code &#183; Notion &#183; Linear &#183; Jira &#183; Loom</text>
-      </g>
-    </svg>
+  <div class="cap-row">
+    <div class="cap-label">Design</div>
+    <p class="cap-body"><strong>End-to-end product design</strong>, UX research, interaction design, information architecture, visual design, design systems, prototyping, and design critique. Comfortable owning ambiguous, zero-to-one problems and carrying them through to polished, shipped work.</p>
+  </div>
+  <div class="cap-row">
+    <div class="cap-label">Process</div>
+    <p class="cap-body">Discovery &amp; synthesis, user interviews, journey mapping, wireframing, high-fidelity design, and <strong>eng-ready specs</strong>. Async collaboration and ticket writing from initiative to subtask level in Jira and Linear. Quarterly planning and strategy as part of a longer-term roadmap.</p>
+  </div>
+  <div class="cap-row">
+    <div class="cap-label">Collaboration</div>
+    <p class="cap-body">Cross-functional partnership with <strong>engineering, product, and stakeholders</strong>; client-facing presentation; and design&ndash;dev handoff that keeps craft intact through implementation.</p>
+  </div>
+  <div class="cap-row">
+    <div class="cap-label">Tools</div>
+    <p class="cap-body">Figma, Figma Make, FigJam, Claude Code, Notion, Linear, Miro, Jira, Loom.</p>
   </div>
 </section>
-
-
-
 
 <!-- CTA -->
 <a href="/#cases" class="page-cta">

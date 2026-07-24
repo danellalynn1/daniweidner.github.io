@@ -640,76 +640,74 @@
 </div>
 <section class="cap-section">
   <div class="cap-illustration">
-    <svg viewBox="0 0 1200 410" role="img" aria-label="What I Bring: three parallel capability areas plus a toolkit. Design (end-to-end product design, UX research and interaction, information architecture, visual design and systems, prototyping and critique). Process (discovery and synthesis, journey mapping, wireframing to hi-fi, eng-ready specs, planning and strategy). Collaboration (cross-functional partnership, engineering, product and stakeholders, client-facing presentation, design to dev handoff, craft intact to ship). Toolkit: Figma, Figma Make, FigJam, Miro, Claude Code, Notion, Linear, Jira, Loom." xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="1200" height="410" rx="4" fill="#0a0a0a"/>
-      <rect x="16" y="16" width="1168" height="378" rx="2" fill="none" stroke="#242424" stroke-width="1"/>
+    <svg viewBox="0 0 1200 400" role="img" aria-label="What I Bring, an end-to-end product design workflow in four stages: 01 Design (end-to-end product design, UX research, interaction, IA, visual design, design systems, prototyping, critique); 02 Process (discovery and synthesis, journey mapping, wireframing to hi-fi, eng-ready specs, planning and strategy); 03 Collaboration (cross-functional partnership across engineering, product and stakeholders, client-facing presentation, design to dev handoff); 04 Tools (Figma, Figma Make, FigJam, Miro, Claude Code, Notion, Linear, Jira, Loom)." xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="1200" height="400" rx="4" fill="#0a0a0a"/>
+      <rect x="16" y="16" width="1168" height="368" rx="2" fill="none" stroke="#242424" stroke-width="1"/>
 
-      <!-- card backgrounds + left accent spines -->
-      <rect x="40"  y="64" width="346" height="230" rx="4" fill="#74a58c" opacity="0.05"/>
-      <rect x="40"  y="64" width="3"   height="230" fill="#74a58c"/>
-      <rect x="426" y="64" width="346" height="230" rx="4" fill="#7ea7c9" opacity="0.05"/>
-      <rect x="426" y="64" width="3"   height="230" fill="#7ea7c9"/>
-      <rect x="812" y="64" width="346" height="230" rx="4" fill="#d99f43" opacity="0.05"/>
-      <rect x="812" y="64" width="3"   height="230" fill="#d99f43"/>
+      <rect x="32" y="176" width="236" height="172" rx="3" fill="#74a58c" opacity="0.07"/>
+      <rect x="332" y="176" width="236" height="172" rx="3" fill="#7ea7c9" opacity="0.07"/>
+      <rect x="632" y="176" width="236" height="172" rx="3" fill="#d99f43" opacity="0.07"/>
+      <rect x="932" y="176" width="236" height="172" rx="3" fill="#cf6a5c" opacity="0.07"/>
 
-      <!-- icons -->
-      <g transform="translate(64,80)" fill="none" stroke="#74a58c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="4" y="4" width="20" height="20" rx="1"/><circle cx="14" cy="14" r="3.2" fill="#74a58c" stroke="none"/>
-      </g>
-      <g transform="translate(450,80)" fill="none" stroke="#7ea7c9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="14" x2="14" y2="14" stroke-dasharray="2 3"/><line x1="14" y1="14" x2="25" y2="14"/><path d="M21 10 L25 14 L21 18"/>
-      </g>
-      <g transform="translate(836,80)" fill="none" stroke="#d99f43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="14" r="8"/><circle cx="21" cy="14" r="8"/>
-      </g>
+      <line x1="150" y1="150" x2="1050" y2="150" stroke="#2a2a2a" stroke-width="2"/>
+      <path d="M295 143 L305 150 L295 157" fill="none" stroke="#5c5c5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M595 143 L605 150 L595 157" fill="none" stroke="#5c5c5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M895 143 L905 150 L895 157" fill="none" stroke="#5c5c5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <line x1="150" y1="166" x2="150" y2="176" stroke="#74a58c" stroke-width="1.5"/>
+      <line x1="450" y1="166" x2="450" y2="176" stroke="#7ea7c9" stroke-width="1.5"/>
+      <line x1="750" y1="166" x2="750" y2="176" stroke="#d99f43" stroke-width="1.5"/>
+      <line x1="1050" y1="166" x2="1050" y2="176" stroke="#cf6a5c" stroke-width="1.5"/>
+
+      <circle cx="150" cy="150" r="15" fill="#74a58c"/>
+      <circle cx="450" cy="150" r="15" fill="#7ea7c9"/>
+      <circle cx="750" cy="150" r="15" fill="#d99f43"/>
+      <circle cx="1050" cy="150" r="15" fill="#cf6a5c"/>
 
       <g font-family="'JetBrains Mono','Courier New',monospace">
-        <text x="40" y="44" fill="#6a6a6a" font-size="11" letter-spacing="2">HOW I WORK</text>
-        <text x="1158" y="44" text-anchor="end" fill="#6a6a6a" font-size="11" letter-spacing="2">THREE AREAS + A TOOLKIT</text>
+        <text x="36" y="48" fill="#6a6a6a" font-size="11" letter-spacing="2">END-TO-END WORKFLOW</text>
+        <text x="1164" y="48" text-anchor="end" fill="#6a6a6a" font-size="11" letter-spacing="2">FOUR MOVES</text>
 
-        <!-- DESIGN -->
-        <text x="66" y="142" fill="#74a58c" font-size="16" font-weight="500" letter-spacing="1.5">DESIGN</text>
-        <line x1="66" y1="152" x2="98" y2="152" stroke="#74a58c" stroke-width="2"/>
-        <text x="66" y="180" fill="#b4b4b4" font-size="11" letter-spacing="0.3">End-to-end product design</text>
-        <text x="66" y="200" fill="#b4b4b4" font-size="11" letter-spacing="0.3">UX research &amp; interaction</text>
-        <text x="66" y="220" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Information architecture</text>
-        <text x="66" y="240" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Visual design &amp; systems</text>
-        <text x="66" y="260" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Prototyping &amp; critique</text>
+        <text x="150" y="154" text-anchor="middle" fill="#0a0a0a" font-size="11" font-weight="500">01</text>
+        <text x="450" y="154" text-anchor="middle" fill="#0a0a0a" font-size="11" font-weight="500">02</text>
+        <text x="750" y="154" text-anchor="middle" fill="#0a0a0a" font-size="11" font-weight="500">03</text>
+        <text x="1050" y="154" text-anchor="middle" fill="#0a0a0a" font-size="11" font-weight="500">04</text>
 
-        <!-- PROCESS -->
-        <text x="452" y="142" fill="#7ea7c9" font-size="16" font-weight="500" letter-spacing="1.5">PROCESS</text>
-        <line x1="452" y1="152" x2="484" y2="152" stroke="#7ea7c9" stroke-width="2"/>
-        <text x="452" y="180" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Discovery &amp; synthesis</text>
-        <text x="452" y="200" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Journey mapping</text>
-        <text x="452" y="220" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Wireframing to hi-fi</text>
-        <text x="452" y="240" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Eng-ready specs</text>
-        <text x="452" y="260" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Planning &amp; strategy</text>
+        <text x="46" y="206" fill="#74a58c" font-size="15" font-weight="500" letter-spacing="1.5">DESIGN</text>
+        <line x1="46" y1="216" x2="78" y2="216" stroke="#74a58c" stroke-width="2"/>
+        <text x="46" y="242" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">End-to-end product design</text>
+        <text x="46" y="262" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">UX research &amp; interaction</text>
+        <text x="46" y="282" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">IA &amp; visual design</text>
+        <text x="46" y="302" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Design systems</text>
+        <text x="46" y="322" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Prototyping &amp; critique</text>
 
-        <!-- COLLABORATION -->
-        <text x="838" y="142" fill="#d99f43" font-size="16" font-weight="500" letter-spacing="1.5">COLLABORATION</text>
-        <line x1="838" y1="152" x2="870" y2="152" stroke="#d99f43" stroke-width="2"/>
-        <text x="838" y="180" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Cross-functional partnership</text>
-        <text x="838" y="200" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Eng &#183; product &#183; stakeholders</text>
-        <text x="838" y="220" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Client-facing presentation</text>
-        <text x="838" y="240" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Design / dev handoff</text>
-        <text x="838" y="260" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Craft intact to ship</text>
-      </g>
+        <text x="346" y="206" fill="#7ea7c9" font-size="15" font-weight="500" letter-spacing="1.5">PROCESS</text>
+        <line x1="346" y1="216" x2="378" y2="216" stroke="#7ea7c9" stroke-width="2"/>
+        <text x="346" y="242" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Discovery &amp; synthesis</text>
+        <text x="346" y="262" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Journey mapping</text>
+        <text x="346" y="282" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Wireframing to hi-fi</text>
+        <text x="346" y="302" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Eng-ready specs</text>
+        <text x="346" y="322" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Planning &amp; strategy</text>
 
-      <!-- toolkit shelf -->
-      <line x1="40" y1="322" x2="1158" y2="322" stroke="#262626" stroke-width="1"/>
-      <rect x="40" y="332" width="1118" height="48" rx="4" fill="#cf6a5c" opacity="0.06"/>
-      <rect x="40" y="332" width="3" height="48" fill="#cf6a5c"/>
-      <g transform="translate(60,344)" fill="none" stroke="#cf6a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="0" y="0" width="7" height="7"/><rect x="11" y="0" width="7" height="7"/><rect x="0" y="11" width="7" height="7"/><rect x="11" y="11" width="7" height="7"/>
-      </g>
-      <g font-family="'JetBrains Mono','Courier New',monospace">
-        <text x="94" y="361" fill="#cf6a5c" font-size="13" font-weight="500" letter-spacing="2">TOOLKIT</text>
-        <text x="210" y="361" fill="#c4c4c4" font-size="11" letter-spacing="0.3">Figma &#183; Figma Make &#183; FigJam &#183; Miro &#183; Claude Code &#183; Notion &#183; Linear &#183; Jira &#183; Loom</text>
+        <text x="646" y="206" fill="#d99f43" font-size="15" font-weight="500" letter-spacing="1.5">COLLABORATION</text>
+        <line x1="646" y1="216" x2="678" y2="216" stroke="#d99f43" stroke-width="2"/>
+        <text x="646" y="242" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Cross-functional partnership</text>
+        <text x="646" y="262" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Eng &#183; product &#183; stakeholders</text>
+        <text x="646" y="282" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Client-facing presentation</text>
+        <text x="646" y="302" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Design / dev handoff</text>
+
+        <text x="946" y="206" fill="#cf6a5c" font-size="15" font-weight="500" letter-spacing="1.5">TOOLS</text>
+        <line x1="946" y1="216" x2="978" y2="216" stroke="#cf6a5c" stroke-width="2"/>
+        <text x="946" y="242" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Figma &#183; Figma Make</text>
+        <text x="946" y="262" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">FigJam &#183; Miro</text>
+        <text x="946" y="282" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Claude Code &#183; Notion</text>
+        <text x="946" y="302" fill="#b4b4b4" font-size="10.5" letter-spacing="0.3">Linear &#183; Jira &#183; Loom</text>
+
+        <text x="600" y="366" text-anchor="middle" fill="#4a4a4a" font-size="9" letter-spacing="4">HOW THE WORK GETS MADE</text>
       </g>
     </svg>
   </div>
 </section>
-
 
 
 
