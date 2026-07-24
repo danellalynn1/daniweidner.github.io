@@ -640,14 +640,9 @@
   }
   /* spot illustration between kicker and headline */
   .bs-spot {
-    color: #e8e8e8;
-    background: #0a0a0a;
-    border: 1px solid #242424;
-    border-radius: 4px;
-    padding: 1.1rem 1.2rem;
-    margin: 0.9rem 0 1.2rem;
+    color: var(--ink);
+    margin: 0.4rem 0 1.2rem;
   }
-  .bs-spot svg { margin: 0 auto; }
   .bs-spot svg {
     display: block;
     width: 100%;
@@ -718,7 +713,7 @@
     nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
     .hero { padding: 3rem 1.2rem 5rem; }
     .hero-statement { font-size: clamp(2rem, 10.5vw, 4.2rem); }
-    .principles { padding: 1.6rem 1.2rem 1.8rem; }
+    .principles { padding: 0 1.2rem; }
     .principles-grid { grid-template-columns: 1fr; }
     .section-head, .cases, .journey, .about-block, .recognitions-wrap, .footer-grid, .footer-tagline { padding-left: 1.2rem; padding-right: 1.2rem; }
     .footer-grid { grid-template-columns: 1fr; }
@@ -821,12 +816,12 @@
         <div class="bs-spot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
           <line x1="165" y1="18" x2="165" y2="132" stroke-dasharray="3 3" opacity="0.3" stroke-width="1"/>
           <circle cx="40" cy="75" r="11"/>
-          <circle cx="40" cy="75" r="3.2" fill="#cf6a5c" stroke="none"/>
-          <path d="M58 62 A22 22 0 0 1 58 88" stroke="#cf6a5c"/>
-          <path d="M66 53 A32 32 0 0 1 66 97" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.55" stroke-width="1"/>
+          <circle cx="40" cy="75" r="3.2" fill="#9c3327" stroke="none"/>
+          <path d="M58 62 A22 22 0 0 1 58 88" stroke="#9c3327"/>
+          <path d="M66 53 A32 32 0 0 1 66 97" stroke="#9c3327" stroke-dasharray="3 3" opacity="0.55" stroke-width="1"/>
           <line x1="74" y1="75" x2="112" y2="75"/>
-          <circle cx="86" cy="75" r="2" fill="#cf6a5c" stroke="none"/>
-          <circle cx="98" cy="75" r="2" fill="#cf6a5c" stroke="none"/>
+          <circle cx="86" cy="75" r="2" fill="#9c3327" stroke="none"/>
+          <circle cx="98" cy="75" r="2" fill="#9c3327" stroke="none"/>
           <circle cx="118" cy="75" r="3.5"/>
           <line x1="121" y1="72" x2="152" y2="43"/>
           <line x1="122" y1="75" x2="153" y2="75"/>
@@ -837,9 +832,9 @@
           <circle cx="165" cy="38" r="8"/>
           <circle cx="165" cy="75" r="8"/>
           <circle cx="165" cy="112" r="8"/>
-          <circle cx="165" cy="38" r="2" fill="#cf6a5c" stroke="none"/>
-          <circle cx="165" cy="75" r="2" fill="#cf6a5c" stroke="none"/>
-          <circle cx="165" cy="112" r="2" fill="#cf6a5c" stroke="none"/>
+          <circle cx="165" cy="38" r="2" fill="#9c3327" stroke="none"/>
+          <circle cx="165" cy="75" r="2" fill="#9c3327" stroke="none"/>
+          <circle cx="165" cy="112" r="2" fill="#9c3327" stroke="none"/>
           <line x1="180" y1="38" x2="188" y2="38" opacity="0.4" stroke-width="1"/>
           <line x1="180" y1="75" x2="188" y2="75" opacity="0.4" stroke-width="1"/>
           <line x1="180" y1="112" x2="188" y2="112" opacity="0.4" stroke-width="1"/>
@@ -854,13 +849,13 @@
         <div class="bs-spot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="110" cy="75" r="24" stroke-dasharray="3 3" opacity="0.3" stroke-width="1"/>
           <circle cx="110" cy="75" r="44"/>
-          <circle cx="110" cy="31" r="4" fill="#7ea7c9" stroke="none"/>
-          <circle cx="71.9" cy="97" r="4" fill="#7ea7c9" stroke="none"/>
-          <circle cx="148.1" cy="97" r="4" fill="#7ea7c9" stroke="none"/>
+          <circle cx="110" cy="31" r="4" fill="#2f5674" stroke="none"/>
+          <circle cx="71.9" cy="97" r="4" fill="#2f5674" stroke="none"/>
+          <circle cx="148.1" cy="97" r="4" fill="#2f5674" stroke="none"/>
           <path d="M104 27 L111 31 L104 35" transform="rotate(60 110 75)"/>
           <path d="M104 27 L111 31 L104 35" transform="rotate(180 110 75)"/>
           <path d="M104 27 L111 31 L104 35" transform="rotate(300 110 75)"/>
-          <path d="M101 76 L107.5 82.5 L120 68" stroke="#7ea7c9" stroke-width="1.8"/>
+          <path d="M101 76 L107.5 82.5 L120 68" stroke="#2f5674" stroke-width="1.8"/>
           <line x1="156" y1="75" x2="182" y2="75" stroke-dasharray="3 3" opacity="0.4" stroke-width="1"/>
           <path d="M178 71.5 L183 75 L178 78.5" opacity="0.4" stroke-width="1"/>
         </svg></div>
@@ -878,14 +873,14 @@
           <circle cx="42" cy="88" r="3" opacity="0.45" stroke-width="1.2"/>
           <line x1="84" y1="75" x2="128" y2="75"/>
           <path d="M123 70.5 L129 75 L123 79.5"/>
-          <circle cx="106" cy="75" r="7" fill="none" stroke="#d99f43"/>
-          <circle cx="106" cy="75" r="2.2" fill="#d99f43" stroke="none"/>
+          <circle cx="106" cy="75" r="7" fill="none" stroke="#b07219"/>
+          <circle cx="106" cy="75" r="2.2" fill="#b07219" stroke="none"/>
           <path d="M52 40 Q110 6 168 36" stroke-dasharray="3 3" opacity="0.35" stroke-width="1"/>
           <path d="M163 30 L168.5 36.5 L160.5 38.5" opacity="0.35" stroke-width="1"/>
           <rect x="138" y="38" width="60" height="68"/>
-          <circle cx="152" cy="54" r="3" fill="#d99f43" stroke="none"/>
-          <circle cx="170" cy="54" r="3" fill="#d99f43" stroke="none"/>
-          <circle cx="152" cy="70" r="3" fill="#d99f43" stroke="none"/>
+          <circle cx="152" cy="54" r="3" fill="#b07219" stroke="none"/>
+          <circle cx="170" cy="54" r="3" fill="#b07219" stroke="none"/>
+          <circle cx="152" cy="70" r="3" fill="#b07219" stroke="none"/>
           <line x1="146" y1="88" x2="190" y2="88" opacity="0.6" stroke-width="1.2"/>
           <line x1="146" y1="96" x2="176" y2="96" opacity="0.6" stroke-width="1.2"/>
         </svg></div>
