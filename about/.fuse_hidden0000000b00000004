@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dani Weidner | About</title>
+<title>Dani Weidner — About</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -502,10 +502,10 @@
       <div class="bio-portrait"></div>
     </div>
     <div class="bio-right">
-      <p class="bio-lead">I got into design because I wanted to make things that actually work for the people who use them. That hasn't changed, just gotten harder and more interesting.</p>
+      <p class="bio-lead">I got into design because I wanted to make things that actually work for the people who use them. That hasn't changed — just gotten harder and more interesting.</p>
       <div class="bio-body">
-        <p>I'm happiest on genuinely hard problems with people who take the craft seriously. The users I care about depend on software to do their jobs: the coach watching film at 2am, the ops manager who can't afford a bad day because the interface let them down.</p>
-        <p>Outside of work I'm drawn to anything that makes systems legible: organizational theory, infrastructure history, how things actually work underneath. And to making things with my hands, where the material pushes back and mistakes are real.</p>
+        <p>I'm happiest on genuinely hard problems with people who take the craft seriously. The users I care about depend on software to do their jobs — the coach watching film at 2am, the ops manager who can't afford a bad day because the interface let them down.</p>
+        <p>Outside of work I'm drawn to anything that makes systems legible — organizational theory, infrastructure history, how things actually work underneath. And to making things with my hands, where the material pushes back and mistakes are real.</p>
       </div>
     </div>
   </div>
@@ -524,7 +524,7 @@
     <div class="tl-company">BRANCH.IO</div>
     <div class="tl-role">Lead Product Designer</div>
     <div class="tl-detail">
-      End-to-end design across a mobile growth and linking product: smart banner SDK, link management, and bulk link creation. Running enterprise research and governing the Auxin design system: contribution model and standards across parallel product teams.
+      End-to-end design across a mobile growth and linking product — smart banner SDK, link management, and bulk link creation. Running enterprise research and governing the Auxin design system — contribution model and standards across parallel product teams.
       <div class="tl-tags">
         <span>MOBILE GROWTH &amp; LINKING</span>
         <span>DESIGN SYSTEMS</span>
@@ -551,7 +551,7 @@
     <div class="tl-company">DMSI</div>
     <div class="tl-role">Senior UX Designer</div>
     <div class="tl-detail">
-      Enterprise software for building materials distributors: deeply workflow-dependent, data-heavy interfaces where understanding the business was a prerequisite to designing anything.
+      Enterprise software for building materials distributors — deeply workflow-dependent, data-heavy interfaces where understanding the business was a prerequisite to designing anything.
       <div class="tl-tags">
         <span>ENTERPRISE DISTRIBUTION</span>
         <span>COMPLEX WORKFLOWS</span>
@@ -564,7 +564,7 @@
     <div class="tl-company">LISNR</div>
     <div class="tl-role">Senior Product Designer</div>
     <div class="tl-detail">
-      Ultrasonic data transmission: hardware-adjacent product where the core challenge was making invisible technology feel trustworthy and legible to both developers and end users.
+      Ultrasonic data transmission — hardware-adjacent product where the core challenge was making invisible technology feel trustworthy and legible to both developers and end users.
       <div class="tl-tags">
         <span>HARDWARE-ADJACENT</span>
         <span>SDK &amp; DEVELOPER UX</span>

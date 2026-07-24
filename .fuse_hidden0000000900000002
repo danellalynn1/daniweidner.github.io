@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dani Weidner | Staff / Lead Product Designer · Design Systems & Ops</title>
+<title>Dani Weidner — Staff / Lead Product Designer · Design Systems & Ops</title>
 <meta name="description" content="Staff/Lead product designer, 13 years in enterprise B2B SaaS. Design system governance, cross-team standards, research operations, and AI product design.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -177,7 +177,7 @@
     margin-bottom: 1.5rem;
   }
   .principle .icon svg { width: 100%; height: 100%; display: block; }
-  /* Newspaper / print-ad ink tones - one per principle */
+  /* Newspaper / print-ad ink tones — one per principle */
   .principle:nth-child(1) .icon { color: #9c3327; } /* brick red */
   .principle:nth-child(2) .icon { color: #2f5674; } /* ink blue */
   .principle:nth-child(3) .icon { color: #b07219; } /* ochre / mustard */
@@ -200,7 +200,7 @@
     color: var(--ink-soft);
     text-wrap: pretty;
   }
-  /* First-load reveal - content fades/slides in, dividers stay put */
+  /* First-load reveal — content fades/slides in, dividers stay put */
   .principles-head,
   .principle > * {
     opacity: 0;
@@ -290,7 +290,7 @@
   .case-row:hover .case-name {
     text-decoration-color: var(--ink);
   }
-  /* Two meta columns - Outcomes and Disciplines side by side, each label capping its list */
+  /* Two meta columns — Outcomes and Disciplines side by side, each label capping its list */
   .case-meta-label {
     grid-column: 3;
     grid-row: 1;
@@ -635,7 +635,7 @@
     line-height: 1.62;
     color: var(--ink-soft);
   }
-  /* drop cap - the signature newspaper flourish */
+  /* drop cap — the signature newspaper flourish */
   .bs-col p.lead::first-letter {
     font-family: 'Fraunces', serif;
     font-weight: 900;
@@ -1007,7 +1007,7 @@
     <div class="about-body">
       <p>Lead product designer building enterprise B2B SaaS. I move design upstream into discovery, design the systems that scale across teams, and migrate legacy platforms without breaking the customers who depend on them.</p>
       <p>I run my own research with enterprise customers and govern design systems across parallel teams, treating the loop with users as the core of the work.</p>
-      <p>More recently I've designed AI product experiences: a persistent in-product agent and the surfaces that show model outputs to enterprise users. Working directly with ML engineers, I translate what the model can and can't do into product decisions, treating uncertainty, explainability, and trust as design constraints.</p>
+      <p>More recently I've designed AI product experiences — a persistent in-product agent and the surfaces that show model outputs to enterprise users. Working directly with ML engineers, I translate what the model can and can't do into product decisions, treating uncertainty, explainability, and trust as design constraints.</p>
     </div>
   </div>
 </section>
@@ -1053,7 +1053,7 @@
     </div>
     <div class="recognition-row">
       <div class="label">AI PRODUCT DESIGN</div>
-      <div class="detail">UNCERTAINTY, EXPLAINABILITY &amp; TRUST AS DESIGN CONSTRAINTS · ENTERPRISE B2B</div>
+      <div class="detail">UNCERTAINTY, EXPLAINABILITY &amp; TRUST AS DESIGN CONSTRAINTS — ENTERPRISE B2B</div>
     </div>
   </div>
 </section>
@@ -1100,7 +1100,7 @@
     setInterval(update, 30000);
   })();
 
-  // Project Journey: broadsheet - horizontal rail fills on scroll, columns reveal,
+  // Project Journey: broadsheet — horizontal rail fills on scroll, columns reveal,
   // nodes ink in as the rail passes them.
   (function () {
     const broadsheet = document.getElementById('broadsheet');
