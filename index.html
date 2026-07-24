@@ -277,6 +277,20 @@
     font-size: 0.78rem;
     letter-spacing: 0.04em;
   }
+  .case-read {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    margin-top: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.09em;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .case-read .arr { display: inline-block; transition: transform 0.3s ease; }
+  .case-row:hover .case-read { color: var(--ink); }
+  .case-row:hover .case-read .arr { transform: translateX(4px); }
   .case-name {
     font-family: 'Fraunces', serif;
     font-weight: 500;
@@ -696,6 +710,7 @@
       column-gap: 2rem;
     }
     .case-id { grid-column: 1; grid-row: 1; }
+    .case-read { grid-column: 2; grid-row: 1; justify-self: end; margin-top: 0; align-self: center; }
     .case-name-block { grid-column: 1 / span 2; grid-row: 2; min-height: 8rem; }
     .case-meta-label { grid-column: 1; grid-row: 3; text-align: left; margin-top: 1.5rem; }
     .case-recognitions { grid-column: 1; grid-row: 4; text-align: left; }
@@ -914,6 +929,7 @@
 
   <a href="/work/strategy/" class="case-link"><article class="case-row">
     <div class="case-id">A &mdash; 1</div>
+    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Strategy &amp; Roadmapping</div></div>
     <div class="case-meta-label">NOTABLE OUTCOMES</div>
     <div class="case-recognitions">
@@ -931,6 +947,7 @@
   </article></a>
   <a href="/work/systems-leadership/" class="case-link"><article class="case-row">
     <div class="case-id">A &mdash; 2</div>
+    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Design Systems &amp; DesignOps</div></div>
     <div class="case-meta-label">NOTABLE OUTCOMES</div>
     <div class="case-recognitions">
@@ -950,6 +967,7 @@
   </article></a>
   <a href="/work/ai-agent/" class="case-link"><article class="case-row">
     <div class="case-id">A &mdash; 3</div>
+    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Designing AI experiences</div></div>
     <div class="case-meta-label">NOTABLE OUTCOMES</div>
     <div class="case-recognitions">
@@ -967,6 +985,7 @@
   </article></a>
   <a href="/work/research/" class="case-link"><article class="case-row">
     <div class="case-id">A &mdash; 4</div>
+    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Research</div></div>
     <div class="case-meta-label">NOTABLE OUTCOMES</div>
     <div class="case-recognitions">
@@ -986,6 +1005,7 @@
   </article></a>
   <a href="/work/validation/" class="case-link"><article class="case-row">
     <div class="case-id">A &mdash; 5</div>
+    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Validation &amp; Experimentation</div></div>
     <div class="case-meta-label">NOTABLE OUTCOMES</div>
     <div class="case-recognitions">
@@ -1003,6 +1023,7 @@
   </article></a>
   <a href="/work/user-flows/" class="case-link"><article class="case-row">
     <div class="case-id">A &mdash; 6</div>
+    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">User Flows</div></div>
     <div class="case-meta-label">NOTABLE OUTCOMES</div>
     <div class="case-recognitions">
@@ -1020,6 +1041,7 @@
   </article></a>
   <a href="/work/beyond-screen/" class="case-link"><article class="case-row">
     <div class="case-id">A &mdash; 7</div>
+    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Strategy past the screen</div></div>
     <div class="case-meta-label">NOTABLE OUTCOMES</div>
     <div class="case-recognitions">
