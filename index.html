@@ -285,14 +285,12 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
     letter-spacing: 0.09em;
-    color: var(--ink);
+    color: var(--ink-soft);
     white-space: nowrap;
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: color 0.3s ease;
   }
-  .case-read .arr { display: inline-block; transition: transform 0.3s ease 0.1s; }
-  .case-row:hover .case-read { opacity: 1; transform: translateX(0); }
+  .case-read .arr { display: inline-block; transition: transform 0.3s ease; }
+  .case-row:hover .case-read { color: #74a58c; }
   .case-row:hover .case-read .arr { transform: translateX(4px); }
   .case-name {
     font-family: 'Fraunces', serif;
