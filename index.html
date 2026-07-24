@@ -372,56 +372,6 @@
     padding-bottom: 0.5rem;
   }
 
-  /* === ABOUT BLOCK (newspaper two-column layout) === */
-  .about-block {
-    padding: 4rem 2rem 6rem;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 0;
-    align-items: start;
-    border-top: 1px solid var(--ink);
-  }
-  .about-block .hero-statement {
-    font-size: clamp(1.4rem, 3.2vw, 4rem);
-    padding-right: 3rem;
-    border-right: 1px solid var(--ink);
-  }
-  .about-right {
-    padding-left: 3rem;
-  }
-  .about-lead {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-  }
-  .about-body {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-    line-height: 1.65;
-    color: var(--ink-soft);
-  }
-  .about-body p + p {
-    margin-top: 1.1em;
-  }
-  @media (max-width: 900px) {
-    .about-block {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-    .about-block .hero-statement {
-      padding-right: 0;
-      border-right: none;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 3rem;
-    }
-    .about-right { padding-left: 0; }
-  }
-
   /* === RECOGNITIONS LIST === */
   .recognitions-wrap {
     padding: 4rem 2rem 6rem;
@@ -736,7 +686,7 @@
     .hero-statement { font-size: clamp(2rem, 10.5vw, 4.2rem); }
     .principles { padding: 1.6rem 1.2rem 1.8rem; }
     .principles-grid { grid-template-columns: 1fr; }
-    .section-head, .cases, .journey, .about-block, .recognitions-wrap, .footer-grid, .footer-tagline { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .section-head, .cases, .journey, .recognitions-wrap, .footer-grid, .footer-tagline { padding-left: 1.2rem; padding-right: 1.2rem; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-tagline { grid-template-columns: 1fr; gap: 2rem; }
     .recognition-row { font-size: 0.78rem; }
@@ -836,7 +786,7 @@
   <div class="journey-intro">
     <div class="kicker">The Method &mdash; In Three Movements</div>
     <div class="lede">How the work gets made.</div>
-    <div class="dek">A repeatable practice, from the first customer conversation to a clean migration.</div>
+    <div class="dek">Design is the work itself: a repeatable practice, from the first customer conversation to a clean migration.</div>
   </div>
 
   <div class="broadsheet" id="broadsheet">
@@ -1058,26 +1008,6 @@
       <div>PRIORITIZATION FRAMEWORKS</div>
     </div>
   </article></a>
-</section>
-
-<!-- ABOUT -->
-<section class="about-block" id="about">
-  <div class="hero-statement">
-    <div class="hs-line">DANI BUILDS <span class="b">METICULOUSLY CONSIDERED</span></div>
-    <div class="hs-line b-line"><span class="b">ENTERPRISE PRODUCTS</span> THAT</div>
-    <div class="hs-line">POWER USERS RESPECT</div>
-    <div class="hs-line">AND NEW USERS CAN OPERATE,</div>
-    <div class="hs-line">ACROSS B2B AND CONSUMER</div>
-    <div class="hs-line"><span class="b">DESIGN PRACTICE.</span></div>
-  </div>
-  <div class="about-right">
-    <p class="about-lead">Design is the work itself.</p>
-    <div class="about-body">
-      <p>Lead product designer building enterprise B2B SaaS. I move design upstream into discovery, design the systems that scale across teams, and migrate legacy platforms without breaking the customers who depend on them.</p>
-      <p>I run my own research with enterprise customers and govern design systems across parallel teams, treating the loop with users as the core of the work.</p>
-      <p>More recently I've designed AI product experiences: a persistent in-product agent and the surfaces that show model outputs to enterprise users. Working directly with ML engineers, I translate what the model can and can't do into product decisions, treating uncertainty, explainability, and trust as design constraints.</p>
-    </div>
-  </div>
 </section>
 
 <!-- RECOGNITIONS -->
