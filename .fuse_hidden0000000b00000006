@@ -432,6 +432,8 @@
   }
   .recognition-row .label { font-weight: 700; }
   .recognition-row .detail { text-align: right; font-weight: 400; }
+  .recognitions-illustration { width: 100%; overflow-x: auto; }
+  .recognitions-illustration svg { width: 100%; min-width: 760px; height: auto; display: block; border-radius: 4px; }
 
   /* About-the-bio link row */
   .bio-link-row {
@@ -1017,50 +1019,60 @@
   <h2>SIGNAL OF THE WORK</h2>
 </div>
 <section class="recognitions-wrap">
-  <div class="recognitions-label">CAPABILITIES &amp;<br/>CREDENTIALS</div>
-  <div class="recognitions-list">
-    <div class="recognition-row">
-      <div class="label">13+ YEARS</div>
-      <div class="detail">B2B SAAS &amp; CONSUMER PRACTICE</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">6 INDUSTRIES</div>
-      <div class="detail">MOBILE GROWTH, SPORTS, DISTRIBUTION, BEAUTY, REAL ESTATE, ULTRASONIC</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">DESIGN SYSTEM GOVERNANCE</div>
-      <div class="detail">AUXIN SYSTEM MAINTAINED ACROSS PARALLEL TEAMS: CONTRIBUTION MODEL, STANDARDS, AND DESIGN-ENG HANDOFF</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">RESEARCH OPERATIONS</div>
-      <div class="detail">ENTERPRISE RESEARCH PROGRAM RUN END-TO-END ACROSS 5 ACCOUNTS, FROM RECRUITING TO SYNTHESIS INTO ENG AND PM</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">PRACTICE &amp; ENABLEMENT</div>
-      <div class="detail">COACHED 10+ DESIGNERS, PMS, AND EMS ON PDLC; BUILT A REPEATABLE PRACTICE THAT RUNS WITHOUT ME</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">5 ENTERPRISE ACCOUNTS</div>
-      <div class="detail">IN ACTIVE CUSTOMER RESEARCH WITH ME</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">3 PHASED ROLLOUTS</div>
-      <div class="detail">SCOPED END-TO-END, SHIPPABLE INDEPENDENTLY</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">0 BREAKING CHANGES</div>
-      <div class="detail">FOR LIVE CUSTOMERS IN PLATFORM MIGRATION DESIGN</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">AI PRODUCT DESIGN</div>
-      <div class="detail">UNCERTAINTY, EXPLAINABILITY &amp; TRUST AS DESIGN CONSTRAINTS &#183; ENTERPRISE B2B</div>
-    </div>
+  <div class="recognitions-illustration">
+    <svg viewBox="0 0 1200 480" role="img" aria-label="Signal of the work, capabilities and credentials drawn as a signal waveform: 13+ years of B2B SaaS and consumer practice; 6 industries from mobile growth to ultrasonic; design system governance of the Auxin system across parallel teams; research operations run end-to-end across 5 accounts; practice and enablement with 10+ designers, PMs and EMs coached; 5 enterprise accounts in active customer research; 3 phased rollouts independently shippable; 0 breaking changes for live customers in platform migration, shown as a flat line; AI product design with uncertainty, explainability and trust as design constraints." xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="1200" height="480" rx="4" fill="#0a0a0a"/>
+      <rect x="16" y="16" width="1168" height="448" rx="2" fill="none" stroke="#242424" stroke-width="1"/>
+
+      <!-- oscilloscope grid -->
+      <line x1="32" y1="190" x2="1168" y2="190" stroke="#171717" stroke-width="1" stroke-dasharray="2 6"/>
+      <line x1="32" y1="260" x2="1168" y2="260" stroke="#171717" stroke-width="1" stroke-dasharray="2 6"/>
+
+      <!-- waveform -->
+      <path d="M 32 330 L 88 330 L 100 150 L 112 330 L 213 330 L 225 200 L 237 330 L 328 330 L 340 190 L 350 245 L 360 190 L 372 330 L 453 330 L 465 180 L 475 238 L 485 180 L 497 330 L 578 330 L 590 205 L 600 255 L 610 205 L 622 330 L 713 330 L 725 215 L 737 330 L 838 330 L 850 240 L 862 330 L 1078 330 L 1090 170 L 1100 225 L 1110 170 L 1122 330 L 1168 330" fill="none" stroke="#e8e8e8" stroke-width="1.3" stroke-linejoin="round"/>
+
+      <!-- apex markers -->
+      <circle cx="100" cy="150" r="4" fill="#74a58c"/>
+      <circle cx="225" cy="200" r="4" fill="#7ea7c9"/>
+      <circle cx="340" cy="190" r="3" fill="#d99f43"/><circle cx="360" cy="190" r="3" fill="#d99f43"/>
+      <circle cx="465" cy="180" r="3" fill="#cf6a5c"/><circle cx="485" cy="180" r="3" fill="#cf6a5c"/>
+      <circle cx="590" cy="205" r="3" fill="#74a58c"/><circle cx="610" cy="205" r="3" fill="#74a58c"/>
+      <circle cx="725" cy="215" r="4" fill="#7ea7c9"/>
+      <circle cx="850" cy="240" r="4" fill="#d99f43"/>
+      <circle cx="975" cy="330" r="5" fill="#0a0a0a" stroke="#cf6a5c" stroke-width="1.5"/>
+      <circle cx="1090" cy="170" r="3" fill="#74a58c"/><circle cx="1110" cy="170" r="3" fill="#74a58c"/>
+
+      <g font-family="'JetBrains Mono','Courier New',monospace">
+        <text x="40" y="44" fill="#6a6a6a" font-size="11" letter-spacing="2">CAPABILITIES &amp; CREDENTIALS</text>
+        <text x="1160" y="44" text-anchor="end" fill="#6a6a6a" font-size="11" letter-spacing="2">NINE SIGNALS</text>
+
+        <!-- peak labels -->
+        <text x="100" y="134" text-anchor="middle" fill="#74a58c" font-size="12" font-weight="500" letter-spacing="1">13+ YEARS</text>
+        <text x="225" y="184" text-anchor="middle" fill="#7ea7c9" font-size="12" font-weight="500" letter-spacing="1">6 INDUSTRIES</text>
+        <text x="350" y="174" text-anchor="middle" fill="#d99f43" font-size="12" font-weight="500" letter-spacing="1">GOVERNANCE</text>
+        <text x="475" y="164" text-anchor="middle" fill="#cf6a5c" font-size="12" font-weight="500" letter-spacing="1">RESEARCH OPS</text>
+        <text x="600" y="189" text-anchor="middle" fill="#74a58c" font-size="12" font-weight="500" letter-spacing="1">ENABLEMENT</text>
+        <text x="725" y="199" text-anchor="middle" fill="#7ea7c9" font-size="12" font-weight="500" letter-spacing="1">5 ACCOUNTS</text>
+        <text x="850" y="224" text-anchor="middle" fill="#d99f43" font-size="12" font-weight="500" letter-spacing="1">3 ROLLOUTS</text>
+        <text x="975" y="308" text-anchor="middle" fill="#cf6a5c" font-size="12" font-weight="500" letter-spacing="1">0 BREAKING CHANGES</text>
+        <text x="1104" y="154" text-anchor="middle" fill="#74a58c" font-size="12" font-weight="500" letter-spacing="1">AI PRODUCT DESIGN</text>
+
+        <!-- details below baseline, alternating rows -->
+        <text x="100" y="372" text-anchor="middle" fill="#8c8c8c" font-size="9.5" letter-spacing="0.4">B2B SAAS &amp; CONSUMER</text>
+        <text x="225" y="396" text-anchor="middle" fill="#8c8c8c" font-size="9.5" letter-spacing="0.4">MOBILE GROWTH TO ULTRASONIC</text>
+        <text x="350" y="372" text-anchor="middle" fill="#8c8c8c" font-size="9.5" letter-spacing="0.4">AUXIN, PARALLEL TEAMS</text>
+        <text x="475" y="396" text-anchor="middle" fill="#8c8c8c" font-size="9.5" letter-spacing="0.4">RECRUITING TO SYNTHESIS</text>
+        <text x="600" y="372" text-anchor="middle" fill="#8c8c8c" font-size="9.5" letter-spacing="0.4">10+ COACHED ON LIFECYCLE</text>
+        <text x="725" y="396" text-anchor="middle" fill="#8c8c8c" font-size="9.5" letter-spacing="0.4">ACTIVE CUSTOMER RESEARCH</text>
+        <text x="850" y="372" text-anchor="middle" fill="#8c8c8c" font-size="9.5" letter-spacing="0.4">INDEPENDENTLY SHIPPABLE</text>
+        <text x="975" y="396" text-anchor="middle" fill="#8c8c8c" font-size="9.5" letter-spacing="0.4">PLATFORM MIGRATION, LIVE CUSTOMERS</text>
+        <text x="1104" y="372" text-anchor="middle" fill="#8c8c8c" font-size="9.5" letter-spacing="0.4">TRUST AS A CONSTRAINT</text>
+
+        <text x="600" y="442" text-anchor="middle" fill="#4a4a4a" font-size="9" letter-spacing="4">STEADY SIGNAL ABOVE THE NOISE</text>
+      </g>
+    </svg>
   </div>
 </section>
-
-
-
-
 
 
 

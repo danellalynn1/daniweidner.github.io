@@ -403,9 +403,6 @@
   /* === RECOGNITIONS LIST === */
   .recognitions-wrap {
     padding: 4rem 2rem 6rem;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 3rem;
   }
   .recognitions-label {
     font-family: 'JetBrains Mono', monospace;
@@ -432,6 +429,60 @@
   }
   .recognition-row .label { font-weight: 700; }
   .recognition-row .detail { text-align: right; font-weight: 400; }
+  .signal-panel {
+    background: #0a0a0a;
+    border-radius: 4px;
+    padding: 2.4rem 2.6rem 2.6rem;
+    position: relative;
+  }
+  .signal-panel::before {
+    content: ""; position: absolute; inset: 14px;
+    border: 1px solid #242424; border-radius: 2px; pointer-events: none;
+  }
+  .panel-meta {
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #6a6a6a; margin-bottom: 1.2rem;
+  }
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 175px 1fr;
+    gap: 2.8rem;
+    align-items: center;
+    padding: 1.45rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .ledger-row:last-child { border-bottom: none; }
+  .lnum {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: #f2f2f2;
+    text-align: right;
+  }
+  .lnum.lmark { font-weight: 500; font-style: italic; font-size: clamp(1.8rem, 3vw, 2.6rem); }
+  .c-green { color: #74a58c; } .c-blue { color: #7ea7c9; }
+  .c-amber { color: #d99f43; } .c-coral { color: #cf6a5c; }
+  .ltext .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: #e8e8e8;
+  }
+  .ltext .detail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
+    color: #8c8c8c; line-height: 1.6; margin-top: 0.4rem;
+  }
+  @media (max-width: 700px) {
+    .signal-panel { padding: 1.8rem 1.4rem 1.8rem; }
+    .ledger-row { grid-template-columns: 82px 1fr; gap: 1.4rem; padding: 1.1rem 0; }
+    .lnum { font-size: 2.2rem; }
+    .lnum.lmark { font-size: 1.5rem; }
+  }
 
   /* About-the-bio link row */
   .bio-link-row {
