@@ -218,6 +218,7 @@
   /* === EXPERIENCE === */
   .experience-section {
     padding: 0 2rem;
+    border-bottom: 1px solid var(--ink);
   }
 
   .exp-row {
