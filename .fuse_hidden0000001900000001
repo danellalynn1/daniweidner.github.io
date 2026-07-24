@@ -705,7 +705,7 @@
     <div class="nav-rule"></div>
   </a>
   <a href="/about/" class="nav-cell">
-    <div class="nav-label">ABOUT/CV</div>
+    <div class="nav-label">ABOUT</div>
     <div class="nav-rule"></div>
   </a>
   <a href="#contact" class="nav-cell">
@@ -1071,12 +1071,13 @@
       <a href="#cases">CASE STUDIES</a>
     </div>
     <div class="col">
-      <a href="/about/">ABOUT/CV</a>
+      <a href="/about/">ABOUT</a>
       <a href="#contact">CONTACT</a>
     </div>
     <div class="col right">
       <a href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
       <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="/cv/" target="_blank" rel="noopener">CV</a>
     </div>
   </div>
 

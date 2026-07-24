@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dani Weidner: CV</title>
+<title>Dani Weidner: About/CV</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -426,10 +426,10 @@
     <div class="nav-label">CASE STUDIES</div>
     <div class="nav-rule"></div>
   </a>
-  <a href="/about" class="nav-cell">
-    <div class="nav-label">ABOUT</div>
+  <div class="nav-cell">
+    <div class="nav-label"><span class="dot"></span>ABOUT/CV</div>
     <div class="nav-rule"></div>
-  </a>
+  </div>
   <a href="/#contact" class="nav-cell">
     <div class="nav-label">CONTACT</div>
     <div class="nav-rule"></div>
@@ -674,12 +674,13 @@
       <a href="/#cases">CASE STUDIES</a>
     </div>
     <div class="col">
-      <a href="/about">ABOUT</a>
+      <a href="/about">ABOUT/CV</a>
       <a href="mailto:hello@daniweidner.com">CONTACT</a>
     </div>
     <div class="col right">
       <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
       <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="/cv" target="_blank" rel="noopener">CV</a>
     </div>
   </div>
 </footer>
