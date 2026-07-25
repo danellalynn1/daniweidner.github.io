@@ -1,1 +1,8 @@
 _to_delete/
+
+# Stale duplicates left behind by the desktop folder mount when it can't
+# unlink a replaced file. Safe to delete from Finder at any time.
+.fuse_hidden*
+
+# macOS Finder metadata
+.DS_Store
