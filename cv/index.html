@@ -190,6 +190,16 @@
   }
   .cv-intro .lead-body strong { color: var(--ink); font-weight: 400; }
 
+  .exp-earlier {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 2rem; padding-top: 1.8rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .exp-earlier a { border-bottom: 1px solid var(--ink-faint); }
+  .exp-earlier a:hover { color: #74a58c; border-color: #74a58c; }
+
   /* === SECTION HEADS === */
   .section-head {
     padding: 0 2rem;
@@ -380,6 +390,43 @@
   .footer-grid .col a { display: block; }
   .footer-grid .col a:hover { text-decoration: underline; }
 
+  /* === PRINT / PDF === */
+  @media print {
+    @page { size: Letter; margin: 0.55in 0.6in; }
+    html, body { font-size: 9.5pt; }
+    nav, footer, .page-cta, .cv-header-right, .cap-illustration,
+    .cap-section, .section-head:has(+ .cap-section) { display: none !important; }
+    .cv-header { display: block; padding: 0 0 0.7rem; border-bottom: 1px solid #000; }
+    .cv-header-left { border-right: none !important; padding-right: 0 !important; }
+    .hs-line { font-size: 19pt !important; line-height: 0.96 !important; }
+    .cv-header-body { margin-top: 0.5rem; font-size: 8.8pt; }
+    .header-meta { grid-template-columns: repeat(5, 1fr); gap: 0.5rem 0.7rem; margin-top: 0.7rem; padding-top: 0.6rem; }
+    .meta-label { font-size: 6.5pt; }
+    .meta-value { font-size: 6.8pt; line-height: 1.4; }
+    .cv-intro { display: block; padding: 0.5rem 0 0.35rem; }
+    .cv-intro .intro-portrait { display: none; }
+    .cv-intro .lead { font-size: 11pt; line-height: 1.3; }
+    .cv-intro .lead-body { font-size: 8.6pt; line-height: 1.45; margin-top: 0.5rem; }
+    .section-head { padding: 0 0 0.25rem; margin-top: 0.3rem; }
+    .section-head h2 { font-size: 12.5pt; }
+    .experience-section, .cap-section { padding-left: 0; padding-right: 0; }
+    /* grid containers cannot fragment across print pages in Chromium: go block */
+    .exp-row { display: block !important; padding: 0.5rem 0 0.35rem; }
+    .exp-left { display: block !important; margin-bottom: 0.25rem; }
+    .exp-company { display: inline; font-size: 9pt; }
+    .exp-years, .exp-place { display: inline; font-size: 7pt; }
+    .exp-years::before { content: " / "; }
+    .exp-place::before { content: " / "; }
+    .page-statement .hs-line { text-align: left !important; text-align-last: left !important; -moz-text-align-last: left !important; }
+    .exp-summary { font-size: 8.6pt; line-height: 1.4; }
+    .exp-points li { font-size: 8.4pt; line-height: 1.4; margin-bottom: 0.2rem; color: #000; break-inside: avoid; page-break-inside: avoid; }
+    .exp-points li strong { font-weight: 600; }
+    .exp-tags { display: none; }
+    .exp-earlier { margin: 0; padding-top: 0.5rem; font-size: 6.8pt; }
+    /* reveal animations must not hide content in print */
+    [class*="reveal"], .revealed, section, div, p, li { opacity: 1 !important; transform: none !important; }
+  }
+
   /* === RESPONSIVE === */
   @media (max-width: 1100px) {
     nav { grid-template-columns: repeat(3, 1fr); }
@@ -481,11 +528,12 @@
           <a href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
           <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://daniweidner.com" target="_blank" rel="noopener">daniweidner.com</a>
+          <a href="/Dani-Weidner-CV.pdf" download>CV (PDF) &darr;</a>
         </div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Open to</div>
-        <div class="meta-value">Staff / Lead Roles<br/>Transparency &#183; Deep Work</div>
+        <div class="meta-value">Staff / Lead Roles</div>
       </div>
     </div>
   </div>
@@ -553,7 +601,7 @@
 <!-- EXPERIENCE -->
 <div class="section-head">
   <h2>Experience</h2>
-  <span class="sh-meta">2020 &ndash; Present</span>
+  <span class="sh-meta">Selected roles &#183; 2020 &ndash; Present</span>
 </div>
 <section class="experience-section">
 
@@ -565,15 +613,15 @@
     </div>
     <div class="exp-right">
       <div class="exp-role">Lead Product Designer</div>
-      <p class="exp-summary">Own end-to-end design for the Engagement team: the smart-banner SDK, Link Manager, and Bulk Link Creation.</p>
+      <p class="exp-summary">Own end-to-end design for the Engagement team, and set the conventions two adjacent teams now build against: navigation, workbench layout, and the design&ndash;eng handoff standard.</p>
       <ul class="exp-points">
-        <li>Lead <strong>UX research operations</strong>: recruited and ran studies with enterprise customers, synthesized findings into structured insight documents, and translated them into product direction.</li>
-        <li>Designed a persistent <strong>in-product AI agent</strong>: defined confidence tiers, explainability, and recovery paths so the interface stays trustworthy when the model is wrong.</li>
-        <li>Designed <strong>complex interaction systems</strong>: A/B test variant flows, campaign state navigation, dirty-state modals, and bulk-editing workflows for large link libraries.</li>
+        <li>Lead <strong>UX research operations</strong>: recruited and ran studies with five enterprise accounts, synthesized findings into structured insight documents, and traced eight roadmap influences directly to customer input.</li>
+        <li>Set <strong>cross-team standards</strong> two adjacent teams build against: one workbench pattern replacing several divergent layouts, a navigation rubric adopted as default reasoning, and zero ambiguous handoffs left in the tickets.</li>
+        <li>Designed a persistent <strong>in-product AI agent</strong>: three confidence tiers and four explainability tiers built into the component system, plus three fully designed degraded states, so the interface stays trustworthy when the model is wrong.</li>
+        <li>Authored <strong>three lifecycle phase gates</strong> from a source-based audit of five recurring handoff failures, and run &ldquo;Designin&rsquo; With Dani&rdquo;, the biweekly design and engineering sync feeding them, kept going at every company since 2020.</li>
+        <li>Designed <strong>complex interaction systems</strong>: A/B variant flows, campaign state navigation, and bulk editing for large link libraries, migrating two features with zero breaking changes for live customers.</li>
         <li>Steward the <strong>Auxin design system</strong>: authored specs for new components, wrote Linear tickets for design&ndash;eng handoff, and drove refinement quality across the team.</li>
-        <li>Built <strong>Branch Inner Circle</strong>, an internal community platform for enterprise customers, from zero-to-launch: defined product strategy, led user research, and designed the end-to-end experience.</li>
-        <li>Run <strong>&ldquo;Designin&rsquo; With Dani&rdquo;</strong>, a biweekly design and engineering sync I have kept going at every company since 2020: in-flight work reviewed while it is still shapeable, with deep dives when a decision needs the full room.</li>
-        <li>Partner directly with PMs and engineers, balancing <strong>concurrent workstreams</strong> while advocating for user-centered decisions at every milestone.</li>
+        <li>Built <strong>Branch Inner Circle</strong>, an enterprise customer program, from zero-to-launch: scaled across three global regions at 100% founding-cohort retention, with eight roadmap influences traced back to it.</li>
       </ul>
       <div class="exp-tags">
         <span>Mobile Growth &amp; Linking</span>
@@ -597,7 +645,7 @@
         <li>Ran <strong>user research</strong> with sports organizations across pro, collegiate, and youth, validating concepts and surfacing usability issues before they reached build.</li>
         <li>Led <strong>cross-functional design sprints</strong>, delivering wireframes, prototypes, and high-fidelity screens in close partnership with engineering, product, and data teams.</li>
         <li>Ran the standing <strong>design and engineering sync</strong>, reviewing in-flight work with the engineers building it before decisions were locked.</li>
-        <li>Partnered with PMs and engineering managers on <strong>scope and sequencing</strong>, turning research findings into decisions the team could commit to.</li>
+        <li>Worked with PMs and engineering managers on <strong>scope and sequencing</strong>, turning research findings into decisions the team could commit to.</li>
         <li>Maintained design-system components and helped shape <strong>design-critique culture</strong> across a distributed design org.</li>
       </ul>
       <div class="exp-tags">
@@ -618,10 +666,10 @@
       <div class="exp-role">Senior UX Designer</div>
       <p class="exp-summary">Designed enterprise software for building-materials distributors: data-heavy, workflow-dependent interfaces where understanding the business was a prerequisite to designing anything.</p>
       <ul class="exp-points">
-        <li>Ran user research and <strong>discovery interviews</strong> with distributors and internal teams, mapping how the business actually ran before proposing anything.</li>
+        <li>Ran <strong>discovery research</strong> with distributors and internal teams, mapping how the business actually ran before proposing anything.</li>
         <li>Built <strong>journey maps and flows</strong>, and produced detailed wireframes and prototypes for internal and client-facing tools.</li>
-        <li>Ran the same <strong>design and engineering sync</strong>, putting open questions in front of engineers while the designs were still open to change.</li>
-        <li>Partnered with PMs and engineering managers to keep designs implementable within <strong>technical constraints</strong> without sacrificing usability.</li>
+        <li>Held the same <strong>design and engineering sync</strong>, putting open questions in front of engineers while the designs were still open to change.</li>
+        <li>Paired with PMs and engineering managers to keep designs implementable within <strong>technical constraints</strong> without sacrificing usability.</li>
       </ul>
       <div class="exp-tags">
         <span>Enterprise Distribution</span>
@@ -642,8 +690,8 @@
       <p class="exp-summary">Designed mobile and web interfaces for an ultrasonic data-transmission platform, a technically novel, hardware-adjacent product where the core challenge was making invisible behavior feel trustworthy and legible.</p>
       <ul class="exp-points">
         <li>Owned design across multiple <strong>client integrations</strong>, translating complex SDK capabilities into intuitive developer- and consumer-facing experiences.</li>
-        <li>Ran <strong>user research</strong> with client teams and end users, testing whether behavior nobody can see still reads as trustworthy at the moment of use.</li>
-        <li>Partnered with PMs and engineering managers through the same <strong>standing sync</strong>, surfacing in-flight work before decisions hardened.</li>
+        <li>Ran <strong>usability testing</strong> with client teams and end users, checking whether behavior nobody can see still reads as trustworthy at the moment of use.</li>
+        <li>Kept PMs and engineering managers in the same <strong>standing sync</strong>, surfacing in-flight work before decisions hardened.</li>
       </ul>
       <div class="exp-tags">
         <span>Hardware-Adjacent</span>
@@ -652,6 +700,8 @@
       </div>
     </div>
   </div>
+
+  <p class="exp-earlier">Roles before 2020 are on <a href="https://www.linkedin.com/in/dani-weidner/details/experience/" target="_blank" rel="noopener">LinkedIn</a>. The history above is the part relevant to enterprise B2B.</p>
 
 </section>
 
