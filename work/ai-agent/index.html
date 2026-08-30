@@ -167,6 +167,49 @@
     line-height: 1.5;
   }
 
+  /* === DEMO VIDEO === */
+  .case-demo { padding: 0 2rem; }
+  .case-demo-inner {
+    padding: 3.5rem 0 4rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-demo-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 1.1rem;
+    margin-bottom: 1.6rem;
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  .case-demo-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .case-demo-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--ink-soft);
+  }
+  .case-demo-frame { background: #0a0a0a; line-height: 0; }
+  .case-demo-frame video { display: block; width: 100%; height: auto; }
+  .case-demo-caption {
+    margin-top: 1.1rem;
+    max-width: 620px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
   /* === FLOW SECTIONS === */
   .flows { padding: 0 2rem; }
   .flow {
@@ -435,7 +478,8 @@
   }
   @media (max-width: 600px) {
     nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
-    .case-header, .case-intro, .case-meta-strip, .flows, .footer-grid { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .case-header, .case-intro, .case-meta-strip, .case-demo, .flows, .footer-grid { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .case-demo-head { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
     .case-meta-strip { grid-template-columns: 1fr; }
     .flow-outcomes { grid-template-columns: 1fr; gap: 1.2rem; }
     .case-eyebrow { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
@@ -562,6 +606,23 @@
     </div>
   </div>
 </header>
+
+<!-- DEMO -->
+<section class="case-demo">
+  <div class="case-demo-inner">
+    <div class="case-demo-head">
+      <div class="case-demo-title">The agent in motion</div>
+      <div class="case-demo-label">Demo / 00:58 / No audio</div>
+    </div>
+    <div class="case-demo-frame">
+      <video controls playsinline preload="metadata" poster="/work/ai-agent/agent-demo-poster.jpg" width="1280" height="720">
+        <source src="/work/ai-agent/agent-demo.mp4" type="video/mp4">
+        Your browser cannot play embedded video. <a href="/work/ai-agent/agent-demo.mp4">Download the demo (MP4)</a>.
+      </video>
+    </div>
+    <p class="case-demo-caption">A short walkthrough of the persistent agent: what it is watching, the signals it flags for attention, and how a campaign gets drafted through a handful of questions.</p>
+  </div>
+</section>
 
 <!-- FLOWS -->
 <div class="flows">
