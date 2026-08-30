@@ -204,8 +204,17 @@
     max-width: 960px;
     margin: 0 auto;
   }
-  .case-demo-frame { background: #0a0a0a; line-height: 0; }
-  .case-demo-frame video { display: block; width: 100%; height: auto; }
+  .case-demo-frame {
+    background: #0d0e18;
+    line-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+  .case-demo-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
   .case-demo-caption {
     margin-top: 1.1rem;
     max-width: 640px;
@@ -618,14 +627,15 @@
   <div class="case-demo-inner">
     <div class="case-demo-head">
       <div class="case-demo-title">The agent in motion</div>
-      <div class="case-demo-label">Demo / 00:58 / No audio</div>
+      <div class="case-demo-label">Demo / Looping / No audio</div>
     </div>
     <div class="case-demo-media">
       <div class="case-demo-frame">
-        <video controls playsinline preload="metadata" poster="/work/ai-agent/agent-demo-poster.jpg" width="1920" height="1080">
-          <source src="/work/ai-agent/agent-demo.mp4" type="video/mp4">
-          Your browser cannot play embedded video. <a href="/work/ai-agent/agent-demo.mp4">Download the demo (MP4)</a>.
-        </video>
+        <iframe src="/work/ai-agent/agent-demo.html"
+                title="Interactive demo: the AI agent watching campaigns, flagging signals, and drafting a campaign"
+                loading="lazy"
+                scrolling="no"
+                width="960" height="540"></iframe>
       </div>
       <p class="case-demo-caption">A short walkthrough of the persistent agent: what it is watching, the signals it flags for attention, and how a campaign gets drafted through a handful of questions.</p>
     </div>
