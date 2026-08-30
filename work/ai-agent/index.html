@@ -198,16 +198,17 @@
     white-space: nowrap;
     color: var(--ink-soft);
   }
-  /* Capped at the video's native 1920px so it never upscales and softens */
+  /* Centred column. Well under the 1920px native width, so the video
+     always downscales and stays crisp. */
   .case-demo-media {
-    max-width: 1920px;
+    max-width: 960px;
     margin: 0 auto;
   }
   .case-demo-frame { background: #0a0a0a; line-height: 0; }
   .case-demo-frame video { display: block; width: 100%; height: auto; }
   .case-demo-caption {
     margin-top: 1.1rem;
-    max-width: 620px;
+    max-width: 640px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.02em;
