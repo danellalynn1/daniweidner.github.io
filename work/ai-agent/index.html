@@ -198,6 +198,11 @@
     white-space: nowrap;
     color: var(--ink-soft);
   }
+  /* Capped at the video's native 1280px so it never upscales and softens */
+  .case-demo-media {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
   .case-demo-frame { background: #0a0a0a; line-height: 0; }
   .case-demo-frame video { display: block; width: 100%; height: auto; }
   .case-demo-caption {
@@ -614,13 +619,15 @@
       <div class="case-demo-title">The agent in motion</div>
       <div class="case-demo-label">Demo / 00:58 / No audio</div>
     </div>
-    <div class="case-demo-frame">
-      <video controls playsinline preload="metadata" poster="/work/ai-agent/agent-demo-poster.jpg" width="1280" height="720">
-        <source src="/work/ai-agent/agent-demo.mp4" type="video/mp4">
-        Your browser cannot play embedded video. <a href="/work/ai-agent/agent-demo.mp4">Download the demo (MP4)</a>.
-      </video>
+    <div class="case-demo-media">
+      <div class="case-demo-frame">
+        <video controls playsinline preload="metadata" poster="/work/ai-agent/agent-demo-poster.jpg" width="1280" height="720">
+          <source src="/work/ai-agent/agent-demo.mp4" type="video/mp4">
+          Your browser cannot play embedded video. <a href="/work/ai-agent/agent-demo.mp4">Download the demo (MP4)</a>.
+        </video>
+      </div>
+      <p class="case-demo-caption">A short walkthrough of the persistent agent: what it is watching, the signals it flags for attention, and how a campaign gets drafted through a handful of questions.</p>
     </div>
-    <p class="case-demo-caption">A short walkthrough of the persistent agent: what it is watching, the signals it flags for attention, and how a campaign gets drafted through a handful of questions.</p>
   </div>
 </section>
 
