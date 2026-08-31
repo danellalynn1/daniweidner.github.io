@@ -215,15 +215,22 @@
     height: 100%;
     border: 0;
   }
+  /* Matches .illo-cap on the case-study figures so every demo and figure
+     caption on the site reads the same. */
   .case-demo-caption {
-    margin-top: 1.1rem;
-    max-width: 640px;
+    margin-top: 0.9rem;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.02em;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     line-height: 1.7;
     color: var(--ink-soft);
   }
+  .case-demo-caption .cap-link {
+    border-bottom: 1px solid var(--ink-faint);
+    white-space: nowrap;
+  }
+  .case-demo-caption .cap-link:hover { border-bottom-color: var(--ink); }
 
   /* === FLOW SECTIONS === */
   .flows { padding: 0 2rem; }
@@ -637,7 +644,7 @@
                 scrolling="no"
                 width="960" height="540"></iframe>
       </div>
-      <p class="case-demo-caption">A short walkthrough of the persistent agent: what it is watching, the signals it flags for attention, and how a campaign gets drafted through a handful of questions.</p>
+      <p class="case-demo-caption">A short walkthrough of the persistent agent: what it is watching, the signals it flags for attention, and how a campaign gets drafted through a handful of questions. <a class="cap-link" href="/work/ai-agent/agent-demo.html" target="_blank" rel="noopener">Open full size &#8599;</a></p>
     </div>
   </div>
 </section>
