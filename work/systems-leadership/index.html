@@ -553,7 +553,7 @@
     <div class="hs-line">PLATFORM</div>
     <div class="hs-line b-line"><span class="b">RUNS ON</span></div>
   </div>
-    <p class="case-header-body">Lead design work sits upstream of components: deciding which patterns earn a place, arbitrating when two teams want the same surface to behave differently, and writing the design-to-engineering contract so work ships without ambiguity. These five threads show where I set the convention, each now shaping how adjacent teams build.</p>
+    <p class="case-header-body">Lead design work sits upstream of components: deciding which patterns earn a place, writing the rubric teams reason with, and setting the design-to-engineering contract so work ships without ambiguity. Four threads where I set the convention, each now shaping how two adjacent teams build.</p>
 
     <section class="case-meta-strip">
     <div class="cell">
@@ -562,7 +562,7 @@
     </div>
     <div class="cell">
       <div class="k">Discipline</div>
-      <div class="v">Pattern authoring, cross-team arbitration, design ops</div>
+      <div class="v">Pattern authoring, design ops, lifecycle design</div>
     </div>
     <div class="cell">
       <div class="k">Context</div>
@@ -570,7 +570,7 @@
     </div>
     <div class="cell">
       <div class="k">Threads in this study</div>
-      <div class="v">05</div>
+      <div class="v">04</div>
     </div>
   </section>
   </div>
@@ -585,13 +585,12 @@
   <!-- THREAD 01 -->
   <section class="flow flow--board">
     <div class="flow-left">
-      <div class="flow-num">THREAD 01 / 05</div>
+      <div class="flow-num">THREAD 01 / 04</div>
       <div class="flow-name">Layout convention</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">2&times;</div><div class="d">Adjacent teams building against my layout convention</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">Standard workbench pattern replacing several divergent layouts</div></div>
-        <div class="stat"><div class="n">0</div><div class="d">Outlier flows left; every creation surface aligned</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Adjacent teams now building against the layout convention</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Divergent layout families collapsed into one workbench: split-screen, single-column cards, card grids</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -613,12 +612,12 @@
       <div class="figure-col">
         <div class="demo-frame">
           <iframe src="/work/systems-leadership/campaign-demo.html"
-                  title="Demo: the campaign creation flow on the standard split-screen workbench — naming and targeting the campaign, tagging analytics, narrowing the audience, picking a creative with live preview, and publishing"
+                  title="Demo: the campaign creation flow on the standard split-screen workbench: naming and targeting the campaign, tagging analytics, narrowing the audience, picking a creative with live preview, and publishing"
                   loading="lazy"
                   scrolling="no"
                   width="1920" height="1080"></iframe>
         </div>
-        <div class="illo-cap">Demo. The convention in use &mdash; looping, no audio. <a class="cap-link" href="/work/systems-leadership/campaign-demo.html" target="_blank" rel="noopener">Open full size &#8599;</a></div>
+        <div class="illo-cap">Demo. The convention in use: looping, no audio. <a class="cap-link" href="/work/systems-leadership/campaign-demo.html" target="_blank" rel="noopener">Open full size &#8599;</a></div>
       </div>
       <div class="figure-col">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Several divergent creation-flow layouts converging into one standard split-screen workbench with a form on one side and a live preview on the other">
@@ -701,13 +700,12 @@
   <!-- THREAD 02 -->
   <section class="flow flow--board">
     <div class="flow-left">
-      <div class="flow-num">THREAD 02 / 05</div>
+      <div class="flow-num">THREAD 02 / 04</div>
       <div class="flow-name">Navigation rubric</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">1</div><div class="d">Reusable rubric replacing case-by-case navigation debates</div></div>
-        <div class="stat"><div class="n">2</div><div class="d">Patterns scoped: stepper for linear, tabs for non-linear</div></div>
-        <div class="stat"><div class="n">2&times;</div><div class="d">Adjacent teams adopting the rubric as default reasoning</div></div>
+        <div class="stat"><div class="n">60%</div><div class="d">Of users created a single item in a flow that forced a multi-step stepper</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Adjacent teams adopting the rubric as their default reasoning</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -780,110 +778,14 @@
     </div>
   </section>
 
-  <!-- THREAD 03 -->
   <section class="flow flow--board">
     <div class="flow-left">
-      <div class="flow-num">THREAD 03 / 05</div>
-      <div class="flow-name">Cross-team arbitration</div>
-
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">1</div><div class="d">Blocking architecture question resolved in one facilitated session</div></div>
-        <div class="stat"><div class="n">2</div><div class="d">Structured activities: assumptions mapping, then decision tracing</div></div>
-        <div class="stat"><div class="n">100%</div><div class="d">Outcomes documented with agreements, disagreements, and owners</div></div>
-      </div>
-    </div>
-    <div class="flow-right">
-      <div class="flow-block">
-        <span class="block-label">The problem</span>
-        <p>A core flow was blocked on one architecture question: were two related concepts the same thing, and how should orphaned items, creation scope, and naming behave depending on the answer? The disagreement sat buried in a long chat thread, and nobody could ship until it was settled.</p>
-      </div>
-      <div class="flow-block">
-        <span class="block-label">What I did</span>
-        <p>I planned and facilitated a working session with the full cross-functional team. Assumptions mapping surfaced where people silently disagreed; a decision-tree exercise then traced each path's consequences without forcing a premature vote. Open unknowns went into the tree rather than being papered over, and the agreements, live disagreements, and next steps were documented with named owners, which unblocked the flow and left a record the team could reuse for the next contested call.</p>
-      </div>
-      <div class="flow-quote">
-        Get the decision out of the thread and into a record everyone can build against.
-        <span class="attr">Working session, design principle</span>
-      </div>
-      
-    </div>
-    <div class="flow-figure">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A blocking architecture question buried in a chat thread, worked through a facilitated session into a structured decision record with named owners">
-        <!-- FIG. Thread untangled into a record -->
-        <defs><marker id="il-sys3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-sys3-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
-        <circle cx="715.84" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
-        <text x="723.84" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">BLOCKED</text>
-        <rect x="782" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
-        <text x="798.1800000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">AGREED</text>
-        <rect x="850" y="15" width="12" height="9" stroke="#b07fa6" stroke-width="1.2"/>
-        <text x="865.9000000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">OWNED</text>
-        <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
-        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">BURIED IN CHAT</text>
-        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">ONE QUESTION BLOCKING A CORE FLOW</text>
-        <rect x="48" y="96" width="168" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414" opacity="0.8"/>
-        <line x1="64" y1="109" x2="172" y2="109" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="64" y1="117" x2="142" y2="117" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="92" y="134" width="180" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414" opacity="0.8"/>
-        <line x1="108" y1="147" x2="228" y2="147" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="108" y1="155" x2="198" y2="155" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="60" y="172" width="150" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414" opacity="0.8"/>
-        <line x1="76" y1="185" x2="166" y2="185" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="76" y1="193" x2="136" y2="193" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="104" y="210" width="172" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414" opacity="0.8"/>
-        <line x1="120" y1="223" x2="232" y2="223" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="120" y1="231" x2="202" y2="231" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="70" y="248" width="160" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414" opacity="0.8"/>
-        <line x1="86" y1="261" x2="186" y2="261" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="86" y1="269" x2="156" y2="269" stroke="#2c2c2c" stroke-width="3"/>
-        <circle cx="276" cy="262" r="2.5" fill="#cf6a5c" stroke="none"/>
-        <text x="268" y="266" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">NOBODY COULD SHIP</text>
-        <text x="174" y="316" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">ARE TWO RELATED CONCEPTS THE SAME THING?</text>
-        <text x="174" y="328" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">ORPHANS, SCOPE, NAMING ALL HUNG ON IT</text>
-        <line x1="324" y1="203" x2="344" y2="203" marker-end="url(#il-sys3)"/>
-        <path d="M360 190 L373 203 L360 216 L347 203 Z" fill="#141414" stroke="#d99f43"/>
-        <text x="360" y="230" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">WORKING</text>
-        <text x="360" y="240" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">SESSION</text>
-        <line x1="373" y1="203" x2="392" y2="203" marker-end="url(#il-sys3)"/>
-        <rect x="400" y="44" width="496" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
-        <text x="412" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">A DECISION RECORD</text>
-        <text x="412" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">ASSUMPTIONS MAPPED, EVERY PATH TRACED, NO PREMATURE VOTE</text>
-        <path d="M474 118 L486 130 L474 142 L462 130 Z" fill="#141414" stroke="#d99f43"/>
-        <path d="M474 142 L474 162 L440 162 L440 182" fill="none"/>
-        <path d="M474 162 L508 162 L508 182" fill="none"/>
-        <rect x="424" y="184" width="32" height="18" rx="2" stroke="#8c8c8c" stroke-width="1" fill="none"/>
-        <rect x="492" y="184" width="32" height="18" rx="2" stroke="#8c8c8c" stroke-width="1" fill="none"/>
-        <text x="474" y="226" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">DECISION-TREE EXERCISE:</text>
-        <text x="474" y="236" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">EACH PATH TRACED TO ITS</text>
-        <text x="474" y="246" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">CONSEQUENCES FIRST</text>
-        <rect x="568" y="96" width="304" height="44" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="584" y="116" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">AGREEMENTS</text>
-        <text x="584" y="129" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">DOCUMENTED</text>
-        <rect x="568" y="154" width="304" height="44" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1.2"/>
-        <text x="584" y="174" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">LIVE DISAGREEMENTS</text>
-        <text x="584" y="187" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">NAMED, NOT HIDDEN</text>
-        <rect x="568" y="212" width="304" height="44" rx="3" fill="#141414" stroke="#d99f43"/>
-        <text x="584" y="232" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">OPEN UNKNOWNS</text>
-        <text x="584" y="245" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">CARRIED INTO THE TREE</text>
-        <rect x="568" y="270" width="304" height="44" rx="3" fill="#141414" stroke="#b07fa6"/>
-        <text x="584" y="290" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">NEXT STEPS</text>
-        <text x="584" y="303" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">WITH NAMED OWNERS</text>
-        <text x="720" y="348" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">THE FLOW UNBLOCKED, THE RECORD REUSABLE</text>
-        </svg>
-      <div class="illo-cap">Fig. A buried thread worked into a decision record with named owners</div>
-    </div>
-  </section>
-
-  <!-- THREAD 04 -->
-  <section class="flow flow--board">
-    <div class="flow-left">
-      <div class="flow-num">THREAD 04 / 05</div>
+      <div class="flow-num">THREAD 03 / 04</div>
       <div class="flow-name">Source-of-truth standard</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">1</div><div class="d">Authoritative source of truth replacing scattered decisions</div></div>
-        <div class="stat"><div class="n">2&times;</div><div class="d">Teams operating against the handoff standard I established</div></div>
-        <div class="stat"><div class="n">0</div><div class="d">Ambiguous handoffs: every ticket anchored to a documented reference</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Teams operating against the handoff standard</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Things every ticket must carry: affected paths, expected behavior, a design reference</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -959,7 +861,7 @@
   <!-- THREAD 05 -->
   <section class="flow flow--board">
     <div class="flow-left">
-      <div class="flow-num">THREAD 05 / 05</div>
+      <div class="flow-num">THREAD 04 / 04</div>
       <div class="flow-name">Lifecycle checkpoints</div>
 
       <div class="flow-outcomes">
