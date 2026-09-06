@@ -6,3 +6,6 @@ _to_delete/
 
 # macOS Finder metadata
 .DS_Store
+
+# Screenshots Claude renders for review; not part of the site
+Claude outputs/
