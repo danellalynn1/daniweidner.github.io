@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dani Weidner: Roles and Permissions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #000000;
+    --ink-soft: rgba(0,0,0,0.55);
+    --ink-faint: rgba(0,0,0,0.18);
+    --rule: rgba(0,0,0,0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.3;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* === NAV === */
+  nav {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 1.5rem 2rem 0;
+    gap: 1.2rem;
+    align-items: end;
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+  }
+  nav .nav-cell { display: flex; flex-direction: column; gap: 0.6rem; }
+  nav .nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 0.55rem;
+  }
+  nav .nav-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); display: inline-block; }
+  nav .nav-rule { height: 1px; background: var(--ink); }
+
+  /* === CASE HEADER === */
+  .case-header {
+    padding: 4rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    align-items: start;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-header-left {
+    padding-right: 3rem;
+    border-right: 1px solid var(--ink);
+  }
+  .case-header-right {
+    padding-left: 3rem;
+  }
+  .case-header-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-top: 2rem;
+  }
+
+  .case-eyebrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+  }
+  .eyebrow-nav { display: flex; gap: 2rem; }
+  .case-eyebrow .back:hover { text-decoration: underline; }
+  .case-eyebrow .next:hover { text-decoration: underline; }
+  .case-eyebrow--bottom {
+    padding: 2.2rem 2rem;
+    border-top: 1px solid var(--ink);
+  }
+
+  .case-statement {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .case-statement .hs-line {
+    text-align: justify;
+    -moz-text-align-last: justify;
+    text-align-last: justify;
+    word-spacing: -0.04em;
+    width: 100%;
+  }
+  .case-statement .b {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  /* Intro paragraph + meta row */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    padding: 5rem 2rem 4rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-intro .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .case-intro .lead {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.3rem, 2.2vw, 2rem);
+    line-height: 1.3;
+    font-weight: 400;
+  }
+
+  /* Meta strip */
+  .case-meta-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-meta-strip .cell .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+  .case-meta-strip .cell .v {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* === DEMO VIDEO === */
+  .case-demo { padding: 0 2rem; }
+  .case-demo-inner {
+    padding: 3.5rem 0 4rem;
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-demo-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 1.1rem;
+    margin-bottom: 1.6rem;
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  .case-demo-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .case-demo-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--ink-soft);
+  }
+  /* Centred column. Well under the 1920px native width, so the video
+     always downscales and stays crisp. */
+  .case-demo-media {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .case-demo-frame {
+    background: #0d0e18;
+    line-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+  .case-demo-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  /* Matches .illo-cap on the case-study figures so every demo and figure
+     caption on the site reads the same. */
+  .case-demo-caption {
+    margin-top: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .case-demo-caption .cap-link {
+    border-bottom: 1px solid var(--ink-faint);
+    white-space: nowrap;
+  }
+  .case-demo-caption .cap-link:hover { border-bottom-color: var(--ink); }
+
+  /* The prototype renders at a fixed 1464x928 and does not scale itself, so
+     the frame keeps that ratio and the iframe is scaled down to fit. */
+  .case-demo-frame--proto {
+    aspect-ratio: 1464 / 928;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-demo-frame--proto iframe {
+    position: absolute; top: 0; left: 0;
+    width: 1464px; height: 928px;
+    transform-origin: 0 0;
+  }
+
+  /* === FLOW SECTIONS === */
+  .flows { padding: 0 2rem; }
+  .flow {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 4rem;
+  }
+  .flow:last-child { border-bottom: none; }
+
+  .flow-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .flow-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .flow-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2rem, 3.5vw, 3.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .flow-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+    margin-top: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .flow-tags span:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.65rem;
+    opacity: 0.35;
+  }
+
+  /* Spot illustration under the thread label: newspaper line-art */
+  .flow-illo {
+    margin-top: 2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-illo svg {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-illo .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  /* Wide flow-board figure inside the article column */
+  .flow-figure {
+    grid-column: 1 / -1;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .flow-figure svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+  .flow-figure .illo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.9rem;
+  }
+
+  .flow-left .flow-outcomes {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 0.6rem;
+    padding-top: 1.4rem;
+  }
+  .flow-left .flow-outcomes .stat {
+    display: grid;
+    grid-template-columns: minmax(3.4rem, auto) 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+  }
+  .flow-left .flow-outcomes .stat .n {
+    font-size: 1.45rem;
+    margin-bottom: 0;
+  }
+  .flow-left .flow-outcomes .stat .d {
+    font-size: 0.66rem;
+  }
+
+  .flow--board {
+    padding-bottom: 2rem;
+  }
+
+  /* Placeholder slot for a forthcoming full-width illustration */
+  .fig-slot {
+    background: #0a0a0a;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fig-slot span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #5c5c5c;
+    border: 1px dashed #3a3a3a;
+    padding: 0.9rem 1.4rem;
+  }
+
+  /* Meta strip inside the hero's left column */
+  .case-header-left .case-meta-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem 2rem;
+    padding: 2rem 0 0;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--ink-faint);
+    border-bottom: none;
+  }
+
+  .flow-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .flow-block .block-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .flow-block p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .flow-block p + p { margin-top: 1rem; }
+
+  /* Outcome stat row */
+  .flow-outcomes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    border-top: 1px solid var(--ink-faint);
+    padding-top: 1.8rem;
+  }
+  .flow-outcomes .stat .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .flow-outcomes .stat .d {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Pull quote */
+  .flow-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    line-height: 1.35;
+    padding: 1.5rem 0 0.5rem 1.5rem;
+    border-left: 2px solid var(--ink);
+  }
+  .flow-quote .attr {
+    display: block;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+  }
+
+  /* === FOOTER === */
+  footer { padding: 4rem 0 0; overflow: hidden; border-top: 1px solid var(--ink); margin-top: 2rem; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0 2rem 3rem;
+    border-bottom: 1px solid var(--ink);
+    gap: 2rem;
+  }
+  .footer-grid h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .footer-grid .col {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+  .footer-grid .col.right { text-align: right; }
+  .footer-grid .col a { display: block; }
+  .footer-grid .col a:hover { text-decoration: underline; }
+
+  /* Hero illustration */
+  .case-hero-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 80vh;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+  }
+  .case-hero-image svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1100px) {
+    nav { grid-template-columns: repeat(3, 1fr); }
+    .case-header { grid-template-columns: 1fr; }
+    .case-header-left { border-right: none; padding-right: 0; border-bottom: 1px solid var(--ink); padding-bottom: 2rem; margin-bottom: 2rem; }
+    .case-header-right { padding-left: 0; }
+    .case-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .case-meta-strip { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .flow { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
+    .case-header, .case-intro, .case-meta-strip, .case-demo, .flows, .footer-grid { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .case-demo-head { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+    .case-meta-strip { grid-template-columns: 1fr; }
+    .flow-outcomes { grid-template-columns: 1fr; gap: 1.2rem; }
+    .case-eyebrow { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+    .eyebrow-nav { flex-direction: column; gap: 0.5rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Dark footer, matching the illustration panels. Monochrome; accent on hover only. */
+  footer {
+    background: #0a0a0a;
+    color: #e8e8e8;
+  }
+  footer .footer-grid { border-bottom-color: rgba(255,255,255,0.18); }
+  footer .footer-grid h3 { color: #f2f2f2; }
+  footer .footer-grid .col a:hover { color: #74a58c; text-decoration: underline; }
+  footer .footer-tagline { color: #8c8c8c; }
+
+  /* Hero illustration: reveal on page load */
+  .case-hero-image {
+    animation: heroReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  }
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(18px) scale(0.985); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .case-hero-image { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-cell">
+    <div class="nav-label">HOME</div>
+    <div class="nav-rule"></div>
+  </a>
+  <div class="nav-cell">
+    <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
+    <div class="nav-rule"></div>
+  </div>
+  <a href="/about/" class="nav-cell">
+    <div class="nav-label">ABOUT/CV</div>
+    <div class="nav-rule"></div>
+  </a>
+  <a href="/#contact" class="nav-cell">
+    <div class="nav-label">CONTACT</div>
+    <div class="nav-rule"></div>
+  </a>
+</nav>
+
+<!-- HEADER -->
+<header class="case-header">
+  <div class="case-header-left">
+    <div class="case-eyebrow">
+      <span>A-3 / CASE STUDY</span>
+      <div class="eyebrow-nav">
+        <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
+        <a class="next" href="/work/ai-agent/">NEXT: A-4 / DESIGNING AI EXPERIENCES &rarr;</a>
+      </div>
+    </div>
+
+    <div class="case-statement">
+      <div class="hs-line"><span class="b">ACCESS</span> SCOPED</div>
+      <div class="hs-line">TO THE <span class="b">WORK</span>,</div>
+      <div class="hs-line">NOT TO THE</div>
+      <div class="hs-line b-line"><span class="b">ACCOUNT</span></div>
+    </div>
+    <p class="case-header-body">Enterprise customers were working with agencies and contractors on a platform where access was all or nothing. This in-progress case study covers the research I led from 2024 into 2026 across 15 participants and 10 organizations, the folder-level role model it produced, and the prototype tested before engineering committed.</p>
+
+    <section class="case-meta-strip">
+    <div class="cell">
+      <div class="k">Role</div>
+      <div class="v">Lead Product Designer</div>
+    </div>
+    <div class="cell">
+      <div class="k">Discipline</div>
+      <div class="v">Access control, mixed-methods research, enterprise administration, prototyping</div>
+    </div>
+    <div class="cell">
+      <div class="k">Context</div>
+      <div class="v">Enterprise B2B SaaS platform</div>
+    </div>
+    <div class="cell">
+      <div class="k">Threads in this study</div>
+      <div class="v">03</div>
+    </div>
+  </section>
+  </div>
+  <div class="case-header-right">
+    <div class="case-hero-image">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" style="background:#0a0a0a;" role="img" aria-label="A team inside the internal boundary holds Admin, Editor and Viewer roles on separate folders, while an external collaborator outside the boundary reaches only the one folder shared with them">
+        <rect x="60" y="150" width="480" height="400" fill="none" stroke="#4c4c4c" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="76" y="170" text-anchor="start" fill="#5c5c5c" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="7" letter-spacing="1.2">INTERNAL</text>
+        <circle cx="300" cy="240" r="46" fill="none" stroke="#1f1f1f" stroke-width="1"/>
+        <circle cx="300" cy="240" r="26" fill="#ffffff"/>
+        <text x="300" y="243" text-anchor="middle" fill="#0a0a0a" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="8" letter-spacing="1.5" font-weight="500">TEAM</text>
+        <line x1="265" y1="262" x2="140" y2="360" stroke="#74a58c" stroke-width="1.4"/>
+        <path d="M80 360 h46 l8 10 h66 v80 h-120 Z" fill="#141414" stroke="#74a58c" stroke-width="1.4" stroke-linejoin="round"/>
+        <text x="140" y="412" text-anchor="middle" fill="#74a58c" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="7.5" letter-spacing="1.2">ADMIN</text>
+        <line x1="300" y1="262" x2="300" y2="360" stroke="#7ea7c9" stroke-width="1.4"/>
+        <path d="M240 360 h46 l8 10 h66 v80 h-120 Z" fill="#141414" stroke="#7ea7c9" stroke-width="1.4" stroke-linejoin="round"/>
+        <text x="300" y="412" text-anchor="middle" fill="#7ea7c9" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="7.5" letter-spacing="1.2">EDITOR</text>
+        <line x1="335" y1="262" x2="460" y2="360" stroke="#d99f43" stroke-width="1.4"/>
+        <path d="M400 360 h46 l8 10 h66 v80 h-120 Z" fill="#141414" stroke="#d99f43" stroke-width="1.4" stroke-linejoin="round"/>
+        <text x="460" y="412" text-anchor="middle" fill="#d99f43" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="7.5" letter-spacing="1.2">VIEWER</text>
+        <text x="300" y="490" text-anchor="middle" fill="#5c5c5c" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="7" letter-spacing="1.2">ROLES SCOPED PER FOLDER</text>
+        <circle cx="460" cy="660" r="8" fill="none" stroke="#b07fa6" stroke-width="1.4"/>
+        <line x1="460" y1="652" x2="460" y2="452" stroke="#b07fa6" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="460" y="686" text-anchor="middle" fill="#b07fa6" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="7" letter-spacing="1.2">EXTERNAL</text>
+        <text x="460" y="698" text-anchor="middle" fill="#5c5c5c" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="6" letter-spacing="1.2">SHARED ONLY</text>
+        <circle cx="140" cy="660" r="5" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+        <circle cx="300" cy="660" r="5" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+        <text x="36" y="60" text-anchor="start" fill="#5c5c5c" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="11" letter-spacing="2">ROLES &amp; PERMISSIONS</text>
+        <text x="564" y="60" text-anchor="end" fill="#5c5c5c" font-family="&#39;JetBrains Mono&#39;, &#39;Courier New&#39;, monospace" font-size="11" letter-spacing="2">A-3</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- PROTOTYPE -->
+<section class="case-demo">
+  <div class="case-demo-inner">
+    <div class="case-demo-head">
+      <div class="case-demo-title">The admin console, clickable</div>
+      <div class="case-demo-label">Prototype / Interactive / Click through</div>
+    </div>
+    <div class="case-demo-media">
+      <div class="case-demo-frame case-demo-frame--proto">
+        <iframe src="/work/permissions/permissions-demo.html"
+                title="Interactive prototype: the members and access console, with folder-level roles, an internal and external boundary, invite, transfer and remove flows"
+                loading="lazy"></iframe>
+      </div>
+      <p class="case-demo-caption">The V1 model, working: invite and set the class at the door, assign a role per folder, see exactly what an external partner can reach, then transfer ownership or remove access. Fictional workspace and people. <a class="cap-link" href="/work/permissions/permissions-demo.html" target="_blank" rel="noopener">Open full size &#8599;</a></p>
+    </div>
+  </div>
+</section>
+<script>
+  (function () {
+    var frames = document.querySelectorAll('.case-demo-frame--proto');
+    function fit() {
+      frames.forEach(function (f) {
+        var el = f.querySelector('iframe');
+        if (el) el.style.transform = 'scale(' + (f.clientWidth / 1464) + ')';
+      });
+    }
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+</script>
+
+<!-- FLOWS -->
+<div class="flows">
+
+  <!-- THREAD 01 -->
+  <section class="flow flow--board">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 01 / 03</div>
+      <div class="flow-name">Finding the risk nobody reported</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">15</div><div class="d">Participants, from admins to agency partners</div></div>
+        <div class="stat"><div class="n">10</div><div class="d">Organizations, including multi-brand enterprises and agencies</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Problems ranked by frequency, severity, and impact</div></div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Customers rarely filed access complaints, so the gap looked small from the inside. The real signal was in their workarounds: admin access handed out too broadly, support tickets to remove people, and in some cases shared credentials.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I owned the study end to end, from recruiting and the discussion guide through interviews, workflow walkthroughs, and synthesis. Participants spanned admins, marketing ops, developers, analysts, agency partners, and the legal and compliance reviewers who sign off on access. Ranking what surfaced by frequency, severity, and strategic impact left three problems: no resource-level control, no line between internal and external users, and onboarding and offboarding that ran on memory.</p>
+      </div>
+      <div class="flow-quote">
+        No blocker to report is not the same as no risk. The workaround never shows up in the feedback.
+        <span class="attr">Research finding, cross-study synthesis</span>
+      </div>
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Customer workarounds such as overly broad admin access, support tickets, manual tracking and shared credentials, synthesized into three ranked problems">
+        <!-- FIG. Workarounds into ranked problems -->
+        <defs><marker id="il-rp1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-rp1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
+        <circle cx="681.8" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="691.8" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">WORKAROUND</text>
+        <rect x="769.8" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="785.8" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">PRIORITIZED PROBLEM</text>
+        <rect x="24" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT CUSTOMERS WERE DOING</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">15 PARTICIPANTS, 10 ORGANIZATIONS, 4 METHODS</text>
+        <rect x="48" y="100" width="372" height="40" rx="3" fill="#141414" stroke="#3a3a3a"/>
+        <circle cx="66" cy="120" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="80" y="123" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.8" fill="#c0c0c0" stroke="none">ADMIN ACCESS GRANTED TOO BROADLY</text>
+        <rect x="48" y="154" width="372" height="40" rx="3" fill="#141414" stroke="#3a3a3a"/>
+        <circle cx="66" cy="174" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="80" y="177" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.8" fill="#c0c0c0" stroke="none">SUPPORT TICKETS TO ADD OR REMOVE PEOPLE</text>
+        <rect x="48" y="208" width="372" height="40" rx="3" fill="#141414" stroke="#3a3a3a"/>
+        <circle cx="66" cy="228" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="80" y="231" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.8" fill="#c0c0c0" stroke="none">MANUAL TRACKING OF WHO STILL HAS ACCESS</text>
+        <rect x="48" y="262" width="372" height="40" rx="3" fill="#141414" stroke="#3a3a3a"/>
+        <circle cx="66" cy="282" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="80" y="285" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.8" fill="#c0c0c0" stroke="none">CREDENTIALS SHARED ACROSS PEOPLE</text>
+        <text x="234" y="336" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1.2" fill="#cf6a5c" stroke="none">NONE OF IT REPORTED AS A BLOCKER</text>
+        <text x="234" y="350" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">THE RISK LIVED IN THE WORKAROUNDS</text>
+        <line x1="444" y1="203" x2="468" y2="203" marker-end="url(#il-rp1)"/>
+        <rect x="476" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="488" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THREE PROBLEMS, RANKED</text>
+        <text x="488" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">BY FREQUENCY, SEVERITY, AND STRATEGIC IMPACT</text>
+        <rect x="500" y="96" width="372" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="686.0" y="124.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">01  NO RESOURCE-LEVEL CONTROL</text>
+        <text x="686.0" y="138.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">ACCESS WAS ALL OR NOTHING</text>
+        <rect x="500" y="184" width="372" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="686.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">02  NO INTERNAL / EXTERNAL LINE</text>
+        <text x="686.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">AGENCIES REACHED MORE THAN THEY NEEDED</text>
+        <rect x="500" y="272" width="372" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="686.0" y="300.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">03  LIFECYCLE RAN ON MEMORY</text>
+        <text x="686.0" y="314.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">ACCESS OUTLASTED THE PEOPLE WHO HELD IT</text>
+        </svg>
+      <div class="illo-cap">Fig. The risk lived in the workarounds, not the complaints</div>
+    </div>
+  </section>
+
+
+  <!-- THREAD 02 -->
+  <section class="flow flow--board">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 02 / 03</div>
+      <div class="flow-name">Scoping access to the folder</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">3</div><div class="d">Roles, assigned per folder instead of account-wide</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">User classes, external limited to explicit shares</div></div>
+        <div class="stat"><div class="n">3</div><div class="d">Capabilities deferred to keep V1 shippable</div></div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Access was granted account-wide, so anyone who could edit one team&#39;s work could edit everyone&#39;s. Agencies and contractors got the same reach, often for longer than the engagement lasted.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I defined a V1 model where roles attach to folders: Admin controls people and settings, Editor manages content, Viewer reads. External users are a distinct class that sees only what is explicitly shared, so least privilege is the default instead of a cleanup task.</p>
+        <p>Custom roles, approval flows, and SCIM provisioning all had real demand. I deferred them because folder roles and the external boundary closed the highest-risk gaps at a scope an early release could carry.</p>
+      </div>
+      <div class="flow-quote">
+        Least privilege works when it&#39;s the default. If it depends on an admin remembering, it&#39;s a hope.
+        <span class="attr">Design principle, access model</span>
+      </div>
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A permissions grid where each person holds Admin, Editor or Viewer per folder, an agency partner outside the external boundary sees only the one folder shared with them, and custom roles, approval flows and SCIM are held for later phases">
+        <!-- FIG. Roles scoped per folder -->
+        <defs><marker id="il-rp2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-rp2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
+        <rect x="621.2" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="637.2" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">ADMIN</text>
+        <rect x="686.2" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="702.2" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">EDITOR</text>
+        <rect x="757.0" y="15" width="12" height="9" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="773.0" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">VIEWER</text>
+        <rect x="827.8" y="15" width="12" height="9" stroke="#4a4a4a" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="843.8" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">NO ACCESS</text>
+        <rect x="24" y="44" width="580" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ROLES ATTACH TO FOLDERS, NOT THE ACCOUNT</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">ONE PERSON CAN HOLD A DIFFERENT ROLE IN EACH FOLDER</text>
+        <text x="300" y="116" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1.2" fill="#8c8c8c" stroke="none">FOLDER A</text>
+        <text x="410" y="116" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1.2" fill="#8c8c8c" stroke="none">FOLDER B</text>
+        <text x="520" y="116" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1.2" fill="#8c8c8c" stroke="none">FOLDER C</text>
+        <text x="48" y="147" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">BRAND LEAD</text>
+        <text x="48" y="159" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">INTERNAL</text>
+        <rect x="254" y="132" width="92" height="30" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="300.0" y="150.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">ADMIN</text>
+        <rect x="364" y="132" width="92" height="30" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="410.0" y="150.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">EDITOR</text>
+        <rect x="474" y="132" width="92" height="30" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="520.0" y="150.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">VIEWER</text>
+        <text x="48" y="207" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">MARKETING OPS</text>
+        <text x="48" y="219" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">INTERNAL</text>
+        <rect x="254" y="192" width="92" height="30" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="300.0" y="210.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">VIEWER</text>
+        <rect x="364" y="192" width="92" height="30" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="410.0" y="210.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">ADMIN</text>
+        <rect x="474" y="192" width="92" height="30" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="520.0" y="210.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">EDITOR</text>
+        <text x="48" y="297" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">AGENCY PARTNER</text>
+        <text x="48" y="309" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#b07fa6" stroke="none">EXTERNAL</text>
+        <rect x="254" y="282" width="92" height="30" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="300.0" y="300.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">EDITOR</text>
+        <rect x="364" y="282" width="92" height="30" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <rect x="474" y="282" width="92" height="30" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <line x1="48" y1="250" x2="580" y2="250" stroke="#b07fa6" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="48" y="244" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#b07fa6" stroke="none">EXTERNAL BOUNDARY</text>
+        <text x="580" y="244" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#b07fa6" stroke="none">OUTSIDE IT, ONLY WHAT IS EXPLICITLY SHARED</text>
+        <text x="314" y="346" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1.2" fill="#74a58c" stroke="none">LEAST PRIVILEGE BY DEFAULT, NOT BY CLEANUP</text>
+        <rect x="628" y="44" width="268" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="640" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">HELD FOR LATER PHASES</text>
+        <text x="640" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">REAL DEMAND, BIGGER BUILD</text>
+        <rect x="652" y="104" width="220" height="44" rx="3" fill="none" stroke="#5c5c5c" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="762.0" y="129.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">CUSTOM ROLES</text>
+        <rect x="652" y="168" width="220" height="44" rx="3" fill="none" stroke="#5c5c5c" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="762.0" y="193.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">APPROVAL FLOWS</text>
+        <rect x="652" y="232" width="220" height="44" rx="3" fill="none" stroke="#5c5c5c" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="762.0" y="257.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.2" fill="#c0c0c0" stroke="none">SCIM PROVISIONING</text>
+        <text x="762" y="318" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1.2" fill="#74a58c" stroke="none">V1 CLOSES THE</text>
+        <text x="762" y="332" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1.2" fill="#74a58c" stroke="none">HIGHEST-RISK GAPS FIRST</text>
+        </svg>
+      <div class="illo-cap">Fig. Roles scoped per folder, with a hard line around external collaborators</div>
+    </div>
+  </section>
+
+
+  <!-- THREAD 03 -->
+  <section class="flow flow--board">
+    <div class="flow-left">
+      <div class="flow-num">THREAD 03 / 03</div>
+      <div class="flow-name">Testing it before engineering did</div>
+
+      <div class="flow-outcomes">
+        <div class="stat"><div class="n">4</div><div class="d">Admin jobs streamlined, invite through offboard</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Study formats, moderated and unmoderated</div></div>
+        <div class="stat"><div class="n">2</div><div class="d">Participant pools, customers and non-customers</div></div>
+      </div>
+    </div>
+    <div class="flow-right">
+      <div class="flow-block">
+        <span class="block-label">The problem</span>
+        <p>Permissions mistakes are expensive to find after launch, because the failure is someone seeing or changing what they shouldn&#39;t. The model had to make sense to the admins who set it up and to the occasional collaborators who only work inside it.</p>
+      </div>
+      <div class="flow-block">
+        <span class="block-label">What I did</span>
+        <p>I built the V1 model and its admin flows as a working Figma Make prototype, with user status and access visible at every step. I tested it in moderated and unmoderated sessions with current customers and with people outside the customer base, so it had to hold up without product familiarity.</p>
+        <p>A roadmap reprioritization paused the build, so there are no launch numbers yet. What exists is a tested direction that de-risks the engineering investment when the work resumes.</p>
+      </div>
+      <div class="flow-quote">
+        Onboarding and offboarding are product experiences. Treat them as back-office chores and access lingers.
+        <span class="attr">Design principle, user lifecycle</span>
+      </div>
+    </div>
+    <div class="flow-figure">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="The admin lifecycle from invite to change role to reassign to offboard, with access visible at every step, and a prototype tested in moderated and unmoderated sessions with customers and non-customers">
+        <!-- FIG. Lifecycle and validation -->
+        <defs><marker id="il-rp3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-rp3-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
+        <rect x="535.4" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="551.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">ACCESS VISIBLE</text>
+        <circle cx="658.6" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="668.6" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">WHERE ACCESS USED TO LINGER</text>
+        <rect x="845.2" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="861.2" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">TESTED</text>
+        <rect x="24" y="44" width="872" height="150" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE ADMIN LIFECYCLE, DESIGNED END TO END</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">EVERY STEP SHOWS WHO HAS ACCESS, TO WHAT, AND AS WHICH CLASS OF USER</text>
+        <rect x="48" y="100" width="184" height="52" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="140.0" y="123.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">INVITE</text>
+        <text x="140.0" y="137.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">CLASS SET AT THE DOOR</text>
+        <line x1="234" y1="126" x2="256" y2="126" marker-end="url(#il-rp3)"/>
+        <rect x="260" y="100" width="184" height="52" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="352.0" y="123.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CHANGE ROLE</text>
+        <text x="352.0" y="137.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">SCOPED PER FOLDER</text>
+        <line x1="446" y1="126" x2="468" y2="126" marker-end="url(#il-rp3)"/>
+        <rect x="472" y="100" width="184" height="52" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="564.0" y="123.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">REASSIGN</text>
+        <text x="564.0" y="137.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">WORK CHANGES HANDS</text>
+        <line x1="658" y1="126" x2="680" y2="126" marker-end="url(#il-rp3)"/>
+        <rect x="684" y="100" width="184" height="52" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="776.0" y="123.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">OFFBOARD</text>
+        <text x="776.0" y="137.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">ACCESS ENDS WITH THE WORK</text>
+        <circle cx="702" cy="173" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="712" y="176" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#cf6a5c" stroke="none">BEFORE: ACCESS OUTLIVED THE ENGAGEMENT</text>
+        <rect x="24" y="212" width="872" height="150" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="236" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">TESTED BEFORE ENGINEERING COMMITTED</text>
+        <text x="36" y="252" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">A WORKING FIGMA MAKE PROTOTYPE, TWO FORMATS, TWO PARTICIPANT POOLS</text>
+        <text x="300" y="278" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1.2" fill="#8c8c8c" stroke="none">MODERATED</text>
+        <text x="500" y="278" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1.2" fill="#8c8c8c" stroke="none">UNMODERATED</text>
+        <text x="48" y="303" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">CURRENT CUSTOMERS</text>
+        <rect x="220" y="288" width="160" height="24" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="300" y="303" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">SESSIONS RUN</text>
+        <rect x="420" y="288" width="160" height="24" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="500" y="303" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">SESSIONS RUN</text>
+        <text x="48" y="339" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">NON-CUSTOMERS</text>
+        <rect x="220" y="324" width="160" height="24" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="300" y="339" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">SESSIONS RUN</text>
+        <rect x="420" y="324" width="160" height="24" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="500" y="339" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">SESSIONS RUN</text>
+        <line x1="596" y1="318" x2="640" y2="318" stroke="#74a58c" marker-end="url(#il-rp3-g)"/>
+        <rect x="652" y="288" width="220" height="60" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="762.0" y="315.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">A TESTED DIRECTION</text>
+        <text x="762.0" y="329.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">READY WHEN THE BUILD RESUMES</text>
+        </svg>
+      <div class="illo-cap">Fig. The full admin lifecycle, tested with customers and non-customers before the build</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- BOTTOM CASE NAV -->
+<div class="case-eyebrow case-eyebrow--bottom">
+  <span>A-3 / CASE STUDY</span>
+  <div class="eyebrow-nav">
+    <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
+    <a class="next" href="/work/ai-agent/">NEXT: A-4 / DESIGNING AI EXPERIENCES &rarr;</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><h3>DANI WEIDNER</h3></div>
+    <div class="col">
+      <a href="/">HOME</a>
+      <a href="/#cases">CASE STUDIES</a>
+    </div>
+    <div class="col">
+      <a href="/about/">ABOUT/CV</a>
+      <a href="/#contact">CONTACT</a>
+    </div>
+    <div class="col right">
+      <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
+      <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+    </div>
+  </div>
+
+</footer>
+
+</body>
+</html>
