@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dani Weidner | Staff / Lead Product Designer · Design Systems & Ops</title>
-<meta name="description" content="Staff/Lead product designer, 13 years in enterprise B2B SaaS. Design system governance, cross-team standards, research operations, and AI product design.">
+<meta name="description" content="Staff/Lead product designer, 13+ years across B2B SaaS and consumer products. Design system governance, cross-team standards, research operations, and AI product design.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -337,6 +337,14 @@
     line-height: 1.75;
     color: var(--ink-soft);
   }
+  /* At a glance: each line says what kind of claim it is */
+  .case-recognitions .ev {
+    display: grid;
+    grid-template-columns: 4.7rem 1fr;
+    column-gap: 0.6rem;
+  }
+  .case-recognitions .ev + .ev { margin-top: 0.5rem; }
+  .case-recognitions .ev-k { color: var(--ink); }
   .case-scope-label {
     grid-column: 4;
     grid-row: 1;
@@ -690,6 +698,7 @@
     .footer-grid { grid-template-columns: 1fr; }
     .footer-tagline { grid-template-columns: 1fr; gap: 2rem; }
     .recognition-row { font-size: 0.78rem; }
+    .case-recognitions .ev { grid-template-columns: 1fr; }
   }
 
   /* Dark footer, matching the illustration panels. Monochrome; accent on hover only. */
@@ -882,11 +891,11 @@
     <div class="case-id">A &mdash; 1</div>
     <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Rebuilding the platform</div></div>
-    <div class="case-meta-label">NOTABLE OUTCOMES</div>
+    <div class="case-meta-label">AT A GLANCE</div>
     <div class="case-recognitions">
-      <div>2X USABILITY RATING OVER LEGACY</div>
-      <div>0 BREAKING CHANGES IN MIGRATION</div>
-      <div>6 PHASES, 4 FLOWS, ONE ROLLOUT</div>
+      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">2&times; USABILITY RATING OVER LEGACY, 7 CUSTOMER RATERS</span></div>
+      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">0 BREAKING CHANGES REPORTED ACROSS 50 MIGRATED ACCOUNTS</span></div>
+      <div class="ev"><span class="ev-k">SCOPE</span><span class="ev-v">4 FLOWS SEQUENCED INTO A 6-PHASE ROADMAP</span></div>
     </div>
     <div class="case-scope-label">DISCIPLINES</div>
     <div class="case-disciplines-block">
@@ -901,11 +910,11 @@
     <div class="case-id">A &mdash; 2</div>
     <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Conventions a platform runs on</div></div>
-    <div class="case-meta-label">NOTABLE OUTCOMES</div>
+    <div class="case-meta-label">AT A GLANCE</div>
     <div class="case-recognitions">
-      <div>2 ADJACENT TEAMS BUILDING TO THE STANDARD</div>
-      <div>60% SINGLE-ITEM USERS, PATTERN OVERTURNED</div>
-      <div>3 LAYOUT FAMILIES INTO ONE WORKBENCH</div>
+      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">LAYOUT, NAVIGATION, AND HANDOFF STANDARDS ADOPTED PRODUCT-WIDE</span></div>
+      <div class="ev"><span class="ev-k">DECISION</span><span class="ev-v">3 LAYOUT FAMILIES CONSOLIDATED INTO 1 WORKBENCH</span></div>
+      <div class="ev"><span class="ev-k">DECISION</span><span class="ev-v">3 LIFECYCLE GATES: DISCOVER, PLAN, BUILD</span></div>
     </div>
     <div class="case-scope-label">DISCIPLINES</div>
     <div class="case-disciplines-block">
@@ -921,11 +930,11 @@
     <div class="case-id">A &mdash; 3</div>
     <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Roles and permissions</div></div>
-    <div class="case-meta-label">NOTABLE OUTCOMES</div>
+    <div class="case-meta-label">AT A GLANCE</div>
     <div class="case-recognitions">
-      <div>15 PARTICIPANTS, 10 ORGANIZATIONS</div>
-      <div>3 ROLES SCOPED PER FOLDER</div>
-      <div>3 CAPABILITIES DEFERRED FROM V1</div>
+      <div class="ev"><span class="ev-k">STATUS</span><span class="ev-v">PROTOTYPE TESTED; NO LAUNCH DATA YET</span></div>
+      <div class="ev"><span class="ev-k">SCOPE</span><span class="ev-v">15 PARTICIPANTS, 10 ORGANIZATIONS, 2024 TO 2026</span></div>
+      <div class="ev"><span class="ev-k">DECISION</span><span class="ev-v">3 FOLDER-LEVEL ROLES; EXTERNAL USERS SEE ONLY WHAT IS SHARED</span></div>
     </div>
     <div class="case-scope-label">DISCIPLINES</div>
     <div class="case-disciplines-block">
@@ -941,11 +950,11 @@
     <div class="case-id">A &mdash; 4</div>
     <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Designing AI experiences</div></div>
-    <div class="case-meta-label">NOTABLE OUTCOMES</div>
+    <div class="case-meta-label">AT A GLANCE</div>
     <div class="case-recognitions">
-      <div>3 CONFIDENCE TIERS IN SYSTEM</div>
-      <div>0 UNEXPLAINED MODEL FAILURES</div>
-      <div>1 PERSISTENT IN-PRODUCT AGENT</div>
+      <div class="ev"><span class="ev-k">STATUS</span><span class="ev-v">CONCEPT DESIGN, NOT SHIPPED</span></div>
+      <div class="ev"><span class="ev-k">SCOPE</span><span class="ev-v">AGENT PRESENCE MAPPED ACROSS 5+ JOURNEY TOUCHPOINTS</span></div>
+      <div class="ev"><span class="ev-k">DECISION</span><span class="ev-v">3 CONFIDENCE TIERS AND 3 DESIGNED FAILURE STATES</span></div>
     </div>
     <div class="case-scope-label">DISCIPLINES</div>
     <div class="case-disciplines-block">
@@ -959,11 +968,11 @@
     <div class="case-id">A &mdash; 5</div>
     <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
     <div class="case-name-block"><div class="case-name">Research and the customer pool</div></div>
-    <div class="case-meta-label">NOTABLE OUTCOMES</div>
+    <div class="case-meta-label">AT A GLANCE</div>
     <div class="case-recognitions">
-      <div>8 ROADMAP INFLUENCES TRACED TO THE COHORT</div>
-      <div>100% FOUNDING COHORT RETENTION</div>
-      <div>340 REQUESTS TRIANGULATED ACROSS 3 CHANNELS</div>
+      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">7 OF 8 FOUNDING ACCOUNTS STILL IN THE PROGRAM, ONE YEAR IN</span></div>
+      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">2 RENEWALS; 0 MEMBERS LOST TO A COMPETITOR</span></div>
+      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">8 ROADMAP ITEMS VALIDATED OR INFLUENCED; 3 SHIPPED</span></div>
     </div>
     <div class="case-scope-label">DISCIPLINES</div>
     <div class="case-disciplines-block">
@@ -1002,7 +1011,7 @@
     </div>
     <div class="recognition-row">
       <div class="label">PRACTICE &amp; ENABLEMENT</div>
-      <div class="detail">COACHED 10+ DESIGNERS, PMS, AND EMS ON PDLC; BUILT A REPEATABLE PRACTICE THAT RUNS WITHOUT ME</div>
+      <div class="detail">COACHED 10+ DESIGNERS, PMS, AND EMS ON PDLC; BUILT A REPEATABLE PRACTICE DESIGNED TO RUN WITHOUT ME</div>
     </div>
     <div class="recognition-row">
       <div class="label"><span class="count" data-n="5">5</span> ENTERPRISE ACCOUNTS</div>
@@ -1010,11 +1019,11 @@
     </div>
     <div class="recognition-row">
       <div class="label"><span class="count" data-n="3">3</span> PHASED ROLLOUTS</div>
-      <div class="detail">SCOPED END-TO-END, SHIPPABLE INDEPENDENTLY</div>
+      <div class="detail">MIGRATION SHIPPED FIRST; POLISH AND FEATURE GROWTH FOLLOW</div>
     </div>
     <div class="recognition-row">
       <div class="label"><span class="count" data-n="0">0</span> BREAKING CHANGES</div>
-      <div class="detail">FOR LIVE CUSTOMERS IN PLATFORM MIGRATION DESIGN</div>
+      <div class="detail">REPORTED SINCE LAUNCH ACROSS 50 MIGRATED ACCOUNTS</div>
     </div>
     <div class="recognition-row">
       <div class="label">AI PRODUCT DESIGN</div>

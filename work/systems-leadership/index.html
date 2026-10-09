@@ -311,6 +311,22 @@
   .flow-left .flow-outcomes .stat .d {
     font-size: 0.66rem;
   }
+  /* Claim tag: each stat says whether it is a result, scope, or decision */
+  .flow-outcomes .stat .d .k {
+    display: block;
+    color: var(--ink);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+  /* One shared number column per thread, so descriptions stay aligned
+     when a figure runs wide (10,000; 7 of 8). A stat with no number
+     leaves its cell empty and keeps the same description column. */
+  .flow-left .flow-outcomes {
+    grid-template-columns: minmax(3.4rem, max-content) 1fr;
+    column-gap: 0.9rem;
+    align-items: baseline;
+  }
+  .flow-left .flow-outcomes .stat { display: contents; }
 
   .flow--board {
     padding-bottom: 2rem;
@@ -553,7 +569,7 @@
     <div class="hs-line">PLATFORM</div>
     <div class="hs-line b-line"><span class="b">RUNS ON</span></div>
   </div>
-    <p class="case-header-body">Lead design work sits upstream of components: deciding which patterns earn a place, writing the rubric teams reason with, and setting the design-to-engineering contract so work ships without ambiguity. Four threads where I set the convention, each now shaping how two adjacent teams build.</p>
+    <p class="case-header-body">Lead design work sits upstream of components: deciding which patterns earn a place, writing the rubric teams reason with, and setting the design-to-engineering contract so work ships without ambiguity. Four threads where I set the convention, each now adopted product-wide.</p>
 
     <section class="case-meta-strip">
     <div class="cell">
@@ -569,8 +585,8 @@
       <div class="v">Enterprise B2B SaaS platform</div>
     </div>
     <div class="cell">
-      <div class="k">Threads in this study</div>
-      <div class="v">04</div>
+      <div class="k">Status</div>
+      <div class="v">In use product-wide; lifecycle gates newly adopted</div>
     </div>
   </section>
   </div>
@@ -589,8 +605,8 @@
       <div class="flow-name">Layout convention</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">2</div><div class="d">Adjacent teams now building against the layout convention</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Divergent layout families collapsed into one workbench: split-screen, single-column cards, card grids</div></div>
+        <div class="stat stat--text"><div class="n"></div><div class="d"><span class="k">Result</span>Adopted product-wide as the layout standard</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Divergent layout families collapsed into one workbench: split-screen, single-column cards, card grids</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -600,7 +616,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I established the split-screen workbench as the standard: scrollable form on one side, sticky live preview on the other, responsive breakpoints instead of a rigid ratio. A variant switcher pinned atop the preview, a summary tab replacing the old review page, and inline error indicators on any tab with validation issues turned the layout into a system. Bringing the outlier flows into line made the convention hold platform-wide, so adjacent teams now build against it instead of reinventing it.</p>
+        <p>I established the split-screen workbench as the standard: scrollable form on one side, sticky live preview on the other, responsive breakpoints instead of a rigid ratio. A variant switcher pinned atop the preview, a summary tab replacing the old review page, and inline error indicators on any tab with validation issues turned the layout into a system. Bringing the outlier flows into line made the convention hold platform-wide, so teams across the product now build against it instead of reinventing it.</p>
       </div>
       <div class="flow-quote">
         A shared layout lets a new surface feel familiar on day one.
@@ -704,8 +720,8 @@
       <div class="flow-name">Navigation rubric</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">60%</div><div class="d">Of users created a single item in a flow that forced a multi-step stepper</div></div>
-        <div class="stat"><div class="n">2</div><div class="d">Adjacent teams adopting the rubric as their default reasoning</div></div>
+        <div class="stat stat--text"><div class="n"></div><div class="d"><span class="k">Result</span>Adopted product-wide as the default for stepper-or-tabs calls</div></div>
+        <div class="stat"><div class="n">60%</div><div class="d"><span class="k">Decision</span>Of users created a single item in a flow that forced a multi-step stepper</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -715,7 +731,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I authored the rubric the team now builds to: steppers for strictly linear flows where steps must be completed in order, tabs for non-linear, save-as-draft flows where users move between sections freely. Usage data grounded it; one flow forced every user through a multi-step stepper even though sixty percent created just a single item. Applying it where steppers fought save-as-draft behavior fixed the misfits, and adjacent teams carried it forward as their default reasoning, so the debate never has to happen again.</p>
+        <p>I authored the rubric the team now builds to: steppers for strictly linear flows where steps must be completed in order, tabs for non-linear, save-as-draft flows where users move between sections freely. Usage data grounded it; one flow forced every user through a multi-step stepper even though sixty percent created just a single item. Applying it where steppers fought save-as-draft behavior fixed the misfits, and teams across the product carried it forward as their default reasoning, so the same debate doesn't restart on every flow.</p>
       </div>
       <div class="flow-quote">
         Let the user's freedom to move decide the pattern.
@@ -784,8 +800,8 @@
       <div class="flow-name">Source-of-truth standard</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">2</div><div class="d">Teams operating against the handoff standard</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Things every ticket must carry: affected paths, expected behavior, a design reference</div></div>
+        <div class="stat stat--text"><div class="n"></div><div class="d"><span class="k">Result</span>The handoff standard teams work to, product-wide</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Things every ticket must carry: affected paths, expected behavior, a design reference</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -795,7 +811,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I made the design file the source of truth, with tickets anchored to it and the reasoning behind each decision documented alongside the work. The bar for a good ticket: specific affected-area paths, explicit expected behavior, a design reference. Engineering could build without coming back to ask, and the contract gave the team a reusable definition of done.</p>
+        <p>I made the design file the source of truth, with tickets anchored to it and the reasoning behind each decision documented alongside the work. The bar for a good ticket: specific affected-area paths, explicit expected behavior, a design reference. That gives engineering what it needs to build without coming back to ask, and the contract gave the team a reusable definition of done.</p>
       </div>
       <div class="flow-quote">
         The best specs are the ones engineering can ship without asking me a single question.
@@ -832,7 +848,7 @@
         <line x1="304" y1="203" x2="332" y2="203" marker-end="url(#il-sys4)"/>
         <rect x="340" y="44" width="556" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="352" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE FILE, EVERY TICKET ANCHORED</text>
-        <text x="352" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">ENGINEERING BUILDS WITHOUT COMING BACK TO ASK</text>
+        <text x="352" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SO ENGINEERING CAN BUILD WITHOUT COMING BACK TO ASK</text>
         <rect x="506" y="158" width="224" height="90" rx="3" fill="#141414" stroke="#74a58c"/>
         <text x="618.0" y="200.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE DESIGN FILE</text>
         <text x="618.0" y="214.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">DECISIONS + REASONING, DOCUMENTED</text>
@@ -865,9 +881,9 @@
       <div class="flow-name">Lifecycle checkpoints</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">5</div><div class="d">Failure patterns documented in a source-based handoff audit</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Phase gates authored: discover, plan, build, each with entry criteria and owners</div></div>
-        <div class="stat"><div class="n">2</div><div class="d">Standing rituals created: a biweekly design &times; eng sync, deep dives on demand</div></div>
+        <div class="stat"><div class="n">5</div><div class="d"><span class="k">Scope</span>Failure patterns documented in a source-based handoff audit</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Phase gates authored: discover, plan, build, each with entry criteria and owners</div></div>
+        <div class="stat"><div class="n">2</div><div class="d"><span class="k">Decision</span>Standing rituals created: a biweekly design &times; eng sync, deep dives on demand</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -934,7 +950,7 @@
         <path d="M808 212 L808 196 L832 196" fill="none" stroke-dasharray="3 3" stroke="#7ea7c9" stroke-width="1"/>
         <text x="652" y="302" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">ALIGNMENT BETWEEN THE GATES, NOT JUST AT THEM</text>
         <line x1="652" y1="314" x2="652" y2="328" marker-end="url(#il-sys5)"/>
-        <text x="652" y="348" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE SAME FAILURES STOP REPEATING</text>
+        <text x="652" y="348" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">BUILT SO THE SAME FAILURES STOP REPEATING</text>
         </svg>
       <div class="illo-cap">Fig. Five failure patterns audited into three gates, with a standing sync between them</div>
     </div>

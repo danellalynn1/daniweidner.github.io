@@ -278,6 +278,22 @@
   .flow-left .flow-outcomes .stat .d {
     font-size: 0.66rem;
   }
+  /* Claim tag: each stat says whether it is a result, scope, or decision */
+  .flow-outcomes .stat .d .k {
+    display: block;
+    color: var(--ink);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+  /* One shared number column per thread, so descriptions stay aligned
+     when a figure runs wide (10,000; 7 of 8). A stat with no number
+     leaves its cell empty and keeps the same description column. */
+  .flow-left .flow-outcomes {
+    grid-template-columns: minmax(3.4rem, max-content) 1fr;
+    column-gap: 0.9rem;
+    align-items: baseline;
+  }
+  .flow-left .flow-outcomes .stat { display: contents; }
 
   .flow--board {
     padding-bottom: 2rem;
@@ -520,7 +536,7 @@
     <div class="hs-line">FOR EVERY STUDY</div>
     <div class="hs-line b-line"><span class="b">SINCE</span></div>
   </div>
-    <p class="case-header-body">Research at the pace of a roadmap needs somewhere to recruit from. I founded a customer advisory community, scaled it across three regions, and ran the practice off it: discovery across five verticals, demand triangulated from three biased channels, and eight roadmap changes traced back to the cohort. Six threads, from founding the program to the account that stayed because of it.</p>
+    <p class="case-header-body">Research at the pace of a roadmap needs somewhere to recruit from. I founded a customer advisory community in EMEA, sequenced its expansion to two more regions, and ran the practice off it: discovery across five verticals, demand triangulated from three biased channels, and eight roadmap items validated or influenced by the cohort, three of them since shipped. Six threads, from founding the program to the account that renewed and cited it as a big reason.</p>
 
     <section class="case-meta-strip">
     <div class="cell">
@@ -536,8 +552,8 @@
       <div class="v">Enterprise B2B SaaS platform</div>
     </div>
     <div class="cell">
-      <div class="k">Threads in this study</div>
-      <div class="v">06</div>
+      <div class="k">Status</div>
+      <div class="v">Kicked off October 2025 in EMEA; 2 more regions sequenced</div>
     </div>
   </section>
   </div>
@@ -556,9 +572,9 @@
       <div class="flow-name">Founding the program</div>
 
       <div class="flow-outcomes">
-                <div class="stat"><div class="n">8</div><div class="d">Enterprise accounts hand-selected into the founding cohort</div></div>
-        <div class="stat"><div class="n">5+</div><div class="d">Founding-cohort industries: travel, food, fintech, retail, tech</div></div>
-        <div class="stat"><div class="n">7</div><div class="d">Touchpoint types a year, kickoff to live channel</div></div>
+        <div class="stat"><div class="n">8</div><div class="d"><span class="k">Scope</span>Enterprise accounts hand-selected into the founding cohort</div></div>
+        <div class="stat"><div class="n">5</div><div class="d"><span class="k">Scope</span>Founding-cohort industries: travel, food, fintech, retail, tech</div></div>
+        <div class="stat"><div class="n">6</div><div class="d"><span class="k">Decision</span>Touchpoint types a year, kickoff to live channel</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -665,9 +681,9 @@
       <div class="flow-name">Scaling it across three regions</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">15</div><div class="d">Cities scored before any expansion was chosen</div></div>
-        <div class="stat"><div class="n">4</div><div class="d">Weighted factors in the city-scoring model driving expansion order</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Global regions sequenced: Europe, North America, Asia-Pacific</div></div>
+        <div class="stat"><div class="n">15</div><div class="d"><span class="k">Scope</span>Cities scored before any expansion was chosen</div></div>
+        <div class="stat"><div class="n">4</div><div class="d"><span class="k">Decision</span>Weighted factors in the city-scoring model driving expansion order</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Global regions sequenced: EMEA, North America, Asia-Pacific</div></div>
               </div>
     </div>
     <div class="flow-right">
@@ -677,7 +693,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I built a scoring model ranking expansion cities by churn risk, account size, renewal timing, and growth potential, then sequenced the rollout across Europe, North America, and Asia-Pacific, so investment followed evidence, not enthusiasm. A repeatable nomination and outreach process, region-specific plans, and internal positioning as a customer community brought the teams who owned those relationships along instead of pushing back.</p>
+        <p>I built a scoring model ranking expansion cities by churn risk, account size, renewal timing, and growth potential, then sequenced the rollout across EMEA, North America, and Asia-Pacific, so investment followed evidence, not enthusiasm. A repeatable nomination and outreach process, region-specific plans, and internal positioning as a customer community brought the teams who owned those relationships along instead of pushing back.</p>
       </div>
       <div class="flow-quote">
         The scoring model decides where we go next. It keeps the program honest under pressure.
@@ -686,7 +702,7 @@
       
     </div>
     <div class="flow-figure">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Expansion sequenced across Europe, North America, and Asia-Pacific by a scoring model, through partner-team nomination at every step">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Expansion sequenced across EMEA, North America, and Asia-Pacific by a scoring model, through partner-team nomination at every step">
         <!-- FIG. Sequenced by score -->
         <defs><marker id="il-bey2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-bey2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
@@ -702,7 +718,7 @@
         <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SEQUENCED BY SCORE</text>
         <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">CHURN RISK, ACCOUNT SIZE, RENEWAL TIMING, GROWTH POTENTIAL</text>
         <rect x="60" y="110" width="184" height="96" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="152" y="140" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">EUROPE</text>
+        <text x="152" y="140" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">EMEA</text>
         <text x="152" y="156" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">THE FOUNDING REGION</text>
         <line x1="84" y1="182" x2="220" y2="182" stroke="#2a2a2a" stroke-width="7"/>
         <line x1="84" y1="182" x2="206" y2="182" stroke="#74a58c" stroke-width="7"/>
@@ -742,9 +758,9 @@
       <div class="flow-name">Running studies off the pool</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">7</div><div class="d">Concurrent studies run off the pool in a single year</div></div>
-        <div class="stat"><div class="n">8</div><div class="d">Distinct roadmap influences traced to the founding cohort's input</div></div>
-                <div class="stat"><div class="n">7</div><div class="d">Days until the channel became self-sustaining peer support</div></div>
+        <div class="stat"><div class="n">8</div><div class="d"><span class="k">Result</span>Roadmap items validated or influenced by the cohort, 3 since shipped</div></div>
+        <div class="stat"><div class="n">85.7%</div><div class="d"><span class="k">Result</span>Of founding members joined the channel within 48 hours</div></div>
+        <div class="stat"><div class="n">7</div><div class="d"><span class="k">Scope</span>Concurrent studies run off the pool, 2025 to 2026</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -754,7 +770,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I wired the program into the product process as a standing recruitment pool and a fast channel to pressure-test direction. With the pool in place, concurrent studies ran across product areas at the roadmap's pace, screener quality and clear synthesis boundaries keeping every insight attributable instead of bleeding together. Each study was framed as a hypothesis it could disprove, with its scope lines drawn before a session ran. The cohort's input traced to concrete roadmap influences, from dynamic landing pages to an attribution tool to bulk creation enhancements. Within the first week the channel became self-sustaining, members answering each other's product questions without adding support load.</p>
+        <p>I wired the program into the product process as a standing recruitment pool and a fast channel to pressure-test direction. With the pool in place, concurrent studies ran across product areas at the roadmap's pace, screener quality and clear synthesis boundaries keeping every insight attributable instead of bleeding together. Each study was framed as a hypothesis it could disprove, with its scope lines drawn before a session ran. The cohort's input validated or influenced eight roadmap items, from dynamic landing pages to an attribution tool to bulk creation enhancements, and three have since shipped. Within 48 hours, 85.7% of founding members had joined the channel, and within the first week members were answering each other's product questions.</p>
       </div>
       <div class="flow-quote">
         Member input has to show up in what ships. Otherwise the whole program is just theater.
@@ -770,10 +786,10 @@
         <rect x="681" y="15" width="12" height="9" stroke="#8c8c8c" stroke-width="1.2"/>
         <text x="697.02" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">MEMBER INPUT</text>
         <rect x="782" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
-        <text x="798.46" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SHIPPED INFLUENCE</text>
+        <text x="798.46" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">ROADMAP INFLUENCE</text>
         <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE CHANNEL</text>
-        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SELF-SUSTAINING WITHIN THE FIRST WEEK</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">85.7% JOINED WITHIN 48 HOURS</text>
         <rect x="48" y="96" width="170" height="32" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414"/>
         <line x1="64" y1="110" x2="174" y2="110" stroke="#3a3a3a" stroke-width="3"/>
         <line x1="64" y1="118" x2="144" y2="118" stroke="#2c2c2c" stroke-width="3"/>
@@ -798,7 +814,7 @@
         <line x1="373" y1="203" x2="392" y2="203" marker-end="url(#il-bey3)"/>
         <rect x="400" y="44" width="496" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="412" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">TRACED TO THE ROADMAP</text>
-        <text x="412" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">INPUT TO SHIPPED INFLUENCE, NOT A NICE-TO-HAVE</text>
+        <text x="412" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">INPUT TO ROADMAP INFLUENCE, NOT A NICE-TO-HAVE</text>
         <rect x="424" y="104" width="60" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" fill="#141414"/>
         <line x1="436" y1="117" x2="472" y2="117" stroke="#3a3a3a" stroke-width="3"/>
         <line x1="436" y1="125" x2="460" y2="125" stroke="#2c2c2c" stroke-width="3"/>
@@ -819,7 +835,7 @@
         <text x="696.0" y="282.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">BULK CREATION ENHANCEMENTS</text>
         <text x="648" y="340" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">EVERY INFLUENCE TRACES BACK TO A MEMBER</text>
         </svg>
-      <div class="illo-cap">Fig. Community input traced to shipped roadmap influence</div>
+      <div class="illo-cap">Fig. Community input traced to roadmap influence, 3 of 8 items since shipped</div>
     </div>
   </section>
 
@@ -830,9 +846,9 @@
       <div class="flow-name">Discovery interviews</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">12</div><div class="d">Discovery sessions with enterprise customers</div></div>
-        <div class="stat"><div class="n">5+</div><div class="d">Industries: retail, grocery, hospitality, media, sports</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Recurring themes, each shipped with quotes, implications, and next steps</div></div>
+        <div class="stat"><div class="n">12</div><div class="d"><span class="k">Scope</span>Discovery sessions with enterprise customers</div></div>
+        <div class="stat"><div class="n">5</div><div class="d"><span class="k">Scope</span>Industries: retail, grocery, hospitality, media, sports</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Scope</span>Recurring themes, each delivered with quotes, implications, and next steps</div></div>
               </div>
     </div>
     <div class="flow-right">
@@ -895,7 +911,7 @@
         <line x1="365" y1="203" x2="382" y2="203" marker-end="url(#il-res2)"/>
         <rect x="390" y="44" width="506" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="402" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">RECURRING THEMES</text>
-        <text x="402" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">EACH SHIPPED WITH QUOTES, IMPLICATIONS, NEXT STEPS</text>
+        <text x="402" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">EACH DELIVERED WITH QUOTES, IMPLICATIONS, NEXT STEPS</text>
         <rect x="414" y="92" width="458" height="56" rx="3" fill="#141414" stroke="#b07fa6"/>
         <text x="643.0" y="117.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">PARALLEL SPREADSHEET WORKAROUNDS</text>
         <text x="643.0" y="131.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">SYSTEMS BUILT OUTSIDE THE PRODUCT TO GET WORK DONE</text>
@@ -918,9 +934,9 @@
       <div class="flow-name">Multi-source demand synthesis</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">340</div><div class="d">Logged product requests coded into themes across an 18-month window</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Independent channels triangulated: sales log, research repository, meeting notes</div></div>
-        <div class="stat"><div class="n">20+</div><div class="d">Enterprise accounts represented across the channels</div></div>
+        <div class="stat"><div class="n">340</div><div class="d"><span class="k">Scope</span>Logged product requests coded into themes across an 18-month window</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Scope</span>Independent channels triangulated: sales log, research repository, meeting notes</div></div>
+        <div class="stat"><div class="n">20+</div><div class="d"><span class="k">Scope</span>Enterprise accounts represented across the channels</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -930,7 +946,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I synthesized each channel on its own terms: 340 logged requests from an 18-month window coded into weighted themes, a multi-year research repository mined, months of meetings across 20+ enterprise accounts distilled. Cross-reading the three produced one demand picture where confidence comes from agreement: themes confirmed by all three channels became high-confidence priorities, two-channel themes carried their caveats, and single-channel signals were held for validation. The roadmap now prioritizes from evidence no single channel could provide.</p>
+        <p>I synthesized each channel on its own terms: 340 logged requests from an 18-month window coded into weighted themes, a multi-year research repository mined, months of meetings across 20+ enterprise accounts distilled. Cross-reading the three produced one demand picture where confidence comes from agreement: themes confirmed by all three channels became high-confidence priorities, two-channel themes carried their caveats, and single-channel signals were held for validation. The roadmap now prioritizes from evidence no single channel could provide; user roles and permissions is the current example.</p>
       </div>
       <div class="flow-quote">
         A theme that survives the sales log, the research repository, and the meeting notes isn't an anecdote anymore. It's demand.
@@ -995,8 +1011,9 @@
       <div class="flow-name">At-risk to advocate</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">100%</div><div class="d">Founding-cohort retention across the full founding year, the only loss a layoff</div></div>
-        <div class="stat"><div class="n">0</div><div class="d">Members lost to a competitor, including one mid-evaluation</div></div>
+        <div class="stat"><div class="n">7 of 8</div><div class="d"><span class="k">Result</span>Founding accounts still in the program a year in, the only loss a layoff</div></div>
+        <div class="stat"><div class="n">2</div><div class="d"><span class="k">Result</span>Founding accounts renewed, one citing the program as a big reason</div></div>
+        <div class="stat"><div class="n">0</div><div class="d"><span class="k">Result</span>Members lost to a competitor in the first year, including one mid-evaluation</div></div>
               </div>
     </div>
     <div class="flow-right">
@@ -1006,10 +1023,10 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I treated the founding cohort as the proof of concept and invested directly in the relationships. Retention held across the full cohort; the one departure came from a layoff, not a decision to leave. The clearest signal: a member mid-evaluation of a direct competitor fought internally to keep their company on the platform, the exact at-risk-to-advocate arc the program was built to create.</p>
+        <p>I treated the founding cohort as the proof of concept and invested directly in the relationships. A year in, 7 of the 8 founding accounts are still in the program; the one that left did so after its member was laid off, not by choice. The clearest signal: a member mid-evaluation of a direct competitor fought internally to keep their company on the platform, and the company renewed, citing the program as a big reason.</p>
       </div>
       <div class="flow-quote">
-        A member fighting to keep their company on the platform, with a competitor's pitch on the table, is the whole thesis proven.
+        A member fighting to keep their company on the platform, with a competitor's pitch on the table, is the outcome the program was built for.
         <span class="attr">Advocacy outcome, founding cohort</span>
       </div>
       
@@ -1051,8 +1068,8 @@
         <rect x="560" y="180" width="312" height="76" rx="3" fill="#141414" stroke="#74a58c"/>
         <text x="716.0" y="215.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE INTERNAL ADVOCATE</text>
         <text x="716.0" y="229.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">FOUGHT TO KEEP THEIR COMPANY ON THE PLATFORM</text>
-        <text x="564" y="296" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#c0c0c0" stroke="none">RETENTION HELD ACROSS THE FULL COHORT</text>
-        <text x="564" y="310" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">THE ONE DEPARTURE WAS A LAYOFF, NOT A DECISION TO LEAVE</text>
+        <text x="564" y="296" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#c0c0c0" stroke="none">7 OF 8 FOUNDING ACCOUNTS STILL IN, A YEAR ON</text>
+        <text x="564" y="310" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">THE ONE EXIT FOLLOWED A LAYOFF, NOT A CHOICE TO LEAVE</text>
         </svg>
       <div class="illo-cap">Fig. An at-risk account turned internal advocate through sustained engagement</div>
     </div>

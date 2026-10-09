@@ -343,6 +343,22 @@
   .flow-left .flow-outcomes .stat .d {
     font-size: 0.66rem;
   }
+  /* Claim tag: each stat says whether it is a result, scope, or decision */
+  .flow-outcomes .stat .d .k {
+    display: block;
+    color: var(--ink);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+  /* One shared number column per thread, so descriptions stay aligned
+     when a figure runs wide (10,000; 7 of 8). A stat with no number
+     leaves its cell empty and keeps the same description column. */
+  .flow-left .flow-outcomes {
+    grid-template-columns: minmax(3.4rem, max-content) 1fr;
+    column-gap: 0.9rem;
+    align-items: baseline;
+  }
+  .flow-left .flow-outcomes .stat { display: contents; }
 
   .flow--board {
     padding-bottom: 2rem;
@@ -571,7 +587,7 @@
       <div class="hs-line"><span class="b">MODEL</span> DOES</div>
       <div class="hs-line b-line">NOT <span class="b">KNOW</span></div>
     </div>
-    <p class="case-header-body">AI outputs carry uncertainty baked in: the model can be wrong, and users need to see that without losing trust in the product. This case study covers an in-progress, persistent AI agent that follows enterprise users through their journey, and the decisions behind surfacing model outputs honestly, handling uncertainty, and working with ML engineers on what the product can and cannot promise.</p>
+    <p class="case-header-body">AI outputs carry uncertainty baked in: the model can be wrong, and users need to see that without losing trust in the product. This case study covers a persistent AI agent, still in concept design and not shipped, that follows enterprise users through their journey, and the decisions behind surfacing model outputs honestly, handling uncertainty, and working with ML engineers on what the product can and cannot promise.</p>
 
     <section class="case-meta-strip">
     <div class="cell">
@@ -587,8 +603,8 @@
       <div class="v">Enterprise B2B SaaS platform</div>
     </div>
     <div class="cell">
-      <div class="k">Threads in this study</div>
-      <div class="v">03</div>
+      <div class="k">Status</div>
+      <div class="v">Concept design; not shipped</div>
     </div>
   </section>
   </div>
@@ -659,9 +675,8 @@
       <div class="flow-name">Surfacing model outputs</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">3</div><div class="d">Confidence tiers built into the component system</div></div>
-        <div class="stat"><div class="n">0</div><div class="d">Statistical jargon; uncertainty framed in workflow terms</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">Confidence threshold map shared by design and ML</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Confidence tiers specified for the component system</div></div>
+        <div class="stat stat--text"><div class="n"></div><div class="d"><span class="k">Decision</span>No statistical jargon: uncertainty framed in workflow terms</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -671,7 +686,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I worked with the ML team to separate what the model knew from what it estimated, then designed a tiered disclosure system: high-confidence outputs surface cleanly, lower-confidence ones carry a visible signal built into the component, with a path to understand why. Mapping the thresholds together kept the UI's confidence language true to what the scores actually meant, so users can tell a solid number from an estimate at a glance.</p>
+        <p>I worked with the ML team to separate what the model knew from what it estimated, then designed a tiered disclosure system: high-confidence outputs surface cleanly, lower-confidence ones carry a visible signal built into the component, with a path to understand why. Mapping the thresholds together kept the UI's confidence language true to what the scores actually meant, with the aim that users can tell a solid number from an estimate at a glance.</p>
         <p>The goal was calibrated trust: users believe the model when it's right and can push back when it's wrong.</p>
       </div>
       <div class="flow-quote">
@@ -731,9 +746,9 @@
       <div class="flow-name">Designing the agent</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">5+</div><div class="d">Journey touchpoints with deliberately designed agent presence</div></div>
-        <div class="stat"><div class="n">2</div><div class="d">Modes: ambient (low footprint), engaged (full context surface)</div></div>
-        <div class="stat"><div class="n">0</div><div class="d">Unconfirmed assumptions surfaced at high-stakes moments</div></div>
+        <div class="stat"><div class="n">5+</div><div class="d"><span class="k">Scope</span>Journey touchpoints with deliberately designed agent presence</div></div>
+        <div class="stat"><div class="n">2</div><div class="d"><span class="k">Decision</span>Modes: ambient (low footprint), engaged (full context surface)</div></div>
+        <div class="stat stat--text"><div class="n"></div><div class="d"><span class="k">Decision</span>The agent confirms what it assumes at high-stakes moments</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -744,7 +759,7 @@
       <div class="flow-block">
         <span class="block-label">What I did</span>
         <p>I mapped the journey through the platform to find where an aware agent would cut real friction: transitions between tools, points of failure or confusion, and decisions that sent users elsewhere to look something up. Ambient by default and interruptible on demand, the agent stays quiet until needed and immediately present when it is, so help shows up at the moment of friction instead of becoming one more thing to manage.</p>
-        <p>Working sessions with product and ML settled what the agent should know versus ask: what the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive. The agent's personality follows those limits, confident where it has signal, honest where it doesn't, which is what makes it worth trusting across a whole session.</p>
+        <p>Working sessions with product and ML settled what the agent should know versus ask: what the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive. The agent's personality follows those limits, confident where it has signal, honest where it doesn't, which is what should make it worth trusting across a whole session.</p>
       </div>
       <div class="flow-quote">
         An agent that knows where you are but doesn't know what you're trying to do is still just a search box with extra steps.
@@ -801,9 +816,8 @@
       <div class="flow-name">Working with ML constraints</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">4</div><div class="d">Explainability tiers mapped from ML capability to design language</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Fully designed degraded states: unavailable, low-signal, out-of-distribution</div></div>
-        <div class="stat"><div class="n">1</div><div class="d">Shared ML-design map of product promises and limits</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Explainability tiers mapped from ML capability to design language</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Fully designed degraded states: unavailable, low-signal, out-of-distribution</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -860,7 +874,7 @@
         <line x1="516" y1="232" x2="596" y2="232" stroke="#3a3a3a" stroke-width="4"/>
         <rect x="500" y="272" width="372" height="62" rx="3" fill="#141414" stroke="#8c8c8c"/>
         <text x="516" y="296" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">SAID PLAINLY: NO EXPLANATION HERE</text>
-        <text x="516" y="316" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">USERS TRUST THE GAP MORE THAN A GUESS</text>
+        <text x="516" y="316" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">AN HONEST GAP BEATS A CONFIDENT GUESS</text>
         <line x1="420" y1="127" x2="496" y2="127" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
         <line x1="420" y1="215" x2="496" y2="215" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
         <line x1="420" y1="303" x2="496" y2="303" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>

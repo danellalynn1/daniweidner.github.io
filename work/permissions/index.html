@@ -356,6 +356,22 @@
   .flow-left .flow-outcomes .stat .d {
     font-size: 0.66rem;
   }
+  /* Claim tag: each stat says whether it is a result, scope, or decision */
+  .flow-outcomes .stat .d .k {
+    display: block;
+    color: var(--ink);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+  /* One shared number column per thread, so descriptions stay aligned
+     when a figure runs wide (10,000; 7 of 8). A stat with no number
+     leaves its cell empty and keeps the same description column. */
+  .flow-left .flow-outcomes {
+    grid-template-columns: minmax(3.4rem, max-content) 1fr;
+    column-gap: 0.9rem;
+    align-items: baseline;
+  }
+  .flow-left .flow-outcomes .stat { display: contents; }
 
   .flow--board {
     padding-bottom: 2rem;
@@ -600,8 +616,8 @@
       <div class="v">Enterprise B2B SaaS platform</div>
     </div>
     <div class="cell">
-      <div class="k">Threads in this study</div>
-      <div class="v">03</div>
+      <div class="k">Status</div>
+      <div class="v">Research 2024 to 2026; prototype tested; no launch data yet</div>
     </div>
   </section>
   </div>
@@ -677,9 +693,9 @@
       <div class="flow-name">Finding the risk nobody reported</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">15</div><div class="d">Participants, from admins to agency partners</div></div>
-        <div class="stat"><div class="n">10</div><div class="d">Organizations, including multi-brand enterprises and agencies</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Problems ranked by frequency, severity, and impact</div></div>
+        <div class="stat"><div class="n">15</div><div class="d"><span class="k">Scope</span>Participants, from admins to agency partners</div></div>
+        <div class="stat"><div class="n">10</div><div class="d"><span class="k">Scope</span>Organizations, including multi-brand enterprises and agencies</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Problems ranked by frequency, severity, and impact</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -689,7 +705,7 @@
       </div>
       <div class="flow-block">
         <span class="block-label">What I did</span>
-        <p>I owned the study end to end, from recruiting and the discussion guide through interviews, workflow walkthroughs, and synthesis. Participants spanned admins, marketing ops, developers, analysts, agency partners, and the legal and compliance reviewers who sign off on access. Ranking what surfaced by frequency, severity, and strategic impact left three problems: no resource-level control, no line between internal and external users, and onboarding and offboarding that ran on memory.</p>
+        <p>I owned the study end to end, from recruiting and the discussion guide through continuous interviews, surveys, card sorting, and prototype sessions, then synthesis. Participants spanned admins, marketing ops, developers, analysts, agency partners, and the legal and compliance reviewers who sign off on access. Ranking what surfaced by frequency, severity, and strategic impact left three problems: no resource-level control, no line between internal and external users, and onboarding and offboarding that ran on memory.</p>
       </div>
       <div class="flow-quote">
         No blocker to report is not the same as no risk. The workaround never shows up in the feedback.
@@ -748,9 +764,9 @@
       <div class="flow-name">Scoping access to the folder</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">3</div><div class="d">Roles, assigned per folder instead of account-wide</div></div>
-        <div class="stat"><div class="n">2</div><div class="d">User classes, external limited to explicit shares</div></div>
-        <div class="stat"><div class="n">3</div><div class="d">Capabilities deferred to keep V1 shippable</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Roles, assigned per folder instead of account-wide</div></div>
+        <div class="stat"><div class="n">2</div><div class="d"><span class="k">Decision</span>User classes, external limited to explicit shares</div></div>
+        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Capabilities deferred to keep V1 shippable</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -761,7 +777,7 @@
       <div class="flow-block">
         <span class="block-label">What I did</span>
         <p>I defined a V1 model where roles attach to folders: Admin controls people and settings, Editor manages content, Viewer reads. External users are a distinct class that sees only what is explicitly shared, so least privilege is the default instead of a cleanup task.</p>
-        <p>Custom roles, approval flows, and SCIM provisioning all had real demand. I deferred them because folder roles and the external boundary closed the highest-risk gaps at a scope an early release could carry.</p>
+        <p>Custom roles, approval flows, and SCIM provisioning all had real demand. I recommended deferring them because folder roles and the external boundary closed the highest-risk gaps at a scope an early release could carry, and product adopted the recommendation.</p>
       </div>
       <div class="flow-quote">
         Least privilege works when it&#39;s the default. If it depends on an admin remembering, it&#39;s a hope.
@@ -837,9 +853,9 @@
       <div class="flow-name">Testing it before engineering did</div>
 
       <div class="flow-outcomes">
-        <div class="stat"><div class="n">4</div><div class="d">Admin jobs streamlined, invite through offboard</div></div>
-        <div class="stat"><div class="n">2</div><div class="d">Study formats, moderated and unmoderated</div></div>
-        <div class="stat"><div class="n">2</div><div class="d">Participant pools, customers and non-customers</div></div>
+        <div class="stat"><div class="n">2</div><div class="d"><span class="k">Scope</span>Study formats, moderated and unmoderated</div></div>
+        <div class="stat"><div class="n">2</div><div class="d"><span class="k">Scope</span>Participant pools, customers and non-customers</div></div>
+        <div class="stat"><div class="n">4</div><div class="d"><span class="k">Decision</span>Admin steps designed end to end: invite, change role, reassign, offboard</div></div>
       </div>
     </div>
     <div class="flow-right">
@@ -850,7 +866,7 @@
       <div class="flow-block">
         <span class="block-label">What I did</span>
         <p>I built the V1 model and its admin flows as a working Figma Make prototype, with user status and access visible at every step. I tested it in moderated and unmoderated sessions with current customers and with people outside the customer base, so it had to hold up without product familiarity.</p>
-        <p>A roadmap reprioritization paused the build, so there are no launch numbers yet. What exists is a tested direction that de-risks the engineering investment when the work resumes.</p>
+        <p>A roadmap reprioritization paused the build, so there are no launch numbers yet. What exists is a tested direction that de-risks the engineering investment.</p>
       </div>
       <div class="flow-quote">
         Onboarding and offboarding are product experiences. Treat them as back-office chores and access lingers.
