@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A/B testing for people who run experiments for a living: Dani Weidner</title>
+<meta name="description" content="The platform needed built-in A/B testing, and the people using it run experiments for a living. Customers were faking holdouts with invisible variants, which caused bugs and support tickets. I designed the flow against 17 acceptance criteria and caught a metrics issue in a live session before release.">
+<meta property="og:title" content="A/B testing for people who run experiments for a living: Dani Weidner">
+<meta property="og:description" content="The platform needed built-in A/B testing, and the people using it run experiments for a living. Customers were faking holdouts with invisible variants, which caused bugs and support tickets. I designed the flow against 17 acceptance criteria and caught a metrics issue in a live session before release.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">DW</span>Dani Weidner</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/#demos">Prototypes</a>
+      <a href="/#work" aria-current="page">Work</a>
+      <a href="/about/">About</a>
+      <a href="/Dani-Weidner-CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </nav>
+    <a class="status-pill" href="mailto:hello@daniweidner.com"><span class="dot" aria-hidden="true"></span>Open to Staff roles</a>
+  </div>
+</header>
+<main id="main" class="case">
+  <div class="wrap">
+    <aside class="rail" aria-label="Case details">
+      <a class="back" href="/#work">&#8592; CASE 03 OF 07</a>
+      <div class="rail-item"><span class="eyebrow">Role</span><span>Lead Product Designer</span></div><div class="rail-item"><span class="eyebrow">Context</span><span>Enterprise B2B SaaS platform</span></div><div class="rail-item"><span class="eyebrow">Status</span><span>Shipped</span></div>
+      <nav aria-label="On this page"><a href="#minute">In one minute</a><a href="#decisions">Decisions</a></nav>
+    </aside>
+    <div class="case-main">
+      <header class="case-head">
+        <p class="eyebrow" style="color: var(--blue);">Feature / Interaction design</p>
+        <h1>A/B testing for people who run experiments for a living</h1>
+        <p class="dek">The platform needed built-in A/B testing, and the people using it run experiments for a living. Customers were faking holdouts with invisible variants, which caused bugs and support tickets. I designed the flow against 17 acceptance criteria and caught a metrics issue in a live session before release.</p>
+      </header>
+      <section class="minute" id="minute" aria-labelledby="minute-h">
+        <h2 id="minute-h">In one minute</h2>
+        <div class="minute-row"><span class="k">Situation</span><span>Experimentation UI is unforgiving: traffic has to sum correctly, control has to be unambiguous, and the interface has to work with one variant or twenty.</span></div><div class="minute-row"><span class="k">What I did</span><span>Specced every edge case with engineering before handoff, replaced the invisible-variant workaround with a real holdout, and reviewed the flow live with customers who test daily.</span></div><div class="minute-row"><span class="k">Outcome</span><span>A setting applied at the wrong level, which would have corrupted the metrics, was caught in session and went to engineering before release.</span></div>
+      </section>
+      <div class="demo-block"><div class="demo demo--fixed" data-w="1440" style="aspect-ratio: 1440 / 900;"><iframe src="/demos/ab-test-prototype.html" title="Interactive prototype: A/B test builder with variants, traffic split, hold-out group, dismissal settings, and a launch summary" loading="lazy" style="width: 1440px; height: 900px;"></iframe></div><p class="demo-cap">Prototype. Set up variants, split traffic, add a hold-out, choose the dismissal level, and review blocking issues before launch. Fictional brand and data. <a href="/demos/ab-test-prototype.html" target="_blank" rel="noopener">Open full screen &#8599;</a></p></div>
+      <section class="stats" aria-label="Key numbers"><div class="stat"><span class="tag">Scope</span><span class="n">17</span><span class="d">Acceptance criteria written with engineering before handoff</span></div><div class="stat"><span class="tag">Decision</span><span class="n">1&ndash;20</span><span class="d">Variants, with the interface adapting at each count</span></div><div class="stat"><span class="tag">Decision</span><span class="n">2 of 3</span><span class="d">Customers preferred campaign-level settings, which set the default</span></div></section>
+      <div class="decisions" id="decisions">
+        <h2>Decisions</h2>
+        <section class="decision">
+<span class="num">Decision 01 / 04</span>
+<h3>Spec every edge case before engineering starts</h3>
+<p>I wrote the edge cases into the acceptance criteria: entry states for one versus many variants, traffic that doesn&rsquo;t sum to 100 percent, the rule that the last variant can&rsquo;t be deleted, and exactly what control means.</p>
+<p class="tradeoff"><strong>Why:</strong> so engineering could build without coming back with questions.</p>
+</section><section class="decision">
+<span class="num">Decision 02 / 04</span>
+<h3>Replace a workaround with a real holdout</h3>
+<p>Customers needed a slice of traffic that sees nothing, and with no real feature they were faking one with invisible variants, causing scroll-lock bugs, CSS conflicts, and support tickets. I turned that workaround into requirements for a dedicated holdout that renders no creative at all, which keeps measurement clean.</p>
+</section><section class="decision">
+<span class="num">Decision 03 / 04</span>
+<h3>Review it live with people who test for a living</h3>
+<p>Sessions with three enterprise customers who run experiments daily confirmed the core interactions and caught one subtle issue: a setting applied at the wrong level that would have corrupted the metrics. It went to engineering as a spike before it could ship.</p>
+<blockquote>One variable at a time: creative or settings, never both.<cite>Customer experimentation practice, validated in session</cite></blockquote>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="An A/B testing flow designed against acceptance criteria, reviewed live with customers who run experiments daily, with one subtle issue caught before release">
+        <!-- FIG. Validated against criteria -->
+        <defs><marker id="il-val2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-val2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
+        <rect x="717" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="732.74" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">CONFIRMED</text>
+        <circle cx="806.32" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="814.32" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">CAUGHT + FIXED</text>
+        <rect x="24" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">DESIGNED TO CRITERIA</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">A FULL SET OF ACCEPTANCE CRITERIA, WRITTEN FIRST</text>
+        <rect x="48" y="96" width="372" height="60" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="234.0" y="123.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE A/B TEST FLOW</text>
+        <text x="234.0" y="137.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">TRAFFIC LOGIC, LOCKING, AN UNAMBIGUOUS CONTROL</text>
+        <rect x="48" y="180" width="372" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="70" y="204" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">INLINE TRAFFIC EDITING</text>
+        <path d="M392 194 L400 202 L410 188" fill="none" stroke="#74a58c" marker-end="url(#il-val2-g)"/>
+        <rect x="48" y="232" width="372" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="70" y="256" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">LOCK BEHAVIOR</text>
+        <path d="M392 246 L400 254 L410 240" fill="none" stroke="#74a58c" marker-end="url(#il-val2-g)"/>
+        <rect x="48" y="284" width="372" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="70" y="308" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">SPLIT TRAFFIC EQUALLY</text>
+        <path d="M392 298 L400 306 L410 292" fill="none" stroke="#74a58c" marker-end="url(#il-val2-g)"/>
+        <line x1="444" y1="203" x2="468" y2="203" marker-end="url(#il-val2)"/>
+        <rect x="476" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="488" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">REVIEWED LIVE, BEFORE RELEASE</text>
+        <text x="488" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">WITH CUSTOMERS WHO RUN TESTS FOR A LIVING</text>
+        <path d="M686 101 L701 116 L686 131 L671 116 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="686" y="148" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">LIVE CUSTOMER REVIEW</text>
+        <path d="M671 116 L560 116 L560 176" fill="none" stroke="#74a58c" marker-end="url(#il-val2-g)"/>
+        <rect x="500" y="180" width="176" height="70" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="588.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CORE INTERACTIONS</text>
+        <text x="588.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">CONFIRMED IN SESSION</text>
+        <path d="M701 116 L812 116 L812 176" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-val2)"/>
+        <circle cx="812" cy="176" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <rect x="700" y="180" width="172" height="70" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="786.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE SUBTLE ISSUE</text>
+        <text x="786.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">CAUGHT, FIXED PRE-RELEASE</text>
+        <line x1="686" y1="254" x2="686" y2="286" marker-end="url(#il-val2)"/>
+        <rect x="673.0" y="290" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="686" y="312" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">SHIPPED</text>
+        </svg><figcaption>Fig. Designed to acceptance criteria, reviewed live, one issue caught before release</figcaption></figure>
+</section><section class="decision">
+<span class="num">Decision 04 / 04</span>
+<h3>Let the split decide the default</h3>
+<p>Customers split on whether dismissal settings belong at the campaign or variant level. Instead of imposing one opinion, it became a configurable setting, with campaign level as the default because 2 of 3 customers preferred it.</p>
+</section>
+      </div>
+      
+      
+      <a class="next-case" href="/work/standards/"><span><span class="eyebrow">Next / Case 04</span><br><span class="t">Setting the conventions a whole product runs on</span></span><span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <p class="cta">Hiring a Staff designer? Let&rsquo;s talk.</p>
+      <p class="sub">13+ years in B2B and consumer products. Full history in the CV.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
+      <a class="btn" href="/Dani-Weidner-CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+      <a class="btn" href="https://www.linkedin.com/in/dani-weidner/" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js"></script>
+</body>
+</html>

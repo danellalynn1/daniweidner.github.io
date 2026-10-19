@@ -1,702 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dani Weidner: Designing AI Experiences</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designing an AI agent that's honest about what it doesn't know: Dani Weidner</title>
+<meta name="description" content="AI outputs carry uncertainty, and users need to see that without losing trust in the product. This is a persistent agent that follows enterprise users through their journey, still in concept design, and the decisions behind showing model outputs honestly.">
+<meta property="og:title" content="Designing an AI agent that's honest about what it doesn't know: Dani Weidner">
+<meta property="og:description" content="AI outputs carry uncertainty, and users need to see that without losing trust in the product. This is a persistent agent that follows enterprise users through their journey, still in concept design, and the decisions behind showing model outputs honestly.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #ffffff;
-    --ink: #000000;
-    --ink-soft: rgba(0,0,0,0.55);
-    --ink-faint: rgba(0,0,0,0.18);
-    --rule: rgba(0,0,0,0.85);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Fraunces', 'Times New Roman', serif;
-    font-weight: 400;
-    line-height: 1.3;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* === NAV === */
-  nav {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    padding: 1.5rem 2rem 0;
-    gap: 1.2rem;
-    align-items: end;
-    position: sticky; top: 0; z-index: 50;
-    background: var(--bg);
-  }
-  nav .nav-cell { display: flex; flex-direction: column; gap: 0.6rem; }
-  nav .nav-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink);
-    display: flex; align-items: center; gap: 0.55rem;
-  }
-  nav .nav-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); display: inline-block; }
-  nav .nav-rule { height: 1px; background: var(--ink); }
-
-  /* === CASE HEADER === */
-  .case-header {
-    padding: 4rem 2rem 2rem;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 0;
-    align-items: start;
-    border-bottom: 1px solid var(--ink);
-  }
-  .case-header-left {
-    padding-right: 3rem;
-    border-right: 1px solid var(--ink);
-  }
-  .case-header-right {
-    padding-left: 3rem;
-  }
-  .case-header-body {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-    line-height: 1.65;
-    color: var(--ink-soft);
-    margin-top: 2rem;
-  }
-
-  .case-eyebrow {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 1rem;
-    margin-bottom: 3rem;
-  }
-  .eyebrow-nav { display: flex; gap: 2rem; }
-  .case-eyebrow .back:hover { text-decoration: underline; }
-  .case-eyebrow .next:hover { text-decoration: underline; }
-  .case-eyebrow--bottom {
-    padding: 2.2rem 2rem;
-    border-top: 1px solid var(--ink);
-  }
-
-  .case-statement {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.4rem, 6vw, 6.5rem);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-  .case-statement .hs-line {
-    text-align: justify;
-    -moz-text-align-last: justify;
-    text-align-last: justify;
-    word-spacing: -0.04em;
-    width: 100%;
-  }
-  .case-statement .b {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-  }
-
-  /* Intro paragraph + meta row */
-  .case-intro {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 4rem;
-    padding: 5rem 2rem 4rem;
-    border-bottom: 1px solid var(--ink);
-  }
-  .case-intro .label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .case-intro .lead {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.3rem, 2.2vw, 2rem);
-    line-height: 1.3;
-    font-weight: 400;
-  }
-
-  /* Meta strip */
-  .case-meta-strip {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    padding: 3rem 2rem;
-    border-bottom: 1px solid var(--ink);
-  }
-  .case-meta-strip .cell .k {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 0.6rem;
-  }
-  .case-meta-strip .cell .v {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    line-height: 1.5;
-  }
-
-  /* === DEMO VIDEO === */
-  .case-demo { padding: 0 2rem; }
-  .case-demo-inner {
-    padding: 3.5rem 0 4rem;
-    border-bottom: 1px solid var(--ink);
-  }
-  .case-demo-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding-bottom: 1.1rem;
-    margin-bottom: 1.6rem;
-    border-bottom: 1px solid var(--ink-faint);
-  }
-  .case-demo-title {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .case-demo-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    color: var(--ink-soft);
-  }
-  /* Centred column. Well under the 1920px native width, so the video
-     always downscales and stays crisp. */
-  .case-demo-media {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  .case-demo-frame {
-    background: #0d0e18;
-    line-height: 0;
-    aspect-ratio: 16 / 9;
-  }
-  .case-demo-frame iframe {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-  /* Matches .illo-cap on the case-study figures so every demo and figure
-     caption on the site reads the same. */
-  .case-demo-caption {
-    margin-top: 0.9rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    line-height: 1.7;
-    color: var(--ink-soft);
-  }
-  .case-demo-caption .cap-link {
-    border-bottom: 1px solid var(--ink-faint);
-    white-space: nowrap;
-  }
-  .case-demo-caption .cap-link:hover { border-bottom-color: var(--ink); }
-
-  /* === FLOW SECTIONS === */
-  .flows { padding: 0 2rem; }
-  .flow {
-    padding: 5rem 0;
-    border-bottom: 1px solid var(--ink);
-    display: grid;
-    grid-template-columns: 1fr 2.2fr;
-    gap: 4rem;
-  }
-  .flow:last-child { border-bottom: none; }
-
-  .flow-left {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .flow-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .flow-name {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(2rem, 3.5vw, 3.4rem);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-  }
-  .flow-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem 0.65rem;
-    margin-top: 0.9rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    line-height: 1.6;
-  }
-  .flow-tags span:not(:last-child)::after {
-    content: "/";
-    margin-left: 0.65rem;
-    opacity: 0.35;
-  }
-
-  /* Spot illustration under the thread label: newspaper line-art */
-  .flow-illo {
-    margin-top: 2rem;
-    padding-top: 1.6rem;
-    border-top: 1px solid var(--ink-faint);
-  }
-  .flow-illo svg {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    display: block;
-    color: var(--ink);
-  }
-  .flow-illo .illo-cap {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-top: 0.9rem;
-  }
-
-  /* Wide flow-board figure inside the article column */
-  .flow-figure {
-    grid-column: 1 / -1;
-    padding-top: 1.6rem;
-    border-top: 1px solid var(--ink-faint);
-  }
-  .flow-figure svg {
-    width: 100%;
-    height: auto;
-    display: block;
-    color: var(--ink);
-  }
-  .flow-figure .illo-cap {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-top: 0.9rem;
-  }
-
-  .flow-left .flow-outcomes {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-    margin-top: 0.6rem;
-    padding-top: 1.4rem;
-  }
-  .flow-left .flow-outcomes .stat {
-    display: grid;
-    grid-template-columns: minmax(3.4rem, auto) 1fr;
-    gap: 0.9rem;
-    align-items: baseline;
-  }
-  .flow-left .flow-outcomes .stat .n {
-    font-size: 1.45rem;
-    margin-bottom: 0;
-  }
-  .flow-left .flow-outcomes .stat .d {
-    font-size: 0.66rem;
-  }
-  /* Claim tag: each stat says whether it is a result, scope, or decision */
-  .flow-outcomes .stat .d .k {
-    display: block;
-    color: var(--ink);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.2rem;
-  }
-  /* One shared number column per thread, so descriptions stay aligned
-     when a figure runs wide (10,000; 7 of 8). A stat with no number
-     leaves its cell empty and keeps the same description column. */
-  .flow-left .flow-outcomes {
-    grid-template-columns: minmax(3.4rem, max-content) 1fr;
-    column-gap: 0.9rem;
-    align-items: baseline;
-  }
-  .flow-left .flow-outcomes .stat { display: contents; }
-
-  .flow--board {
-    padding-bottom: 2rem;
-  }
-
-  /* Placeholder slot for a forthcoming full-width illustration */
-  .fig-slot {
-    background: #0a0a0a;
-    min-height: 340px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .fig-slot span {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #5c5c5c;
-    border: 1px dashed #3a3a3a;
-    padding: 0.9rem 1.4rem;
-  }
-
-  /* Meta strip inside the hero's left column */
-  .case-header-left .case-meta-strip {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.6rem 2rem;
-    padding: 2rem 0 0;
-    margin-top: 2.5rem;
-    border-top: 1px solid var(--ink-faint);
-    border-bottom: none;
-  }
-
-  .flow-right {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-  .flow-block .block-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 0.8rem;
-    display: block;
-  }
-  .flow-block p {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
-    line-height: 1.45;
-    font-weight: 400;
-  }
-  .flow-block p + p { margin-top: 1rem; }
-
-  /* Outcome stat row */
-  .flow-outcomes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    border-top: 1px solid var(--ink-faint);
-    padding-top: 1.8rem;
-  }
-  .flow-outcomes .stat .n {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-  }
-  .flow-outcomes .stat .d {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    line-height: 1.5;
-  }
-
-  /* Pull quote */
-  .flow-quote {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(1.3rem, 2vw, 1.7rem);
-    line-height: 1.35;
-    padding: 1.5rem 0 0.5rem 1.5rem;
-    border-left: 2px solid var(--ink);
-  }
-  .flow-quote .attr {
-    display: block;
-    font-style: normal;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-top: 1rem;
-  }
-
-  /* === FOOTER === */
-  footer { padding: 4rem 0 0; overflow: hidden; border-top: 1px solid var(--ink); margin-top: 2rem; }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 0 2rem 3rem;
-    border-bottom: 1px solid var(--ink);
-    gap: 2rem;
-  }
-  .footer-grid h3 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-  .footer-grid .col {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 1.8;
-  }
-  .footer-grid .col.right { text-align: right; }
-  .footer-grid .col a { display: block; }
-  .footer-grid .col a:hover { text-decoration: underline; }
-
-  /* Hero illustration */
-  .case-hero-image {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    max-height: 80vh;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
-  }
-  .case-hero-image svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  /* === RESPONSIVE === */
-  @media (max-width: 1100px) {
-    nav { grid-template-columns: repeat(3, 1fr); }
-    .case-header { grid-template-columns: 1fr; }
-    .case-header-left { border-right: none; padding-right: 0; border-bottom: 1px solid var(--ink); padding-bottom: 2rem; margin-bottom: 2rem; }
-    .case-header-right { padding-left: 0; }
-    .case-intro { grid-template-columns: 1fr; gap: 1.5rem; }
-    .case-meta-strip { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .flow { grid-template-columns: 1fr; gap: 2rem; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 600px) {
-    nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
-    .case-header, .case-intro, .case-meta-strip, .case-demo, .flows, .footer-grid { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .case-demo-head { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
-    .case-meta-strip { grid-template-columns: 1fr; }
-    .flow-outcomes { grid-template-columns: 1fr; gap: 1.2rem; }
-    .case-eyebrow { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
-    .eyebrow-nav { flex-direction: column; gap: 0.5rem; }
-    .footer-grid { grid-template-columns: 1fr; }
-  }
-
-  /* Dark footer, matching the illustration panels. Monochrome; accent on hover only. */
-  footer {
-    background: #0a0a0a;
-    color: #e8e8e8;
-  }
-  footer .footer-grid { border-bottom-color: rgba(255,255,255,0.18); }
-  footer .footer-grid h3 { color: #f2f2f2; }
-  footer .footer-grid .col a:hover { color: #74a58c; text-decoration: underline; }
-  footer .footer-tagline { color: #8c8c8c; }
-
-  /* Hero illustration: reveal on page load */
-  .case-hero-image {
-    animation: heroReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
-  }
-  @keyframes heroReveal {
-    from { opacity: 0; transform: translateY(18px) scale(0.985); }
-    to { opacity: 1; transform: none; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .case-hero-image { animation: none; }
-  }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-cell">
-    <div class="nav-label">HOME</div>
-    <div class="nav-rule"></div>
-  </a>
-  <div class="nav-cell">
-    <div class="nav-label"><span class="dot"></span>CASE STUDIES</div>
-    <div class="nav-rule"></div>
-  </div>
-  <a href="/about/" class="nav-cell">
-    <div class="nav-label">ABOUT/CV</div>
-    <div class="nav-rule"></div>
-  </a>
-  <a href="/#contact" class="nav-cell">
-    <div class="nav-label">CONTACT</div>
-    <div class="nav-rule"></div>
-  </a>
-</nav>
-
-<!-- HEADER -->
-<header class="case-header">
-  <div class="case-header-left">
-    <div class="case-eyebrow">
-      <span>A-4 / CASE STUDY</span>
-      <div class="eyebrow-nav">
-        <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
-        <a class="next" href="/work/research/">NEXT: A-5 / RESEARCH AND THE CUSTOMER POOL &rarr;</a>
-      </div>
-    </div>
-
-    <div class="case-statement">
-      <div class="hs-line">DESIGNING</div>
-      <div class="hs-line">FOR <span class="b">WHAT</span> THE</div>
-      <div class="hs-line"><span class="b">MODEL</span> DOES</div>
-      <div class="hs-line b-line">NOT <span class="b">KNOW</span></div>
-    </div>
-    <p class="case-header-body">AI outputs carry uncertainty baked in: the model can be wrong, and users need to see that without losing trust in the product. This case study covers a persistent AI agent, still in concept design and not shipped, that follows enterprise users through their journey, and the decisions behind surfacing model outputs honestly, handling uncertainty, and working with ML engineers on what the product can and cannot promise.</p>
-
-    <section class="case-meta-strip">
-    <div class="cell">
-      <div class="k">Role</div>
-      <div class="v">Lead Product Designer</div>
-    </div>
-    <div class="cell">
-      <div class="k">Discipline</div>
-      <div class="v">AI product design, ML collaboration, trust &amp; uncertainty, agentic UX</div>
-    </div>
-    <div class="cell">
-      <div class="k">Context</div>
-      <div class="v">Enterprise B2B SaaS platform</div>
-    </div>
-    <div class="cell">
-      <div class="k">Status</div>
-      <div class="v">Concept design; not shipped</div>
-    </div>
-  </section>
-  </div>
-  <div class="case-header-right">
-    <div class="case-hero-image">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" style="background:#0a0a0a;">
-        <!-- Outer rings -->
-        <circle cx="300" cy="380" r="110" fill="none" stroke="#1f1f1f" stroke-width="1"/>
-        <circle cx="300" cy="380" r="70" fill="none" stroke="#2a2a2a" stroke-width="1"/>
-        <!-- Center node -->
-        <circle cx="300" cy="380" r="26" fill="#ffffff"/>
-        <text x="300" y="384" text-anchor="middle" fill="#0a0a0a" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="8" letter-spacing="1.5" font-weight="500">AGENT</text>
-        <!-- Primary orbiting nodes -->
-        <circle cx="300" cy="270" r="8" fill="#74a58c"/>
-        <circle cx="402" cy="438" r="8" fill="#7ea7c9"/>
-        <circle cx="198" cy="438" r="8" fill="#d99f43"/>
-        <!-- Connector lines -->
-        <line x1="300" y1="354" x2="300" y2="278" stroke="#74a58c" stroke-width="1.4"/>
-        <line x1="322" y1="398" x2="394" y2="430" stroke="#7ea7c9" stroke-width="1.4"/>
-        <line x1="278" y1="398" x2="206" y2="430" stroke="#d99f43" stroke-width="1.4"/>
-        <!-- Outer nodes (faint) -->
-        <circle cx="300" cy="180" r="5" fill="none" stroke="#4c4c4c" stroke-width="1"/>
-        <circle cx="480" cy="480" r="5" fill="none" stroke="#4c4c4c" stroke-width="1"/>
-        <circle cx="120" cy="480" r="5" fill="none" stroke="#4c4c4c" stroke-width="1"/>
-        <!-- Dashed outer lines -->
-        <line x1="300" y1="278" x2="300" y2="185" stroke="#4c4c4c" stroke-width="1" stroke-dasharray="3 3"/>
-        <line x1="402" y1="446" x2="475" y2="475" stroke="#4c4c4c" stroke-width="1" stroke-dasharray="3 3"/>
-        <line x1="198" y1="446" x2="125" y2="475" stroke="#4c4c4c" stroke-width="1" stroke-dasharray="3 3"/>
-        <!-- Node labels -->
-        <text x="300" y="254" text-anchor="middle" fill="#74a58c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" letter-spacing="1.2">USER CONTEXT</text>
-        <text x="418" y="432" text-anchor="start" fill="#7ea7c9" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" letter-spacing="1.2">ACTIONS</text>
-        <text x="182" y="432" text-anchor="end" fill="#d99f43" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" letter-spacing="1.2">INSIGHTS</text>
-        <!-- Corner labels -->
-        <text x="36" y="60" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">AI AGENT</text>
-        <text x="564" y="60" text-anchor="end" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">A-4</text>
-      </svg>
-    </div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">DW</span>Dani Weidner</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/#demos">Prototypes</a>
+      <a href="/#work" aria-current="page">Work</a>
+      <a href="/about/">About</a>
+      <a href="/Dani-Weidner-CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </nav>
+    <a class="status-pill" href="mailto:hello@daniweidner.com"><span class="dot" aria-hidden="true"></span>Open to Staff roles</a>
   </div>
 </header>
-
-<!-- DEMO -->
-<section class="case-demo">
-  <div class="case-demo-inner">
-    <div class="case-demo-head">
-      <div class="case-demo-title">The agent in motion</div>
-      <div class="case-demo-label">Demo / Looping / No audio</div>
-    </div>
-    <div class="case-demo-media">
-      <div class="case-demo-frame">
-        <iframe src="/work/ai-agent/agent-demo.html"
-                title="Interactive demo: the AI agent watching campaigns, flagging signals, and drafting a campaign"
-                loading="lazy"
-                scrolling="no"
-                width="960" height="540"></iframe>
-      </div>
-      <p class="case-demo-caption">A short walkthrough of the persistent agent: what it is watching, the signals it flags for attention, and how a campaign gets drafted through a handful of questions. <a class="cap-link" href="/work/ai-agent/agent-demo.html" target="_blank" rel="noopener">Open full size &#8599;</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- FLOWS -->
-<div class="flows">
-
-  <!-- THREAD 01 -->
-  <section class="flow flow--board">
-    <div class="flow-left">
-      <div class="flow-num">THREAD 01 / 03</div>
-      <div class="flow-name">Surfacing model outputs</div>
-
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Confidence tiers specified for the component system</div></div>
-        <div class="stat stat--text"><div class="n"></div><div class="d"><span class="k">Decision</span>No statistical jargon: uncertainty framed in workflow terms</div></div>
-      </div>
-    </div>
-    <div class="flow-right">
-      <div class="flow-block">
-        <span class="block-label">The problem</span>
-        <p>Enterprise users had to act on model outputs carrying uncertainty a traditional dashboard would hide. A bare number creates false precision that erodes trust when the model is wrong; the full distribution overwhelms, and constant hedging makes the output useless.</p>
-      </div>
-      <div class="flow-block">
-        <span class="block-label">What I did</span>
-        <p>I worked with the ML team to separate what the model knew from what it estimated, then designed a tiered disclosure system: high-confidence outputs surface cleanly, lower-confidence ones carry a visible signal built into the component, with a path to understand why. Mapping the thresholds together kept the UI's confidence language true to what the scores actually meant, with the aim that users can tell a solid number from an estimate at a glance.</p>
-        <p>The goal was calibrated trust: users believe the model when it's right and can push back when it's wrong.</p>
-      </div>
-      <div class="flow-quote">
-        Hide the uncertainty and the product feels broken the first time the model is wrong and users realize they were never told.
-        <span class="attr">Design principle, AI output surfaces</span>
-      </div>
-      
-    </div>
-    <div class="flow-figure">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A tiered disclosure system: high-confidence model outputs surface cleanly, lower confidence carries a visible signal with a path to understand why">
+<main id="main" class="case">
+  <div class="wrap">
+    <aside class="rail" aria-label="Case details">
+      <a class="back" href="/#work">&#8592; CASE 05 OF 07</a>
+      <div class="rail-item"><span class="eyebrow">Role</span><span>Lead Product Designer</span></div><div class="rail-item"><span class="eyebrow">Context</span><span>Enterprise B2B SaaS platform</span></div><div class="rail-item"><span class="eyebrow">Status</span><span>Concept design, not shipped</span></div>
+      <nav aria-label="On this page"><a href="#minute">In one minute</a><a href="#decisions">Decisions</a><a href="#practice">AI in my practice</a></nav>
+    </aside>
+    <div class="case-main">
+      <header class="case-head">
+        <p class="eyebrow" style="color: var(--mauve);">AI / Agentic product design</p>
+        <h1>Designing an AI agent that&rsquo;s honest about what it doesn&rsquo;t know</h1>
+        <p class="dek">AI outputs carry uncertainty, and users need to see that without losing trust in the product. This is a persistent agent that follows enterprise users through their journey, still in concept design, and the decisions behind showing model outputs honestly.</p>
+      </header>
+      <section class="minute" id="minute" aria-labelledby="minute-h">
+        <h2 id="minute-h">In one minute</h2>
+        <div class="minute-row"><span class="k">Situation</span><span>Enterprise users had to act on model outputs that a normal dashboard would show as plain numbers, with no sign of what the model was guessing.</span></div><div class="minute-row"><span class="k">What I did</span><span>Worked with ML engineers to separate what the model knew from what it estimated, then designed confidence tiers, an agent that holds context across the journey, and failure states.</span></div><div class="minute-row"><span class="k">Outcome</span><span>A concept the team can build toward, with the confidence language tied to what the model scores actually mean.</span></div>
+      </section>
+      <div class="demo-block"><div class="demo"><iframe src="/demos/agent-demo.html" title="Demo: the AI agent watching campaigns, flagging signals, and drafting a campaign" loading="lazy" scrolling="no"></iframe></div><p class="demo-cap">Demo. The agent: what it watches, what it flags, and a campaign drafted through a few questions. Looping, no audio. <a href="/demos/agent-demo.html" target="_blank" rel="noopener">Open full screen &#8599;</a></p></div>
+      <section class="stats" aria-label="Key numbers"><div class="stat"><span class="tag">Decision</span><span class="n">3</span><span class="d">Confidence tiers specified with ML</span></div><div class="stat"><span class="tag">Decision</span><span class="n">3</span><span class="d">Designed failure states: unavailable, low-signal, out-of-distribution</span></div><div class="stat"><span class="tag">Scope</span><span class="n">5+</span><span class="d">Journey touchpoints where the agent&rsquo;s presence is designed</span></div></section>
+      <div class="decisions" id="decisions">
+        <h2>Decisions</h2>
+        <section class="decision">
+<span class="num">Decision 01 / 03</span>
+<h3>Show confidence without statistical jargon</h3>
+<p>A bare number creates false precision, the full distribution overwhelms, and constant hedging makes the output useless. I designed tiered disclosure: high-confidence outputs show cleanly, lower-confidence ones carry a visible signal built into the component, with a path to understand why.</p>
+<p>Mapping the thresholds with the ML team kept the interface&rsquo;s confidence language true to what the scores actually meant.</p>
+<blockquote>Hide the uncertainty and the product feels broken the first time the model is wrong and users realize they were never told.<cite>Design principle, AI output surfaces</cite></blockquote>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A tiered disclosure system: high-confidence model outputs surface cleanly, lower confidence carries a visible signal with a path to understand why">
         <!-- FIG. Confidence sets the disclosure -->
         <defs><marker id="il-ai1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
@@ -734,41 +91,12 @@
         <text x="658.0" y="300.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">A PATH TO UNDERSTAND WHY</text>
         <text x="658.0" y="314.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">DISCLOSURE ON DEMAND, NEVER OVERSTATED</text>
         <line x1="324" y1="292" x2="440" y2="303" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
-        </svg>
-      <div class="illo-cap">Fig. Confidence sets the disclosure: clean when known, signaled when estimated, explained on demand</div>
-    </div>
-  </section>
-
-  <!-- THREAD 02 -->
-  <section class="flow flow--board">
-    <div class="flow-left">
-      <div class="flow-num">THREAD 02 / 03</div>
-      <div class="flow-name">Designing the agent</div>
-
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">5+</div><div class="d"><span class="k">Scope</span>Journey touchpoints with deliberately designed agent presence</div></div>
-        <div class="stat"><div class="n">2</div><div class="d"><span class="k">Decision</span>Modes: ambient (low footprint), engaged (full context surface)</div></div>
-        <div class="stat stat--text"><div class="n"></div><div class="d"><span class="k">Decision</span>The agent confirms what it assumes at high-stakes moments</div></div>
-      </div>
-    </div>
-    <div class="flow-right">
-      <div class="flow-block">
-        <span class="block-label">The problem</span>
-        <p>A one-off AI widget is easy; an agent that follows a user through a whole session, aware of where they came from, what they're trying to do, and what they've already tried, is a different problem entirely. Most enterprise AI surfaces are stateless, so this agent had to hold context across the journey and use it to beat asking from scratch.</p>
-      </div>
-      <div class="flow-block">
-        <span class="block-label">What I did</span>
-        <p>I mapped the journey through the platform to find where an aware agent would cut real friction: transitions between tools, points of failure or confusion, and decisions that sent users elsewhere to look something up. Ambient by default and interruptible on demand, the agent stays quiet until needed and immediately present when it is, so help shows up at the moment of friction instead of becoming one more thing to manage.</p>
-        <p>Working sessions with product and ML settled what the agent should know versus ask: what the system could infer reliably, what it should confirm, and where assuming too much would feel intrusive. The agent's personality follows those limits, confident where it has signal, honest where it doesn't, which is what should make it worth trusting across a whole session.</p>
-      </div>
-      <div class="flow-quote">
-        An agent that knows where you are but doesn't know what you're trying to do is still just a search box with extra steps.
-        <span class="attr">Design constraint, agentic context model</span>
-      </div>
-      
-    </div>
-    <div class="flow-figure">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="One agent following the user across the whole journey, ambient by default and interruptible on demand, carrying context forward at every step">
+        </svg><figcaption>Fig. Clean when known, signaled when estimated, explained on demand</figcaption></figure>
+</section><section class="decision">
+<span class="num">Decision 02 / 03</span>
+<h3>Ambient by default, present on demand</h3>
+<p>I mapped the journey to find where an aware agent would cut real friction: transitions between tools, points of failure, and decisions that sent users elsewhere to look something up. The agent stays quiet until needed, and at high-stakes moments it confirms what it assumes before acting.</p>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="One agent following the user across the whole journey, ambient by default and interruptible on demand, carrying context forward at every step">
         <!-- FIG. One agent across the journey -->
         <defs><marker id="il-ai2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
@@ -804,40 +132,12 @@
         <path d="M816 146 L816 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
         <path d="M120 300 L816 300" fill="none" stroke="#74a58c" marker-end="url(#il-ai2-g)"/>
         <text x="468" y="316" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#74a58c" stroke="none">CONTEXT CARRIED FORWARD, NEVER ASKED FROM SCRATCH</text>
-        </svg>
-      <div class="illo-cap">Fig. One agent across the journey, carrying context forward at every step</div>
-    </div>
-  </section>
-
-  <!-- THREAD 03 -->
-  <section class="flow flow--board">
-    <div class="flow-left">
-      <div class="flow-num">THREAD 03 / 03</div>
-      <div class="flow-name">Working with ML constraints</div>
-
-      <div class="flow-outcomes">
-        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Explainability tiers mapped from ML capability to design language</div></div>
-        <div class="stat"><div class="n">3</div><div class="d"><span class="k">Decision</span>Fully designed degraded states: unavailable, low-signal, out-of-distribution</div></div>
-      </div>
-    </div>
-    <div class="flow-right">
-      <div class="flow-block">
-        <span class="block-label">The problem</span>
-        <p>AI surfaces bring a constraint most product work never sees: the system's behavior isn't fully predictable, and the reasons for its decisions can't always be surfaced. Users want to know why, the model doesn't always have a clean answer, and the product has to hold that gap without making either look bad.</p>
-      </div>
-      <div class="flow-block">
-        <span class="block-label">What I did</span>
-        <p>I ran working sessions with ML engineers to pin down exactly what the model could and couldn't explain about its own outputs, then built a design vocabulary for explainability: what level of explanation each output type allowed, how to communicate it honestly, and how to handle cases where no explanation could be offered.</p>
-        <p>Graceful degradation covered the rest: the unavailable, underconfident, and out-of-distribution states each got their own copy and recovery paths. A silent model failure is a trust problem; a well-handled one is a product moment.</p>
-      </div>
-      <div class="flow-quote">
-        If the model can't explain it, the product still has to say something. "I don't know" is a valid answer, but it has to be designed.
-        <span class="attr">Design principle, explainability systems</span>
-      </div>
-      
-    </div>
-    <div class="flow-figure">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A graded design vocabulary for explainability: full explanations where the model has them, honest partial ones where it does not, and a plain statement when none exists">
+        </svg><figcaption>Fig. One agent across the journey, carrying context forward at every step</figcaption></figure>
+</section><section class="decision">
+<span class="num">Decision 03 / 03</span>
+<h3>Design the &ldquo;I don&rsquo;t know&rdquo;</h3>
+<p>Working sessions with ML engineers pinned down what the model could and couldn&rsquo;t explain about its own outputs. That became a vocabulary for explainability, and each failure state (unavailable, low-signal, out-of-distribution) got its own copy and recovery path.</p>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A graded design vocabulary for explainability: full explanations where the model has them, honest partial ones where it does not, and a plain statement when none exists">
         <!-- FIG. Graded by what is explainable -->
         <defs><marker id="il-ai3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai3-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
@@ -878,41 +178,36 @@
         <line x1="420" y1="127" x2="496" y2="127" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
         <line x1="420" y1="215" x2="496" y2="215" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
         <line x1="420" y1="303" x2="496" y2="303" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
-        </svg>
-      <div class="illo-cap">Fig. A graded vocabulary: the language never claims more than the model knows</div>
-    </div>
-  </section>
-
-</div>
-
-<!-- BOTTOM CASE NAV -->
-<div class="case-eyebrow case-eyebrow--bottom">
-  <span>A-4 / CASE STUDY</span>
-  <div class="eyebrow-nav">
-    <a class="back" href="/#cases">&larr; ALL CASE STUDIES</a>
-    <a class="next" href="/work/research/">NEXT: A-5 / RESEARCH AND THE CUSTOMER POOL &rarr;</a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div><h3>DANI WEIDNER</h3></div>
-    <div class="col">
-      <a href="/">HOME</a>
-      <a href="/#cases">CASE STUDIES</a>
-    </div>
-    <div class="col">
-      <a href="/about/">ABOUT/CV</a>
-      <a href="/#contact">CONTACT</a>
-    </div>
-    <div class="col right">
-      <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
-      <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+        </svg><figcaption>Fig. A graded vocabulary that never claims more than the model knows</figcaption></figure>
+</section>
+      </div>
+      <section class="case-section" id="practice" aria-labelledby="practice-h">
+        <h2 id="practice-h">How I use AI in my own work</h2>
+        <p>Designing AI products and working with AI tools are different skills. These are the second one.</p>
+        <div class="ai-list">
+          <div class="panel"><p class="eyebrow" style="color: var(--mauve);">Synthesis</p><h3>340 requests into themes</h3><p>Used Claude to code 340 logged product requests into weighted themes inside a working Notion document, then cross-read them with research and meeting notes.</p></div>
+          <div class="panel"><p class="eyebrow" style="color: var(--blue);">Prototyping</p><h3>Research findings into prototypes</h3><p>Built the roles and permissions admin console in Figma Make, and turned bulk-creation research findings into Figma Make prompts to try fixes quickly.</p></div>
+          <div class="panel"><p class="eyebrow" style="color: var(--green);">Building</p><h3>This site</h3><p>Designed and built with Figma Make and Claude Code.</p></div>
+        </div>
+      </section>
+      
+      <a class="next-case" href="/work/permissions/"><span><span class="eyebrow">Next / Case 06</span><br><span class="t">Scoping enterprise access to the folder, not the account</span></span><span aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
-
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <p class="cta">Hiring a Staff designer? Let&rsquo;s talk.</p>
+      <p class="sub">13+ years in B2B and consumer products. Full history in the CV.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
+      <a class="btn" href="/Dani-Weidner-CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+      <a class="btn" href="https://www.linkedin.com/in/dani-weidner/" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
 </footer>
-
+<script src="/assets/site.js"></script>
 </body>
 </html>

@@ -1,816 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dani Weidner: About/CV</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dani Weidner: About and CV</title>
+<meta name="description" content="Staff product designer with 13+ years across B2B SaaS and consumer products. Experience at Branch.io, Hudl, DMSi, and LISNR.">
+<meta property="og:title" content="Dani Weidner: About and CV">
+<meta property="og:description" content="Staff product designer with 13+ years across B2B SaaS and consumer products. Experience at Branch.io, Hudl, DMSi, and LISNR.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #ffffff;
-    --ink: #000000;
-    --ink-soft: rgba(0,0,0,0.55);
-    --ink-faint: rgba(0,0,0,0.18);
-    --rule: rgba(0,0,0,0.85);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Fraunces', 'Times New Roman', serif;
-    font-weight: 400;
-    line-height: 1.3;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* === NAV === */
-  nav {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    padding: 1.5rem 2rem 0;
-    gap: 1.2rem;
-    align-items: end;
-    position: sticky; top: 0; z-index: 50;
-    background: var(--bg);
-  }
-  nav .nav-cell { display: flex; flex-direction: column; gap: 0.6rem; }
-  nav .nav-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink);
-    display: flex; align-items: center; gap: 0.55rem;
-  }
-  nav .nav-label .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); display: inline-block; }
-  nav .nav-rule { height: 1px; background: var(--ink); }
-
-  /* === CV HEADER (split, matches case-study heroes) === */
-  .cv-header {
-    padding: 4rem 2rem 2rem;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 0;
-    align-items: start;
-    border-bottom: 1px solid var(--ink);
-  }
-  .cv-header-left {
-    padding-right: 3rem;
-    border-right: 1px solid var(--ink);
-  }
-  .cv-header-right {
-    padding-left: 3rem;
-  }
-
-  .page-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 1rem;
-    margin-bottom: 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-
-  .page-statement {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.4rem, 6vw, 6.5rem);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    font-weight: 400;
-    color: var(--ink);
-    max-width: 100%;
-  }
-  .page-statement .hs-line {
-    text-align: justify;
-    -moz-text-align-last: justify;
-    text-align-last: justify;
-    word-spacing: -0.04em;
-    width: 100%;
-    display: block;
-  }
-  .page-statement .b {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-  }
-  .cv-header-body {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-    line-height: 1.65;
-    color: var(--ink-soft);
-    margin-top: 2rem;
-  }
-  .cv-header-body strong { color: var(--ink); font-weight: 400; }
-
-  /* Meta grid inside the header's left column */
-  .header-meta {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.6rem 2rem;
-    padding-top: 2rem;
-    margin-top: 2.5rem;
-    border-top: 1px solid var(--ink-faint);
-  }
-  .meta-block { display: flex; flex-direction: column; gap: 0.45rem; }
-  .meta-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .meta-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    line-height: 1.6;
-  }
-  .meta-value a { display: block; }
-  .meta-value a:hover { text-decoration: underline; }
-
-  /* Dark line-art hero, same treatment as the case-study heroes */
-  .cv-hero-image {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    max-height: 80vh;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
-  }
-  .cv-hero-image svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  /* === INTRO (label + lead, matches case-intro) === */
-  .cv-intro {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 4rem;
-    padding: 5rem 2rem 4rem;
-  }
-  .cv-intro .intro-portrait {
-    width: 100%;
-    display: block;
-    border-radius: 2px;
-  }
-  .cv-intro .lead {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.3rem, 2.2vw, 2rem);
-    line-height: 1.3;
-    font-weight: 400;
-  }
-  .cv-intro .lead strong { font-weight: 500; }
-  .cv-intro .lead-body {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1rem, 1.3vw, 1.18rem);
-    line-height: 1.6;
-    color: var(--ink-soft);
-    margin-top: 1.4rem;
-  }
-  .cv-intro .lead-body strong { color: var(--ink); font-weight: 400; }
-
-  .exp-earlier {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--ink-soft);
-    margin: 0 2rem; padding-top: 1.8rem;
-    border-top: 1px solid var(--ink-faint);
-  }
-  .exp-earlier a { border-bottom: 1px solid var(--ink-faint); }
-  .exp-earlier a:hover { color: #74a58c; border-color: #74a58c; }
-
-  /* === SECTION HEADS === */
-  .section-head {
-    padding: 0 2rem;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 0.8rem;
-    margin-top: 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-  .section-head h2 {
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-    font-size: 1.3rem;
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
-  }
-  .section-head .sh-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-
-  /* === EXPERIENCE === */
-  .experience-section {
-    padding: 0 2rem;
-  }
-
-  .exp-row {
-    display: grid;
-    grid-template-columns: 0.85fr 2.4fr;
-    gap: 3.5rem;
-    padding: 4rem 0;
-    border-bottom: 1px solid var(--ink-faint);
-    align-items: start;
-  }
-  .exp-row:last-child { border-bottom: none; }
-
-  .exp-left { display: flex; flex-direction: column; gap: 0.9rem; }
-  .exp-company {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  .exp-years, .exp-place {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.74rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    line-height: 1.7;
-  }
-
-  .exp-right { display: flex; flex-direction: column; gap: 1.4rem; }
-  .exp-role {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-  }
-  .exp-summary {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1rem, 1.2vw, 1.12rem);
-    line-height: 1.55;
-    color: var(--ink);
-  }
-  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
-  .exp-points li {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-    line-height: 1.55;
-    color: var(--ink-soft);
-    padding-left: 1.5rem;
-    position: relative;
-  }
-  .exp-points li::before {
-    content: "/";
-    position: absolute;
-    left: 0;
-    color: var(--ink);
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .exp-points li strong { color: var(--ink); font-weight: 400; }
-
-  .exp-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 0.6rem;
-    margin-top: 0.4rem;
-  }
-  .exp-tags span {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    border: 1px solid var(--ink-faint);
-    border-radius: 2px;
-    padding: 0.35rem 0.6rem;
-  }
-
-  /* === CAPABILITIES === */
-  .cap-section {
-    padding: 0 2rem;
-    border-bottom: 1px solid var(--ink);
-  }
-  .cap-row {
-    display: grid;
-    grid-template-columns: 0.85fr 2.4fr;
-    gap: 3.5rem;
-    padding: 3rem 0;
-    border-bottom: 1px solid var(--ink-faint);
-    align-items: start;
-  }
-  .cap-row:last-child { border-bottom: none; }
-  .cap-label {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(1.4rem, 2.1vw, 1.9rem);
-    line-height: 1;
-    letter-spacing: -0.01em;
-  }
-  .cap-body {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1rem, 1.2vw, 1.12rem);
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-  .cap-body strong { color: var(--ink); font-weight: 400; }
-  .cap-illustration { padding: 1.5rem 0 3.5rem; overflow-x: auto; }
-  .cap-illustration svg { width: 100%; min-width: 680px; height: auto; display: block; border-radius: 4px; }
-
-  /* === CTA === */
-  .page-cta {
-    padding: 4rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--ink);
-    cursor: pointer;
-  }
-  .page-cta:hover .cta-arrow { transform: translateX(4px); }
-  .page-cta .cta-label {
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
-  }
-  .page-cta .cta-arrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.2rem;
-    transition: transform 0.2s ease;
-  }
-
-  /* === FOOTER === */
-  footer { padding: 6rem 0 0; overflow: hidden; }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 0 2rem 3rem;
-    border-bottom: 1px solid var(--ink);
-    gap: 2rem;
-  }
-  .footer-grid h3 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-  .footer-grid .col {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 1.8;
-  }
-  .footer-grid .col.right { text-align: right; }
-  .footer-grid .col a { display: block; }
-  .footer-grid .col a:hover { text-decoration: underline; }
-
-  /* === PRINT / PDF === */
-  @media print {
-    @page { size: Letter; margin: 0.55in 0.6in; }
-    html, body { font-size: 9.5pt; }
-    nav, footer, .page-cta, .cv-header-right, .cap-illustration,
-    .cap-section, .section-head:has(+ .cap-section) { display: none !important; }
-    .cv-header { display: block; padding: 0 0 0.7rem; border-bottom: 1px solid #000; }
-    .cv-header-left { border-right: none !important; padding-right: 0 !important; }
-    .hs-line { font-size: 19pt !important; line-height: 0.96 !important; }
-    .cv-header-body { margin-top: 0.5rem; font-size: 8.8pt; }
-    .header-meta { grid-template-columns: repeat(5, 1fr); gap: 0.5rem 0.7rem; margin-top: 0.7rem; padding-top: 0.6rem; }
-    .meta-label { font-size: 6.5pt; }
-    .meta-value { font-size: 6.8pt; line-height: 1.4; }
-    .cv-intro { display: block; padding: 0.5rem 0 0.35rem; }
-    .cv-intro .intro-portrait { display: none; }
-    .cv-intro .lead { font-size: 11pt; line-height: 1.3; }
-    .cv-intro .lead-body { font-size: 8.6pt; line-height: 1.45; margin-top: 0.5rem; }
-    .section-head { padding: 0 0 0.25rem; margin-top: 0.3rem; }
-    .section-head h2 { font-size: 12.5pt; }
-    .experience-section, .cap-section { padding-left: 0; padding-right: 0; }
-    /* grid containers cannot fragment across print pages in Chromium: go block */
-    .exp-row { display: block !important; padding: 0.5rem 0 0.35rem; }
-    .exp-left { display: block !important; margin-bottom: 0.25rem; }
-    .exp-company { display: inline; font-size: 9pt; }
-    .exp-years, .exp-place { display: inline; font-size: 7pt; }
-    .exp-years::before { content: " / "; }
-    .exp-place::before { content: " / "; }
-    .page-statement .hs-line { text-align: left !important; text-align-last: left !important; -moz-text-align-last: left !important; }
-    .exp-summary { font-size: 8.6pt; line-height: 1.4; }
-    .exp-points li { font-size: 8.4pt; line-height: 1.4; margin-bottom: 0.2rem; color: #000; break-inside: avoid; page-break-inside: avoid; }
-    .exp-points li strong { font-weight: 600; }
-    .exp-tags { display: none; }
-    .exp-earlier { margin: 0; padding-top: 0.5rem; font-size: 6.8pt; }
-    /* reveal animations must not hide content in print */
-    [class*="reveal"], .revealed, section, div, p, li { opacity: 1 !important; transform: none !important; }
-  }
-
-  /* === RESPONSIVE === */
-  @media (max-width: 1100px) {
-    nav { grid-template-columns: repeat(3, 1fr); }
-    .cv-header { grid-template-columns: 1fr; }
-    .cv-header-left { border-right: none; padding-right: 0; border-bottom: 1px solid var(--ink); padding-bottom: 2rem; margin-bottom: 2rem; }
-    .cv-header-right { padding-left: 0; }
-    .cv-intro { grid-template-columns: 1fr; gap: 2rem; }
-    .cv-intro .intro-portrait { max-width: 420px; }
-    .exp-row { grid-template-columns: 1fr; gap: 1.5rem; }
-    .cap-row { grid-template-columns: 1fr; gap: 1rem; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 600px) {
-    nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
-    .cv-header, .cv-intro, .experience-section, .cap-section,
-    .page-cta, .section-head, .footer-grid {
-      padding-left: 1.2rem; padding-right: 1.2rem;
-    }
-    .header-meta { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .page-eyebrow { flex-direction: column; gap: 0.4rem; }
-  }
-
-  /* === PRINT === */
-  @media print {
-    nav, .page-cta, .cv-header-right { display: none; }
-    body { font-size: 11pt; }
-    .cv-header { grid-template-columns: 1fr; border-bottom: 1px solid var(--ink); }
-    .cv-header-left { border-right: none; padding-right: 0; }
-    .exp-row, .cap-row { page-break-inside: avoid; }
-    .page-statement { font-size: 3rem; }
-  }
-
-  /* Dark footer, matching the illustration panels. Monochrome; accent on hover only. */
-  footer {
-    background: #0a0a0a;
-    color: #e8e8e8;
-  }
-  footer .footer-grid { border-bottom-color: rgba(255,255,255,0.18); }
-  footer .footer-grid h3 { color: #f2f2f2; }
-  footer .footer-grid .col a:hover { color: #74a58c; text-decoration: underline; }
-  footer .footer-tagline { color: #8c8c8c; }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-cell">
-    <div class="nav-label">HOME</div>
-    <div class="nav-rule"></div>
-  </a>
-  <a href="/#cases" class="nav-cell">
-    <div class="nav-label">CASE STUDIES</div>
-    <div class="nav-rule"></div>
-  </a>
-  <div class="nav-cell">
-    <div class="nav-label"><span class="dot"></span>ABOUT/CV</div>
-    <div class="nav-rule"></div>
-  </div>
-  <a href="/#contact" class="nav-cell">
-    <div class="nav-label">CONTACT</div>
-    <div class="nav-rule"></div>
-  </a>
-</nav>
-
-<!-- PAGE HEADER -->
-<header class="cv-header">
-  <div class="cv-header-left">
-    <div class="page-eyebrow">
-      <span>CV / DANI WEIDNER</span>
-      <span>STAFF PRODUCT DESIGNER / B2B ENTERPRISE</span>
-    </div>
-
-    <div class="page-statement">
-      <div class="hs-line">DESIGN THAT</div>
-      <div class="hs-line"><span class="b">HOLDS UP</span> UNDER</div>
-      <div class="hs-line">REAL <span class="b">WEIGHT</span></div>
-    </div>
-
-    <p class="cv-header-body">Lead product designer with 13+ years shipping complex B2B and consumer products across six industries, from zero-to-one discovery through eng-ready delivery.</p>
-
-    <div class="header-meta">
-      <div class="meta-block">
-        <div class="meta-label">Currently</div>
-        <div class="meta-value">Lead Product Designer<br/>Branch.io</div>
-      </div>
-      <div class="meta-block">
-        <div class="meta-label">Based</div>
-        <div class="meta-value">West Coast<br/>Remote</div>
-      </div>
-      <div class="meta-block">
-        <div class="meta-label">Focus</div>
-        <div class="meta-value">B2B / Enterprise<br/>Complex Systems<br/>Expert-User Tools</div>
-      </div>
-      <div class="meta-block">
-        <div class="meta-label">Contact</div>
-        <div class="meta-value">
-          <a href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
-          <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://daniweidner.com" target="_blank" rel="noopener">daniweidner.com</a>
-          <a href="/Dani-Weidner-CV.pdf" download>CV (PDF) &darr;</a>
-        </div>
-      </div>
-      <div class="meta-block">
-        <div class="meta-label">Open to</div>
-        <div class="meta-value">Staff / Lead Roles</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cv-header-right">
-    <div class="cv-hero-image">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" style="background:#0a0a0a;" role="img" aria-label="Line-art structural diagram: blocks labeled scope, complexity, and stakes rest on a beam labeled the design, held up by columns labeled process and craft">
-        <defs>
-          <marker id="cv-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M2 1 L8 5 L2 9" fill="none" stroke="#8c8c8c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </marker>
-        </defs>
-        <!-- Faint rings -->
-        <circle cx="300" cy="400" r="235" fill="none" stroke="#1a1a1a" stroke-width="1"/>
-        <circle cx="300" cy="400" r="170" fill="none" stroke="#1f1f1f" stroke-width="1"/>
-        <!-- Load arrow -->
-        <text x="300" y="142" text-anchor="middle" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="8" letter-spacing="1.5">REAL WEIGHT</text>
-        <line x1="300" y1="156" x2="300" y2="208" stroke="#8c8c8c" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#cv-arrow)"/>
-        <!-- Stacked load blocks -->
-        <rect x="240" y="222" width="120" height="50" rx="2" fill="#141414" stroke="#d99f43" stroke-width="1.4"/>
-        <text x="300" y="250" text-anchor="middle" fill="#c0c0c0" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">STAKES</text>
-        <rect x="210" y="272" width="180" height="54" rx="2" fill="#141414" stroke="#7ea7c9" stroke-width="1.4"/>
-        <text x="300" y="302" text-anchor="middle" fill="#c0c0c0" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">COMPLEXITY</text>
-        <rect x="180" y="326" width="240" height="58" rx="2" fill="#141414" stroke="#74a58c" stroke-width="1.4"/>
-        <text x="300" y="358" text-anchor="middle" fill="#c0c0c0" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">SCOPE</text>
-        <!-- Beam -->
-        <line x1="120" y1="392" x2="480" y2="392" stroke="#ffffff" stroke-width="6"/>
-        <text x="300" y="418" text-anchor="middle" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" letter-spacing="1.5">THE DESIGN</text>
-        <!-- Columns -->
-        <line x1="185" y1="395" x2="185" y2="600" stroke="#ffffff" stroke-width="2"/>
-        <line x1="415" y1="395" x2="415" y2="600" stroke="#ffffff" stroke-width="2"/>
-        <!-- Ground with hatching -->
-        <line x1="100" y1="600" x2="500" y2="600" stroke="#e2e2e2" stroke-width="1.4"/>
-        <line x1="130" y1="614" x2="144" y2="600" stroke="#4c4c4c" stroke-width="1"/>
-        <line x1="170" y1="614" x2="184" y2="600" stroke="#4c4c4c" stroke-width="1"/>
-        <line x1="210" y1="614" x2="224" y2="600" stroke="#4c4c4c" stroke-width="1"/>
-        <line x1="250" y1="614" x2="264" y2="600" stroke="#4c4c4c" stroke-width="1"/>
-        <line x1="290" y1="614" x2="304" y2="600" stroke="#4c4c4c" stroke-width="1"/>
-        <line x1="330" y1="614" x2="344" y2="600" stroke="#4c4c4c" stroke-width="1"/>
-        <line x1="370" y1="614" x2="384" y2="600" stroke="#4c4c4c" stroke-width="1"/>
-        <line x1="410" y1="614" x2="424" y2="600" stroke="#4c4c4c" stroke-width="1"/>
-        <line x1="450" y1="614" x2="464" y2="600" stroke="#4c4c4c" stroke-width="1"/>
-        <!-- Column labels -->
-        <text x="185" y="642" text-anchor="middle" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">PROCESS</text>
-        <text x="415" y="642" text-anchor="middle" fill="#8c8c8c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7.5" letter-spacing="1.5">CRAFT</text>
-        <!-- Corner labels -->
-        <text x="36" y="60" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">CURRICULUM VITAE</text>
-        <text x="564" y="60" text-anchor="end" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" letter-spacing="2">CV</text>
-        <text x="36" y="756" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="9" letter-spacing="2">LOAD-BEARING DESIGN</text>
-        <text x="564" y="756" text-anchor="end" fill="#5c5c5c" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="9" letter-spacing="2">13+ YRS</text>
-      </svg>
-    </div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">DW</span>Dani Weidner</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/#demos">Prototypes</a>
+      <a href="/#work">Work</a>
+      <a href="/about/" aria-current="page">About</a>
+      <a href="/Dani-Weidner-CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </nav>
+    <a class="status-pill" href="mailto:hello@daniweidner.com"><span class="dot" aria-hidden="true"></span>Open to Staff roles</a>
   </div>
 </header>
-
-<!-- INTRO -->
-<section class="cv-intro">
-  <img class="intro-portrait" src="../dani-portrait.jpg" alt="Dani Weidner"/>
-  <div>
-    <p class="lead">I operate end-to-end and across teams: <strong>shaping strategy with stakeholders, running enterprise research, stewarding design systems, designing AI features where uncertainty is the design problem, and partnering closely with engineering</strong> to hit milestones without compromising craft.</p>
-    <p class="lead-body">I came up designing for expert users with no patience for friction: coaches reviewing film at 2am, ops managers who can't afford a bad day. That set the standard: <strong>the system has to hold when nobody is watching it.</strong> The work since then is the same shape at bigger scale, research loops, design systems, and a platform migration I designed that moved 50 customer accounts with zero breaking changes reported. Coaching designers, PMs, and EMs is part of it, because the practice has to keep running after I leave the room.</p>
+<main id="main">
+<section class="about-head">
+  <div class="wrap">
+    <div class="about-intro">
+      <p class="eyebrow">About / Staff product designer / Enterprise B2B</p>
+      <h1>Design that holds up under real weight.</h1>
+      <p>Lead product designer with 13+ years shipping complex B2B and consumer products across six industries, from zero-to-one discovery through eng-ready delivery. I shape strategy with stakeholders, run enterprise research, steward design systems, design AI features where uncertainty is the design problem, and partner closely with engineering.</p>
+      <p>I came up designing for expert users with no patience for friction: coaches reviewing film at 2am, ops managers who can&rsquo;t afford a bad day. That set the standard: <strong>the system has to hold when nobody is watching it.</strong> The work since then is the same shape at bigger scale, including a platform migration I designed that moved 50 customer accounts with zero breaking changes reported.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="/Dani-Weidner-CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+        <a class="btn" href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/dani-weidner/" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="portrait"><img src="/dani-portrait.jpg" alt="Portrait of Dani Weidner" width="1024" height="1024"></div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<div class="section-head">
-  <h2>Experience</h2>
-  <span class="sh-meta">Selected roles &#183; 2020 &ndash; Present</span>
-</div>
-<section class="experience-section">
-
-  <div class="exp-row">
-    <div class="exp-left">
-      <div class="exp-company">Branch.io</div>
-      <div class="exp-years">Aug 2024 &ndash; Present</div>
-      <div class="exp-place">Remote</div>
+<section class="section" aria-label="At a glance">
+  <div class="wrap">
+    <div class="facts">
+      <div class="fact"><span class="eyebrow">Currently</span><span>Lead Product Designer, Branch.io</span></div>
+      <div class="fact"><span class="eyebrow">Open to</span><span>Staff product design roles</span></div>
+      <div class="fact"><span class="eyebrow">Based</span><span>West Coast, remote</span></div>
+      <div class="fact"><span class="eyebrow">Focus</span><span>B2B and enterprise, complex systems, expert-user tools</span></div>
     </div>
-    <div class="exp-right">
-      <div class="exp-role">Lead Product Designer</div>
-      <p class="exp-summary">Own end-to-end design for the Engagement team, and set conventions now adopted product-wide: navigation, workbench layout, and the design&ndash;eng handoff standard.</p>
-      <ul class="exp-points">
-        <li>Lead <strong>UX research operations</strong>: recruited and ran studies with five enterprise accounts, synthesized findings into structured insight documents, and triangulated 340 logged requests with research and meeting notes into one demand picture the roadmap now prioritizes from.</li>
-        <li>Set <strong>cross-team standards</strong> now used product-wide: one workbench pattern replacing three divergent layout families, a navigation rubric teams use as default reasoning, and a handoff standard that defines what every ticket must carry.</li>
-        <li>Designing a persistent <strong>in-product AI agent</strong>: three confidence tiers, three explainability tiers, and three degraded states specified so the interface stays trustworthy when the model is wrong.</li>
-        <li>Authored <strong>three lifecycle phase gates</strong> from a source-based audit of five recurring handoff failures, and run &ldquo;Designin&rsquo; With Dani&rdquo;, the biweekly design and engineering sync feeding them, kept going at every company since 2020.</li>
-        <li>Designed <strong>complex interaction systems</strong>: A/B variant flows, campaign state navigation, and bulk editing for large link libraries, plus the migration of two features to 50 accounts with zero breaking changes reported.</li>
-        <li>Steward the <strong>Auxin design system</strong>: authored specs for new components, wrote Linear tickets for design&ndash;eng handoff, and drove refinement quality across the team.</li>
-        <li>Built <strong>Branch Inner Circle</strong>, an enterprise customer program, from zero-to-launch in EMEA: seven of eight founding accounts still in the program a year in, two renewals, and eight roadmap items validated or influenced, three of them since shipped.</li>
-      </ul>
-      <div class="exp-tags">
-        <span>Mobile Growth &amp; Linking</span>
-        <span>Design Systems</span>
-        <span>Enterprise Research</span>
-        <span>Design&ndash;Eng Handoff</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="exp-row">
-    <div class="exp-left">
-      <div class="exp-company">Hudl</div>
-      <div class="exp-years">Feb 2022 &ndash; Aug 2024</div>
-      <div class="exp-place">Remote</div>
-    </div>
-    <div class="exp-right">
-      <div class="exp-role">Senior Product Designer</div>
-      <p class="exp-summary">Designed for a global sports video and analytics platform used by coaches and athletes across pro, collegiate, and youth: expert users with high stakes.</p>
-      <ul class="exp-points">
-        <li>Ran <strong>user research</strong> with sports organizations across pro, collegiate, and youth, validating concepts and surfacing usability issues before they reached build.</li>
-        <li>Led <strong>cross-functional design sprints</strong>, delivering wireframes, prototypes, and high-fidelity screens in close partnership with engineering, product, and data teams.</li>
-        <li>Ran the standing <strong>design and engineering sync</strong>, reviewing in-flight work with the engineers building it before decisions were locked.</li>
-        <li>Worked with PMs and engineering managers on <strong>scope and sequencing</strong>, turning research findings into decisions the team could commit to.</li>
-        <li>Maintained design-system components and helped shape <strong>design-critique culture</strong> across a distributed design org.</li>
-      </ul>
-      <div class="exp-tags">
-        <span>Sports Video &amp; Analytics</span>
-        <span>Expert-User Design</span>
-        <span>Distributed Design Org</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="exp-row">
-    <div class="exp-left">
-      <div class="exp-company">DMSi</div>
-      <div class="exp-years">Apr 2021 &ndash; Feb 2022</div>
-      <div class="exp-place">Omaha, NE / Remote</div>
-    </div>
-    <div class="exp-right">
-      <div class="exp-role">Senior UX Designer</div>
-      <p class="exp-summary">Designed enterprise software for building-materials distributors: data-heavy, workflow-dependent interfaces where understanding the business was a prerequisite to designing anything.</p>
-      <ul class="exp-points">
-        <li>Ran <strong>discovery research</strong> with distributors and internal teams, mapping how the business actually ran before proposing anything.</li>
-        <li>Built <strong>journey maps and flows</strong>, and produced detailed wireframes and prototypes for internal and client-facing tools.</li>
-        <li>Held the same <strong>design and engineering sync</strong>, putting open questions in front of engineers while the designs were still open to change.</li>
-        <li>Paired with PMs and engineering managers to keep designs implementable within <strong>technical constraints</strong> without sacrificing usability.</li>
-      </ul>
-      <div class="exp-tags">
-        <span>Enterprise Distribution</span>
-        <span>Complex Workflows</span>
-        <span>Discovery &amp; Synthesis</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="exp-row">
-    <div class="exp-left">
-      <div class="exp-company">LISNR</div>
-      <div class="exp-years">Jan 2020 &ndash; Feb 2022</div>
-      <div class="exp-place">Oakland, CA / Cincinnati, OH</div>
-    </div>
-    <div class="exp-right">
-      <div class="exp-role">Senior Product Designer <span style="font-style:normal;font-size:0.7em;color:var(--ink-soft);">(Contract)</span></div>
-      <p class="exp-summary">Designed mobile and web interfaces for an ultrasonic data-transmission platform, a technically novel, hardware-adjacent product where the core challenge was making invisible behavior feel trustworthy and legible.</p>
-      <ul class="exp-points">
-        <li>Owned design across multiple <strong>client integrations</strong>, translating complex SDK capabilities into intuitive developer- and consumer-facing experiences.</li>
-        <li>Ran <strong>usability testing</strong> with client teams and end users, checking whether behavior nobody can see still reads as trustworthy at the moment of use.</li>
-        <li>Kept PMs and engineering managers in the same <strong>standing sync</strong>, surfacing in-flight work before decisions hardened.</li>
-      </ul>
-      <div class="exp-tags">
-        <span>Hardware-Adjacent</span>
-        <span>SDK &amp; Developer UX</span>
-        <span>Trust &amp; Legibility</span>
-      </div>
-    </div>
-  </div>
-
-  <p class="exp-earlier">Roles before 2020 are on <a href="https://www.linkedin.com/in/dani-weidner/details/experience/" target="_blank" rel="noopener">LinkedIn</a>. The history above is the part relevant to enterprise B2B.</p>
-
-</section>
-
-<!-- CAPABILITIES -->
-<div class="section-head">
-  <h2>What I Bring</h2>
-  <span class="sh-meta">Craft / Process / Tools</span>
-</div>
-<section class="cap-section">
-  <div class="cap-illustration">
-    <svg viewBox="0 0 1200 410" role="img" aria-label="What I Bring: three parallel capability areas plus a toolkit. Design (end-to-end product design, UX research and interaction, information architecture, visual design and systems, prototyping and critique). Process (discovery and synthesis, journey mapping, wireframing to hi-fi, eng-ready specs, planning and strategy). Collaboration (cross-functional partnership, engineering, product and stakeholders, client-facing presentation, design to dev handoff, craft intact to ship). Toolkit: Figma, Figma Make, FigJam, Miro, Claude Code, Notion, Linear, Jira, Loom." xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="1200" height="410" rx="4" fill="#0a0a0a"/>
-      <rect x="16" y="16" width="1168" height="378" rx="2" fill="none" stroke="#242424" stroke-width="1"/>
-
-      <!-- card backgrounds + left accent spines -->
-      <rect x="40"  y="64" width="346" height="230" rx="4" fill="#74a58c" opacity="0.05"/>
-      <rect x="40"  y="64" width="3"   height="230" fill="#74a58c"/>
-      <rect x="426" y="64" width="346" height="230" rx="4" fill="#7ea7c9" opacity="0.05"/>
-      <rect x="426" y="64" width="3"   height="230" fill="#7ea7c9"/>
-      <rect x="812" y="64" width="346" height="230" rx="4" fill="#d99f43" opacity="0.05"/>
-      <rect x="812" y="64" width="3"   height="230" fill="#d99f43"/>
-
-      <!-- icons -->
-      <g transform="translate(64,80)" fill="none" stroke="#74a58c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="4" y="4" width="20" height="20" rx="1"/><circle cx="14" cy="14" r="3.2" fill="#74a58c" stroke="none"/>
-      </g>
-      <g transform="translate(450,80)" fill="none" stroke="#7ea7c9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="14" x2="14" y2="14" stroke-dasharray="2 3"/><line x1="14" y1="14" x2="25" y2="14"/><path d="M21 10 L25 14 L21 18"/>
-      </g>
-      <g transform="translate(836,80)" fill="none" stroke="#d99f43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="14" r="8"/><circle cx="21" cy="14" r="8"/>
-      </g>
-
-      <g font-family="'JetBrains Mono','Courier New',monospace">
-        <text x="40" y="44" fill="#6a6a6a" font-size="11" letter-spacing="2">HOW I WORK</text>
-        <text x="1158" y="44" text-anchor="end" fill="#6a6a6a" font-size="11" letter-spacing="2">THREE AREAS + A TOOLKIT</text>
-
-        <!-- DESIGN -->
-        <text x="66" y="142" fill="#74a58c" font-size="16" font-weight="500" letter-spacing="1.5">DESIGN</text>
-        <line x1="66" y1="152" x2="98" y2="152" stroke="#74a58c" stroke-width="2"/>
-        <text x="66" y="180" fill="#b4b4b4" font-size="11" letter-spacing="0.3">End-to-end product design</text>
-        <text x="66" y="200" fill="#b4b4b4" font-size="11" letter-spacing="0.3">UX research &amp; interaction</text>
-        <text x="66" y="220" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Information architecture</text>
-        <text x="66" y="240" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Visual design &amp; systems</text>
-        <text x="66" y="260" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Prototyping &amp; critique</text>
-
-        <!-- PROCESS -->
-        <text x="452" y="142" fill="#7ea7c9" font-size="16" font-weight="500" letter-spacing="1.5">PROCESS</text>
-        <line x1="452" y1="152" x2="484" y2="152" stroke="#7ea7c9" stroke-width="2"/>
-        <text x="452" y="180" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Discovery &amp; synthesis</text>
-        <text x="452" y="200" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Journey mapping</text>
-        <text x="452" y="220" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Wireframing to hi-fi</text>
-        <text x="452" y="240" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Eng-ready specs</text>
-        <text x="452" y="260" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Planning &amp; strategy</text>
-
-        <!-- COLLABORATION -->
-        <text x="838" y="142" fill="#d99f43" font-size="16" font-weight="500" letter-spacing="1.5">COLLABORATION</text>
-        <line x1="838" y1="152" x2="870" y2="152" stroke="#d99f43" stroke-width="2"/>
-        <text x="838" y="180" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Cross-functional partnership</text>
-        <text x="838" y="200" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Eng &#183; product &#183; stakeholders</text>
-        <text x="838" y="220" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Client-facing presentation</text>
-        <text x="838" y="240" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Design / dev handoff</text>
-        <text x="838" y="260" fill="#b4b4b4" font-size="11" letter-spacing="0.3">Craft intact to ship</text>
-      </g>
-
-      <!-- toolkit shelf -->
-      <line x1="40" y1="322" x2="1158" y2="322" stroke="#262626" stroke-width="1"/>
-      <rect x="40" y="332" width="1118" height="48" rx="4" fill="#cf6a5c" opacity="0.06"/>
-      <rect x="40" y="332" width="3" height="48" fill="#cf6a5c"/>
-      <g transform="translate(60,344)" fill="none" stroke="#cf6a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="0" y="0" width="7" height="7"/><rect x="11" y="0" width="7" height="7"/><rect x="0" y="11" width="7" height="7"/><rect x="11" y="11" width="7" height="7"/>
-      </g>
-      <g font-family="'JetBrains Mono','Courier New',monospace">
-        <text x="94" y="361" fill="#cf6a5c" font-size="13" font-weight="500" letter-spacing="2">TOOLKIT</text>
-        <text x="210" y="361" fill="#c4c4c4" font-size="11" letter-spacing="0.3">Figma &#183; Figma Make &#183; FigJam &#183; Miro &#183; Claude Code &#183; Notion &#183; Linear &#183; Jira &#183; Loom</text>
-      </g>
-    </svg>
   </div>
 </section>
 
+<section class="section" aria-labelledby="exp-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="exp-h">Experience</h2>
+      <p>Selected roles, 2020 &ndash; present. Earlier roles are on <a href="https://www.linkedin.com/in/dani-weidner/details/experience/" rel="noopener">LinkedIn</a>.</p>
+    </div>
+    <article class="role">
+      <div class="role-side"><span class="co">Branch.io</span><span class="title">Lead Product Designer</span><span class="when">Aug 2024 &ndash; Present</span><span class="when">Remote</span></div>
+      <div class="role-body"><p>Own end-to-end design for a core product area, and set conventions now adopted product-wide: navigation, workbench layout, and the design and engineering handoff standard.</p><ul class="points"><li>Lead <strong>UX research operations</strong>: recruited and ran studies with five enterprise accounts, synthesized findings into structured insight documents, and triangulated 340 logged requests with research and meeting notes into one demand picture the roadmap now prioritizes from.</li><li>Set <strong>cross-team standards</strong> now used product-wide: one workbench pattern replacing three divergent layout families, a navigation rubric teams use as default reasoning, and a handoff standard that defines what every ticket must carry.</li><li>Designing a persistent <strong>in-product AI agent</strong>: three confidence tiers, three explainability tiers, and three degraded states specified so the interface stays trustworthy when the model is wrong.</li><li>Authored <strong>three lifecycle phase gates</strong> from a source-based audit of five recurring handoff failures, and run &ldquo;Designin&rsquo; With Dani&rdquo;, the biweekly design and engineering sync feeding them, kept going at every company since 2020.</li><li>Designed <strong>complex interaction systems</strong>: A/B variant flows, campaign state navigation, and bulk editing for large link libraries, plus the migration of two features to 50 accounts with zero breaking changes reported.</li><li>Steward the <strong>Auxin design system</strong>: authored specs for new components, wrote Linear tickets for design&ndash;eng handoff, and drove refinement quality across the team.</li><li>Built <strong>Branch Inner Circle</strong>, an enterprise customer program, from zero-to-launch in EMEA: seven of eight founding accounts still in the program a year in, two renewals, and eight roadmap items validated or influenced, three of them since shipped.</li></ul><div class="chips"><span class="chip">Mobile growth and linking</span><span class="chip">Design systems</span><span class="chip">Enterprise research</span><span class="chip">Design and eng handoff</span></div></div>
+    </article><article class="role">
+      <div class="role-side"><span class="co">Hudl</span><span class="title">Senior Product Designer</span><span class="when">Feb 2022 &ndash; Aug 2024</span><span class="when">Remote</span></div>
+      <div class="role-body"><p>Designed for a global sports video and analytics platform used by coaches and athletes across pro, collegiate, and youth: expert users with high stakes.</p><ul class="points"><li>Ran <strong>user research</strong> with sports organizations across pro, collegiate, and youth, validating concepts and surfacing usability issues before they reached build.</li><li>Led <strong>cross-functional design sprints</strong>, delivering wireframes, prototypes, and high-fidelity screens in close partnership with engineering, product, and data teams.</li><li>Ran the standing <strong>design and engineering sync</strong>, reviewing in-flight work with the engineers building it before decisions were locked.</li><li>Worked with PMs and engineering managers on <strong>scope and sequencing</strong>, turning research findings into decisions the team could commit to.</li><li>Maintained design-system components and helped shape <strong>design-critique culture</strong> across a distributed design org.</li></ul><div class="chips"><span class="chip">Sports video and analytics</span><span class="chip">Expert-user design</span><span class="chip">Distributed design org</span></div></div>
+    </article><article class="role">
+      <div class="role-side"><span class="co">DMSi</span><span class="title">Senior UX Designer</span><span class="when">Apr 2021 &ndash; Feb 2022</span><span class="when">Omaha, NE / Remote</span></div>
+      <div class="role-body"><p>Designed enterprise software for building-materials distributors: data-heavy, workflow-dependent interfaces where understanding the business was a prerequisite to designing anything.</p><ul class="points"><li>Ran <strong>discovery research</strong> with distributors and internal teams, mapping how the business actually ran before proposing anything.</li><li>Built <strong>journey maps and flows</strong>, and produced detailed wireframes and prototypes for internal and client-facing tools.</li><li>Held the same <strong>design and engineering sync</strong>, putting open questions in front of engineers while the designs were still open to change.</li><li>Paired with PMs and engineering managers to keep designs implementable within <strong>technical constraints</strong> without sacrificing usability.</li></ul><div class="chips"><span class="chip">Enterprise distribution</span><span class="chip">Complex workflows</span><span class="chip">Discovery and synthesis</span></div></div>
+    </article><article class="role">
+      <div class="role-side"><span class="co">LISNR</span><span class="title">Senior Product Designer (Contract)</span><span class="when">Jan 2020 &ndash; Feb 2022</span><span class="when">Oakland, CA / Cincinnati, OH</span></div>
+      <div class="role-body"><p>Designed mobile and web interfaces for an ultrasonic data-transmission platform, a technically novel, hardware-adjacent product where the core challenge was making invisible behavior feel trustworthy and legible.</p><ul class="points"><li>Owned design across multiple <strong>client integrations</strong>, translating complex SDK capabilities into intuitive developer- and consumer-facing experiences.</li><li>Ran <strong>usability testing</strong> with client teams and end users, checking whether behavior nobody can see still reads as trustworthy at the moment of use.</li><li>Kept PMs and engineering managers in the same <strong>standing sync</strong>, surfacing in-flight work before decisions hardened.</li></ul><div class="chips"><span class="chip">Hardware-adjacent</span><span class="chip">SDK and developer UX</span><span class="chip">Trust and legibility</span></div></div>
+    </article>
+  </div>
+</section>
 
-
-
-<!-- CTA -->
-<a href="/#cases" class="page-cta">
-  <span class="cta-label">SEE THE WORK &rarr; CASE STUDIES</span>
-  <span class="cta-arrow">&rarr;</span>
-</a>
-
-<!-- FOOTER -->
-<footer id="contact">
-  <div class="footer-grid" style="padding-top: 4rem;">
+<section class="section" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="section-head"><h2 id="tools-h">Toolkit</h2></div>
+    <div class="chips">
+      <span class="chip">Figma</span><span class="chip">Figma Make</span><span class="chip">FigJam</span><span class="chip">Miro</span><span class="chip">Claude</span><span class="chip">Claude Code</span><span class="chip">Claude Design</span><span class="chip">Midjourney</span><span class="chip">Notion</span><span class="chip">Linear</span><span class="chip">Jira</span><span class="chip">Loom</span>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
     <div>
-      <h3>DANI WEIDNER</h3>
+      <p class="cta">Hiring a Staff designer? Let&rsquo;s talk.</p>
+      <p class="sub">13+ years in B2B and consumer products. Full history in the CV.</p>
     </div>
-    <div class="col">
-      <a href="/">HOME</a>
-      <a href="/#cases">CASE STUDIES</a>
-    </div>
-    <div class="col">
-      <a href="/about">ABOUT/CV</a>
-      <a href="mailto:hello@daniweidner.com">CONTACT</a>
-    </div>
-    <div class="col right">
-      <a href="mailto:hello@daniweidner.com">HELLO@DANIWEIDNER.COM</a>
-      <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
+      <a class="btn" href="/Dani-Weidner-CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+      <a class="btn" href="https://www.linkedin.com/in/dani-weidner/" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </footer>
-
+<script src="/assets/site.js"></script>
 </body>
 </html>

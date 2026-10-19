@@ -1,1180 +1,704 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dani Weidner | Staff / Lead Product Designer · Design Systems & Ops</title>
-<meta name="description" content="Staff/Lead product designer, 13+ years across B2B SaaS and consumer products. Design system governance, cross-team standards, research operations, and AI product design.">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dani Weidner: Staff Product Designer, Enterprise B2B SaaS</title>
+<meta name="description" content="Staff product designer for enterprise B2B platforms. 13+ years across B2B SaaS and consumer products: platform rebuilds, design standards, customer research, and AI product design.">
+<meta property="og:title" content="Dani Weidner: Staff Product Designer, Enterprise B2B SaaS">
+<meta property="og:description" content="Staff product designer for enterprise B2B platforms. 13+ years across B2B SaaS and consumer products: platform rebuilds, design standards, customer research, and AI product design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #ffffff;
-    --ink: #000000;
-    --ink-soft: rgba(0,0,0,0.55);
-    --ink-faint: rgba(0,0,0,0.18);
-    --rule: rgba(0,0,0,0.85);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Fraunces', 'Times New Roman', serif;
-    font-weight: 400;
-    line-height: 1.3;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  .mono {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* === NAV: 6 evenly-spread label columns with hairline rules underneath === */
-  nav {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    padding: 1.5rem 2rem 0;
-    gap: 1.2rem;
-    align-items: end;
-    position: sticky; top: 0; z-index: 50;
-    background: var(--bg);
-  }
-  nav .nav-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  nav .nav-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink);
-    display: flex; align-items: center; gap: 0.55rem;
-  }
-  nav .nav-label .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--ink);
-    display: inline-block;
-  }
-  nav .nav-rule {
-    height: 1px;
-    background: var(--ink);
-  }
-
-  /* === HERO === */
-  .hero {
-    padding: 4rem 2rem 7rem;
-    position: relative;
-  }
-  .hero-meta {
-    position: absolute;
-    top: 5rem;
-    right: 2rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-align: right;
-    color: var(--ink);
-    line-height: 1.7;
-  }
-  .hero-meta .time-row { display: flex; gap: 1.2rem; justify-content: flex-end; margin-bottom: 0.5rem; }
-  .hero-meta .locs { display: flex; gap: 3rem; justify-content: flex-end; margin-top: 1.5rem; }
-
-  .hero-tag {
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 3rem;
-    margin-top: 6rem;
-  }
-
-  .hero-statement {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.6rem, 7vw, 8rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    font-weight: 400;
-    color: var(--ink);
-  }
-  .hero-statement .hs-line {
-    text-align: justify;
-    -moz-text-align-last: justify;
-    text-align-last: justify;
-    word-spacing: -0.05em;
-    width: 100%;
-  }
-  /* A line that is a single justified phrase still needs to stretch: allow letter distribution */
-  .hero-statement .hs-line.b-line {
-    text-align-last: justify;
-  }
-  .hero-statement .b {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-  }
-
-  /* Operating principles grid: dark illustration panel */
-  .principles {
-    margin-top: 5.5rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    background: #0a0a0a;
-    border-radius: 4px;
-    padding: 2.4rem 2.6rem 2.6rem;
-    position: relative;
-  }
-  .principles::before {
-    content: ""; position: absolute; inset: 14px;
-    border: 1px solid #242424; border-radius: 2px; pointer-events: none;
-  }
-  .principles-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding-bottom: 1.6rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #6a6a6a;
-  }
-  .principles-head .r { color: #6a6a6a; }
-  .principles-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255,255,255,0.12);
-  }
-  .principle {
-    background: #0a0a0a;
-    padding: 1.9rem 1.8rem 2.4rem;
-    display: flex;
-    flex-direction: column;
-  }
-  .principle .num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    color: #6a6a6a;
-    margin-bottom: 1.4rem;
-  }
-  .principle .icon {
-    width: 40px;
-    height: 40px;
-    color: #e8e8e8;
-    margin-bottom: 1.5rem;
-  }
-  .principle .icon svg { width: 100%; height: 100%; display: block; }
-  /* Site illustration accents, cycling - one per principle */
-  .principle:nth-child(1) .icon { color: #74a58c; } /* green */
-  .principle:nth-child(2) .icon { color: #7ea7c9; } /* blue */
-  .principle:nth-child(3) .icon { color: #d99f43; } /* amber */
-  .principle:nth-child(4) .icon { color: #cf6a5c; } /* coral */
-  .principle:nth-child(5) .icon { color: #74a58c; } /* green */
-  .principle:nth-child(6) .icon { color: #7ea7c9; } /* blue */
-  .principle h3 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: 1.45rem;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.6rem;
-    color: #f2f2f2;
-    text-wrap: balance;
-  }
-  .principle p {
-    font-family: 'Fraunces', serif;
-    font-size: 0.98rem;
-    line-height: 1.55;
-    color: #9c9c9c;
-    text-wrap: pretty;
-  }
-  /* First-load reveal - content fades/slides in, dividers stay put */
-  .principles-head,
-  .principle > * {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .principles.revealed .principles-head,
-  .principle.revealed > * {
-    opacity: 1;
-    transform: none;
-  }
-  .principle:nth-child(1).revealed > * { transition-delay: 0.06s; }
-  .principle:nth-child(2).revealed > * { transition-delay: 0.14s; }
-  .principle:nth-child(3).revealed > * { transition-delay: 0.22s; }
-  .principle:nth-child(4).revealed > * { transition-delay: 0.30s; }
-  .principle:nth-child(5).revealed > * { transition-delay: 0.38s; }
-  .principle:nth-child(6).revealed > * { transition-delay: 0.46s; }
-  @media (prefers-reduced-motion: reduce) {
-    .principles-head,
-    .principle > * { opacity: 1; transform: none; transition: none; }
-  }
-
-  /* === SECTION HEADERS (sit just under nav, full width, label + hairline) === */
-  .section-head {
-    padding: 0 2rem;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 0.8rem;
-    margin-top: 3rem;
-  }
-  .section-head h2 {
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-    font-size: 1.3rem;
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
-  }
-
-  /* === CASE STUDIES (editorial list with center image reveal on hover) === */
-  .cases {
-    padding: 0 2rem;
-  }
-  .case-link { display: contents; color: inherit; }
-  .case-row {
-    display: grid;
-    grid-template-columns: 0.5fr 2.4fr 1.15fr 1.15fr;
-    grid-template-rows: auto 1fr;
-    column-gap: 3rem;
-    align-items: start;
-    padding: 3.75rem 0 4rem;
-    position: relative;
-    cursor: pointer;
-  }
-  .case-row::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 1px;
-    background: var(--ink);
-    z-index: 3;
-  }
-  .cases > .case-row:last-child::after,
-  .cases > .case-link:last-child .case-row::after { display: none; }
-
-  .case-id {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-  }
-  .case-read {
-    grid-column: 1;
-    grid-row: 2;
-    align-self: start;
-    margin-top: 0.7rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.09em;
-    color: var(--ink-soft);
-    white-space: nowrap;
-    transition: color 0.3s ease;
-  }
-  .case-read .arr { display: inline-block; transition: transform 0.3s ease; }
-  .case-row:hover .case-read { color: #74a58c; }
-  .case-row:hover .case-read .arr { transform: translateX(4px); }
-  .case-name {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(2.2rem, 4.5vw, 4.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    align-self: flex-end;
-    max-width: 100%;
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    text-decoration: underline transparent;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 8px;
-    transition: text-decoration-color 0.3s ease;
-  }
-  .case-row:hover .case-name {
-    text-decoration-color: var(--ink);
-  }
-  /* Two meta columns - Outcomes and Disciplines side by side, each label capping its list */
-  .case-meta-label {
-    grid-column: 3;
-    grid-row: 1;
-    text-align: left;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink);
-    padding-bottom: 0.6rem;
-    margin-bottom: 0.9rem;
-    border-bottom: 1px solid var(--ink);
-  }
-  .case-recognitions {
-    grid-column: 3;
-    grid-row: 2;
-    text-align: left;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 1.75;
-    color: var(--ink-soft);
-  }
-  /* At a glance: each line says what kind of claim it is */
-  .case-recognitions .ev {
-    display: grid;
-    grid-template-columns: 4.7rem 1fr;
-    column-gap: 0.6rem;
-  }
-  .case-recognitions .ev + .ev { margin-top: 0.5rem; }
-  .case-recognitions .ev-k { color: var(--ink); }
-  .case-scope-label {
-    grid-column: 4;
-    grid-row: 1;
-    text-align: left;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink);
-    padding-bottom: 0.6rem;
-    margin-bottom: 0.9rem;
-    border-bottom: 1px solid var(--ink);
-  }
-  .case-disciplines-block {
-    grid-column: 4;
-    grid-row: 2;
-    text-align: left;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 1.75;
-    color: var(--ink-soft);
-  }
-  .case-name-block {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    min-height: 11rem;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 0.5rem;
-  }
-
-  /* === RECOGNITIONS LIST === */
-  .recognitions-wrap {
-    padding: 4rem 2rem 6rem;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 3rem;
-  }
-  .recognitions-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding-top: 1.5rem;
-  }
-  .recognitions-list { display: flex; flex-direction: column; }
-  .recognition-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: baseline;
-    padding: 1.3rem 0;
-    border-bottom: 1px solid var(--ink);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.92rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  .recognition-row:first-child {
-    border-top: 1px solid var(--ink);
-  }
-  .recognition-row .label { font-weight: 700; }
-  .recognition-row .detail { text-align: right; font-weight: 400; }
-
-  /* Signal of the Work: staggered reveal + count-up on first scroll-in */
-  .recognitions-label,
-  .recognition-row {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .recognitions-wrap.revealed .recognitions-label,
-  .recognitions-wrap.revealed .recognition-row {
-    opacity: 1;
-    transform: none;
-  }
-  .recognitions-wrap.revealed .recognition-row:nth-child(1) { transition-delay: 0.05s; }
-  .recognitions-wrap.revealed .recognition-row:nth-child(2) { transition-delay: 0.13s; }
-  .recognitions-wrap.revealed .recognition-row:nth-child(3) { transition-delay: 0.21s; }
-  .recognitions-wrap.revealed .recognition-row:nth-child(4) { transition-delay: 0.29s; }
-  .recognitions-wrap.revealed .recognition-row:nth-child(5) { transition-delay: 0.37s; }
-  .recognitions-wrap.revealed .recognition-row:nth-child(6) { transition-delay: 0.45s; }
-  .recognitions-wrap.revealed .recognition-row:nth-child(7) { transition-delay: 0.53s; }
-  .recognitions-wrap.revealed .recognition-row:nth-child(8) { transition-delay: 0.61s; }
-  .recognitions-wrap.revealed .recognition-row:nth-child(9) { transition-delay: 0.69s; }
-
-  /* About-the-bio link row */
-  .bio-link-row {
-    padding: 2.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--ink);
-    cursor: pointer;
-  }
-  .bio-link-row .label {
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-    font-size: 1.6rem;
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
-  }
-  .bio-link-row .arrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.2rem;
-  }
-
-  /* === FOOTER === */
-  footer {
-    padding: 4rem 0 0;
-    overflow: hidden;
-    border-top: 1px solid var(--ink);
-    margin-top: 2rem;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 0 2rem 3rem;
-    border-bottom: 1px solid var(--ink);
-    gap: 2rem;
-  }
-  .footer-grid h3 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-  .footer-grid .col {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 1.8;
-  }
-  .footer-grid .col.right { text-align: right; }
-  .footer-grid .col a { display: block; }
-  .footer-grid .col a:hover { text-decoration: underline; }
-
-  .footer-tagline {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 3rem 2rem;
-    gap: 4rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    line-height: 1.7;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  /* === PROJECT JOURNEY (newspaper-styled animated timeline) === */
-  .journey {
-    padding: 0 2rem 5rem;
-  }
-  .journey-intro {
-    padding: 2.5rem 0 2.5rem;
-    text-align: center;
-    max-width: 820px;
-    margin: 0 auto;
-  }
-  .journey-intro .lede {
-    font-family: 'Fraunces', serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: clamp(2.4rem, 5vw, 4.4rem);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-  }
-  .journey-intro .dek {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(1.05rem, 1.4vw, 1.35rem);
-    line-height: 1.5;
-    color: var(--ink-soft);
-    max-width: 48ch;
-    margin: 1.1rem auto 0;
-    text-wrap: pretty;
-  }
-  .journey-intro .kicker {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink);
-    display: flex; align-items: center; justify-content: center; gap: 1rem;
-    margin-bottom: 1.4rem;
-  }
-  .journey-intro .kicker::before,
-  .journey-intro .kicker::after {
-    content: ""; height: 1px; width: 42px; background: var(--ink);
-    display: inline-block;
-  }
-
-  /* --- broadsheet: horizontal progress rail above three article columns --- */
-  .broadsheet { position: relative; padding-top: 1.75rem; }
-
-  /* the horizontal rail with nodes that fills as you scroll */
-  .bs-rail { position: relative; height: 15px; margin-bottom: 2.5rem; }
-  .bs-rail-bg {
-    position: absolute; left: 0; right: 0; top: 7px;
-    height: 1px; background: var(--ink-faint);
-  }
-  .bs-rail-fill {
-    position: absolute; left: 0; top: 7px;
-    height: 1px; width: 0; background: var(--ink);
-    transition: width 0.2s linear;
-  }
-  .bs-nodes {
-    position: absolute; inset: 0;
-    display: grid; grid-template-columns: repeat(3, 1fr);
-  }
-  .bs-node {
-    width: 15px; height: 15px; border-radius: 50%;
-    background: var(--bg); border: 1px solid var(--ink);
-    justify-self: start; align-self: center;
-    transition: background 0.4s ease, transform 0.4s ease;
-  }
-  .bs-node.bs-node-end { justify-self: end; }
-  .bs-node.active { background: var(--ink); transform: scale(1.05); }
-
-  /* the three columns, separated by hairline rules like newspaper copy */
-  .bs-cols {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-  }
-  .bs-col {
-    padding: 0 2rem;
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .bs-col:first-child { padding-left: 0; }
-  .bs-col:last-child { padding-right: 0; }
-  .bs-col + .bs-col { border-left: 1px solid var(--ink); }
-  .bs-col.visible { opacity: 1; transform: translateY(0); }
-
-  /* "FIG. 01" figure label + ruled kicker */
-  .bs-fig {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 0.6rem;
-  }
-  .bs-kicker {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink);
-    padding-bottom: 0.8rem;
-    margin-bottom: 1.2rem;
-    border-bottom: 1px solid var(--ink);
-  }
-  /* spot illustration between kicker and headline */
-  .bs-spot {
-    color: #e8e8e8;
-    background: #0a0a0a;
-    border: 1px solid #242424;
-    border-radius: 4px;
-    padding: 1.1rem 1.2rem;
-    margin: 0.9rem 0 1.2rem;
-  }
-  .bs-spot svg { margin: 0 auto; }
-  .bs-spot svg {
-    display: block;
-    width: 100%;
-    max-width: 240px;
-    height: auto;
-  }
-  .bs-col h3 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(1.5rem, 2.2vw, 2.1rem);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.1rem;
-    color: var(--ink);
-  }
-  .bs-col p {
-    font-family: 'Fraunces', serif;
-    font-size: 1.0rem;
-    line-height: 1.62;
-    color: var(--ink-soft);
-  }
-  /* drop cap - the signature newspaper flourish */
-  .bs-col p.lead::first-letter {
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-    font-style: normal;
-    font-size: 3.4em;
-    line-height: 0.72;
-    float: left;
-    margin: 0.06em 0.08em -0.04em 0;
-    color: var(--ink);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .bs-col { opacity: 1; transform: none; transition: none; }
-    .bs-rail-fill { transition: none; width: 100% !important; }
-  }
-
-  /* === RESPONSIVE === */
-  @media (max-width: 1100px) {
-    nav { grid-template-columns: repeat(3, 1fr); }
-    .principles-grid { grid-template-columns: repeat(2, 1fr); }
-    .case-row {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto auto auto;
-      column-gap: 2rem;
-    }
-    .case-id { grid-column: 1; grid-row: 1; }
-    .case-read { grid-column: 2; grid-row: 1; justify-self: end; margin-top: 0; align-self: center; }
-    .case-name-block { grid-column: 1 / span 2; grid-row: 2; min-height: 8rem; }
-    .case-meta-label { grid-column: 1; grid-row: 3; text-align: left; margin-top: 1.5rem; }
-    .case-recognitions { grid-column: 1; grid-row: 4; text-align: left; }
-    .case-scope-label { grid-column: 2; grid-row: 3; text-align: left; margin-top: 1.5rem; }
-    .case-disciplines-block { grid-column: 2; grid-row: 4; text-align: left; }
-    .recognitions-wrap { grid-template-columns: 1fr; gap: 2rem; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .hero-meta { position: static; text-align: left; margin-bottom: 3rem; }
-    .hero-meta .time-row, .hero-meta .locs { justify-content: flex-start; }
-    .journey-intro { grid-template-columns: 1fr; gap: 2rem; }
-    .journey-intro .lede { padding-right: 0; }
-    .journey-intro .dek { padding-left: 0; border-left: none; }
-    .bs-rail { display: none; }
-    .broadsheet { padding-top: 1rem; }
-    .bs-cols { grid-template-columns: 1fr; }
-    .bs-col { padding: 2.5rem 0; }
-    .bs-col + .bs-col { border-left: none; border-top: 1px solid var(--ink); }
-  }
-  @media (max-width: 600px) {
-    nav { grid-template-columns: repeat(2, 1fr); padding: 1rem 1.2rem 0; gap: 0.8rem; }
-    .hero { padding: 3rem 1.2rem 5rem; }
-    .hero-statement { font-size: clamp(2rem, 10.5vw, 4.2rem); }
-    .principles { padding: 1.6rem 1.2rem 1.8rem; }
-    .principles-grid { grid-template-columns: 1fr; }
-    .section-head, .cases, .journey, .recognitions-wrap, .footer-grid, .footer-tagline { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-tagline { grid-template-columns: 1fr; gap: 2rem; }
-    .recognition-row { font-size: 0.78rem; }
-    .case-recognitions .ev { grid-template-columns: 1fr; }
-  }
-
-  /* Dark footer, matching the illustration panels. Monochrome; accent on hover only. */
-  footer {
-    background: #0a0a0a;
-    color: #e8e8e8;
-  }
-  footer .footer-grid { border-bottom-color: rgba(255,255,255,0.18); }
-  footer .footer-grid h3 { color: #f2f2f2; }
-  footer .footer-grid .col a:hover { color: #74a58c; text-decoration: underline; }
-  footer .footer-tagline { color: #8c8c8c; }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-cell">
-    <div class="nav-label"><span class="dot"></span>HOME</div>
-    <div class="nav-rule"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">DW</span>Dani Weidner</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/#demos">Prototypes</a>
+      <a href="/#work">Work</a>
+      <a href="/about/">About</a>
+      <a href="/Dani-Weidner-CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </nav>
+    <a class="status-pill" href="mailto:hello@daniweidner.com"><span class="dot" aria-hidden="true"></span>Open to Staff roles</a>
   </div>
-  <a href="#cases" class="nav-cell">
-    <div class="nav-label">CASE STUDIES</div>
-    <div class="nav-rule"></div>
-  </a>
-  <a href="/about/" class="nav-cell">
-    <div class="nav-label">ABOUT/CV</div>
-    <div class="nav-rule"></div>
-  </a>
-  <a href="#contact" class="nav-cell">
-    <div class="nav-label">CONTACT</div>
-    <div class="nav-rule"></div>
-  </a>
-</nav>
-
-<!-- HERO -->
+</header>
+<main id="main">
 <section class="hero">
-  <div class="hero-statement">
-    <div class="hs-line">DANI IS A <span class="b">LEAD PRODUCT</span></div>
-    <div class="hs-line">DESIGNER BUILDING</div>
-    <div class="hs-line b-line"><span class="b">ENTERPRISE B2B SAAS</span></div>
-    <div class="hs-line">WITH THIRTEEN YEARS OF</div>
-    <div class="hs-line"><span class="b">CROSS-INDUSTRY</span> PRACTICE</div>
-  </div>
-
-  <div class="principles">
-    <div class="principles-head">
-      <span>How I Work</span>
-      <span class="r">Six Operating Principles</span>
-    </div>
-    <div class="principles-grid">
-      <div class="principle">
-        <div class="num">01</div>
-        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="31" r="3" fill="currentColor" stroke="none"/><line x1="20" y1="28" x2="20" y2="9"/><path d="M14 15 L20 9 L26 15"/></svg></div>
-        <h3>Upstream of the brief</h3>
-        <p>Frames the real problem before the brief is ever written.</p>
-      </div>
-      <div class="principle">
-        <div class="num">02</div>
-        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="17" y2="20" stroke-dasharray="2 3.5"/><line x1="17" y1="20" x2="32" y2="20"/><path d="M27 15 L33 20 L27 25"/></svg></div>
-        <h3>Ambiguity into direction</h3>
-        <p>Turns open-ended problems into a path the team can follow.</p>
-      </div>
-      <div class="principle">
-        <div class="num">03</div>
-        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="8" y="8" width="10" height="10"/><rect x="22" y="8" width="10" height="10"/><rect x="8" y="22" width="10" height="10"/><rect x="22" y="22" width="10" height="10"/></svg></div>
-        <h3>Patterns that scale</h3>
-        <p>Sets the conventions other teams build on.</p>
-      </div>
-      <div class="principle">
-        <div class="num">04</div>
-        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="16" cy="20" r="9"/><circle cx="24" cy="20" r="9"/></svg></div>
-        <h3>Built with engineering</h3>
-        <p>Ships alongside eng, never thrown over the wall.</p>
-      </div>
-      <div class="principle">
-        <div class="num">05</div>
-        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="7" y1="31" x2="33" y2="31"/><line x1="12" y1="31" x2="12" y2="24"/><line x1="20" y1="31" x2="20" y2="17"/><line x1="28" y1="31" x2="28" y2="10"/></svg></div>
-        <h3>Grows the team</h3>
-        <p>Develops designers, PMs, and EMs along the way.</p>
-      </div>
-      <div class="principle">
-        <div class="num">06</div>
-        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="20" cy="20" r="12"/><circle cx="20" cy="20" r="7"/><circle cx="20" cy="20" r="2.5" fill="currentColor" stroke="none"/></svg></div>
-        <h3>Outcomes over output</h3>
-        <p>Measured by results, not the volume of work produced.</p>
+  <div class="wrap">
+    <div class="hero-main">
+      <p class="eyebrow">Staff product designer / Enterprise B2B SaaS / 13+ years</p>
+      <h1>Staff product designer for enterprise B2B platforms.</h1>
+      <p class="hero-lede">I lead design on complex, multi-team work from customer research through launch, including a platform migration that moved 50 customer accounts with no breaking changes reported, and the layout, navigation, and handoff standards the product is now built to.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#work">See the work</a>
+        <a class="btn" href="#demos">Try the prototypes</a>
       </div>
     </div>
+    <aside class="scope-card" aria-label="Scope of my current role">
+      <p class="eyebrow">Scope of my current role</p>
+      <dl>
+        <div class="scope-row"><dt>Product</dt><dd>4 core flows in one phased rebuild</dd></div>
+        <div class="scope-row"><dt>Platform</dt><dd>3 standards used product-wide</dd></div>
+        <div class="scope-row"><dt>Customers</dt><dd>Advisory program, 8 founding accounts</dd></div>
+        <div class="scope-row"><dt>People</dt><dd>10+ designers, PMs, and EMs coached</dd></div>
+      </dl>
+    </aside>
   </div>
 </section>
 
-<!-- PROJECT JOURNEY -->
-<section class="journey" id="process">
-  <div class="journey-intro">
-    <div class="kicker">The Method: In Three Movements</div>
-    <div class="lede">How the work gets made.</div>
-    <div class="dek">Design is the work itself: a repeatable practice, from the first customer conversation to the shipped product.</div>
+<section class="section" id="demos" aria-labelledby="demos-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="demos-h">Try the work</h2>
+    </div>
+    <div class="demo-tabs" role="tablist" aria-label="Prototypes">
+      <button type="button" class="demo-tab" role="tab" id="tab-admin" aria-controls="panel-admin" aria-selected="true">Admin console</button><button type="button" class="demo-tab" role="tab" id="tab-ab" aria-controls="panel-ab" aria-selected="false" tabindex="-1">A/B test builder</button><button type="button" class="demo-tab" role="tab" id="tab-creative" aria-controls="panel-creative" aria-selected="false" tabindex="-1">Creative builder</button><button type="button" class="demo-tab" role="tab" id="tab-agent" aria-controls="panel-agent" aria-selected="false" tabindex="-1">AI agent</button><button type="button" class="demo-tab" role="tab" id="tab-campaign" aria-controls="panel-campaign" aria-selected="false" tabindex="-1">Campaign workbench</button>
+    </div>
+    <div class="demo-panel" role="tabpanel" id="panel-admin" aria-labelledby="tab-admin">
+        <div class="demo-stage"><div class="demo-block"><div class="demo demo--fixed" data-w="1464" style="aspect-ratio: 1464 / 928;"><iframe data-src="/demos/permissions-demo.html" title="Interactive prototype: members and access console with folder-level roles, an internal and external boundary, and invite, transfer and remove flows" loading="lazy" style="width: 1464px; height: 928px;"></iframe></div></div></div>
+        <div class="demo-copy">
+          <span class="demo-kind" style="color: var(--amber);">Clickable prototype</span>
+          <h3>Roles and permissions admin console</h3>
+          <p>Invite someone and set their class at the door, assign a role per folder, see exactly what an external partner can reach, then transfer ownership or remove access. Fictional workspace and people.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/demos/permissions-demo.html" target="_blank" rel="noopener">Open full screen</a>
+            <a class="btn" href="/work/permissions/">Read case 06</a>
+          </div>
+        </div>
+      </div><div class="demo-panel" role="tabpanel" id="panel-ab" aria-labelledby="tab-ab" hidden>
+        <div class="demo-stage"><div class="demo-block"><div class="demo demo--fixed" data-w="1440" style="aspect-ratio: 1440 / 900;"><iframe data-src="/demos/ab-test-prototype.html" title="Interactive prototype: A/B test builder with variants, traffic split, hold-out group, dismissal settings, and a launch summary" loading="lazy" style="width: 1440px; height: 900px;"></iframe></div></div></div>
+        <div class="demo-copy">
+          <span class="demo-kind" style="color: var(--amber);">Clickable prototype</span>
+          <h3>A/B testing with a true hold-out</h3>
+          <p>Add variants, try to delete the control or push traffic past 100%, turn on a hold-out and preview it, then check the summary before launch. Fictional brand and data.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/demos/ab-test-prototype.html" target="_blank" rel="noopener">Open full screen</a>
+            <a class="btn" href="/work/ab-testing/">Read case 03</a>
+          </div>
+        </div>
+      </div><div class="demo-panel" role="tabpanel" id="panel-creative" aria-labelledby="tab-creative" hidden>
+        <div class="demo-stage"><div class="demo-block"><div class="demo"><iframe data-src="/demos/creative-demo.html" title="Demo: the drag-and-drop creative builder" loading="lazy" scrolling="no"></iframe></div></div></div>
+        <div class="demo-copy">
+          <span class="demo-kind" style="color: var(--green);">Looping demo</span>
+          <h3>Drag-and-drop creative builder</h3>
+          <p>Marketers swap a headline or call to action without rebuilding the creative. Seven customer raters scored it at twice the legacy builder.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/demos/creative-demo.html" target="_blank" rel="noopener">Open full screen</a>
+            <a class="btn" href="/work/platform-rebuild/">Read case 01</a>
+          </div>
+        </div>
+      </div><div class="demo-panel" role="tabpanel" id="panel-agent" aria-labelledby="tab-agent" hidden>
+        <div class="demo-stage"><div class="demo-block"><div class="demo"><iframe data-src="/demos/agent-demo.html" title="Demo: the AI agent watching campaigns, flagging signals, and drafting a campaign" loading="lazy" scrolling="no"></iframe></div></div></div>
+        <div class="demo-copy">
+          <span class="demo-kind" style="color: var(--green);">Looping demo / Concept</span>
+          <h3>A persistent agent that shows its confidence</h3>
+          <p>What the agent is watching, the signals it flags for attention, and a campaign drafted through a handful of questions. Concept design, not shipped.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/demos/agent-demo.html" target="_blank" rel="noopener">Open full screen</a>
+            <a class="btn" href="/work/ai-agent/">Read case 05</a>
+          </div>
+        </div>
+      </div><div class="demo-panel" role="tabpanel" id="panel-campaign" aria-labelledby="tab-campaign" hidden>
+        <div class="demo-stage"><div class="demo-block"><div class="demo"><iframe data-src="/demos/campaign-demo.html" title="Demo: campaign creation on the split-screen workbench" loading="lazy" scrolling="no"></iframe></div></div></div>
+        <div class="demo-copy">
+          <span class="demo-kind" style="color: var(--green);">Looping demo</span>
+          <h3>The workbench that became the layout standard</h3>
+          <p>Campaign creation on the split-screen workbench: a scrollable form on one side and a sticky live preview on the other.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/demos/campaign-demo.html" target="_blank" rel="noopener">Open full screen</a>
+            <a class="btn" href="/work/standards/">Read case 04</a>
+          </div>
+        </div>
+      </div>
   </div>
+</section>
 
-  <div class="broadsheet" id="broadsheet">
-    <div class="bs-cols">
-      <article class="bs-col">
-        <div class="bs-fig">FIG. 01</div>
-        <div class="bs-kicker">Discovery</div>
-        <div class="bs-spot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="165" y1="18" x2="165" y2="132" stroke-dasharray="3 3" opacity="0.3" stroke-width="1"/>
-          <circle cx="40" cy="75" r="11"/>
-          <circle cx="40" cy="75" r="3.2" fill="#cf6a5c" stroke="none"/>
-          <path d="M58 62 A22 22 0 0 1 58 88" stroke="#cf6a5c"/>
-          <path d="M66 53 A32 32 0 0 1 66 97" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.55" stroke-width="1"/>
-          <line x1="74" y1="75" x2="112" y2="75"/>
-          <circle cx="86" cy="75" r="2" fill="#cf6a5c" stroke="none"/>
-          <circle cx="98" cy="75" r="2" fill="#cf6a5c" stroke="none"/>
-          <circle cx="118" cy="75" r="3.5"/>
-          <line x1="121" y1="72" x2="152" y2="43"/>
-          <line x1="122" y1="75" x2="153" y2="75"/>
-          <line x1="121" y1="78" x2="152" y2="107"/>
-          <path d="M146 42 L153 44 L149.5 50"/>
-          <path d="M148 70.5 L154 75 L148 79.5"/>
-          <path d="M149.5 100 L153 106 L146 108"/>
-          <circle cx="165" cy="38" r="8"/>
-          <circle cx="165" cy="75" r="8"/>
-          <circle cx="165" cy="112" r="8"/>
-          <circle cx="165" cy="38" r="2" fill="#cf6a5c" stroke="none"/>
-          <circle cx="165" cy="75" r="2" fill="#cf6a5c" stroke="none"/>
-          <circle cx="165" cy="112" r="2" fill="#cf6a5c" stroke="none"/>
-          <line x1="180" y1="38" x2="188" y2="38" opacity="0.4" stroke-width="1"/>
-          <line x1="180" y1="75" x2="188" y2="75" opacity="0.4" stroke-width="1"/>
-          <line x1="180" y1="112" x2="188" y2="112" opacity="0.4" stroke-width="1"/>
+<section class="section" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="work-h">Selected work</h2>
+      <p>Enterprise B2B SaaS, anonymized. Each case leads with the decisions I made and what they cost.</p>
+    </div>
+    <div class="work-list">
+      <a class="work-card" href="/work/platform-rebuild/">
+        <div class="work-thumb" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" aria-label="The full flow board for a phased platform revamp: two milestone frames, each mapping high-level flows and internal decision logic, with a beta-validation gate between milestone one and milestone two">
+        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
+        <!-- FIG. The flow board: phased platform revamp, milestone one and two -->
+        <defs><marker id="il-board" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="556" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="572" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">STEP</text>
+        <rect x="614" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="630" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SYSTEM</text>
+        <path d="M690 14 L696.5 19.5 L690 25 L683.5 19.5 Z" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="701" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">DECISION</text>
+        <circle cx="762" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="770" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">EDGE CASE</text>
+        <rect x="836" y="15" width="16" height="9" rx="4.5" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="857" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">END</text>
+        <rect x="24" y="44" width="416" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <rect x="480" y="44" width="416" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">MILESTONE 01: CORE MVP</text>
+        <text x="492" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">MILESTONE 02: EXPANSION</text>
+        <line x1="240" y1="82" x2="240" y2="350" stroke="#3a3a3a" stroke-width="1"/>
+        <line x1="696" y1="82" x2="696" y2="350" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="132" y="92" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">HIGH-LEVEL FLOWS</text>
+        <text x="340" y="92" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">INTERNAL DECISION LOGIC</text>
+        <text x="588" y="92" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">HIGH-LEVEL FLOWS</text>
+        <text x="796" y="92" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">INTERNAL DECISION LOGIC</text>
+        <rect x="73" y="106" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <line x1="84" y1="116" x2="84" y2="126" marker-end="url(#il-board)"/>
+        <rect x="60" y="128" width="48" height="18" fill="#141414" stroke="#74a58c"/>
+        <line x1="108" y1="137" x2="118" y2="137" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="121" cy="137" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <path d="M84 146 L84 158 L62 158 L62 168" marker-end="url(#il-board)"/>
+        <path d="M84 158 L106 158 L106 168" marker-end="url(#il-board)"/>
+        <rect x="42" y="170" width="40" height="18" fill="#141414" stroke="#74a58c"/>
+        <rect x="86" y="170" width="40" height="18" fill="#141414" stroke="#74a58c"/>
+        <line x1="62" y1="188" x2="62" y2="198" marker-end="url(#il-board)"/>
+        <rect x="42" y="200" width="40" height="18" fill="#141414" stroke="#b07fa6"/>
+        <line x1="106" y1="188" x2="106" y2="198" marker-end="url(#il-board)"/>
+        <rect x="95" y="200" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <line x1="62" y1="218" x2="62" y2="226" marker-end="url(#il-board)"/>
+        <rect x="51" y="228" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="84" y="258" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#7c7c7c" stroke="none">OVERVIEW + TEMPLATES</text>
+        <rect x="169" y="106" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <line x1="180" y1="116" x2="180" y2="126" marker-end="url(#il-board)"/>
+        <rect x="156" y="128" width="48" height="18" fill="#141414" stroke="#74a58c"/>
+        <line x1="180" y1="146" x2="180" y2="156" marker-end="url(#il-board)"/>
+        <rect x="156" y="158" width="48" height="18" fill="#141414" stroke="#74a58c"/>
+        <line x1="180" y1="176" x2="180" y2="186" marker-end="url(#il-board)"/>
+        <path d="M180 188 L193 201 L180 214 L167 201 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="193" y1="201" x2="202" y2="201" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="205" cy="201" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="180" y1="214" x2="180" y2="224" marker-end="url(#il-board)"/>
+        <rect x="156" y="226" width="48" height="18" fill="#141414" stroke="#74a58c"/>
+        <line x1="180" y1="244" x2="180" y2="254" marker-end="url(#il-board)"/>
+        <rect x="156" y="256" width="48" height="18" fill="#141414" stroke="#7ea7c9"/>
+        <line x1="180" y1="274" x2="180" y2="284" marker-end="url(#il-board)"/>
+        <rect x="169" y="286" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="180" y="320" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#7c7c7c" stroke="none">CREATE FLOW</text>
+        <text x="272" y="106" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1" fill="#8c8c8c" stroke="none">1.3</text>
+        <rect x="253" y="114" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="272" y1="129" x2="272" y2="139" marker-end="url(#il-board)"/>
+        <path d="M272 141 L283 152 L272 163 L261 152 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="283" y1="152" x2="292" y2="152" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="295" cy="152" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="272" y1="163" x2="272" y2="173" marker-end="url(#il-board)"/>
+        <rect x="253" y="175" width="38" height="15" fill="#141414" stroke="#7ea7c9"/>
+        <line x1="272" y1="190" x2="272" y2="200" marker-end="url(#il-board)"/>
+        <rect x="261" y="202" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="318" y="106" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1" fill="#8c8c8c" stroke="none">1.4</text>
+        <rect x="299" y="114" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="318" y1="129" x2="318" y2="139" marker-end="url(#il-board)"/>
+        <rect x="299" y="141" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="318" y1="156" x2="318" y2="166" marker-end="url(#il-board)"/>
+        <path d="M318 168 L329 179 L318 190 L307 179 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="329" y1="179" x2="338" y2="179" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="341" cy="179" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="318" y1="190" x2="318" y2="200" marker-end="url(#il-board)"/>
+        <rect x="299" y="202" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="318" y1="217" x2="318" y2="227" marker-end="url(#il-board)"/>
+        <rect x="307" y="229" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="364" y="106" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1" fill="#8c8c8c" stroke="none">1.5</text>
+        <rect x="345" y="114" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="364" y1="129" x2="364" y2="139" marker-end="url(#il-board)"/>
+        <rect x="345" y="141" width="38" height="15" fill="#141414" stroke="#cf6a5c"/>
+        <line x1="364" y1="156" x2="364" y2="166" marker-end="url(#il-board)"/>
+        <path d="M364 168 L375 179 L364 190 L353 179 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="375" y1="179" x2="384" y2="179" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="387" cy="179" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="364" y1="190" x2="364" y2="200" marker-end="url(#il-board)"/>
+        <rect x="345" y="202" width="38" height="15" fill="#141414" stroke="#7ea7c9"/>
+        <line x1="364" y1="217" x2="364" y2="227" marker-end="url(#il-board)"/>
+        <rect x="353" y="229" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="410" y="106" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1" fill="#8c8c8c" stroke="none">1.6</text>
+        <path d="M410 114 L421 125 L410 136 L399 125 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="421" y1="125" x2="430" y2="125" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="433" cy="125" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="410" y1="136" x2="410" y2="146" marker-end="url(#il-board)"/>
+        <rect x="391" y="148" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="410" y1="163" x2="410" y2="173" marker-end="url(#il-board)"/>
+        <rect x="391" y="175" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="410" y1="190" x2="410" y2="200" marker-end="url(#il-board)"/>
+        <rect x="391" y="202" width="38" height="15" fill="#141414" stroke="#7ea7c9"/>
+        <line x1="410" y1="217" x2="410" y2="227" marker-end="url(#il-board)"/>
+        <rect x="399" y="229" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <line x1="442" y1="203" x2="446" y2="203"/>
+        <path d="M460 190 L473 203 L460 216 L447 203 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="473" y1="203" x2="477" y2="203" marker-end="url(#il-board)"/>
+        <text x="460" y="231" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">BETA</text>
+        <text x="460" y="241" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">GATE</text>
+        <rect x="529" y="106" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <line x1="540" y1="116" x2="540" y2="126" marker-end="url(#il-board)"/>
+        <path d="M540 128 L553 141 L540 154 L527 141 Z" fill="#141414" stroke="#d99f43"/>
+        <path d="M527 141 L506 141 L506 158" marker-end="url(#il-board)"/>
+        <path d="M553 141 L574 141 L574 158" marker-end="url(#il-board)"/>
+        <rect x="486" y="160" width="40" height="18" fill="#141414" stroke="#cf6a5c"/>
+        <rect x="554" y="160" width="40" height="18" fill="#141414" stroke="#74a58c"/>
+        <line x1="506" y1="178" x2="506" y2="188" marker-end="url(#il-board)"/>
+        <rect x="495" y="190" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <line x1="574" y1="178" x2="574" y2="188" marker-end="url(#il-board)"/>
+        <rect x="554" y="190" width="40" height="18" fill="#141414" stroke="#b07fa6"/>
+        <line x1="574" y1="208" x2="574" y2="216" marker-end="url(#il-board)"/>
+        <rect x="563" y="218" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="540" y="248" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#7c7c7c" stroke="none">ROLE-BASED ACCESS</text>
+        <rect x="625" y="106" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <line x1="636" y1="116" x2="636" y2="126" marker-end="url(#il-board)"/>
+        <rect x="612" y="128" width="48" height="18" fill="#141414" stroke="#74a58c"/>
+        <line x1="636" y1="146" x2="636" y2="156" marker-end="url(#il-board)"/>
+        <path d="M636 158 L649 171 L636 184 L623 171 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="649" y1="171" x2="658" y2="171" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="661" cy="171" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="636" y1="184" x2="636" y2="194" marker-end="url(#il-board)"/>
+        <rect x="612" y="196" width="48" height="18" fill="#141414" stroke="#74a58c"/>
+        <line x1="636" y1="214" x2="636" y2="224" marker-end="url(#il-board)"/>
+        <path d="M636 226 L649 239 L636 252 L623 239 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="623" y1="239" x2="614" y2="239" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="611" cy="239" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="636" y1="252" x2="636" y2="262" marker-end="url(#il-board)"/>
+        <rect x="612" y="264" width="48" height="18" fill="#141414" stroke="#b07fa6"/>
+        <line x1="636" y1="282" x2="636" y2="292" marker-end="url(#il-board)"/>
+        <rect x="625" y="294" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="636" y="328" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#7c7c7c" stroke="none">ARCHIVE</text>
+        <text x="728" y="106" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1" fill="#8c8c8c" stroke="none">2.2</text>
+        <rect x="709" y="114" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="728" y1="129" x2="728" y2="139" marker-end="url(#il-board)"/>
+        <rect x="709" y="141" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="728" y1="156" x2="728" y2="166" marker-end="url(#il-board)"/>
+        <path d="M728 168 L739 179 L728 190 L717 179 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="739" y1="179" x2="748" y2="179" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="751" cy="179" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="728" y1="190" x2="728" y2="200" marker-end="url(#il-board)"/>
+        <rect x="709" y="202" width="38" height="15" fill="#141414" stroke="#7ea7c9"/>
+        <line x1="728" y1="217" x2="728" y2="227" marker-end="url(#il-board)"/>
+        <rect x="717" y="229" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="774" y="106" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1" fill="#8c8c8c" stroke="none">2.3</text>
+        <rect x="755" y="114" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="774" y1="129" x2="774" y2="139" marker-end="url(#il-board)"/>
+        <rect x="755" y="141" width="38" height="15" fill="#141414" stroke="#7ea7c9"/>
+        <line x1="774" y1="156" x2="774" y2="166" marker-end="url(#il-board)"/>
+        <path d="M774 168 L785 179 L774 190 L763 179 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="785" y1="179" x2="794" y2="179" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="797" cy="179" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="774" y1="190" x2="774" y2="200" marker-end="url(#il-board)"/>
+        <rect x="755" y="202" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="774" y1="217" x2="774" y2="227" marker-end="url(#il-board)"/>
+        <rect x="755" y="229" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="774" y1="244" x2="774" y2="254" marker-end="url(#il-board)"/>
+        <rect x="763" y="256" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="820" y="106" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1" fill="#8c8c8c" stroke="none">2.5</text>
+        <rect x="801" y="114" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="820" y1="129" x2="820" y2="139" marker-end="url(#il-board)"/>
+        <path d="M820 141 L831 152 L820 163 L809 152 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="831" y1="152" x2="840" y2="152" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="843" cy="152" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="820" y1="163" x2="820" y2="173" marker-end="url(#il-board)"/>
+        <rect x="801" y="175" width="38" height="15" fill="#141414" stroke="#7ea7c9"/>
+        <line x1="820" y1="190" x2="820" y2="200" marker-end="url(#il-board)"/>
+        <rect x="809" y="202" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="866" y="106" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="1" fill="#8c8c8c" stroke="none">2.6</text>
+        <rect x="847" y="114" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="866" y1="129" x2="866" y2="139" marker-end="url(#il-board)"/>
+        <rect x="847" y="141" width="38" height="15" fill="#141414" stroke="#74a58c"/>
+        <line x1="866" y1="156" x2="866" y2="166" marker-end="url(#il-board)"/>
+        <path d="M866 168 L877 179 L866 190 L855 179 Z" fill="#141414" stroke="#d99f43"/>
+        <line x1="877" y1="179" x2="886" y2="179" stroke="#cf6a5c" stroke-dasharray="3 3" opacity="0.7" stroke-width="1"/>
+        <circle cx="889" cy="179" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <line x1="866" y1="190" x2="866" y2="200" marker-end="url(#il-board)"/>
+        <rect x="847" y="202" width="38" height="15" fill="#141414" stroke="#b07fa6"/>
+        <line x1="866" y1="217" x2="866" y2="227" marker-end="url(#il-board)"/>
+        <rect x="855" y="229" width="22" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
         </svg></div>
-        <h3>Discovery That Gets The Team Aligned</h3>
-        <p class="lead">I run live sessions with enterprise customers, and the questions and findings go straight to eng and PM. We design from what users actually said.</p>
-      </article>
-
-      <article class="bs-col">
-        <div class="bs-fig">FIG. 02</div>
-        <div class="bs-kicker">System</div>
-        <div class="bs-spot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="110" cy="75" r="24" stroke-dasharray="3 3" opacity="0.3" stroke-width="1"/>
-          <circle cx="110" cy="75" r="44"/>
-          <circle cx="110" cy="31" r="4" fill="#7ea7c9" stroke="none"/>
-          <circle cx="71.9" cy="97" r="4" fill="#7ea7c9" stroke="none"/>
-          <circle cx="148.1" cy="97" r="4" fill="#7ea7c9" stroke="none"/>
-          <path d="M104 27 L111 31 L104 35" transform="rotate(60 110 75)"/>
-          <path d="M104 27 L111 31 L104 35" transform="rotate(180 110 75)"/>
-          <path d="M104 27 L111 31 L104 35" transform="rotate(300 110 75)"/>
-          <path d="M101 76 L107.5 82.5 L120 68" stroke="#7ea7c9" stroke-width="1.8"/>
-          <line x1="156" y1="75" x2="182" y2="75" stroke-dasharray="3 3" opacity="0.4" stroke-width="1"/>
-          <path d="M178 71.5 L183 75 L178 78.5" opacity="0.4" stroke-width="1"/>
+        <div class="work-body">
+          <div class="work-meta"><span>01</span><span class="accent" style="color: var(--green);">Platform</span><span>Lead designer</span><span>Shipped</span></div>
+          <h3>Rebuilding a platform with every customer still on it</h3>
+          <p>Four aging flows sequenced into six phases, a new builder proven against the old one, and a migration customers never had to touch.</p>
+          <dl class="ledger"><dt>Result</dt><dd>0 breaking changes reported across 50 migrated accounts</dd><dt>Result</dt><dd>2&times; usability rating over the legacy builder, from 7 customer raters</dd></dl>
+          <span class="work-go">Read the case &#8594;</span>
+        </div>
+      </a><a class="work-card" href="/work/bulk-links/">
+        <div class="work-thumb" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" aria-label="One phased flow, download template, fill, upload, validate, create, producing thousands of links at once, each with its own status">
+        <!-- FIG. One action, many links -->
+        <defs><marker id="il-uf1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-uf1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
+        <rect x="613" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="629.02" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">STEP</text>
+        <rect x="670" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="685.5" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SYSTEM</text>
+        <path d="M743.22 14 L749.22 19.5 L743.22 25 L737.22 19.5 Z" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="754.22" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">VALIDATION</text>
+        <circle cx="834.4200000000001" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="842.4200000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">ROW ERROR</text>
+        <rect x="24" y="44" width="340" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE FLOW</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">TEMPLATE, FILL, UPLOAD, VALIDATE, CREATE</text>
+        <rect x="84" y="92" width="220" height="38" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="194.0" y="114.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">DOWNLOAD TEMPLATE</text>
+        <line x1="194" y1="130" x2="194" y2="142" marker-end="url(#il-uf1)"/>
+        <rect x="84" y="146" width="220" height="38" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="194.0" y="168.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">FILL THE FILE</text>
+        <line x1="194" y1="184" x2="194" y2="196" marker-end="url(#il-uf1)"/>
+        <rect x="84" y="200" width="220" height="38" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="194.0" y="222.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">UPLOAD</text>
+        <line x1="194" y1="238" x2="194" y2="250" marker-end="url(#il-uf1)"/>
+        <path d="M194 252 L208 266 L194 280 L180 266 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="170" y="270" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">VALIDATE</text>
+        <path d="M208 266 L252 266" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <circle cx="256" cy="266" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <text x="256" y="284" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">ERRORS RETURNED</text>
+        <text x="256" y="294" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">UP FRONT, BY ROW</text>
+        <line x1="194" y1="280" x2="194" y2="296" marker-end="url(#il-uf1)"/>
+        <rect x="84" y="300" width="220" height="38" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="194.0" y="322.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CREATE</text>
+        <path d="M364 203 L392 203" fill="none" marker-end="url(#il-uf1)"/>
+        <rect x="400" y="44" width="496" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="412" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">MANY LINKS AT ONCE</text>
+        <text x="412" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">UP TO 10,000 PER FILE, EACH WITH ITS OWN STATUS</text>
+        <rect x="428" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="440" y1="109" x2="470" y2="109" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="440" y1="117" x2="460" y2="117" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="502" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="514" y1="109" x2="544" y2="109" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="514" y1="117" x2="534" y2="117" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="576" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="588" y1="109" x2="618" y2="109" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="588" y1="117" x2="608" y2="117" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="650" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="662" y1="109" x2="692" y2="109" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="662" y1="117" x2="682" y2="117" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="724" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="736" y1="109" x2="766" y2="109" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="736" y1="117" x2="756" y2="117" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="798" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="810" y1="109" x2="840" y2="109" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="810" y1="117" x2="830" y2="117" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="428" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="440" y1="155" x2="470" y2="155" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="440" y1="163" x2="460" y2="163" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="502" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="514" y1="155" x2="544" y2="155" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="514" y1="163" x2="534" y2="163" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="576" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="588" y1="155" x2="618" y2="155" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="588" y1="163" x2="608" y2="163" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="650" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="662" y1="155" x2="692" y2="155" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="662" y1="163" x2="682" y2="163" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="724" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#cf6a5c"/>
+        <line x1="736" y1="155" x2="766" y2="155" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="736" y1="163" x2="756" y2="163" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="798" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="810" y1="155" x2="840" y2="155" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="810" y1="163" x2="830" y2="163" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="428" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="440" y1="201" x2="470" y2="201" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="440" y1="209" x2="460" y2="209" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="502" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="514" y1="201" x2="544" y2="201" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="514" y1="209" x2="534" y2="209" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="576" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="588" y1="201" x2="618" y2="201" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="588" y1="209" x2="608" y2="209" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="650" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="662" y1="201" x2="692" y2="201" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="662" y1="209" x2="682" y2="209" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="724" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="736" y1="201" x2="766" y2="201" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="736" y1="209" x2="756" y2="209" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="798" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="810" y1="201" x2="840" y2="201" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="810" y1="209" x2="830" y2="209" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="428" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="440" y1="247" x2="470" y2="247" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="440" y1="255" x2="460" y2="255" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="502" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#cf6a5c"/>
+        <line x1="514" y1="247" x2="544" y2="247" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="514" y1="255" x2="534" y2="255" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="576" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="588" y1="247" x2="618" y2="247" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="588" y1="255" x2="608" y2="255" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="650" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="662" y1="247" x2="692" y2="247" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="662" y1="255" x2="682" y2="255" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="724" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="736" y1="247" x2="766" y2="247" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="736" y1="255" x2="756" y2="255" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="798" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="810" y1="247" x2="840" y2="247" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="810" y1="255" x2="830" y2="255" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="428" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="440" y1="293" x2="470" y2="293" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="440" y1="301" x2="460" y2="301" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="502" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="514" y1="293" x2="544" y2="293" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="514" y1="301" x2="534" y2="301" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="576" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="588" y1="293" x2="618" y2="293" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="588" y1="301" x2="608" y2="301" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="650" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="662" y1="293" x2="692" y2="293" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="662" y1="301" x2="682" y2="301" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="724" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="736" y1="293" x2="766" y2="293" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="736" y1="301" x2="756" y2="301" stroke="#2c2c2c" stroke-width="3"/>
+        <rect x="798" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="810" y1="293" x2="840" y2="293" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="810" y1="301" x2="830" y2="301" stroke="#2c2c2c" stroke-width="3"/>
+        <text x="648" y="344" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">TWO ROWS FLAGGED, THE REST CREATED</text>
         </svg></div>
-        <h3>Feedback Loops That Validate Themselves</h3>
-        <p class="lead">We test explorations internally before any external demo, and layouts go through design review before they ship. The loop keeps running when I'm not in the room, so the team learns what's working without waiting on me.</p>
-      </article>
-
-      <article class="bs-col">
-        <div class="bs-fig">FIG. 03</div>
-        <div class="bs-kicker">Ship</div>
-        <div class="bs-spot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="24" y="44" width="56" height="62" stroke-dasharray="4 3" opacity="0.45" stroke-width="1.2"/>
-          <circle cx="40" cy="60" r="3" opacity="0.45" stroke-width="1.2"/>
-          <circle cx="58" cy="72" r="3" opacity="0.45" stroke-width="1.2"/>
-          <circle cx="42" cy="88" r="3" opacity="0.45" stroke-width="1.2"/>
-          <line x1="84" y1="75" x2="128" y2="75"/>
-          <path d="M123 70.5 L129 75 L123 79.5"/>
-          <circle cx="106" cy="75" r="7" fill="none" stroke="#d99f43"/>
-          <circle cx="106" cy="75" r="2.2" fill="#d99f43" stroke="none"/>
-          <path d="M52 40 Q110 6 168 36" stroke-dasharray="3 3" opacity="0.35" stroke-width="1"/>
-          <path d="M163 30 L168.5 36.5 L160.5 38.5" opacity="0.35" stroke-width="1"/>
-          <rect x="138" y="38" width="60" height="68"/>
-          <circle cx="152" cy="54" r="3" fill="#d99f43" stroke="none"/>
-          <circle cx="170" cy="54" r="3" fill="#d99f43" stroke="none"/>
-          <circle cx="152" cy="70" r="3" fill="#d99f43" stroke="none"/>
-          <line x1="146" y1="88" x2="190" y2="88" opacity="0.6" stroke-width="1.2"/>
-          <line x1="146" y1="96" x2="176" y2="96" opacity="0.6" stroke-width="1.2"/>
+        <div class="work-body">
+          <div class="work-meta"><span>02</span><span class="accent" style="color: var(--blue);">Feature</span><span>Research lead and designer</span><span>Shipped</span></div>
+          <h3>Creating and editing links at scale</h3>
+          <p>Research across three user groups cut a feature nobody needed and put error recovery at the center of the flow.</p>
+          <dl class="ledger"><dt>Decision</dt><dd>Up to 10,000 records per file, every row validated</dd><dt>Scope</dt><dd>14 participants across three user groups</dd></dl>
+          <span class="work-go">Read the case &#8594;</span>
+        </div>
+      </a><a class="work-card" href="/work/ab-testing/">
+        <div class="work-thumb" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" aria-label="An A/B testing flow designed against acceptance criteria, reviewed live with customers who run experiments daily, with one subtle issue caught before release">
+        <!-- FIG. Validated against criteria -->
+        <defs><marker id="il-val2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-val2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
+        <rect x="717" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="732.74" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">CONFIRMED</text>
+        <circle cx="806.32" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="814.32" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">CAUGHT + FIXED</text>
+        <rect x="24" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">DESIGNED TO CRITERIA</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">A FULL SET OF ACCEPTANCE CRITERIA, WRITTEN FIRST</text>
+        <rect x="48" y="96" width="372" height="60" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="234.0" y="123.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE A/B TEST FLOW</text>
+        <text x="234.0" y="137.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">TRAFFIC LOGIC, LOCKING, AN UNAMBIGUOUS CONTROL</text>
+        <rect x="48" y="180" width="372" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="70" y="204" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">INLINE TRAFFIC EDITING</text>
+        <path d="M392 194 L400 202 L410 188" fill="none" stroke="#74a58c" marker-end="url(#il-val2-g)"/>
+        <rect x="48" y="232" width="372" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="70" y="256" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">LOCK BEHAVIOR</text>
+        <path d="M392 246 L400 254 L410 240" fill="none" stroke="#74a58c" marker-end="url(#il-val2-g)"/>
+        <rect x="48" y="284" width="372" height="40" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="70" y="308" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">SPLIT TRAFFIC EQUALLY</text>
+        <path d="M392 298 L400 306 L410 292" fill="none" stroke="#74a58c" marker-end="url(#il-val2-g)"/>
+        <line x1="444" y1="203" x2="468" y2="203" marker-end="url(#il-val2)"/>
+        <rect x="476" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="488" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">REVIEWED LIVE, BEFORE RELEASE</text>
+        <text x="488" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">WITH CUSTOMERS WHO RUN TESTS FOR A LIVING</text>
+        <path d="M686 101 L701 116 L686 131 L671 116 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="686" y="148" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">LIVE CUSTOMER REVIEW</text>
+        <path d="M671 116 L560 116 L560 176" fill="none" stroke="#74a58c" marker-end="url(#il-val2-g)"/>
+        <rect x="500" y="180" width="176" height="70" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="588.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CORE INTERACTIONS</text>
+        <text x="588.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">CONFIRMED IN SESSION</text>
+        <path d="M701 116 L812 116 L812 176" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-val2)"/>
+        <circle cx="812" cy="176" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <rect x="700" y="180" width="172" height="70" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="786.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE SUBTLE ISSUE</text>
+        <text x="786.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">CAUGHT, FIXED PRE-RELEASE</text>
+        <line x1="686" y1="254" x2="686" y2="286" marker-end="url(#il-val2)"/>
+        <rect x="673.0" y="290" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="686" y="312" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">SHIPPED</text>
         </svg></div>
-        <h3>Shipping &amp; Migrating Without The Headache</h3>
-        <p class="lead">Live customer configurations stay protected, and the new version feels like an upgrade to use. I document the patterns so the next team can reuse what we built.</p>
-      </article>
+        <div class="work-body">
+          <div class="work-meta"><span>03</span><span class="accent" style="color: var(--blue);">Feature</span><span>Lead designer</span><span>Shipped</span></div>
+          <h3>A/B testing for people who run experiments for a living</h3>
+          <p>Seventeen acceptance criteria, a real holdout in place of a buggy workaround, and a metrics issue caught in a live customer session before release.</p>
+          <dl class="ledger"><dt>Decision</dt><dd>Up to 20 variants, with the interface adapting at each count</dd><dt>Decision</dt><dd>2 of 3 customers preferred campaign-level settings, which set the default</dd></dl>
+          <span class="work-go">Read the case &#8594;</span>
+        </div>
+      </a><a class="work-card" href="/work/standards/">
+        <div class="work-thumb" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" aria-label="Several divergent creation-flow layouts converging into one standard split-screen workbench with a form on one side and a live preview on the other">
+        <!-- FIG. Many layouts, one workbench -->
+        <defs><marker id="il-sys1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-sys1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
+        <rect x="643" y="15" width="12" height="9" stroke="#4a4a4a" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="659.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">BEFORE</text>
+        <rect x="711" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="727.12" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">THE STANDARD</text>
+        <circle cx="817.56" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="825.56" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">INLINE ERROR</text>
+        <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">BEFORE: EVERY FLOW ITS OWN</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">NEW SURFACES HAD NOTHING TO BUILD AGAINST</text>
+        <rect x="48" y="96" width="116" height="74" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <line x1="106" y1="104" x2="106" y2="162" stroke="#4a4a4a" stroke-width="1"/>
+        <line x1="60" y1="120" x2="90" y2="120" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="60" y1="128" x2="80" y2="128" stroke="#2c2c2c" stroke-width="3"/>
+        <line x1="118" y1="120" x2="148" y2="120" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="118" y1="128" x2="138" y2="128" stroke="#2c2c2c" stroke-width="3"/>
+        <text x="106" y="184" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">SPLIT-SCREEN</text>
+        <rect x="184" y="96" width="116" height="74" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <rect x="214" y="108" width="56" height="50" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
+        <line x1="224" y1="126" x2="260" y2="126" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="224" y1="134" x2="248" y2="134" stroke="#2c2c2c" stroke-width="3"/>
+        <text x="242" y="184" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">CENTERED CARD</text>
+        <rect x="48" y="210" width="116" height="74" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <rect x="62" y="222" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
+        <rect x="62" y="252" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
+        <rect x="100" y="222" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
+        <rect x="100" y="252" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
+        <rect x="138" y="222" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
+        <rect x="138" y="252" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
+        <text x="106" y="298" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">CARD GRID</text>
+        <text x="242" y="246" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">...AND MORE</text>
+        <line x1="324" y1="203" x2="344" y2="203" marker-end="url(#il-sys1)"/>
+        <path d="M360 190 L373 203 L360 216 L347 203 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="360" y="230" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">ONE</text>
+        <text x="360" y="240" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">STANDARD</text>
+        <line x1="373" y1="203" x2="392" y2="203" marker-end="url(#il-sys1)"/>
+        <rect x="400" y="44" width="496" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="412" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE SPLIT-SCREEN WORKBENCH</text>
+        <text x="412" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SCROLLABLE FORM ONE SIDE, STICKY LIVE PREVIEW THE OTHER</text>
+        <rect x="424" y="96" width="448" height="220" rx="3" fill="#141414" stroke="#74a58c"/>
+        <line x1="648" y1="106" x2="648" y2="306" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="536" y="122" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">FORM</text>
+        <line x1="460" y1="142" x2="580" y2="142" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="460" y1="150" x2="540" y2="150" stroke="#2c2c2c" stroke-width="3"/>
+        <line x1="460" y1="174" x2="580" y2="174" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="460" y1="182" x2="540" y2="182" stroke="#2c2c2c" stroke-width="3"/>
+        <line x1="460" y1="206" x2="580" y2="206" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="460" y1="214" x2="540" y2="214" stroke="#2c2c2c" stroke-width="3"/>
+        <line x1="460" y1="238" x2="580" y2="238" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="460" y1="246" x2="540" y2="246" stroke="#2c2c2c" stroke-width="3"/>
+        <line x1="460" y1="270" x2="580" y2="270" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="460" y1="278" x2="540" y2="278" stroke="#2c2c2c" stroke-width="3"/>
+        <circle cx="596" cy="238" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <text x="588" y="254" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">ERRORS INLINE,</text>
+        <text x="588" y="263" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">NOT ON REVIEW</text>
+        <rect x="664" y="112" width="54" height="16" rx="3" stroke="#74a58c" stroke-width="1.2" fill="none"/>
+        <text x="691" y="123" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#c0c0c0" stroke="none">VAR A</text>
+        <rect x="726" y="112" width="54" height="16" rx="3" stroke="#4a4a4a" stroke-width="1.2" fill="none"/>
+        <text x="753" y="123" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">VAR B</text>
+        <rect x="788" y="112" width="54" height="16" rx="3" stroke="#4a4a4a" stroke-width="1.2" fill="none"/>
+        <text x="815" y="123" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">VAR C</text>
+        <text x="760" y="148" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">LIVE PREVIEW</text>
+        <rect x="664" y="160" width="192" height="118" rx="3" stroke="#3a3a3a" stroke-width="1" fill="none"/>
+        <line x1="696" y1="200" x2="824" y2="200" stroke="#3a3a3a" stroke-width="3"/>
+        <line x1="696" y1="208" x2="786" y2="208" stroke="#2c2c2c" stroke-width="3"/>
+        <text x="648" y="336" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">VARIANT SWITCHER PINNED, SUMMARY TAB REPLACES THE OLD REVIEW PAGE</text>
+        <circle cx="864" cy="81" r="5" stroke="#b07fa6" stroke-width="1.2" fill="#0a0a0a"/>
+        <text x="852" y="84" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#b07fa6" stroke="none">ADOPTED PRODUCT-WIDE</text>
+        </svg></div>
+        <div class="work-body">
+          <div class="work-meta"><span>04</span><span class="accent" style="color: var(--green);">Platform</span><span>Author</span><span>In use product-wide</span></div>
+          <h3>Setting the conventions a whole product runs on</h3>
+          <p>Layout, navigation, and handoff standards every team builds to, lifecycle gates built from a handoff audit, and one demand picture for the roadmap.</p>
+          <dl class="ledger"><dt>Result</dt><dd>Layout, navigation, and handoff standards adopted product-wide</dd><dt>Decision</dt><dd>3 lifecycle gates, built from an audit of 5 handoff failure patterns</dd></dl>
+          <span class="work-go">Read the case &#8594;</span>
+        </div>
+      </a><a class="work-card" href="/work/ai-agent/">
+        <div class="work-thumb" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" aria-label="A tiered disclosure system: high-confidence model outputs surface cleanly, lower confidence carries a visible signal with a path to understand why">
+        <!-- FIG. Confidence sets the disclosure -->
+        <defs><marker id="il-ai1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
+        <rect x="574" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="589.96" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SURFACES CLEANLY</text>
+        <rect x="698" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="713.88" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">VISIBLE SIGNAL</text>
+        <rect x="811" y="15" width="12" height="9" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="826.56" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">EXPLAIN PATH</text>
+        <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT THE MODEL KNOWS</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THRESHOLDS MAPPED WITH ML ENGINEERS</text>
+        <line x1="80" y1="100" x2="80" y2="330" stroke="#3a3a3a" stroke-width="10"/>
+        <line x1="80" y1="100" x2="80" y2="176" stroke="#74a58c" stroke-width="10"/>
+        <line x1="80" y1="176" x2="80" y2="252" stroke="#7ea7c9" stroke-width="10"/>
+        <line x1="80" y1="252" x2="80" y2="330" stroke="#d99f43" stroke-width="10"/>
+        <text x="104" y="140" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">HIGH CONFIDENCE</text>
+        <text x="104" y="216" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">MEDIUM</text>
+        <text x="104" y="292" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">LOW</text>
+        <text x="104" y="154" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">KNOWN, NOT ESTIMATED</text>
+        <text x="104" y="230" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">ESTIMATED</text>
+        <text x="104" y="306" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">UNCERTAIN</text>
+        <rect x="356" y="44" width="540" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="368" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT THE USER SEES</text>
+        <text x="368" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">NO FALSE PRECISION, NO CONSTANT HEDGING</text>
+        <rect x="444" y="96" width="428" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="658.0" y="124.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SURFACES CLEANLY</text>
+        <text x="658.0" y="138.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">A NUMBER THE USER CAN ACT ON</text>
+        <line x1="324" y1="140" x2="440" y2="127" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
+        <rect x="444" y="184" width="428" height="62" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="658.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">VISIBLE SIGNAL, BUILT IN</text>
+        <text x="658.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">THE COMPONENT SHOWS ITS UNCERTAINTY</text>
+        <line x1="324" y1="216" x2="440" y2="215" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
+        <rect x="444" y="272" width="428" height="62" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="658.0" y="300.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">A PATH TO UNDERSTAND WHY</text>
+        <text x="658.0" y="314.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">DISCLOSURE ON DEMAND, NEVER OVERSTATED</text>
+        <line x1="324" y1="292" x2="440" y2="303" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
+        </svg></div>
+        <div class="work-body">
+          <div class="work-meta"><span>05</span><span class="accent" style="color: var(--mauve);">AI</span><span>Lead designer</span><span>Concept design</span></div>
+          <h3>Designing an AI agent that&rsquo;s honest about what it doesn&rsquo;t know</h3>
+          <p>Confidence tiers, explainability, and failure states worked out with ML engineers, plus how I use AI in my own practice.</p>
+          <dl class="ledger"><dt>Decision</dt><dd>3 confidence tiers and 3 designed failure states</dd><dt>Status</dt><dd>Concept design, not shipped</dd></dl>
+          <span class="work-go">Read the case &#8594;</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- CASE STUDIES -->
-<div class="section-head">
-  <h2>CASE STUDIES</h2>
-</div>
-<section class="cases" id="cases">
-
-  <a href="/work/strategy/" class="case-link"><article class="case-row">
-    <div class="case-id">A &mdash; 1</div>
-    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
-    <div class="case-name-block"><div class="case-name">Rebuilding the platform</div></div>
-    <div class="case-meta-label">AT A GLANCE</div>
-    <div class="case-recognitions">
-      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">2&times; USABILITY RATING OVER LEGACY, 7 CUSTOMER RATERS</span></div>
-      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">0 BREAKING CHANGES REPORTED ACROSS 50 MIGRATED ACCOUNTS</span></div>
-      <div class="ev"><span class="ev-k">SCOPE</span><span class="ev-v">4 FLOWS SEQUENCED INTO A 6-PHASE ROADMAP</span></div>
-    </div>
-    <div class="case-scope-label">DISCIPLINES</div>
-    <div class="case-disciplines-block">
-      <div>ROADMAPPING</div>
-      <div>FACILITATION</div>
-      <div>COMPARATIVE TESTING</div>
-      <div>FLOW DESIGN</div>
-      <div>PLATFORM MIGRATION</div>
-    </div>
-  </article></a>
-  <a href="/work/systems-leadership/" class="case-link"><article class="case-row">
-    <div class="case-id">A &mdash; 2</div>
-    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
-    <div class="case-name-block"><div class="case-name">Conventions a platform runs on</div></div>
-    <div class="case-meta-label">AT A GLANCE</div>
-    <div class="case-recognitions">
-      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">LAYOUT, NAVIGATION, AND HANDOFF STANDARDS ADOPTED PRODUCT-WIDE</span></div>
-      <div class="ev"><span class="ev-k">DECISION</span><span class="ev-v">3 LAYOUT FAMILIES CONSOLIDATED INTO 1 WORKBENCH</span></div>
-      <div class="ev"><span class="ev-k">DECISION</span><span class="ev-v">3 LIFECYCLE GATES: DISCOVER, PLAN, BUILD</span></div>
-    </div>
-    <div class="case-scope-label">DISCIPLINES</div>
-    <div class="case-disciplines-block">
-      <div>DESIGN SYSTEM GOVERNANCE</div>
-      <div>CONTRIBUTION MODEL</div>
-      <div>CROSS-TEAM STANDARDS</div>
-      <div>DESIGN-ENG CONTRACT</div>
-      <div>PLATFORM CONVENTIONS</div>
-      <div>LIFECYCLE CHECKPOINTS</div>
-    </div>
-  </article></a>
-  <a href="/work/permissions/" class="case-link"><article class="case-row">
-    <div class="case-id">A &mdash; 3</div>
-    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
-    <div class="case-name-block"><div class="case-name">Roles and permissions</div></div>
-    <div class="case-meta-label">AT A GLANCE</div>
-    <div class="case-recognitions">
-      <div class="ev"><span class="ev-k">STATUS</span><span class="ev-v">PROTOTYPE TESTED; NO LAUNCH DATA YET</span></div>
-      <div class="ev"><span class="ev-k">SCOPE</span><span class="ev-v">15 PARTICIPANTS, 10 ORGANIZATIONS, 2024 TO 2026</span></div>
-      <div class="ev"><span class="ev-k">DECISION</span><span class="ev-v">3 FOLDER-LEVEL ROLES; EXTERNAL USERS SEE ONLY WHAT IS SHARED</span></div>
-    </div>
-    <div class="case-scope-label">DISCIPLINES</div>
-    <div class="case-disciplines-block">
-      <div>ROLE-BASED ACCESS CONTROL</div>
-      <div>ENTERPRISE ADMINISTRATION</div>
-      <div>MIXED-METHODS RESEARCH</div>
-      <div>SCOPE STRATEGY</div>
-      <div>PROTOTYPING</div>
-      <div>USABILITY TESTING</div>
-    </div>
-  </article></a>
-  <a href="/work/ai-agent/" class="case-link"><article class="case-row">
-    <div class="case-id">A &mdash; 4</div>
-    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
-    <div class="case-name-block"><div class="case-name">Designing AI experiences</div></div>
-    <div class="case-meta-label">AT A GLANCE</div>
-    <div class="case-recognitions">
-      <div class="ev"><span class="ev-k">STATUS</span><span class="ev-v">CONCEPT DESIGN, NOT SHIPPED</span></div>
-      <div class="ev"><span class="ev-k">SCOPE</span><span class="ev-v">AGENT PRESENCE MAPPED ACROSS 5+ JOURNEY TOUCHPOINTS</span></div>
-      <div class="ev"><span class="ev-k">DECISION</span><span class="ev-v">3 CONFIDENCE TIERS AND 3 DESIGNED FAILURE STATES</span></div>
-    </div>
-    <div class="case-scope-label">DISCIPLINES</div>
-    <div class="case-disciplines-block">
-      <div>AI PRODUCT DESIGN</div>
-      <div>ML COLLABORATION</div>
-      <div>TRUST &amp; UNCERTAINTY</div>
-      <div>AGENTIC UX</div>
-    </div>
-  </article></a>
-  <a href="/work/research/" class="case-link"><article class="case-row">
-    <div class="case-id">A &mdash; 5</div>
-    <div class="case-read">READ CASE <span class="arr">&rarr;</span></div>
-    <div class="case-name-block"><div class="case-name">Research and the customer pool</div></div>
-    <div class="case-meta-label">AT A GLANCE</div>
-    <div class="case-recognitions">
-      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">7 OF 8 FOUNDING ACCOUNTS STILL IN THE PROGRAM, ONE YEAR IN</span></div>
-      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">2 RENEWALS; 0 MEMBERS LOST TO A COMPETITOR</span></div>
-      <div class="ev"><span class="ev-k">RESULT</span><span class="ev-v">8 ROADMAP ITEMS VALIDATED OR INFLUENCED; 3 SHIPPED</span></div>
-    </div>
-    <div class="case-scope-label">DISCIPLINES</div>
-    <div class="case-disciplines-block">
-      <div>PROGRAM DESIGN</div>
-      <div>RESEARCH OPERATIONS</div>
-      <div>DISCOVERY</div>
-      <div>DEMAND SYNTHESIS</div>
-      <div>CUSTOMER ADVOCACY</div>
-      <div>MULTI-REGION EXPANSION</div>
-    </div>
-  </article></a>
-</section>
-
-<!-- RECOGNITIONS -->
-<div class="section-head">
-  <h2>SIGNAL OF THE WORK</h2>
-</div>
-<section class="recognitions-wrap">
-  <div class="recognitions-label">CAPABILITIES &amp;<br/>CREDENTIALS</div>
-  <div class="recognitions-list">
-    <div class="recognition-row">
-      <div class="label"><span class="count" data-n="13">13</span>+ YEARS</div>
-      <div class="detail">B2B SAAS &amp; CONSUMER PRACTICE</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label"><span class="count" data-n="6">6</span> INDUSTRIES</div>
-      <div class="detail">MOBILE GROWTH, SPORTS, DISTRIBUTION, BEAUTY, REAL ESTATE, ULTRASONIC</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">DESIGN SYSTEM GOVERNANCE</div>
-      <div class="detail">AUXIN SYSTEM MAINTAINED ACROSS PARALLEL TEAMS: CONTRIBUTION MODEL, STANDARDS, AND DESIGN-ENG HANDOFF</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">RESEARCH OPERATIONS</div>
-      <div class="detail">ENTERPRISE RESEARCH PROGRAM RUN END-TO-END ACROSS 5 ACCOUNTS, FROM RECRUITING TO SYNTHESIS INTO ENG AND PM</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">PRACTICE &amp; ENABLEMENT</div>
-      <div class="detail">COACHED 10+ DESIGNERS, PMS, AND EMS ON PDLC; BUILT A REPEATABLE PRACTICE DESIGNED TO RUN WITHOUT ME</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label"><span class="count" data-n="5">5</span> ENTERPRISE ACCOUNTS</div>
-      <div class="detail">IN ACTIVE CUSTOMER RESEARCH WITH ME</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label"><span class="count" data-n="3">3</span> PHASED ROLLOUTS</div>
-      <div class="detail">MIGRATION SHIPPED FIRST; POLISH AND FEATURE GROWTH FOLLOW</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label"><span class="count" data-n="0">0</span> BREAKING CHANGES</div>
-      <div class="detail">REPORTED SINCE LAUNCH ACROSS 50 MIGRATED ACCOUNTS</div>
-    </div>
-    <div class="recognition-row">
-      <div class="label">AI PRODUCT DESIGN</div>
-      <div class="detail">UNCERTAINTY, EXPLAINABILITY &amp; TRUST AS DESIGN CONSTRAINTS &#183; ENTERPRISE B2B</div>
+<section class="section" aria-labelledby="also-h">
+  <div class="wrap">
+    <div class="section-head"><h2 id="also-h">Also</h2></div>
+    <div class="also-grid">
+      <a class="also-card" href="/work/permissions/">
+        <div class="work-meta"><span>06</span><span class="accent" style="color: var(--blue);">Research and prototype</span><span>Prototype tested</span></div>
+        <h3>Scoping enterprise access to the folder, not the account</h3>
+        <p>Research with 15 participants across 10 organizations, a folder-level role model for V1, and a clickable admin console tested before the build.</p>
+        <span class="work-go">Read the case &#8594;</span>
+      </a>
+      <a class="also-card" href="/work/customer-program/">
+        <div class="work-meta"><span>07</span><span class="accent" style="color: var(--green);">Customers</span><span>Running since 2025</span></div>
+        <h3>Founding a customer advisory program</h3>
+        <p>7 of 8 founding accounts still in the program a year in, 2 renewals with one citing the program as a big reason, and 8 roadmap items validated or influenced, 3 since shipped.</p>
+        <span class="work-go">Read the case &#8594;</span>
+      </a>
     </div>
   </div>
 </section>
 
+<section class="section" aria-labelledby="beyond-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="beyond-h">Beyond my own projects</h2>
+      <p>The parts of the job that keep working when I&rsquo;m not in the room.</p>
+    </div>
+    <div class="panel-grid">
+      <div class="panel"><p class="eyebrow" style="color: var(--amber);">Design and engineering</p><h3>Designin&rsquo; With Dani</h3><p>The biweekly design and engineering sync I&rsquo;ve kept going at every company since 2020, where in-flight work gets reviewed while it can still change.</p></div>
+      <div class="panel"><p class="eyebrow" style="color: var(--green);">People</p><h3>Coaching and mentorship</h3><p>Mentor to 2 designers, and coached 10+ designers, PMs, and EMs on the product lifecycle gates I authored.</p></div>
+      <div class="panel"><p class="eyebrow" style="color: var(--blue);">Systems</p><h3>Design system stewardship</h3><p>Specs for new components, and the handoff standard every ticket is written to.</p></div>
+      <div class="panel"><p class="eyebrow" style="color: var(--mauve);">AI in practice</p><h3>How I use AI day to day</h3><p>Claude to code 340 logged product requests into themes, Figma Make to prototype, and Claude Code to build this site. <a href="/work/ai-agent/#practice">More</a></p></div>
+    </div>
+  </div>
+</section>
 
-
-
-
-
-
-<!-- FOOTER -->
-<footer id="contact">
-
-  <div class="footer-grid" style="padding-top: 4rem;">
+<section class="section" aria-labelledby="index-h">
+  <div class="wrap">
+    <div class="section-head"><h2 id="index-h">Case index</h2></div>
+    <div class="table-box">
+      <table class="index">
+        <thead><tr><th scope="col">#</th><th scope="col">Project</th><th scope="col">Area</th><th scope="col">Headline</th><th scope="col">Status</th></tr></thead>
+        <tbody><tr><td class="muted">01</td><td><a href="/work/platform-rebuild/">Platform rebuild and migration</a></td><td class="muted">Platform</td><td>0 breaking changes across 50 migrated accounts</td><td><span class="st st--shipped">Shipped</span></td></tr><tr><td class="muted">02</td><td><a href="/work/bulk-links/">Bulk link creation and editing</a></td><td class="muted">Feature</td><td>Up to 10,000 records per upload</td><td><span class="st st--shipped">Shipped</span></td></tr><tr><td class="muted">03</td><td><a href="/work/ab-testing/">A/B testing and holdouts</a></td><td class="muted">Feature</td><td>17 acceptance criteria, issue caught pre-release</td><td><span class="st st--shipped">Shipped</span></td></tr><tr><td class="muted">04</td><td><a href="/work/standards/">Platform standards and lifecycle gates</a></td><td class="muted">Platform</td><td>Standards adopted product-wide</td><td><span class="st st--shipped">In use</span></td></tr><tr><td class="muted">05</td><td><a href="/work/ai-agent/">AI agent</a></td><td class="muted">AI</td><td>3 confidence tiers set with ML</td><td><span class="st st--progress">Concept</span></td></tr><tr><td class="muted">06</td><td><a href="/work/permissions/">Roles and permissions</a></td><td class="muted">Feature</td><td>15 participants across 10 organizations</td><td><span class="st st--progress">Prototype tested</span></td></tr><tr><td class="muted">07</td><td><a href="/work/customer-program/">Customer advisory program</a></td><td class="muted">Customers</td><td>7 of 8 founding accounts still in the program</td><td><span class="st st--shipped">Running</span></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
     <div>
-      <h3>DANI WEIDNER</h3>
+      <p class="cta">Hiring a Staff designer? Let&rsquo;s talk.</p>
+      <p class="sub">13+ years in B2B and consumer products. Full history in the CV.</p>
     </div>
-    <div class="col">
-      <a href="#">HOME</a>
-      <a href="#cases">CASE STUDIES</a>
-    </div>
-    <div class="col">
-      <a href="/about/">ABOUT/CV</a>
-      <a href="#contact">CONTACT</a>
-    </div>
-    <div class="col right">
-      <a href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
-      <a href="https://www.linkedin.com/in/dani-weidner/" target="_blank" rel="noopener">LINKEDIN</a>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="mailto:hello@daniweidner.com">hello@daniweidner.com</a>
+      <a class="btn" href="/Dani-Weidner-CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+      <a class="btn" href="https://www.linkedin.com/in/dani-weidner/" rel="noopener">LinkedIn</a>
     </div>
   </div>
-
-
 </footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Live clock for the hero meta block
-  (function () {
-    const el = document.getElementById('local-time');
-    if (!el) return;
-    function update() {
-      const now = new Date();
-      // Show Phoenix time (MST, UTC-7, no DST)
-      const opts = { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/Phoenix' };
-      const t = new Intl.DateTimeFormat('en-US', opts).format(now);
-      el.textContent = t.replace(':', ' ') + ' MST';
-    }
-    update();
-    setInterval(update, 30000);
-  })();
-
-  // Project Journey: broadsheet - horizontal rail fills on scroll, columns reveal,
-  // nodes ink in as the rail passes them.
-  (function () {
-    const broadsheet = document.getElementById('broadsheet');
-    if (!broadsheet) return;
-    const cols = broadsheet.querySelectorAll('.bs-col');
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      cols.forEach(c => c.classList.add('visible'));
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { rootMargin: '0px 0px -25% 0px', threshold: 0.1 });
-
-    cols.forEach(col => observer.observe(col));
-  })();
-
-  // Operating principles: reveal header + stagger the cards on first scroll-in
-  (function () {
-    const section = document.querySelector('.principles');
-    if (!section) return;
-    const cards = section.querySelectorAll('.principle');
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      section.classList.add('revealed');
-      cards.forEach(c => c.classList.add('revealed'));
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          section.classList.add('revealed');
-          cards.forEach(c => c.classList.add('revealed'));
-          obs.disconnect();
-        }
-      });
-    }, { rootMargin: '0px 0px -20% 0px', threshold: 0.15 });
-
-    observer.observe(section);
-  })();
-
-  // Signal of the Work: stagger the rows in, count the numbers up.
-  // The 0 never moves; that's the point.
-  (function () {
-    const wrap = document.querySelector('.recognitions-wrap');
-    if (!wrap) return;
-    const counts = wrap.querySelectorAll('.count');
-
-    function finish() {
-      wrap.classList.add('revealed');
-      counts.forEach(c => { c.textContent = c.dataset.n; });
-    }
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      finish();
-      return;
-    }
-
-    function runCount(el, delay) {
-      const target = parseInt(el.dataset.n, 10);
-      el.textContent = '0';
-      setTimeout(() => {
-        const t0 = performance.now();
-        const dur = 900;
-        (function tick(t) {
-          const k = Math.min(1, (t - t0) / dur);
-          const eased = 1 - Math.pow(1 - k, 3);
-          el.textContent = Math.round(target * eased);
-          if (k < 1) requestAnimationFrame(tick);
-        })(t0);
-      }, delay);
-    }
-
-    counts.forEach(c => { c.textContent = '0'; });
-
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          wrap.classList.add('revealed');
-          counts.forEach(c => {
-            const row = c.closest('.recognition-row');
-            const rows = [...wrap.querySelectorAll('.recognition-row')];
-            runCount(c, 50 + 80 * rows.indexOf(row) + 150);
-          });
-          obs.disconnect();
-        }
-      });
-    }, { rootMargin: '0px 0px -15% 0px', threshold: 0.1 });
-
-    observer.observe(wrap);
-  })();
-</script>
-
+<script src="/assets/site.js"></script>
 </body>
 </html>
