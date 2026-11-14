@@ -52,187 +52,277 @@
 <h3>One layout: the split-screen workbench</h3>
 <p>Creation flows had drifted into split-screen workbenches, single-column cards, and card grids. I set the split-screen workbench as the standard: a scrollable form on one side and a sticky live preview on the other, with a variant switcher, a summary tab in place of the old review page, and inline errors on any tab with issues.</p>
 <blockquote>A shared layout lets a new surface feel familiar on day one.<cite>Design principle, layout standardization</cite></blockquote>
-<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Several divergent creation-flow layouts converging into one standard split-screen workbench with a form on one side and a live preview on the other">
-        <!-- FIG. Many layouts, one workbench -->
-        <defs><marker id="il-sys1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-sys1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Three divergent layout families, a split-screen, a centered stepper card, and a card grid, converging into one standard split-screen workbench: a scrollable form with Setup, Creative, and Summary tabs and inline errors on one side, and a sticky live preview with a pinned variant switcher on the other.">
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
-        <rect x="643" y="15" width="12" height="9" stroke="#4a4a4a" stroke-width="1.2" stroke-dasharray="3 3"/>
-        <text x="659.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">BEFORE</text>
-        <rect x="711" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
-        <text x="727.12" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">THE STANDARD</text>
-        <circle cx="817.56" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
-        <text x="825.56" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">INLINE ERROR</text>
+        <defs><marker id="il-std1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="637" y="15" width="12" height="9" stroke="#4a4a4a" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="653" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">BEFORE</text>
+        <rect x="704.8" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="720.8" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">THE STANDARD</text>
+        <circle cx="811.4" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="819.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">INLINE ERROR</text>
         <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">BEFORE: EVERY FLOW ITS OWN</text>
-        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">NEW SURFACES HAD NOTHING TO BUILD AGAINST</text>
-        <rect x="48" y="96" width="116" height="74" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
-        <line x1="106" y1="104" x2="106" y2="162" stroke="#4a4a4a" stroke-width="1"/>
-        <line x1="60" y1="120" x2="90" y2="120" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="60" y1="128" x2="80" y2="128" stroke="#2c2c2c" stroke-width="3"/>
-        <line x1="118" y1="120" x2="148" y2="120" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="118" y1="128" x2="138" y2="128" stroke="#2c2c2c" stroke-width="3"/>
-        <text x="106" y="184" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">SPLIT-SCREEN</text>
-        <rect x="184" y="96" width="116" height="74" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
-        <rect x="214" y="108" width="56" height="50" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
-        <line x1="224" y1="126" x2="260" y2="126" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="224" y1="134" x2="248" y2="134" stroke="#2c2c2c" stroke-width="3"/>
-        <text x="242" y="184" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">CENTERED CARD</text>
-        <rect x="48" y="210" width="116" height="74" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
-        <rect x="62" y="222" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
-        <rect x="62" y="252" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
-        <rect x="100" y="222" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
-        <rect x="100" y="252" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
-        <rect x="138" y="222" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
-        <rect x="138" y="252" width="26" height="20" rx="2" stroke="#4a4a4a" stroke-width="1" fill="none"/>
-        <text x="106" y="298" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">CARD GRID</text>
-        <text x="242" y="246" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">...AND MORE</text>
-        <line x1="324" y1="203" x2="344" y2="203" marker-end="url(#il-sys1)"/>
-        <path d="M360 190 L373 203 L360 216 L347 203 Z" fill="#141414" stroke="#d99f43"/>
-        <text x="360" y="230" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">ONE</text>
-        <text x="360" y="240" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">STANDARD</text>
-        <line x1="373" y1="203" x2="392" y2="203" marker-end="url(#il-sys1)"/>
-        <rect x="400" y="44" width="496" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
-        <text x="412" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE SPLIT-SCREEN WORKBENCH</text>
-        <text x="412" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SCROLLABLE FORM ONE SIDE, STICKY LIVE PREVIEW THE OTHER</text>
-        <rect x="424" y="96" width="448" height="220" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="648" y1="106" x2="648" y2="306" stroke="#3a3a3a" stroke-width="1"/>
-        <text x="536" y="122" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">FORM</text>
-        <line x1="460" y1="142" x2="580" y2="142" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="460" y1="150" x2="540" y2="150" stroke="#2c2c2c" stroke-width="3"/>
-        <line x1="460" y1="174" x2="580" y2="174" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="460" y1="182" x2="540" y2="182" stroke="#2c2c2c" stroke-width="3"/>
-        <line x1="460" y1="206" x2="580" y2="206" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="460" y1="214" x2="540" y2="214" stroke="#2c2c2c" stroke-width="3"/>
-        <line x1="460" y1="238" x2="580" y2="238" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="460" y1="246" x2="540" y2="246" stroke="#2c2c2c" stroke-width="3"/>
-        <line x1="460" y1="270" x2="580" y2="270" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="460" y1="278" x2="540" y2="278" stroke="#2c2c2c" stroke-width="3"/>
-        <circle cx="596" cy="238" r="2.5" fill="#cf6a5c" stroke="none"/>
-        <text x="588" y="254" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">ERRORS INLINE,</text>
-        <text x="588" y="263" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">NOT ON REVIEW</text>
-        <rect x="664" y="112" width="54" height="16" rx="3" stroke="#74a58c" stroke-width="1.2" fill="none"/>
-        <text x="691" y="123" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#c0c0c0" stroke="none">VAR A</text>
-        <rect x="726" y="112" width="54" height="16" rx="3" stroke="#4a4a4a" stroke-width="1.2" fill="none"/>
-        <text x="753" y="123" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">VAR B</text>
-        <rect x="788" y="112" width="54" height="16" rx="3" stroke="#4a4a4a" stroke-width="1.2" fill="none"/>
-        <text x="815" y="123" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">VAR C</text>
-        <text x="760" y="148" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">LIVE PREVIEW</text>
-        <rect x="664" y="160" width="192" height="118" rx="3" stroke="#3a3a3a" stroke-width="1" fill="none"/>
-        <line x1="696" y1="200" x2="824" y2="200" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="696" y1="208" x2="786" y2="208" stroke="#2c2c2c" stroke-width="3"/>
-        <text x="648" y="336" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">VARIANT SWITCHER PINNED, SUMMARY TAB REPLACES THE OLD REVIEW PAGE</text>
-        <circle cx="864" cy="81" r="5" stroke="#b07fa6" stroke-width="1.2" fill="#0a0a0a"/>
-        <text x="852" y="84" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#b07fa6" stroke="none">ADOPTED PRODUCT-WIDE</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">3 LAYOUT FAMILIES, NOTHING TO BUILD AGAINST</text>
+        <rect x="44" y="96" width="124" height="78" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <line x1="106" y1="102" x2="106" y2="168" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="52" y="114" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#8c8c8c" stroke="none">Name</text>
+        <line x1="52" y1="118" x2="98" y2="118" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="52" y="130" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#8c8c8c" stroke="none">Audience</text>
+        <line x1="52" y1="134" x2="98" y2="134" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="52" y="146" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#8c8c8c" stroke="none">Dates</text>
+        <line x1="52" y1="150" x2="98" y2="150" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="137" y="132" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#7c7c7c" stroke="none">Preview</text>
+        <text x="106" y="186" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">SPLIT-SCREEN</text>
+        <rect x="184" y="96" width="124" height="78" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <rect x="212" y="104" width="68" height="62" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="246" y="117" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0" fill="#7c7c7c" stroke="none">Step 2 of 4</text>
+        <text x="246" y="132" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Audience</text>
+        <rect x="222" y="150" width="48" height="10" rx="2" fill="#141414" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="246" y="157.5" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0" fill="#8c8c8c" stroke="none">Next</text>
+        <text x="246" y="186" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">CENTERED CARD</text>
+        <rect x="44" y="204" width="264" height="92" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <rect x="56" y="214" width="72" height="30" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="92" y="232" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Banner</text>
+        <rect x="140" y="214" width="72" height="30" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="176" y="232" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Modal</text>
+        <rect x="224" y="214" width="72" height="30" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="260" y="232" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Footer</text>
+        <rect x="56" y="252" width="72" height="30" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="92" y="270" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Toast</text>
+        <rect x="140" y="252" width="72" height="30" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="176" y="270" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Inline</text>
+        <rect x="224" y="252" width="72" height="30" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="260" y="270" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">+ New</text>
+        <text x="176" y="310" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">CARD GRID</text>
+        <text x="174" y="336" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#7c7c7c" stroke="none">SAME TASK, A DIFFERENT SHAPE</text>
+        <text x="174" y="348" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#7c7c7c" stroke="none">ON EVERY SURFACE</text>
+        <line x1="324" y1="203" x2="340" y2="203" marker-end="url(#il-std1)"/>
+        <path d="M354 190 L367 203 L354 216 L341 203 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="354" y="228" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#8c8c8c" stroke="none">ONE</text>
+        <text x="354" y="238" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#8c8c8c" stroke="none">STANDARD</text>
+        <line x1="367" y1="203" x2="384" y2="203" marker-end="url(#il-std1)"/>
+        <rect x="388" y="44" width="508" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="400" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE SPLIT-SCREEN WORKBENCH</text>
+        <text x="400" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SCROLLABLE FORM ONE SIDE, STICKY LIVE PREVIEW THE OTHER</text>
+        <text x="884" y="68" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#b07fa6" stroke="none">ADOPTED PRODUCT-WIDE</text>
+        <rect x="408" y="94" width="468" height="236" rx="3" fill="#141414" stroke="#74a58c"/>
+        <rect x="420" y="104" width="37.5" height="16" rx="2" fill="#101010" stroke="#74a58c" stroke-width="1"/>
+        <text x="438.75" y="115" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.6" fill="#c0c0c0" stroke="none">SETUP</text>
+        <rect x="463.5" y="104" width="49.2" height="16" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="485.1" y="115" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.6" fill="#8c8c8c" stroke="none">CREATIVE</text>
+        <circle cx="506.7" cy="109" r="2.2" fill="#cf6a5c" stroke="none"/>
+        <rect x="518.7" y="104" width="45.3" height="16" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="541.35" y="115" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.6" fill="#8c8c8c" stroke="none">SUMMARY</text>
+        <text x="420" y="134" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.4" fill="#7c7c7c" stroke="none">SUMMARY TAB REPLACES THE OLD REVIEW PAGE</text>
+        <text x="420" y="148" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.4" fill="#7c7c7c" stroke="none">Campaign name</text>
+        <rect x="420" y="152" width="196" height="16" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="426" y="163" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Spring launch</text>
+        <text x="420" y="180" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.4" fill="#7c7c7c" stroke="none">Audience</text>
+        <rect x="420" y="184" width="196" height="16" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="426" y="195" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Returning users</text>
+        <text x="420" y="212" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.4" fill="#7c7c7c" stroke="none">Schedule</text>
+        <rect x="420" y="216" width="196" height="16" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="426" y="227" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Mar 3 to Mar 31</text>
+        <text x="420" y="244" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.4" fill="#7c7c7c" stroke="none">Destination URL</text>
+        <rect x="420" y="248" width="196" height="16" rx="2" fill="#101010" stroke="#cf6a5c" stroke-width="1"/>
+        <text x="426" y="259" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">shop.example/sp</text>
+        <circle cx="423" cy="270.5" r="2.2" fill="#cf6a5c" stroke="none"/>
+        <text x="429" y="273" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#cf6a5c" stroke="none">Enter a full URL, shown inline</text>
+        <text x="420" y="286" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.4" fill="#7c7c7c" stroke="none">Placement</text>
+        <rect x="420" y="290" width="196" height="16" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="426" y="301" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Top of page</text>
+        <line x1="630" y1="104" x2="630" y2="320" stroke="#3a3a3a" stroke-width="1"/>
+        <rect x="644" y="104" width="52" height="16" rx="3" fill="#101010" stroke="#74a58c" stroke-width="1"/>
+        <text x="670" y="115" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#c0c0c0" stroke="none">VAR A</text>
+        <rect x="702" y="104" width="52" height="16" rx="3" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="728" y="115" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">VAR B</text>
+        <rect x="760" y="104" width="52" height="16" rx="3" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="786" y="115" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">VAR C</text>
+        <text x="864" y="115" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.6" fill="#7c7c7c" stroke="none">PINNED</text>
+        <text x="644" y="136" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.4" fill="#7c7c7c" stroke="none">LIVE PREVIEW, UPDATES AS YOU TYPE</text>
+        <rect x="644" y="144" width="220" height="172" rx="3" fill="#0d0d0d" stroke="#3a3a3a" stroke-width="1"/>
+        <rect x="656" y="156" width="196" height="82" rx="2" fill="#181818" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="666" y="176" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.8" fill="#7c7c7c" stroke="none">SPRING LAUNCH</text>
+        <text x="666" y="196" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="11" letter-spacing="0" fill="#c0c0c0" stroke="none">Get 20% off</text>
+        <text x="666" y="211" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">your first order this week</text>
+        <rect x="666" y="220" width="60" height="12" rx="6" fill="#74a58c" stroke="#74a58c" stroke-width="1"/>
+        <text x="696" y="228.5" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#0a0a0a" stroke="none">Shop now</text>
+        <rect x="656" y="250" width="60" height="54" rx="2" fill="#141414" stroke="#2c2c2c" stroke-width="1"/>
+        <text x="686" y="281" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#7c7c7c" stroke="none">Item</text>
+        <rect x="722" y="250" width="60" height="54" rx="2" fill="#141414" stroke="#2c2c2c" stroke-width="1"/>
+        <text x="752" y="281" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#7c7c7c" stroke="none">Item</text>
+        <rect x="788" y="250" width="60" height="54" rx="2" fill="#141414" stroke="#2c2c2c" stroke-width="1"/>
+        <text x="818" y="281" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#7c7c7c" stroke="none">Item</text>
+        <text x="642" y="350" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.6" fill="#7c7c7c" stroke="none">VARIANT SWITCHER PINNED, ERRORS FLAGGED ON THE TAB THAT HAS THEM</text>
         </svg><figcaption>Fig. Divergent layouts converged into one split-screen workbench</figcaption></figure>
 </section><section class="decision">
 <span class="num">Decision 02 / 05</span>
 <h3>A rubric for steppers versus tabs</h3>
 <p>Steppers for strictly linear flows, tabs for save-as-draft flows where users move between sections freely. Usage data grounded it: one flow forced every user through a multi-step stepper even though 60 percent created a single item.</p>
 <p>Teams carry it forward as their default reasoning, so the debate doesn&rsquo;t restart on every flow.</p>
-<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="The stepper-or-tabs rubric: steppers for strictly linear flows, tabs for non-linear save-as-draft flows, grounded in usage data">
-        <!-- FIG. One rule, picked per flow -->
-        <defs><marker id="il-sys2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-sys2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="The stepper-or-tabs rubric: a new flow asks whether steps must happen in order. Yes means a stepper, such as Details, Audience, Creative, Review. No means tabs, such as Setup, Creative, Summary, with drafts saved. Grounded in usage: one flow forced everyone through four steps although 60 percent created just one item, and it was rebuilt to the rubric.">
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
-        <rect x="683" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
-        <text x="698.74" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">STEPPER</text>
-        <rect x="756" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
-        <text x="772.08" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">TABS</text>
-        <circle cx="817.5600000000001" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
-        <text x="825.5600000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">MISFIT FIXED</text>
-        <rect x="24" y="44" width="540" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <defs><marker id="il-std2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-std2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="677.6" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="693.6" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">STEPPER</text>
+        <rect x="751.2" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="767.2" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">TABS</text>
+        <circle cx="811.4" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="819.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">MISFIT FIXED</text>
+        <rect x="24" y="44" width="528" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE RUBRIC</text>
         <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">ONE QUESTION, ANSWERED PER FLOW</text>
-        <rect x="281.0" y="92" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
-        <text x="294" y="86" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">A NEW FLOW</text>
-        <line x1="294" y1="102" x2="294" y2="116" marker-end="url(#il-sys2)"/>
-        <path d="M294 120 L310 136 L294 152 L278 136 Z" fill="#141414" stroke="#d99f43"/>
-        <text x="294" y="170" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">MUST STEPS HAPPEN IN ORDER?</text>
-        <path d="M278 136 L158 136 L158 192" fill="none" marker-end="url(#il-sys2)"/>
-        <text x="152" y="186" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">YES</text>
-        <path d="M310 136 L430 136 L430 192" fill="none" marker-end="url(#il-sys2)"/>
-        <text x="436" y="186" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">NO</text>
-        <rect x="68" y="196" width="180" height="96" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="158" y="222" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">STEPPER</text>
-        <circle cx="116" cy="248" r="5" fill="#74a58c" stroke="#74a58c" stroke-width="1.2"/>
-        <circle cx="144" cy="248" r="5" fill="#74a58c" stroke="#74a58c" stroke-width="1.2"/>
-        <circle cx="172" cy="248" r="5" fill="none" stroke="#4a4a4a" stroke-width="1.2"/>
-        <circle cx="200" cy="248" r="5" fill="none" stroke="#4a4a4a" stroke-width="1.2"/>
-        <line x1="121" y1="248" x2="227" y2="248" stroke="#4a4a4a" stroke-width="1" opacity="0.5"/>
-        <text x="158" y="276" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">STRICTLY LINEAR, IN ORDER</text>
-        <rect x="340" y="196" width="180" height="96" rx="3" fill="#141414" stroke="#7ea7c9"/>
-        <text x="430" y="222" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">TABS</text>
-        <rect x="368" y="238" width="38" height="16" rx="3" stroke="#4a4a4a" stroke-width="1.2" fill="none"/>
-        <rect x="412" y="238" width="38" height="16" rx="3" stroke="#7ea7c9" stroke-width="1.2" fill="none"/>
-        <rect x="456" y="238" width="38" height="16" rx="3" stroke="#4a4a4a" stroke-width="1.2" fill="none"/>
-        <text x="430" y="276" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">SAVE AS DRAFT, MOVE FREELY</text>
-        <text x="294" y="330" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">THE TEAM BUILDS TO THIS NOW, NO RELITIGATING</text>
-        <rect x="596" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
-        <text x="608" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">GROUNDED IN USAGE</text>
-        <text x="608" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">DATA PICKED THE RULE, NOT TASTE</text>
-        <rect x="620" y="100" width="252" height="88" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1.2"/>
-        <circle cx="636" cy="120" r="2.5" fill="#cf6a5c" stroke="none"/>
-        <text x="648" y="123" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">ONE FLOW FORCED EVERYONE</text>
-        <text x="648" y="135" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">THROUGH A MULTI-STEP STEPPER</text>
-        <text x="636" y="162" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#c0c0c0" stroke="none">60 PERCENT CREATED JUST ONE ITEM</text>
-        <line x1="746" y1="188" x2="746" y2="212" stroke="#74a58c" marker-end="url(#il-sys2-g)"/>
-        <rect x="620" y="216" width="252" height="60" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="746.0" y="243.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">REBUILT TO THE RUBRIC</text>
-        <text x="746.0" y="257.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">THE PATH NOW MATCHES THE FLOW</text>
+        <rect x="258" y="90" width="60" height="14" rx="7" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="288" y="100" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#8c8c8c" stroke="none">NEW FLOW</text>
+        <line x1="288" y1="104" x2="288" y2="114" marker-end="url(#il-std2)"/>
+        <path d="M288 116 L370 136 L288 156 L206 136 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="288" y="139" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Must steps happen in order?</text>
+        <path d="M206 136 L150 136 L150 176" fill="none" marker-end="url(#il-std2)"/>
+        <path d="M370 136 L426 136 L426 176" fill="none" marker-end="url(#il-std2)"/>
+        <text x="156" y="130" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">YES</text>
+        <text x="420" y="130" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">NO</text>
+        <rect x="56" y="180" width="188" height="130" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="150" y="198" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">STEPPER</text>
+        <text x="150" y="210" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#7c7c7c" stroke="none">STRICTLY LINEAR, IN ORDER</text>
+        <line x1="78" y1="232" x2="222" y2="232" stroke="#3a3a3a" stroke-width="1"/>
+        <circle cx="78" cy="232" r="5" fill="#74a58c" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="78" y="250" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#8c8c8c" stroke="none">Details</text>
+        <circle cx="126" cy="232" r="5" fill="#74a58c" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="126" y="250" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#c0c0c0" stroke="none">Audience</text>
+        <circle cx="174" cy="232" r="5" fill="#0a0a0a" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="174" y="250" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#8c8c8c" stroke="none">Creative</text>
+        <circle cx="222" cy="232" r="5" fill="#0a0a0a" stroke="#8c8c8c" stroke-width="1.2"/>
+        <text x="222" y="250" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#8c8c8c" stroke="none">Review</text>
+        <text x="150" y="274" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Next unlocks only when</text>
+        <text x="150" y="285" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">the current step is valid</text>
+        <text x="150" y="300" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#7c7c7c" stroke="none">e.g. imports, account setup</text>
+        <rect x="332" y="180" width="188" height="130" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="426" y="198" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">TABS</text>
+        <text x="426" y="210" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#7c7c7c" stroke="none">SAVE AS DRAFT, MOVE FREELY</text>
+        <rect x="344" y="224" width="52" height="16" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="370" y="235" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#8c8c8c" stroke="none">Setup</text>
+        <rect x="400" y="224" width="52" height="16" rx="2" fill="#101010" stroke="#7ea7c9" stroke-width="1"/>
+        <text x="426" y="235" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#c0c0c0" stroke="none">Creative</text>
+        <rect x="456" y="224" width="52" height="16" rx="2" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="482" y="235" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#8c8c8c" stroke="none">Summary</text>
+        <text x="426" y="262" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Jump to any section,</text>
+        <text x="426" y="273" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">draft saves on every change</text>
+        <text x="426" y="300" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#7c7c7c" stroke="none">e.g. campaigns, creatives</text>
+        <text x="288" y="340" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#7c7c7c" stroke="none">THE TEAM BUILDS TO THIS NOW, NO RELITIGATING</text>
+        <rect x="576" y="44" width="320" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="588" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">GROUNDED IN USAGE</text>
+        <text x="588" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">DATA PICKED THE RULE, NOT TASTE</text>
+        <rect x="600" y="96" width="272" height="108" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <circle cx="612" cy="111" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <text x="620" y="114" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0.6" fill="#cf6a5c" stroke="none">BEFORE: ONE FLOW, ONE PATH FOR ALL</text>
+        <rect x="602" y="126" width="44" height="14" rx="7" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="624" y="135.5" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0" fill="#8c8c8c" stroke="none">Details</text>
+        <rect x="672" y="126" width="44" height="14" rx="7" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="694" y="135.5" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0" fill="#8c8c8c" stroke="none">Audience</text>
+        <line x1="646" y1="133" x2="672" y2="133" stroke="#4a4a4a" stroke-width="1"/>
+        <rect x="742" y="126" width="44" height="14" rx="7" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="764" y="135.5" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0" fill="#8c8c8c" stroke="none">Creative</text>
+        <line x1="716" y1="133" x2="742" y2="133" stroke="#4a4a4a" stroke-width="1"/>
+        <rect x="812" y="126" width="44" height="14" rx="7" fill="#101010" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="834" y="135.5" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0" fill="#8c8c8c" stroke="none">Review</text>
+        <line x1="786" y1="133" x2="812" y2="133" stroke="#4a4a4a" stroke-width="1"/>
+        <text x="612" y="162" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="16" letter-spacing="0" fill="#c0c0c0" stroke="none">60%</text>
+        <text x="652" y="156" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">of users created just one item,</text>
+        <text x="652" y="167" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">yet every one went through all</text>
+        <text x="652" y="178" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">four steps</text>
+        <text x="612" y="196" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#7c7c7c" stroke="none">STEPPER ON A NON-LINEAR FLOW</text>
+        <line x1="736" y1="204" x2="736" y2="222" stroke="#74a58c" marker-end="url(#il-std2-g)"/>
+        <rect x="600" y="226" width="272" height="74" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="612" y="244" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">REBUILT TO THE RUBRIC</text>
+        <text x="612" y="262" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">The path now matches the flow:</text>
+        <text x="612" y="274" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">people move between sections</text>
+        <text x="612" y="286" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">instead of being marched through</text>
+        <text x="736" y="330" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">TEAMS REUSE THIS AS DEFAULT REASONING</text>
         </svg><figcaption>Fig. Steppers for linear flows, tabs for free movement, grounded in usage</figcaption></figure>
 </section><section class="decision">
 <span class="num">Decision 03 / 05</span>
 <h3>The design file is the source of truth</h3>
 <p>Every ticket now carries three things: specific affected paths, explicit expected behavior, and a design reference, with the reasoning behind each decision documented alongside the work.</p>
 <p class="tradeoff"><strong>Why:</strong> decisions had lived in scattered chat threads, so the same questions came back at every handoff.</p>
-<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="The design file as the single source of truth, with every engineering ticket anchored to it and decision reasoning documented alongside the work">
-        <!-- FIG. One file, every ticket anchored -->
-        <defs><marker id="il-sys4" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-sys4-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Before: decisions scattered across chat threads, standups, and direct messages, so the same questions came back at every handoff. After: one design file holding final frames, a decision log, and open questions, with four example tickets each carrying affected paths, expected behavior, and a design reference anchored to it.">
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
-        <rect x="641" y="15" width="12" height="9" stroke="#4a4a4a" stroke-width="1.2" stroke-dasharray="3 3"/>
-        <text x="657.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SCATTERED</text>
-        <rect x="726" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
-        <text x="741.98" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SOURCE OF TRUTH</text>
-        <rect x="844" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
-        <text x="860.28" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">TICKET</text>
+        <defs><marker id="il-std3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="637" y="15" width="12" height="9" stroke="#4a4a4a" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="653" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SCATTERED</text>
+        <rect x="722.2" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="738.2" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SOURCE OF TRUTH</text>
+        <rect x="842.2" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="858.2" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">TICKET</text>
         <rect x="24" y="44" width="280" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">BEFORE: SCATTERED</text>
-        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">DECISIONS IN THREADS AND VERBAL AGREEMENTS</text>
-        <rect x="48" y="100" width="150" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
-        <line x1="64" y1="113" x2="144" y2="113" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="64" y1="121" x2="114" y2="121" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="120" y="150" width="150" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
-        <line x1="136" y1="163" x2="216" y2="163" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="136" y1="171" x2="186" y2="171" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="60" y="200" width="150" height="30" rx="8" stroke="#8c8c8c" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
-        <line x1="76" y1="213" x2="156" y2="213" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="76" y1="221" x2="126" y2="221" stroke="#2c2c2c" stroke-width="3"/>
-        <circle cx="240" cy="260" r="2.5" fill="#cf6a5c" stroke="none"/>
-        <text x="232" y="264" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">SAME QUESTIONS AT EVERY HANDOFF</text>
-        <text x="164" y="316" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">AMBIGUITY IN, REWORK OUT</text>
-        <line x1="304" y1="203" x2="332" y2="203" marker-end="url(#il-sys4)"/>
-        <rect x="340" y="44" width="556" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
-        <text x="352" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE FILE, EVERY TICKET ANCHORED</text>
-        <text x="352" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SO ENGINEERING CAN BUILD WITHOUT COMING BACK TO ASK</text>
-        <rect x="506" y="158" width="224" height="90" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="618.0" y="200.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE DESIGN FILE</text>
-        <text x="618.0" y="214.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">DECISIONS + REASONING, DOCUMENTED</text>
-        <rect x="364" y="96" width="168" height="56" rx="3" fill="#141414" stroke="#7ea7c9"/>
-        <text x="448.0" y="127.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">TICKET</text>
-        <text x="448" y="138" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="1" fill="#8c8c8c" stroke="none">PATHS / BEHAVIOR / DESIGN REF</text>
-        <rect x="688" y="96" width="168" height="56" rx="3" fill="#141414" stroke="#7ea7c9"/>
-        <text x="772.0" y="127.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">TICKET</text>
-        <text x="772" y="138" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="1" fill="#8c8c8c" stroke="none">PATHS / BEHAVIOR / DESIGN REF</text>
-        <rect x="364" y="288" width="168" height="56" rx="3" fill="#141414" stroke="#7ea7c9"/>
-        <text x="448.0" y="319.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">TICKET</text>
-        <text x="448" y="330" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="1" fill="#8c8c8c" stroke="none">PATHS / BEHAVIOR / DESIGN REF</text>
-        <rect x="688" y="288" width="168" height="56" rx="3" fill="#141414" stroke="#7ea7c9"/>
-        <text x="772.0" y="319.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">TICKET</text>
-        <text x="772" y="330" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="1" fill="#8c8c8c" stroke="none">PATHS / BEHAVIOR / DESIGN REF</text>
-        <path d="M532 124 L560 124 L560 154" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-sys4)"/>
-        <path d="M688 124 L662 124 L662 154" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-sys4)"/>
-        <path d="M532 316 L560 316 L560 252" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-sys4)"/>
-        <path d="M688 316 L662 316 L662 252" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-sys4)"/>
-        <text x="618" y="356" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">THE BAR FOR A GOOD TICKET: SPECIFIC PATHS, EXPECTED BEHAVIOR, A DESIGN REFERENCE</text>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">DECISIONS IN THREADS AND HALLWAYS</text>
+        <rect x="44" y="96" width="196" height="44" rx="6" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="54" y="108" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.6" fill="#7c7c7c" stroke="none">CHAT THREAD, 46 REPLIES</text>
+        <text x="54" y="121" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">So does editing the template</text>
+        <text x="54" y="132" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">change live work or not?</text>
+        <rect x="84" y="150" width="196" height="44" rx="6" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="94" y="162" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.6" fill="#7c7c7c" stroke="none">VERBAL, STANDUP</text>
+        <text x="94" y="175" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">We said tabs, not a stepper,</text>
+        <text x="94" y="186" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">right? Not written down.</text>
+        <rect x="52" y="204" width="196" height="44" rx="6" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="62" y="216" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.6" fill="#7c7c7c" stroke="none">DIRECT MESSAGE</text>
+        <text x="62" y="229" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">Which error copy is final?</text>
+        <text x="62" y="240" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">The ticket has the old one.</text>
+        <rect x="78" y="258" width="196" height="44" rx="6" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="88" y="270" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.6" fill="#7c7c7c" stroke="none">CHAT THREAD</text>
+        <text x="88" y="283" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">Is this the latest design?</text>
+        <text x="88" y="294" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">There are three links here.</text>
+        <circle cx="74" cy="321" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <text x="82" y="324" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#8c8c8c" stroke="none">SAME QUESTIONS AT EVERY HANDOFF</text>
+        <text x="164" y="346" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#7c7c7c" stroke="none">AMBIGUITY IN, REWORK OUT</text>
+        <line x1="304" y1="203" x2="328" y2="203" marker-end="url(#il-std3)"/>
+        <rect x="332" y="44" width="564" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="344" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE FILE, EVERY TICKET ANCHORED</text>
+        <text x="344" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">SO ENGINEERING CAN BUILD WITHOUT COMING BACK TO ASK</text>
+        <rect x="352" y="92" width="188" height="70" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="362" y="106" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#c0c0c0" stroke="none">TICKET 1</text>
+        <text x="362" y="122" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">PATHS</text>
+        <text x="418" y="122" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Create &gt; Setup tab</text>
+        <text x="362" y="135" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">BEHAVIOR</text>
+        <text x="418" y="135" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Save draft on every change</text>
+        <text x="362" y="148" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">DESIGN REF</text>
+        <text x="418" y="148" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Frame: Setup, default</text>
+        <rect x="688" y="92" width="188" height="70" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="698" y="106" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#c0c0c0" stroke="none">TICKET 2</text>
+        <text x="698" y="122" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">PATHS</text>
+        <text x="754" y="122" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Create &gt; Summary tab</text>
+        <text x="698" y="135" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">BEHAVIOR</text>
+        <text x="754" y="135" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Replaces the review page</text>
+        <text x="698" y="148" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">DESIGN REF</text>
+        <text x="754" y="148" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Frame: Summary</text>
+        <rect x="352" y="270" width="188" height="70" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="362" y="284" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#c0c0c0" stroke="none">TICKET 3</text>
+        <text x="362" y="300" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">PATHS</text>
+        <text x="418" y="300" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Create &gt; all tabs</text>
+        <text x="362" y="313" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">BEHAVIOR</text>
+        <text x="418" y="313" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Errors show on their tab</text>
+        <text x="362" y="326" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">DESIGN REF</text>
+        <text x="418" y="326" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Frame: Error states</text>
+        <rect x="688" y="270" width="188" height="70" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="698" y="284" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#c0c0c0" stroke="none">TICKET 4</text>
+        <text x="698" y="300" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">PATHS</text>
+        <text x="754" y="300" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Library &gt; Templates</text>
+        <text x="698" y="313" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">BEHAVIOR</text>
+        <text x="754" y="313" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Edits don't touch live work</text>
+        <text x="698" y="326" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">DESIGN REF</text>
+        <text x="754" y="326" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Frame: Template edit</text>
+        <rect x="530" y="168" width="168" height="96" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="614" y="186" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE DESIGN FILE</text>
+        <text x="542" y="206" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">• Final frames, every state</text>
+        <text x="542" y="220" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">• Decision log, with the why</text>
+        <text x="542" y="234" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">• Open questions, with owners</text>
+        <text x="614" y="256" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.6" fill="#7c7c7c" stroke="none">LINKED FROM EVERY TICKET</text>
+        <path d="M540 127 L570 127 L570 164" fill="none" stroke-dasharray="3 3" stroke-width="1" marker-end="url(#il-std3)"/>
+        <path d="M688 127 L658 127 L658 164" fill="none" stroke-dasharray="3 3" stroke-width="1" marker-end="url(#il-std3)"/>
+        <path d="M540 305 L570 305 L570 268" fill="none" stroke-dasharray="3 3" stroke-width="1" marker-end="url(#il-std3)"/>
+        <path d="M688 305 L658 305 L658 268" fill="none" stroke-dasharray="3 3" stroke-width="1" marker-end="url(#il-std3)"/>
+        <text x="614" y="354" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.5" fill="#7c7c7c" stroke="none">THE BAR FOR A GOOD TICKET: SPECIFIC PATHS, EXPECTED BEHAVIOR, A DESIGN REFERENCE</text>
         </svg><figcaption>Fig. The design file as source of truth, every ticket anchored to it</figcaption></figure>
 </section><section class="decision">
 <span class="num">Decision 04 / 05</span>

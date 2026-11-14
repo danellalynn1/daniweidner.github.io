@@ -62,134 +62,121 @@
 <h3>Design the flow around the rows that fail</h3>
 <p>Validation runs up front, and a two-tab preview separates the rows that will work from the rows that won&rsquo;t. Users download just the failed rows, fix them, and re-upload, instead of starting the whole file over.</p>
 <blockquote>Error states are universally the biggest blocker. Users hit errors they couldn&rsquo;t resolve. The flow works, but it doesn&rsquo;t teach.<cite>Research synthesis, cross-group findings</cite></blockquote>
-<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="One phased flow, download template, fill, upload, validate, create, producing thousands of links at once, each with its own status">
-        <!-- FIG. One action, many links -->
-        <defs><marker id="il-uf1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-uf1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Bulk link creation in one flow: download a template, fill it with up to 10,000 rows, upload, validate every row, review a two-tab preview of ready rows and rows that need a fix, then create. Failed rows download on their own to fix and re-upload. A sample preview shows ten rows, two flagged for a missing destination URL and an alias already in use.">
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
-        <rect x="613" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
-        <text x="629.02" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">STEP</text>
-        <rect x="670" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
-        <text x="685.5" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SYSTEM</text>
-        <path d="M743.22 14 L749.22 19.5 L743.22 25 L737.22 19.5 Z" stroke="#d99f43" stroke-width="1.2"/>
-        <text x="754.22" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">VALIDATION</text>
-        <circle cx="834.4200000000001" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
-        <text x="842.4200000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">ROW ERROR</text>
+        <defs><marker id="il-uf1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="609.8" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="625.8" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">STEP</text>
+        <rect x="666" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="682" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SYSTEM</text>
+        <path d="M739.8 14 L746.3 19.5 L739.8 25 L733.3 19.5 Z" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="749.8" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">VALIDATION</text>
+        <circle cx="828.8" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="836.8" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">ROW ERROR</text>
         <rect x="24" y="44" width="340" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE FLOW</text>
         <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">TEMPLATE, FILL, UPLOAD, VALIDATE, CREATE</text>
-        <rect x="84" y="92" width="220" height="38" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="194.0" y="114.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">DOWNLOAD TEMPLATE</text>
-        <line x1="194" y1="130" x2="194" y2="142" marker-end="url(#il-uf1)"/>
-        <rect x="84" y="146" width="220" height="38" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="194.0" y="168.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">FILL THE FILE</text>
-        <line x1="194" y1="184" x2="194" y2="196" marker-end="url(#il-uf1)"/>
-        <rect x="84" y="200" width="220" height="38" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="194.0" y="222.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">UPLOAD</text>
-        <line x1="194" y1="238" x2="194" y2="250" marker-end="url(#il-uf1)"/>
-        <path d="M194 252 L208 266 L194 280 L180 266 Z" fill="#141414" stroke="#d99f43"/>
-        <text x="170" y="270" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">VALIDATE</text>
-        <path d="M208 266 L252 266" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
-        <circle cx="256" cy="266" r="2.5" fill="#cf6a5c" stroke="none"/>
-        <text x="256" y="284" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">ERRORS RETURNED</text>
-        <text x="256" y="294" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">UP FRONT, BY ROW</text>
-        <line x1="194" y1="280" x2="194" y2="296" marker-end="url(#il-uf1)"/>
-        <rect x="84" y="300" width="220" height="38" rx="3" fill="#141414" stroke="#7ea7c9"/>
-        <text x="194.0" y="322.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CREATE</text>
-        <path d="M364 203 L392 203" fill="none" marker-end="url(#il-uf1)"/>
-        <rect x="400" y="44" width="496" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
-        <text x="412" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">MANY LINKS AT ONCE</text>
-        <text x="412" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">UP TO 10,000 PER FILE, EACH WITH ITS OWN STATUS</text>
-        <rect x="428" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="440" y1="109" x2="470" y2="109" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="440" y1="117" x2="460" y2="117" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="502" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="514" y1="109" x2="544" y2="109" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="514" y1="117" x2="534" y2="117" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="576" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="588" y1="109" x2="618" y2="109" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="588" y1="117" x2="608" y2="117" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="650" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="662" y1="109" x2="692" y2="109" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="662" y1="117" x2="682" y2="117" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="724" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="736" y1="109" x2="766" y2="109" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="736" y1="117" x2="756" y2="117" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="798" y="96" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="810" y1="109" x2="840" y2="109" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="810" y1="117" x2="830" y2="117" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="428" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="440" y1="155" x2="470" y2="155" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="440" y1="163" x2="460" y2="163" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="502" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="514" y1="155" x2="544" y2="155" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="514" y1="163" x2="534" y2="163" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="576" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="588" y1="155" x2="618" y2="155" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="588" y1="163" x2="608" y2="163" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="650" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="662" y1="155" x2="692" y2="155" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="662" y1="163" x2="682" y2="163" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="724" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#cf6a5c"/>
-        <line x1="736" y1="155" x2="766" y2="155" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="736" y1="163" x2="756" y2="163" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="798" y="142" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="810" y1="155" x2="840" y2="155" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="810" y1="163" x2="830" y2="163" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="428" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="440" y1="201" x2="470" y2="201" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="440" y1="209" x2="460" y2="209" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="502" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="514" y1="201" x2="544" y2="201" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="514" y1="209" x2="534" y2="209" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="576" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="588" y1="201" x2="618" y2="201" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="588" y1="209" x2="608" y2="209" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="650" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="662" y1="201" x2="692" y2="201" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="662" y1="209" x2="682" y2="209" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="724" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="736" y1="201" x2="766" y2="201" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="736" y1="209" x2="756" y2="209" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="798" y="188" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="810" y1="201" x2="840" y2="201" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="810" y1="209" x2="830" y2="209" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="428" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="440" y1="247" x2="470" y2="247" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="440" y1="255" x2="460" y2="255" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="502" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#cf6a5c"/>
-        <line x1="514" y1="247" x2="544" y2="247" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="514" y1="255" x2="534" y2="255" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="576" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="588" y1="247" x2="618" y2="247" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="588" y1="255" x2="608" y2="255" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="650" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="662" y1="247" x2="692" y2="247" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="662" y1="255" x2="682" y2="255" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="724" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="736" y1="247" x2="766" y2="247" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="736" y1="255" x2="756" y2="255" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="798" y="234" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="810" y1="247" x2="840" y2="247" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="810" y1="255" x2="830" y2="255" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="428" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="440" y1="293" x2="470" y2="293" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="440" y1="301" x2="460" y2="301" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="502" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="514" y1="293" x2="544" y2="293" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="514" y1="301" x2="534" y2="301" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="576" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="588" y1="293" x2="618" y2="293" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="588" y1="301" x2="608" y2="301" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="650" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="662" y1="293" x2="692" y2="293" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="662" y1="301" x2="682" y2="301" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="724" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="736" y1="293" x2="766" y2="293" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="736" y1="301" x2="756" y2="301" stroke="#2c2c2c" stroke-width="3"/>
-        <rect x="798" y="280" width="62" height="32" rx="3" fill="#141414" stroke="#74a58c"/>
-        <line x1="810" y1="293" x2="840" y2="293" stroke="#3a3a3a" stroke-width="3"/>
-        <line x1="810" y1="301" x2="830" y2="301" stroke="#2c2c2c" stroke-width="3"/>
-        <text x="648" y="344" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">TWO ROWS FLAGGED, THE REST CREATED</text>
+        <rect x="64" y="96" width="220" height="34" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="174" y="110" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">DOWNLOAD TEMPLATE</text>
+        <text x="174" y="122" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">CSV with the required columns</text>
+        <line x1="174" y1="130" x2="174" y2="140" marker-end="url(#il-uf1)"/>
+        <rect x="64" y="142" width="220" height="34" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="174" y="156" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">FILL THE FILE</text>
+        <text x="174" y="168" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Up to 10,000 rows, one link each</text>
+        <line x1="174" y1="176" x2="174" y2="186" marker-end="url(#il-uf1)"/>
+        <rect x="64" y="188" width="220" height="34" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="174" y="202" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">UPLOAD</text>
+        <text x="174" y="214" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Drag in the file or browse</text>
+        <line x1="174" y1="222" x2="174" y2="232" marker-end="url(#il-uf1)"/>
+        <path d="M174 234 L187 247 L174 260 L161 247 Z" fill="#141414" stroke="#d99f43"/>
+        <text x="150" y="250" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="1" fill="#8c8c8c" stroke="none">VALIDATE</text>
+        <line x1="187" y1="247" x2="214" y2="247" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <circle cx="217" cy="247" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <text x="224" y="244" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#cf6a5c" stroke="none">Every row checked,</text>
+        <text x="224" y="253" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#cf6a5c" stroke="none">errors returned by row</text>
+        <line x1="174" y1="260" x2="174" y2="270" marker-end="url(#il-uf1)"/>
+        <rect x="64" y="272" width="220" height="34" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="174" y="286" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">TWO-TAB PREVIEW</text>
+        <text x="174" y="298" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Ready rows / Rows that need a fix</text>
+        <path d="M64 289 L44 289 L44 205 L60 205" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1" marker-end="url(#il-uf1)"/>
+        <text x="40" y="250" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.6" fill="#cf6a5c" stroke="none">FIX</text>
+        <text x="40" y="258" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.6" fill="#cf6a5c" stroke="none">FAILED</text>
+        <text x="40" y="266" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.6" fill="#cf6a5c" stroke="none">ROWS</text>
+        <line x1="174" y1="306" x2="174" y2="316" marker-end="url(#il-uf1)"/>
+        <rect x="64" y="318" width="220" height="34" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="174" y="332" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">CREATE</text>
+        <text x="174" y="344" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Ready rows become live links</text>
+        <line x1="364" y1="203" x2="388" y2="203" marker-end="url(#il-uf1)"/>
+        <rect x="392" y="44" width="504" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="404" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">MANY LINKS AT ONCE</text>
+        <text x="404" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">UP TO 10,000 PER FILE, EACH ROW WITH ITS OWN STATUS</text>
+        <rect x="416" y="96" width="120" height="20" rx="2" fill="#141414" stroke="#74a58c"/>
+        <text x="476" y="109" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0.6" fill="#74a58c" stroke="none">READY  2,398</text>
+        <rect x="540" y="96" width="120" height="20" rx="2" fill="#0a0a0a" stroke="#cf6a5c" stroke-dasharray="3 3"/>
+        <text x="600" y="109" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0.6" fill="#cf6a5c" stroke="none">NEEDS A FIX  2</text>
+        <text x="872" y="109" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.6" fill="#7c7c7c" stroke="none">UPLOAD: SPRING-LINKS.CSV</text>
+        <text x="424" y="136" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">ROW</text>
+        <text x="462" y="136" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">LINK NAME</text>
+        <text x="598" y="136" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">CAMPAIGN</text>
+        <text x="700" y="136" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">CHANNEL</text>
+        <text x="872" y="136" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">STATUS</text>
+        <line x1="416" y1="142" x2="880" y2="142" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="424" y="158" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0001</text>
+        <text x="462" y="158" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">spring-sale-email-a</text>
+        <text x="598" y="158" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Spring sale</text>
+        <text x="700" y="158" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Email</text>
+        <text x="872" y="158" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#74a58c" stroke="none">✓ Ready</text>
+        <text x="424" y="175" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0002</text>
+        <text x="462" y="175" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">spring-sale-email-b</text>
+        <text x="598" y="175" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Spring sale</text>
+        <text x="700" y="175" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Email</text>
+        <text x="872" y="175" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#74a58c" stroke="none">✓ Ready</text>
+        <text x="424" y="192" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0003</text>
+        <text x="462" y="192" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">spring-sale-social</text>
+        <text x="598" y="192" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Spring sale</text>
+        <text x="700" y="192" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Social</text>
+        <text x="872" y="192" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#74a58c" stroke="none">✓ Ready</text>
+        <rect x="416" y="198" width="464" height="15" rx="2" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1"/>
+        <text x="424" y="209" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0004</text>
+        <text x="462" y="209" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">spring-sale-sms</text>
+        <text x="598" y="209" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Spring sale</text>
+        <text x="700" y="209" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">SMS</text>
+        <circle cx="770.16" cy="206.6" r="2.4" fill="#cf6a5c" stroke="none"/>
+        <text x="872" y="209" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#cf6a5c" stroke="none">Missing destination URL</text>
+        <text x="424" y="226" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0005</text>
+        <text x="462" y="226" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">app-reengage-push</text>
+        <text x="598" y="226" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Re-engage</text>
+        <text x="700" y="226" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Push</text>
+        <text x="872" y="226" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#74a58c" stroke="none">✓ Ready</text>
+        <text x="424" y="243" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0006</text>
+        <text x="462" y="243" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">app-reengage-email</text>
+        <text x="598" y="243" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Re-engage</text>
+        <text x="700" y="243" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Email</text>
+        <text x="872" y="243" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#74a58c" stroke="none">✓ Ready</text>
+        <text x="424" y="260" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0007</text>
+        <text x="462" y="260" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">partner-launch-qr</text>
+        <text x="598" y="260" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Partner launch</text>
+        <text x="700" y="260" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">QR</text>
+        <text x="872" y="260" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#74a58c" stroke="none">✓ Ready</text>
+        <rect x="416" y="266" width="464" height="15" rx="2" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1"/>
+        <text x="424" y="277" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0008</text>
+        <text x="462" y="277" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">partner-launch-web</text>
+        <text x="598" y="277" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Partner launch</text>
+        <text x="700" y="277" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Web</text>
+        <circle cx="782.4" cy="274.6" r="2.4" fill="#cf6a5c" stroke="none"/>
+        <text x="872" y="277" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#cf6a5c" stroke="none">Alias already in use</text>
+        <text x="424" y="294" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0009</text>
+        <text x="462" y="294" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">loyalty-tier-email</text>
+        <text x="598" y="294" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Loyalty</text>
+        <text x="700" y="294" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Email</text>
+        <text x="872" y="294" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#74a58c" stroke="none">✓ Ready</text>
+        <text x="424" y="311" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#7c7c7c" stroke="none">0010</text>
+        <text x="462" y="311" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#c0c0c0" stroke="none">loyalty-tier-inapp</text>
+        <text x="598" y="311" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Loyalty</text>
+        <text x="700" y="311" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">In-app</text>
+        <text x="872" y="311" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#74a58c" stroke="none">✓ Ready</text>
+        <text x="648" y="340" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#7c7c7c" stroke="none">+ 2,390 MORE ROWS</text>
+        <text x="648" y="352" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#7c7c7c" stroke="none">TWO ROWS FLAGGED, THE REST CREATED</text>
         </svg><figcaption>Fig. One flow in, thousands of links out, every row with its own status</figcaption></figure>
 </section><section class="decision">
 <span class="num">Decision 04 / 04</span>

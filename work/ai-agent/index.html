@@ -53,131 +53,188 @@
 <p>A bare number creates false precision, the full distribution overwhelms, and constant hedging makes the output useless. I designed tiered disclosure: high-confidence outputs show cleanly, lower-confidence ones carry a visible signal built into the component, with a path to understand why.</p>
 <p>Mapping the thresholds with the ML team kept the interface&rsquo;s confidence language true to what the scores actually meant.</p>
 <blockquote>Hide the uncertainty and the product feels broken the first time the model is wrong and users realize they were never told.<cite>Design principle, AI output surfaces</cite></blockquote>
-<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A tiered disclosure system: high-confidence model outputs surface cleanly, lower confidence carries a visible signal with a path to understand why">
-        <!-- FIG. Confidence sets the disclosure -->
-        <defs><marker id="il-ai1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai1-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Tiered disclosure for model outputs. High confidence surfaces cleanly, such as installs last 7 days: 48,210. Medium carries a visible signal built into the component, such as a projected range of about 31 to 36 thousand marked as an estimate. Low confidence says plainly there is not enough data, with a path to see why.">
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
-        <rect x="574" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
-        <text x="589.96" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SURFACES CLEANLY</text>
-        <rect x="698" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
-        <text x="713.88" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">VISIBLE SIGNAL</text>
-        <rect x="811" y="15" width="12" height="9" stroke="#d99f43" stroke-width="1.2"/>
-        <text x="826.56" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">EXPLAIN PATH</text>
+        <defs><marker id="il-ai1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="567.4" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="583.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">SURFACES CLEANLY</text>
+        <rect x="693.2" y="15" width="12" height="9" stroke="#7ea7c9" stroke-width="1.2"/>
+        <text x="709.2" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">VISIBLE SIGNAL</text>
+        <rect x="807.4" y="15" width="12" height="9" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="823.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">EXPLAIN PATH</text>
         <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT THE MODEL KNOWS</text>
         <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THRESHOLDS MAPPED WITH ML ENGINEERS</text>
-        <line x1="80" y1="100" x2="80" y2="330" stroke="#3a3a3a" stroke-width="10"/>
-        <line x1="80" y1="100" x2="80" y2="176" stroke="#74a58c" stroke-width="10"/>
-        <line x1="80" y1="176" x2="80" y2="252" stroke="#7ea7c9" stroke-width="10"/>
-        <line x1="80" y1="252" x2="80" y2="330" stroke="#d99f43" stroke-width="10"/>
-        <text x="104" y="140" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">HIGH CONFIDENCE</text>
-        <text x="104" y="216" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">MEDIUM</text>
-        <text x="104" y="292" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">LOW</text>
-        <text x="104" y="154" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">KNOWN, NOT ESTIMATED</text>
-        <text x="104" y="230" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">ESTIMATED</text>
-        <text x="104" y="306" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">UNCERTAIN</text>
-        <rect x="356" y="44" width="540" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
-        <text x="368" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT THE USER SEES</text>
-        <text x="368" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">NO FALSE PRECISION, NO CONSTANT HEDGING</text>
-        <rect x="444" y="96" width="428" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="658.0" y="124.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">SURFACES CLEANLY</text>
-        <text x="658.0" y="138.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">A NUMBER THE USER CAN ACT ON</text>
-        <line x1="324" y1="140" x2="440" y2="127" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
-        <rect x="444" y="184" width="428" height="62" rx="3" fill="#141414" stroke="#7ea7c9"/>
-        <text x="658.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">VISIBLE SIGNAL, BUILT IN</text>
-        <text x="658.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">THE COMPONENT SHOWS ITS UNCERTAINTY</text>
-        <line x1="324" y1="216" x2="440" y2="215" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
-        <rect x="444" y="272" width="428" height="62" rx="3" fill="#141414" stroke="#d99f43"/>
-        <text x="658.0" y="300.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">A PATH TO UNDERSTAND WHY</text>
-        <text x="658.0" y="314.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">DISCLOSURE ON DEMAND, NEVER OVERSTATED</text>
-        <line x1="324" y1="292" x2="440" y2="303" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai1)"/>
+        <line x1="72" y1="100" x2="72" y2="168" stroke="#74a58c" stroke-width="9"/>
+        <text x="92" y="120" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">HIGH CONFIDENCE</text>
+        <text x="92" y="134" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">Known, not estimated</text>
+        <text x="92" y="148" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#7c7c7c" stroke="none">Score above the high threshold</text>
+        <line x1="72" y1="180" x2="72" y2="248" stroke="#7ea7c9" stroke-width="9"/>
+        <text x="92" y="200" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">MEDIUM</text>
+        <text x="92" y="214" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">Estimated</text>
+        <text x="92" y="228" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#7c7c7c" stroke="none">Between the two thresholds</text>
+        <line x1="72" y1="260" x2="72" y2="328" stroke="#d99f43" stroke-width="9"/>
+        <text x="92" y="280" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1" fill="#c0c0c0" stroke="none">LOW</text>
+        <text x="92" y="294" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">Uncertain</text>
+        <text x="92" y="308" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0" fill="#7c7c7c" stroke="none">Below the low threshold</text>
+        <text x="44" y="348" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#7c7c7c" stroke="none">SAME SCORE, SAME TIER, EVERY SURFACE</text>
+        <line x1="324" y1="203" x2="348" y2="203" marker-end="url(#il-ai1)"/>
+        <rect x="352" y="44" width="544" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="364" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT THE USER SEES</text>
+        <text x="364" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">NO FALSE PRECISION, NO CONSTANT HEDGING</text>
+        <rect x="376" y="96" width="496" height="76" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="388" y="112" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">SURFACES CLEANLY</text>
+        <text x="860" y="112" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#7c7c7c" stroke="none">A NUMBER THE USER CAN ACT ON</text>
+        <text x="388" y="132" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Installs last 7 days</text>
+        <text x="388" y="156" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="18" letter-spacing="0" fill="#c0c0c0" stroke="none">48,210</text>
+        <text x="480" y="156" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#74a58c" stroke="none">+6% vs prior week</text>
+        <rect x="376" y="184" width="496" height="76" rx="3" fill="#141414" stroke="#7ea7c9"/>
+        <text x="388" y="200" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">VISIBLE SIGNAL, BUILT IN</text>
+        <text x="860" y="200" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#7c7c7c" stroke="none">THE COMPONENT SHOWS ITS UNCERTAINTY</text>
+        <text x="388" y="220" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Projected installs next 7 days</text>
+        <text x="388" y="244" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="18" letter-spacing="0" fill="#c0c0c0" stroke="none">~31k to 36k</text>
+        <rect x="526" y="235" width="45.4" height="12" rx="6" fill="#101010" stroke="#7ea7c9" stroke-width="1"/>
+        <text x="548.7" y="243.5" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.6" fill="#7ea7c9" stroke="none">ESTIMATE</text>
+        <line x1="600" y1="240" x2="840" y2="240" stroke="#2a2a2a" stroke-width="6"/>
+        <line x1="680" y1="240" x2="760" y2="240" stroke="#7ea7c9" stroke-width="6" opacity="0.6"/>
+        <text x="600" y="254" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="0.5" fill="#7c7c7c" stroke="none">RANGE, NOT A SINGLE NUMBER</text>
+        <rect x="376" y="272" width="496" height="76" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="388" y="288" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">A PATH TO UNDERSTAND WHY</text>
+        <text x="860" y="288" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#7c7c7c" stroke="none">DISCLOSURE ON DEMAND, NEVER OVERSTATED</text>
+        <text x="388" y="308" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="0" fill="#8c8c8c" stroke="none">Best send time</text>
+        <text x="388" y="330" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="9" letter-spacing="0" fill="#c0c0c0" stroke="none">Low signal: not enough data yet</text>
+        <text x="860" y="330" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#d99f43" stroke="none">Why? See what the model used →</text>
         </svg><figcaption>Fig. Clean when known, signaled when estimated, explained on demand</figcaption></figure>
 </section><section class="decision">
 <span class="num">Decision 02 / 03</span>
 <h3>Ambient by default, present on demand</h3>
 <p>I mapped the journey to find where an aware agent would cut real friction: transitions between tools, points of failure, and decisions that sent users elsewhere to look something up. The agent stays quiet until needed, and at high-stakes moments it confirms what it assumes before acting.</p>
-<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="One agent following the user across the whole journey, ambient by default and interruptible on demand, carrying context forward at every step">
-        <!-- FIG. One agent across the journey -->
-        <defs><marker id="il-ai2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="One agent across the journey: campaign setup, the move to analytics, analytics, a point of confusion when installs dip, and a budget decision. The agent fills in what it knows, carries context across the transition, watches quietly, explains the likely cause in place, and at the high-stakes decision states its assumption and asks before acting.">
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
-        <circle cx="721.74" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
-        <text x="729.74" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">FRICTION POINT</text>
-        <rect x="827" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
-        <text x="843.4200000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">THE AGENT</text>
+        <defs><marker id="il-ai2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai2-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <circle cx="600.4" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="608.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">FRICTION POINT</text>
+        <rect x="710.6" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="726.6" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">THE AGENT</text>
+        <rect x="795.8" y="15" width="12" height="9" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="811.8" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">CONFIRMS FIRST</text>
         <rect x="24" y="44" width="872" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">ONE AGENT ACROSS THE JOURNEY</text>
         <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">AMBIENT BY DEFAULT, INTERRUPTIBLE ON DEMAND, QUIET UNTIL NEEDED</text>
-        <line x1="80" y1="140" x2="840" y2="140" stroke="#3a3a3a" stroke-width="1"/>
-        <rect x="107.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
-        <text x="120" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">TOOL A</text>
-        <rect x="287.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
-        <text x="300" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">TRANSITION</text>
-        <circle cx="300" cy="158" r="2.5" fill="#cf6a5c" stroke="none"/>
-        <rect x="467.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
-        <text x="480" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">TOOL B</text>
-        <rect x="647.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
-        <text x="660" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">POINT OF CONFUSION</text>
-        <circle cx="660" cy="158" r="2.5" fill="#cf6a5c" stroke="none"/>
-        <rect x="803.0" y="133" width="26" height="10" rx="5" fill="#101010" stroke="#8c8c8c" stroke-width="1.2"/>
-        <text x="816" y="118" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">DECISION</text>
-        <text x="300" y="176" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">WHERE FRICTION LIVED</text>
-        <text x="660" y="176" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6" letter-spacing="1" fill="#7c7c7c" stroke="none">WHERE USERS WENT ELSEWHERE</text>
-        <rect x="80" y="220" width="760" height="66" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="460" y="246" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE AGENT</text>
-        <text x="460" y="262" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">AWARE OF WHERE YOU CAME FROM, WHAT YOU ARE DOING, WHAT YOU HAVE TRIED</text>
-        <path d="M120 146 L120 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
-        <path d="M300 146 L300 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
-        <path d="M480 146 L480 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
-        <path d="M660 146 L660 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
-        <path d="M816 146 L816 216" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai2)"/>
-        <path d="M120 300 L816 300" fill="none" stroke="#74a58c" marker-end="url(#il-ai2-g)"/>
-        <text x="468" y="316" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#74a58c" stroke="none">CONTEXT CARRIED FORWARD, NEVER ASKED FROM SCRATCH</text>
+        <line x1="56" y1="132" x2="864" y2="132" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="116" y="104" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#8c8c8c" stroke="none">TOOL A</text>
+        <rect x="52" y="120" width="128" height="24" rx="12" fill="#101010" stroke="#5c5c5c" stroke-width="1.2"/>
+        <text x="116" y="135" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Campaign setup</text>
+        <path d="M116 172 L116 196" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.8" marker-end="url(#il-ai2)"/>
+        <text x="284" y="104" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#8c8c8c" stroke="none">TRANSITION</text>
+        <rect x="220" y="120" width="128" height="24" rx="12" fill="#101010" stroke="#5c5c5c" stroke-width="1.2"/>
+        <text x="284" y="135" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Setup to analytics</text>
+        <circle cx="284" cy="156" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <text x="292" y="166" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="0.4" fill="#cf6a5c" stroke="none">WHERE FRICTION LIVED</text>
+        <path d="M284 172 L284 196" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.8" marker-end="url(#il-ai2)"/>
+        <text x="452" y="104" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#8c8c8c" stroke="none">TOOL B</text>
+        <rect x="388" y="120" width="128" height="24" rx="12" fill="#101010" stroke="#5c5c5c" stroke-width="1.2"/>
+        <text x="452" y="135" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Analytics</text>
+        <path d="M452 172 L452 196" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.8" marker-end="url(#il-ai2)"/>
+        <text x="620" y="104" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#8c8c8c" stroke="none">POINT OF CONFUSION</text>
+        <rect x="556" y="120" width="128" height="24" rx="12" fill="#101010" stroke="#5c5c5c" stroke-width="1.2"/>
+        <text x="620" y="135" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Installs dip on day 3</text>
+        <circle cx="620" cy="156" r="2.5" fill="#cf6a5c" stroke="none"/>
+        <text x="628" y="166" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="0.4" fill="#cf6a5c" stroke="none">WHERE USERS WENT ELSEWHERE</text>
+        <path d="M620 172 L620 196" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.8" marker-end="url(#il-ai2)"/>
+        <text x="788" y="104" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#8c8c8c" stroke="none">DECISION</text>
+        <rect x="724" y="120" width="128" height="24" rx="12" fill="#101010" stroke="#5c5c5c" stroke-width="1.2"/>
+        <text x="788" y="135" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Shift budget?</text>
+        <path d="M788 172 L788 196" fill="none" stroke-dasharray="3 3" stroke-width="1" opacity="0.8" marker-end="url(#il-ai2)"/>
+        <rect x="40" y="200" width="840" height="100" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="52" y="216" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE AGENT</text>
+        <text x="868" y="216" text-anchor="end" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.5" fill="#7c7c7c" stroke="none">AWARE OF WHERE YOU CAME FROM, WHAT YOU ARE DOING, WHAT YOU HAVE TRIED</text>
+        <rect x="46" y="230" width="140" height="56" rx="3" fill="#101010" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="56" y="252" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Fills in what it</text>
+        <text x="56" y="264" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">already knows</text>
+        <text x="56" y="278" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="0.6" fill="#7c7c7c" stroke="none">AMBIENT</text>
+        <rect x="214" y="230" width="140" height="56" rx="3" fill="#101010" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="224" y="252" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Carries the campaign</text>
+        <text x="224" y="264" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">across, no re-entry</text>
+        <text x="224" y="278" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="0.6" fill="#7c7c7c" stroke="none">AMBIENT</text>
+        <rect x="382" y="230" width="140" height="56" rx="3" fill="#101010" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="392" y="252" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Watches results,</text>
+        <text x="392" y="264" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">stays quiet</text>
+        <text x="392" y="278" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="0.6" fill="#7c7c7c" stroke="none">AMBIENT</text>
+        <rect x="550" y="230" width="140" height="56" rx="3" fill="#101010" stroke="#3a3a3a" stroke-width="1"/>
+        <text x="560" y="252" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">Explains the likely</text>
+        <text x="560" y="264" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">cause in place</text>
+        <text x="560" y="278" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="0.6" fill="#7c7c7c" stroke="none">AMBIENT</text>
+        <rect x="718" y="230" width="140" height="56" rx="3" fill="#101010" stroke="#d99f43" stroke-width="1"/>
+        <text x="728" y="252" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">States its assumption,</text>
+        <text x="728" y="264" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#c0c0c0" stroke="none">asks before acting</text>
+        <text x="728" y="278" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="5.8" letter-spacing="0.6" fill="#d99f43" stroke="none">AT HIGH STAKES</text>
+        <line x1="116" y1="318" x2="788" y2="318" stroke="#74a58c" marker-end="url(#il-ai2-g)"/>
+        <text x="452" y="340" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.8" letter-spacing="1" fill="#74a58c" stroke="none">CONTEXT CARRIED FORWARD, NEVER ASKED FROM SCRATCH</text>
         </svg><figcaption>Fig. One agent across the journey, carrying context forward at every step</figcaption></figure>
 </section><section class="decision">
 <span class="num">Decision 03 / 03</span>
 <h3>Design the &ldquo;I don&rsquo;t know&rdquo;</h3>
 <p>Working sessions with ML engineers pinned down what the model could and couldn&rsquo;t explain about its own outputs. That became a vocabulary for explainability, and each failure state (unavailable, low-signal, out-of-distribution) got its own copy and recovery path.</p>
-<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A graded design vocabulary for explainability: full explanations where the model has them, honest partial ones where it does not, and a plain statement when none exists">
-        <!-- FIG. Graded by what is explainable -->
-        <defs><marker id="il-ai3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="il-ai3-g" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#74a58c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<figure class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 386" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A graded explainability vocabulary. Full: installs fell 18 percent after the March 2 release, with the source shown. Partial: likely linked to lower ad spend, other factors not visible. None: we can&#x27;t explain this change yet, here is what we can see. Three failure states, unavailable, low-signal, and out-of-distribution, each get their own copy.">
         <rect x="0" y="0" width="920" height="386" rx="4" fill="#0a0a0a" stroke="none"/>
-        <rect x="726" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
-        <text x="741.7" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">FULL</text>
-        <rect x="782" y="15" width="12" height="9" stroke="#d99f43" stroke-width="1.2"/>
-        <text x="798.1800000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">PARTIAL</text>
-        <rect x="856" y="15" width="12" height="9" stroke="#4a4a4a" stroke-width="1.2" stroke-dasharray="3 3"/>
-        <text x="871.5200000000001" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">NONE</text>
-        <rect x="24" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <defs><marker id="il-ai3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1 L8 5 L2 9" fill="none" stroke="#e2e2e2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="615.6" y="15" width="12" height="9" stroke="#74a58c" stroke-width="1.2"/>
+        <text x="631.6" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">FULL</text>
+        <rect x="671.8" y="15" width="12" height="9" stroke="#d99f43" stroke-width="1.2"/>
+        <text x="687.8" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">PARTIAL</text>
+        <rect x="745.4" y="15" width="12" height="9" stroke="#5c5c5c" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="761.4" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">NONE</text>
+        <circle cx="805.6" cy="19.5" r="2.8" fill="#cf6a5c" stroke="none"/>
+        <text x="813.6" y="23" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#8c8c8c" stroke="none">FAILURE STATE</text>
+        <rect x="24" y="44" width="300" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
         <text x="36" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">WHAT THE MODEL CAN EXPLAIN</text>
-        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">PINNED DOWN IN WORKING SESSIONS WITH ML ENGINEERS</text>
-        <rect x="48" y="96" width="372" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="234.0" y="124.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CAN EXPLAIN FULLY</text>
-        <text x="234.0" y="138.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">A CLEAN REASON EXISTS</text>
-        <rect x="48" y="184" width="372" height="62" rx="3" fill="#141414" stroke="#d99f43"/>
-        <text x="234.0" y="212.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CAN EXPLAIN PARTLY</text>
-        <text x="234.0" y="226.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">SIGNALS, NOT A COMPLETE ANSWER</text>
-        <rect x="48" y="272" width="372" height="62" rx="3" fill="none" stroke="#4a4a4a" stroke-dasharray="3 3" stroke-width="1.2"/>
-        <text x="234.0" y="300.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8.5" letter-spacing="1.5" fill="#c0c0c0" stroke="none">CANNOT EXPLAIN</text>
-        <text x="234.0" y="314.0" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.5" fill="#8c8c8c" stroke="none">THE REASON IS NOT SURFACEABLE</text>
-        <circle cx="404" cy="303" r="2.5" fill="#cf6a5c" stroke="none"/>
-        <line x1="444" y1="203" x2="468" y2="203" marker-end="url(#il-ai3)"/>
-        <rect x="476" y="44" width="420" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
-        <text x="488" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE DESIGN VOCABULARY</text>
-        <text x="488" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THE LANGUAGE NEVER CLAIMS MORE THAN THE MODEL KNOWS</text>
-        <rect x="500" y="96" width="372" height="62" rx="3" fill="#141414" stroke="#74a58c"/>
-        <text x="516" y="120" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">THE FULL WHY, SHOWN</text>
-        <line x1="516" y1="136" x2="696" y2="136" stroke="#74a58c" stroke-width="4"/>
-        <line x1="516" y1="144" x2="656" y2="144" stroke="#3a3a3a" stroke-width="4"/>
-        <rect x="500" y="184" width="372" height="62" rx="3" fill="#141414" stroke="#d99f43"/>
-        <text x="516" y="208" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">AN HONEST PARTIAL ANSWER</text>
-        <line x1="516" y1="224" x2="628" y2="224" stroke="#d99f43" stroke-width="4"/>
-        <line x1="516" y1="232" x2="596" y2="232" stroke="#3a3a3a" stroke-width="4"/>
-        <rect x="500" y="272" width="372" height="62" rx="3" fill="#141414" stroke="#8c8c8c"/>
-        <text x="516" y="296" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="0.5" fill="#c0c0c0" stroke="none">SAID PLAINLY: NO EXPLANATION HERE</text>
-        <text x="516" y="316" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">AN HONEST GAP BEATS A CONFIDENT GUESS</text>
-        <line x1="420" y1="127" x2="496" y2="127" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
-        <line x1="420" y1="215" x2="496" y2="215" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
-        <line x1="420" y1="303" x2="496" y2="303" stroke-dasharray="3 3" stroke-width="1" opacity="0.7" marker-end="url(#il-ai3)"/>
+        <text x="36" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">PINNED DOWN WITH ML ENGINEERS</text>
+        <rect x="44" y="96" width="260" height="56" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="56" y="120" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">CAN EXPLAIN FULLY</text>
+        <text x="56" y="136" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">A clean reason exists</text>
+        <line x1="304" y1="124" x2="360" y2="124" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <line x1="360" y1="124" x2="364" y2="124" marker-end="url(#il-ai3)"/>
+        <rect x="44" y="166" width="260" height="56" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="56" y="190" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">CAN EXPLAIN PARTLY</text>
+        <text x="56" y="206" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">Signals, not a complete answer</text>
+        <line x1="304" y1="194" x2="360" y2="194" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <line x1="360" y1="194" x2="364" y2="194" marker-end="url(#il-ai3)"/>
+        <rect x="44" y="236" width="260" height="56" rx="3" fill="none" stroke="#5c5c5c" stroke-dasharray="3 3" stroke-width="1.2"/>
+        <text x="56" y="260" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7.5" letter-spacing="1.2" fill="#c0c0c0" stroke="none">CANNOT EXPLAIN</text>
+        <text x="56" y="276" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">The reason isn't surfaceable</text>
+        <line x1="304" y1="264" x2="360" y2="264" stroke-dasharray="3 3" stroke-width="1" opacity="0.7"/>
+        <line x1="360" y1="264" x2="364" y2="264" marker-end="url(#il-ai3)"/>
+        <text x="44" y="322" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">THREE FAILURE STATES, EACH WITH</text>
+        <text x="44" y="333" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="0.8" fill="#7c7c7c" stroke="none">ITS OWN COPY AND RECOVERY PATH</text>
+        <rect x="348" y="44" width="548" height="318" stroke-dasharray="4 4" stroke="#5c5c5c" stroke-width="1"/>
+        <text x="360" y="68" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="10" letter-spacing="1.5" fill="#c0c0c0" stroke="none">THE DESIGN VOCABULARY</text>
+        <text x="360" y="84" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="1" fill="#7c7c7c" stroke="none">THE LANGUAGE NEVER CLAIMS MORE THAN THE MODEL KNOWS</text>
+        <rect x="368" y="96" width="508" height="56" rx="3" fill="#141414" stroke="#74a58c"/>
+        <text x="380" y="111" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#74a58c" stroke="none">THE FULL WHY, SHOWN</text>
+        <text x="380" y="128" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="0" fill="#c0c0c0" stroke="none">Installs fell 18% after the March 2 release.</text>
+        <text x="380" y="142" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">Source: release events on iOS. See the breakdown →</text>
+        <rect x="368" y="166" width="508" height="56" rx="3" fill="#141414" stroke="#d99f43"/>
+        <text x="380" y="181" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#d99f43" stroke="none">AN HONEST PARTIAL ANSWER</text>
+        <text x="380" y="198" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="0" fill="#c0c0c0" stroke="none">Likely linked to lower ad spend this week.</text>
+        <text x="380" y="212" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">Other factors aren't visible to the model.</text>
+        <rect x="368" y="236" width="508" height="56" rx="3" fill="#141414" stroke="#8c8c8c"/>
+        <text x="380" y="251" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#8c8c8c" stroke="none">SAID PLAINLY</text>
+        <text x="380" y="268" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="8" letter-spacing="0" fill="#c0c0c0" stroke="none">We can't explain this change yet.</text>
+        <text x="380" y="282" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="7" letter-spacing="0" fill="#8c8c8c" stroke="none">Here is what we can see, and what to check next →</text>
+        <text x="368" y="316" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.5" letter-spacing="1" fill="#7c7c7c" stroke="none">FAILURE STATES</text>
+        <rect x="368" y="324" width="164" height="30" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1"/>
+        <circle cx="377" cy="335.5" r="2.3" fill="#cf6a5c" stroke="none"/>
+        <text x="384" y="338" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#cf6a5c" stroke="none">UNAVAILABLE</text>
+        <text x="377" y="349" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#8c8c8c" stroke="none">Model is down. Showing last result.</text>
+        <rect x="540" y="324" width="164" height="30" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1"/>
+        <circle cx="549" cy="335.5" r="2.3" fill="#cf6a5c" stroke="none"/>
+        <text x="556" y="338" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#cf6a5c" stroke="none">LOW-SIGNAL</text>
+        <text x="549" y="349" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#8c8c8c" stroke="none">Not enough data to say.</text>
+        <rect x="712" y="324" width="164" height="30" rx="3" fill="none" stroke="#cf6a5c" stroke-dasharray="3 3" stroke-width="1"/>
+        <circle cx="721" cy="335.5" r="2.3" fill="#cf6a5c" stroke="none"/>
+        <text x="728" y="338" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0.6" fill="#cf6a5c" stroke="none">OUT-OF-DISTRIBUTION</text>
+        <text x="721" y="349" text-anchor="start" font-family="&#39;JetBrains Mono&#39;, monospace" font-size="6.2" letter-spacing="0" fill="#8c8c8c" stroke="none">Unlike anything it has seen.</text>
         </svg><figcaption>Fig. A graded vocabulary that never claims more than the model knows</figcaption></figure>
 </section>
       </div>
